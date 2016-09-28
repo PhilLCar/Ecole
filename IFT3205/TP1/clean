@@ -1,0 +1,10 @@
+if [ ! -d image ]; then
+	mkdir image;
+fi
+if ls image*.pgm 1> /dev/null 2>&1; then
+	mv image*.pgm image;
+fi
+find ./ -name "Tp*" -a ! -name "*.c" -exec rm {} \;
+if [ -f *.o ]; then
+	rm *.o;
+fi

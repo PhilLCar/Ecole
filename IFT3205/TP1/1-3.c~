@@ -1,0 +1,216 @@
+/*------------------------------------------------------*/
+/* Prog    : Tp1_IFT3205-1-1.c                          */
+/* Auteur  :                                            */
+/* Date    : 18/05/2010                                 */
+/* version :                                            */ 
+/* langage : C                                          */
+/* labo    : DIRO                                       */
+/*------------------------------------------------------*/
+
+/*------------------------------------------------*/
+/* FICHIERS INCLUS -------------------------------*/
+/*------------------------------------------------*/
+#include <stdio.h>
+#include <math.h>
+#include <stdlib.h>
+#include <string.h>
+#include <sys/stat.h>
+
+#include "FonctionDemo1.h"
+
+/*------------------------------------------------*/
+/* DEFINITIONS -----------------------------------*/   
+/*------------------------------------------------*/
+#define NAME_VISUALISER "display "
+#define NAME_IMG_IN_1A  "D1r"
+#define NAME_IMG_IN_1B  "D11r"
+#define NAME_IMG_IN_1C  "D46r"
+#define NAME_IMG_IN_MS  "Monrstein"
+#define NAME_IMG_IN     "photograph"
+#define NAME_IMG_OUT    "img-Tp1_IFT3205-1-1"
+
+#define FILTER_OUT 0
+#define FILTER_IN 1
+#define FILTER_HORIZONTAL 2
+#define FILTER_VERTICAL 4
+#define FILTER_POSITIVE 8
+
+/*------------------------------------------------*/
+/* PROTOTYPE DE FONCTIONS  -----------------------*/   
+/*------------------------------------------------*/
+void LoadImg(char*, float***, float***, float***, int*, int*);
+void FreeImg(float**, float**, float**);
+void ReloadImg(char*, float***, float***, float***, int*, int*);
+void Pnormalize(float**, int, int, float);
+float sqr(float);
+void CenterImg(float***, int, int);
+void RoundFilter(float**, int, int, int, int, float, int);
+void ConeFilter(float**, int, int, int, int, float (*)(float, float), int);
+void Square(float, float);
+void Marilyn(float, float);
+
+/*------------------------------------------------*/
+/* PROGRAMME PRINCIPAL   -------------------------*/                     
+/*------------------------------------------------*/
+int main(int argc,char **argv)
+{
+  int length, width;
+  float** imgR;
+  float** imgI;
+  float** imgM;
+  char path[100];
+
+  mkdir("Sct3", 0700);
+  mkdir("Sct3/Num2", 0700);
+  /**/
+  // 2A
+  LoadImg(NAME_IMG_IN_MS, &imgR, &imgI, &imgM, &length, &width);
+  FFTDD(imgR, imgI, length, width);
+  CenterImg(&imgR, width, length);
+  CenterImg(&imgI, width, length);
+  RoundFilter(imgR, width, length, 20, 20, 0, FILTER_OUT);
+  RoundFilter(imgI, width, length, 20, 20, 0, FILTER_OUT);
+  CenterImg(&imgR, width, length);
+  CenterImg(&imgI, width, length);
+  IFFTDD(imgR, imgI, length, width);
+  Recal(imgR, length, width);
+  SaveImagePgm("Sct3/Num2/a", imgR, length, width);
+
+  // 2B
+  ReloadImg(NAME_IMG_IN_MS, &imgR, &imgI, &imgM, &length, &width); 
+  FFTDD(imgR, imgI, length, width);
+  CenterImg(&imgR, width, length);
+  CenterImg(&imgI, width, length);
+  ConeFilter(imgR, width, length, width * 0.5, length * 0.5, Square, FILTER_IN);
+  ConeFilter(imgI, width, length, width * 0.5, length * 0.5, Square, FILTER_IN);
+  CenterImg(&imgR, width, length);
+  CenterImg(&imgI, width, length);
+  IFFTDD(imgR, imgI, length, width);
+  Recal(imgR, length, width);
+  SaveImagePgm("Sct3/Num2/b", imgR, length, width);
+  Pnormalize(imgR, width, length, 0.3);
+  SaveImagePgm("Sct3/Num2/bC", imgR, length, width);
+  
+  FreeImg(imgR, imgI, imgM);
+
+  /*retour sans probleme*/ 
+  printf("\n C'est fini ... \n\n");
+  return 0; 	 
+}
+
+
+///// FONTCTIONS DE RECENTRAGE
+void CenterImg(float*** img, int width, int height)
+{
+  float** tmp = fmatrix_allocate_2d(height, width);
+  int hcenter = width / 2;
+  int vcenter = height / 2;
+  int i, j;
+  for (i = 0; i < width; i++)
+    for (j = 0; j < height; j++)
+      if (i < hcenter)
+	if (j < vcenter)
+	  tmp[j][i] = (*img)[j + vcenter][i + hcenter];
+	else
+	  tmp[j][i] = (*img)[j - vcenter][i + hcenter];
+      else
+  	if (j < vcenter)
+	  tmp[j][i] = (*img)[j + vcenter][i - hcenter];
+	else
+	  tmp[j][i] = (*img)[j - vcenter][i - hcenter];
+  free_fmatrix_2d(*img);
+  *img = tmp;
+}
+
+void RoundFilter(float** img, int iwidth, int iheight, int fwidth, int fheight, float mult, int flags)
+{
+  int hcenter = iwidth / 2;
+  int vcenter = iheight / 2;
+  int i, j;
+  if (flags & 1)
+    {
+       for (i = 0; i < iwidth; i++)
+	for (j = 0; j < iheight; j++)
+	  if (1 >= sqrt(sqr((i - hcenter) / (float)fwidth) + sqr((j - vcenter) / (float)fheight)))
+	    img[j][i] *= mult;
+    }
+  else
+    for (i = 0; i < iwidth; i++)
+	for (j = 0; j < iheight; j++)
+	  if (1 < sqrt(sqr((i - hcenter) / (float)fwidth) + sqr((j - vcenter) / (float)fheight)))
+	    img[j][i] *= mult;
+}
+///// 3D FILTERS
+void ConeFilter(float** img, int iwidth, int iheight, int fwidth, int fheight, float (*func)(float, float), int flags)
+{
+  int hcenter = iwidth / 2;
+  int vcenter = iheight / 2;
+  int pos = flags >> 3;
+  float stop;
+  if (pos) stop = sqrt(sqr(hcenter) + sqr(vcenter));
+  else stop = sqrt(sqr(fwidth / 2) + sqr(fheight / 2));
+  int i, j;
+  if (flags & 1)
+    {
+       for (i = 0; i < iwidth; i++)
+	for (j = 0; j < iheight; j++)
+	  if (1 >= sqrt(sqr((i - hcenter) / (float)fwidth) + sqr((j - vcenter) / (float)fheight)))
+	    if (pos) img[j][i] *= 1 - func(sqrt(sqr(i - hcenter) + sqr(j - vcenter)), stop);
+	    else img[j][i] *= func(sqrt(sqr(i - hcenter) + sqr(j - vcenter)), stop);
+    }
+  else
+    for (i = 0; i < iwidth; i++)
+	for (j = 0; j < iheight; j++)
+	  if (1 < sqrt(sqr((i - hcenter) / (float)fwidth) + sqr((j - vcenter) / (float)fheight)))
+	    if (pos) img[j][i] *= 1 - func(sqrt(sqr(i - hcenter) + sqr(j - vcenter)), stop);
+	    else img[j][i] *= func(sqrt(sqr(i - hcenter) + sqr(j - vcenter)), stop);
+}
+
+////// Z FUNCTIONS
+float Square(float r, float stop)
+{
+  return sqr(r) / sqr(stop);
+}
+
+float Marilyn(float r, float stop)
+{
+  if (r < stop * 0.15) return r /(0.1 * stop);
+  else return 1;
+}
+
+void LoadImg(char* img_name, float*** imgR, float*** imgI, float*** imgM, int* length, int* width)
+{
+  int i, j;
+  *imgR = LoadImagePgm(img_name, length, width);
+  *imgI = fmatrix_allocate_2d(*length, *width);
+  *imgM = fmatrix_allocate_2d(*length, *width);
+  for(i = 0; i < *length; i++) 
+    for(j = 0; j < *width; j++) 
+      {
+        (*imgI)[i][j] = 0.0;
+	(*imgM)[i][j] = 0.0;
+      }
+}
+
+void FreeImg(float** imgR, float** imgI, float** imgM)
+{
+  free_fmatrix_2d(imgR);
+  free_fmatrix_2d(imgI); 
+  free_fmatrix_2d(imgM);
+}
+
+void ReloadImg(char* img_name, float*** imgR, float*** imgI, float*** imgM, int* length, int* width)
+{
+  FreeImg(*imgR, *imgI, *imgM);
+  LoadImg(img_name, imgR, imgI, imgM, length, width);
+}
+
+void Pnormalize(float** img, int width, int height, float f)
+{
+  int i, j;
+  for (i = 0; i < width; i++)
+    for (j = 0; j < height; j++)
+      img[i][j] = pow(img[i][j] - 127.0, f);
+  Recal(img, height, width);
+}
+

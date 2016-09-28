@@ -1,0 +1,9 @@
+(define ifnum 0)
+
+(define (gensym type)
+  (cond
+   ((eq? type "if")
+    (inc! ifnum)
+    (string-append "false" (number->string ifnum)))
+   ((eq? type "endif")
+    (string-append "endif" (number->string ifnum)))))

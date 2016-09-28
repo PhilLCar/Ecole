@@ -1,0 +1,40 @@
+\documentclass[12pt]{article}
+
+% Packages
+% ---
+\usepackage{amsmath} % Advanced math typesetting
+\usepackage[utf8]{inputenc} % Unicode support (Umlauts etc.)
+\usepackage[french]{babel} % Change hyphenation rules
+\usepackage{hyperref} % Add a link to your document
+\usepackage{graphicx} % Add pictures to your document
+\usepackage{listings} % Source code formatting and highlighting
+\usepackage{fancybox}
+
+%\DeclareGraphicsExtensions{.png}
+
+\title{Rapport du travail pratique 1 : Série de Fourier}
+\date{\today}
+\author{Présenté par Philippe Caron\\dans le cadre du cours Traitement du signal (IFT3205)\\Université de Montréal}
+
+\begin{document}
+\begin{titlepage}
+  \maketitle
+  \thispagestyle{empty}
+\end{titlepage}
+
+\section{Introduction}
+
+\section{Visualisation \& Propriété de la Transformée de Fourier}
+\subsection{Fonction de recentrage}
+Il y a deux méthodes évidentes pour remettre les quatres coins de l'image au centre. On peut soit déplacer les quadrants selon un « X » tel que suggérer dans la donnée du TP, ou alors les renverser en effectuant une symétrie autour de la droite qui relie les coins du deux quadrant qui correspondent au milieu du côté de l'image
+\begin{figure}[ht]
+  \centering
+  \shadowbox{\includegraphics[height = 3cm]{img.png}}
+  \caption{Dans ce cas-ci les quadrants ne changent pas de position, mais sont pivotés sur eux-même autour de la ligne noire qui les divise}
+\end{figure}
+Étant donné que le résultat de la transformée de Fourier est symétrique, il n'y a aucun avantage à choisir la seconde méthode. Qui plus est, la première est plus facile et plus simple à implémenter, en plus d'être plus rapide. Le choix est donc facile à faire et c'est la méthode suggérée dans le TP qui a été implémentéeé. En voici le résultat sur la première image:
+\begin{figure}[ht]
+  \centering
+  \shadowbox{\includegraphics[height = 2.5cm]{
+
+\end{document}

@@ -1,0 +1,73 @@
+IFT3205  -TP3-InterExtrapolation
+
+L'énoncé du tp3 ainsi que les programmes fournis se trouvent sur le site 
+du cours:
+
+http://www.iro.umontreal.ca/~mignotte/ift3205.html
+
+Le tp3 est à remettre le Vendredi 11 Mars 2016 electroniquement
+(avec remise) (avant 16h00). 
+ 
+Pénalité de 10% par 24h de retard.
+
+
+Vous devez fournir les programmes (qui doivent produire les images) suivants:
+
+     [10 pts]
+     Tp3_IFT3205_2-1a.c
+      affichant à l'écran l'image Lena agrandie d'un facteur 4 par interpolation au ppv
+      >image-TpIFT3205-2-1a.pgm
+     
+     [10 pts]
+     Tp3_IFT3205_2-1b.c
+      affichant à l'écran l'image Lena agrandie d'un facteur 4 par interpolation bilineaire
+      >image-TpIFT3205-2-1b.pgm
+      
+     [10 pts]
+     Tp3_IFT3205_2-1c.c
+      affichant à l'écran l'image Lena agrandie d'un facteur 4 par interpolation spectrale
+      >image-TpIFT3205-2-1c.pgm
+
+     [25 pts]
+     Tp3_IFT3205_3-2.c
+      affichant à l'écran l'image Barbara initiale, et à la 1ere, 2ieme, 3ieme, 4ieme, 5ieme iteration
+      >image-TpIFT3205-3-2-0.pgm
+      >image-TpIFT3205-3-2-1.pgm
+      >image-TpIFT3205-3-2-2.pgm
+      >image-TpIFT3205-3-2-3.pgm
+      >image-TpIFT3205-3-2-4.pgm
+      >image-TpIFT3205-3-2-5.pgm
+   
+     [25 pts]
+     Tp3_IFT3205_4-1.c
+      affichant à l'écran une image originale et une image extrapolée (minimum 30 lignes extrapolée)
+      >image-TpIFT3205-4-1.pgm (celle extrapolée et de votre choix)
+
+
+Rapport avec : 
+
+    [10 pts]
+     Réponse à la question 2.2
+
+    [10 pts]
+     Réponse à la question 2.3
+
+    [10 pts]
+     Réponse à la question 3.3
+  
+    [10 pts]
+    Question 4.1 : description de la stratégie utilisée
+
+Total: 120 points.
+
+
+Les programmes doivent compiler sous Linux avec le script fourni compilegcc
+et les fichiers FonctionDemo3.h et FonctionDemo3.c fournis.
+
+                               *****
+
+Nota: Pour la commande remise (cf. man remise pour en savoir plus)
+le nom du repertoire dans lequel vous devez deposez vos fichiers
+est  TP3. Faites un rapport concis.
+
+Max

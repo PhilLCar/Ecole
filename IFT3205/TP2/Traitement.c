@@ -1,0 +1,425 @@
+/*------------------------------------------------------*/
+/* Prog    : Traitement.c                               */
+/* Auteur  : Philippe Caron                             */
+/* Date    : 13/02/2016                                 */
+/* version : 1                                          */ 
+/* langage : C                                          */
+/* labo    : DIRO                                       */
+/*------------------------------------------------------*/
+
+/*------------------------------------------------*/
+/* FICHIERS INCLUS -------------------------------*/
+/*------------------------------------------------*/
+//#include <stdio.h>
+//#include <math.h>
+//#include <stdlib.h>
+//#include <string.h>
+//#include <sys/stat.h>
+
+//#include "FonctionDemo1.h"
+
+#define FILTER_IN 0
+#define FILTER_OUT 1
+#define FILTER_HORIZONTAL 2
+#define FILTER_VERTICAL 4
+#define FILTER_POSITIVE 8
+
+#define R2 1.414213562373095
+
+
+//////////////////////////// VAR ////////////////////////////////
+float sqr(float x)
+{
+  return x * x;
+}
+
+float hyp(float x, float y)
+{
+  return sqrt(sqr(x) + sqr(y));
+}
+
+float deg(float x)
+{
+  return x / 180 * PI;
+}
+
+float interpol(float** img, int width, int height, float x, float y)
+{
+  // Rounded vals
+  int xf, xc, yf, yc;
+  // Propotion factors
+  float tl, tr, bl, br;
+
+  xf = floor(x);
+  xc = ceil(x);
+  yf = floor(y);
+  yc = ceil(y);
+
+  if (xf == xc) xc++;
+  if (yf == yc) yc++;
+  
+  // CALCUL DES PROPORTIONS
+  tl = (xc - x) * (yc - y);
+  tr = (x - xf) * (yc - y);
+  bl = (xc - x) * (y - yf);
+  br = (x - xf) * (y - yf);
+
+  if (xc < 0 || xf >= width || yc < 0 || yf >= height) return 0;
+
+  if (xf < 0) {  
+    if (yf < 0)
+      return br * img[yc][xc];   
+    else if (yc >= height)
+      return tr * img[yf][xc];
+    else
+      return br * img[yc][xc] + tr * img[yf][xc];    
+  }
+  else if (xc >= width) {
+    if (yf < 0)
+      return bl * img[yc][xf];
+    else if (yc >= height)
+      return tl * img[yf][xf];
+    else
+      return bl * img[yc][xf] + tl * img[yf][xf];
+  }
+  else if (yf < 0)
+    return bl * img[yc][xf] + br * img[yc][xc];
+  else if (yc >= height)
+    return tl * img[yf][xf] + tr * img[yf][xc];
+  return br * img[yc][xc] + tr * img[yf][xc] + bl * img[yc][xf] + tl * img[yf][xf];
+}
+
+void Flip(float*** img, int width, int height)
+{
+  float** tmp = fmatrix_allocate_2d(height, width);
+  int i, j;
+
+  for (i = 0; i < width; i++)
+    for (j = 0; j < height; j++)
+      tmp[j][i] = (*img)[height - 1 - j][width - 1 - i];
+
+  free_fmatrix_2d(*img);
+  *img = tmp;
+}
+
+void CopyImg(float** img, float**newImg, int width, int height)
+{
+  int i, j;
+
+  for (i = 0; i < width; i++)
+    for (j = 0; j < height; j++)
+      newImg[j][i] = img[j][i];
+}
+
+void PasteImg(float** canvas, float** img, int width, int height, float x, float y)
+{
+  int i, j;
+  int vecx = floor(x), vecy = floor(y);
+  float val;
+  x = 1.0 - x + vecx;
+  y = 1.0 - y + vecy;
+  for (i = -1; i < width + 1; i++)
+    for (j = -1; j < height + 1; j++) {
+      val = interpol(img, width, height, i + x, j + y);
+      if (val != 0) canvas[vecy + j + 1][vecx + i + 1] = val;
+    }
+}
+
+void PasteImg2(float** canvas, float** img, int width, int height, int x, int y)
+{
+  int i, j;
+  for (i = 0; i < width; i++)
+    for (j = 0; j < height; j++)
+      if (img[j][i] != 0)
+	canvas[y + j][x + i] = img[j][i];
+}
+
+void InterCorrelate(float** imgR1, float** imgR2, float** imgSR, float** imgSI, int width, int height)
+{
+  float** tmpR1 = fmatrix_allocate_2d(height, width);
+  float** tmpI1 = fmatrix_allocate_2d(height, width);
+  float** tmpR2 = fmatrix_allocate_2d(height, width);
+  float** tmpI2 = fmatrix_allocate_2d(height, width);
+  int i, j;
+
+  for (i = 0; i < width; i++)
+    for (j = 0; j < height; j++) {
+      tmpI1[j][i] = 0;
+      tmpI2[j][i] = 0;
+    }
+  
+  CopyImg(imgR1, tmpR1, width, height);
+  CopyImg(imgR2, tmpR2, width, height);
+  
+  Flip(&tmpR2, width, height);
+  
+  FFTDD(tmpR1, tmpI1, height, width);
+  FFTDD(tmpR2, tmpI2, height, width);
+
+  for (i = 0; i < width; i++)
+    for (j = 0; j < height; j++) {
+      imgSR[j][i] = tmpR1[j][i] * tmpR2[j][i] - tmpI1[j][i] * tmpI2[j][i];
+      imgSI[j][i] = tmpR1[j][i] * tmpI2[j][i] + tmpR2[j][i] * tmpI1[j][i];
+    }
+
+  free_fmatrix_2d(tmpR1);
+  free_fmatrix_2d(tmpR2);
+  free_fmatrix_2d(tmpI1);
+  free_fmatrix_2d(tmpI2);
+}
+
+void SquareMod(float** imgR, float** imgI, float** imgM, int width, int height)
+{
+  int i, j;
+  
+  FFTDD(imgR, imgI, height, width);
+  Mod(imgM, imgR, imgI, height, width);
+
+  for (i = 0; i < width; i++)
+    for (j = 0; j < height; j++)
+      imgM[j][i] *= imgM[j][i];
+
+  IFFTDD(imgR, imgI, height, width);
+}
+
+void PerformOp(float** imgA, float** imgB, float** imgR, int width, int height, float(*f)(float, float))
+{
+  int i, j;
+
+  for (i = 0; i < width; i++)
+    for (j = 0; j < height; j++)
+      imgR[j][i] = f(imgA[j][i], imgB[j][i]);
+}
+
+float EvalDiff(float** img1, float** img2, int width, int height)
+{
+  float sum;
+  int i, j;
+  for (i = 0; i < width; i++)
+    for (j = 0; j < height; j++)
+      sum += abs(img1[j][i] - img2[j][i]);
+
+  return sum;
+}
+
+//////////////////// IMAGE LOADING AND FREEING //////////////////////
+void LoadImg(char* img_name, float*** imgR, float*** imgI, float*** imgM, int* length, int* width)
+{
+  int i, j;
+  *imgR = LoadImagePgm(img_name, length, width);
+  *imgI = fmatrix_allocate_2d(*length, *width);
+  *imgM = fmatrix_allocate_2d(*length, *width);
+  for(i = 0; i < *length; i++) 
+    for(j = 0; j < *width; j++) 
+      {
+        (*imgI)[i][j] = 0.0;
+	(*imgM)[i][j] = 0.0;
+      }
+}
+
+void FreeImg(float** imgR, float** imgI, float** imgM)
+{
+  free_fmatrix_2d(imgR);
+  free_fmatrix_2d(imgI); 
+  free_fmatrix_2d(imgM);
+}
+
+///////////////////////// IMAGE MODS /////////////////////////////
+/* Fonction log pour rehausser l'image */
+void Log(float** img, int width, int height)
+{
+  // Calcule la différence avec la nouvelle valeur maximale
+  // pour éviter d'appeler Recal une seconde fois
+  float factor = 255.0 / log(256);
+  int i, j;
+  for (i = 0; i < width; i++)
+    for (j = 0; j < height; j++)
+      img[j][i] = factor * log(1 + img[j][i]);
+}
+
+void Normalize(float** img, int width, int height, float f)
+{
+  int i, j;
+  for (i = 0; i < width; i++)
+    for (j = 0; j < height; j++) {
+      img[j][i] = (img[j][i] - 127.0) * f + 127.0;
+      /*if (img[j][i] > 255) img[j][i] = 255;
+	else if (img[j][i] < 0) img[j][i] = 0;*/
+    } 
+}
+
+void Pnormalize(float** img, int width, int height, float f)
+{
+  int i, j;
+  for (i = 0; i < width; i++)
+    for (j = 0; j < height; j++) {
+      img[j][i] = pow(img[j][i] - 127.0, f);
+      if (img[j][i] != img[j][i]) img[j][i] = 0;
+    }
+  Recal(img, height, width);
+}
+
+void Rotate(float*** img, int width, int height, float cx, float cy, float theta)
+{
+  float** tmp = fmatrix_allocate_2d(height, width);
+  int i, j;
+  float dist, alpha, x, y;
+  
+  cx += (float)width / 2;
+  cy += (float)height / 2;
+
+  for (i = 0; i < width; i++)
+    for (j = 0; j < height; j++) {
+      dist = hyp(i - cx, j - cy);
+      if (i - cx < 0) alpha = atan((j - cy) / (i - cx)) + PI;
+      else alpha = atan((j - cy) / (i - cx));
+      x = cos(alpha + theta) * dist + cx;
+      y = sin(alpha + theta) * dist + cy;
+      tmp[j][i] = interpol(*img, width, height, x, y);
+    }
+
+  free_fmatrix_2d(*img);
+  *img = tmp;
+}
+
+/*------------FONTCTION DE RECENTRAGE-------------*/
+void RCenterImg(float*** img, int width, int height)
+{
+  float** tmp = fmatrix_allocate_2d(height, width);
+  int hcenter = width / 2;
+  int vcenter = height / 2;
+  int i, j;
+  for (i = 0; i < width; i++)
+    for (j = 0; j < height; j++)
+      if (i < hcenter)
+	if (j < vcenter)
+	  tmp[j][i] = (*img)[j + vcenter][i + hcenter];
+	else
+	  tmp[j][i] = (*img)[j - vcenter][i + hcenter];
+      else
+  	if (j < vcenter)
+	  tmp[j][i] = (*img)[j + vcenter][i - hcenter];
+	else
+	  tmp[j][i] = (*img)[j - vcenter][i - hcenter];
+  free_fmatrix_2d(*img);
+  *img = tmp;
+}
+
+////////////////////////// FILTERS //////////////////////////////
+
+/*-------------------2D FILTERS-------------------*/
+/* Square Filter
+ * Cette fonction défini un carré puis en fonction du flag FILTER_IN ou FILTER_OUT
+ * multiplie l'intérieur ou l'extérieur respectivement par le facteur mult
+ */
+void SquareFilter(float** img, int iwidth, int iheight, int fwidth, int fheight, float mult, int flags)
+{
+  int hstop = (iwidth - fwidth) / 2;
+  int vstop = (iheight - fheight) / 2;
+  int i, j;
+  if (flags & 1) {
+    for (i = 0; i < iwidth; i++)
+      for (j = 0; j < iheight; j++)
+	if (i >= hstop && i < iwidth - hstop && j >= vstop && j < iheight - vstop)
+	    img[j][i] *= mult;
+  }
+  else
+    for (i = 0; i < iwidth; i++)
+	for (j = 0; j < iheight; j++)
+	  if (i < hstop || i >= iwidth - hstop || j < vstop || j >= iheight - vstop)
+	      img[j][i] *= mult;
+	    
+}
+
+/* Round Filter
+ * Cette fonction défini un cercle puis en fonction du flag FILTER_IN ou FILTER_OUT
+ * multiplie l'intérieur ou l'extérieur respectivement par le facteur mult
+ */
+void RoundFilter(float** img, int iwidth, int iheight, int fwidth, int fheight, float mult, int flags)
+{
+  int hcenter = iwidth / 2;
+  int vcenter = iheight / 2;
+  int i, j;
+  if (flags & 1)
+    {
+       for (i = 0; i < iwidth; i++)
+	for (j = 0; j < iheight; j++)
+	  if (1 >= sqrt(sqr((i - hcenter) / (float)fwidth) + sqr((j - vcenter) / (float)fheight)))
+	    img[j][i] *= mult;
+    }
+  else
+    for (i = 0; i < iwidth; i++)
+	for (j = 0; j < iheight; j++)
+	  if (1 < sqrt(sqr((i - hcenter) / (float)fwidth) + sqr((j - vcenter) / (float)fheight)))
+	    img[j][i] *= mult;
+}
+
+/* Bar Filter
+ * Cette fonction défini un carré dont la largeur ou la hauteur correspond à la largeur
+ * ou la hauteur de l'image selon les flags FILTER_HORIZONTAL et FILTER_VERTICAL
+ * respectivement puis en fonction du flag FILTER_IN ou FILTER_OUT multiplie
+ * l'intérieur ou l'extérieur respectivement par le facteur mult
+ */
+void BarFilter(float** img, int width, int height, int size, float mult, int flags)
+{
+  if (flags >> 2)
+    SquareFilter(img, width, height, size, height, mult, flags);
+  else
+    SquareFilter(img, width, height, width, size, mult, flags);
+}
+
+/*-------------------3D FILTERS-------------------*/
+/* Cone Filter
+ * Cette fonction défini un cercle puis en fonction du flag FILTER_IN ou FILTER_OUT
+ * multiplie l'intérieur ou l'extérieur respectivement par le facteur calculé par
+ * la fonction func passée en paramètre, celui-ci peut être inversé par le flag
+ * FILTER_POSITIVE
+ */
+void ConeFilter(float** img, int iwidth, int iheight, int fwidth, int fheight, float (*func)(float, float), int flags)
+{
+  int hcenter = iwidth / 2;
+  int vcenter = iheight / 2;
+  int pos = flags >> 3;
+  float stop;
+  if (pos) stop = sqrt(sqr(hcenter) + sqr(vcenter));
+  else stop = sqrt(sqr(fwidth / 2) + sqr(fheight / 2));
+  int i, j;
+  if (flags & 1)
+    {
+       for (i = 0; i < iwidth; i++)
+	for (j = 0; j < iheight; j++)
+	  if (1 >= sqrt(sqr((i - hcenter) / (float)fwidth) + sqr((j - vcenter) / (float)fheight)))
+	    if (pos) img[j][i] *= 1 - func(sqrt(sqr(i - hcenter) + sqr(j - vcenter)), stop);
+	    else img[j][i] *= func(sqrt(sqr(i - hcenter) + sqr(j - vcenter)), stop);
+    }
+  else
+    for (i = 0; i < iwidth; i++)
+	for (j = 0; j < iheight; j++)
+	  if (1 < sqrt(sqr((i - hcenter) / (float)fwidth) + sqr((j - vcenter) / (float)fheight)))
+	    if (pos) img[j][i] *= 1 - func(sqrt(sqr(i - hcenter) + sqr(j - vcenter)), stop);
+	    else img[j][i] *= func(sqrt(sqr(i - hcenter) + sqr(j - vcenter)), stop);
+}
+//////////////////////// Z FUNCTIONS ////////////////////////////
+/* Straight
+ * Définie une progression constante pour les filtre tri-dimensionnels
+ */
+float Straight(float r, float stop)
+{
+  return r / stop;
+}
+
+/* Square
+ * Définie une progression carrée pour les filtre tri-dimensionnels
+ */
+float Square(float r, float stop)
+{
+  return sqr(r) / sqr(stop);
+}
+
+/* Straight
+ * Définie une progression logaritmique pour les filtre tri-dimensionnels
+ */
+float Logarithm(float r, float stop)
+{
+  return log(r) / log(stop);
+}

@@ -1,0 +1,35 @@
+IFT3205 Hiver 2015 TP10-EffetsSonores
+
+L'énoncé du tp10 ainsi que les programmes fournis se trouvent sur le site 
+du cours:
+
+http://www.iro.umontreal.ca/~mignotte/ift3205.html
+
+Le tp10 n'est pas obligatoire, mais si ce dernier est fait; il
+est à remettre au plus tard le vendredi 17 Avril 2015 electroniquement
+(avec remise) avant 24h00. 
+
+Vous devez fournir les programmes (qui doivent produire les signaux résultats) suivants
+corrspondant aux 10 questions du TP
+et prendre comme fichier d'entrée (sauf pour la question 4)  : SOUND_GoodMorningVietnam.dat/.wav  
+
+[10 pts]
+Tp10_IFT3205_1.c
+>SignalOut1.wav
+
+[10 pts]
+Tp10_IFT3205_2.c
+>SignalOut2.wav
+
+...
+
+[10 pts]
+Tp10_IFT3205_10.c
+>SignalOut10.wav
+     
+
+Seulement les points superieurs à 50 seront additionnés
+comme BONUS a la série des autres TPs.
+
+
+Max

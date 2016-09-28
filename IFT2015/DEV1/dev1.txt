@@ -1,0 +1,12 @@
+def grid(x, y, n):
+    if x == n:
+            if y == n:
+                    return 1;
+            else:
+                    return grid(x, y + 1, n);
+    else:
+            if y == n:
+                    return grid(x + 1, y, n);
+            else:
+                    return grid(x + 1, y, n) + grid(x, y + 1, n);
+

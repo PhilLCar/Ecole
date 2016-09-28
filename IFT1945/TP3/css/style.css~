@@ -1,0 +1,80 @@
+html,
+body {
+    width: 100%;
+    color: #004;
+    background-color: #EEF;
+    font-family: helvetica;
+    margin: 0px;
+}
+
+header {
+    background-image: url("../images/zoom.jpg");
+    background-size: cover;
+    height: 150px;
+}
+
+nav {
+    width: 100%;
+    font-size: 25px;
+}
+
+nav table {
+    width: 100%;
+    text-align: center;
+}
+
+nav table td {
+    padding: 15px;
+    background-color: white;
+}
+
+nav table td:hover {
+    background-color: #CCF;
+}
+
+nav table td a {
+    font-style: plain;
+}
+
+main {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+footer table {
+    margin-top: 50px;
+    width: 100%;
+    border: 1px solid green;
+    background-color: #AAF;
+}
+
+footer tr > td {
+    width: 20%;
+}
+
+footer tr > td + td {
+    width: 60%;
+}
+
+footer td {
+    padding: 15px;
+    text-align: center;
+    border: 1px solid green;
+    font-weight: bold;
+}
+
+h1 {
+    color: #783;
+}
+
+h2 {
+    font-style: italic;
+}
+
+p {
+    font-size: 18px;
+}
+
+p1 {
+    font-size: 17px;
+}

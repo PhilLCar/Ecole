@@ -1,0 +1,163 @@
+float findmax(float *vct, int length, int *start)
+{
+  int i;
+  float max = 0;
+  for (i = *start; i < length / 2; i++)
+    if (vct[i] > max) {
+      max = vct[i];
+      *start = i;
+    }
+  return max;
+}
+
+float findmaxnonharmonic(float *vct, int zero, int harmony, int *start, int tolerance)
+{
+  int i;
+  float max = 0;
+  for (i = *start; i < zero; i++) {
+    if ((zero - i) % harmony <= tolerance ||
+	(zero - i) % harmony >= harmony - tolerance) continue;
+    if (vct[i] > max) {
+      max = vct[i];
+      *start = i;
+    }
+  }
+  return max;
+}
+
+int estimateRPM(float fe, float Tech, int cylinders)
+{
+  return (60 * fe / Tech) / cylinders;
+}
+
+void sample(float *signal, float *sample, int start, int length)
+{
+  int i;
+  for (i = 0; i < length; i++)
+    sample[i] = signal[i + start];
+}
+
+void meanFFT(float *signal, float *mean, int length, int block_size)
+{
+  int i, j;
+  float *tmpR = fmatrix_allocate_1d(block_size);
+  float *tmpI = fmatrix_allocate_1d(block_size);
+  float *tmpM = fmatrix_allocate_1d(block_size);
+  for (i = 0; i < length / (block_size / 2) - 1; i ++) {
+    memset(tmpI, 0, block_size * sizeof(float));
+    sample(signal, tmpR, i * block_size / 2, block_size);
+    FFT1D(tmpR, tmpI, block_size);
+    ModVct(tmpM, tmpR, tmpI, block_size);
+    for (j = 0; j < block_size; j++)
+      mean[j] = (i * mean[j] + tmpM[j]) / (i + 1);
+  }
+  CenterVct(mean, block_size);
+  free(tmpR);
+  free(tmpI);
+  free(tmpM);
+}
+
+void Hamming(float *signal, float *mean, int length, int block_size)
+{
+  int i, j, T = 0;
+  float *tmpR = fmatrix_allocate_1d(block_size);
+  float *tmpI = fmatrix_allocate_1d(block_size);
+  float *tmpM = fmatrix_allocate_1d(block_size);
+
+  //meanFFT(signal, tmpR, length, block_size);
+  //findmax(tmpR, block_size, &T);
+  //T = block_size / (block_size / 2 - T);
+  T = block_size;
+  
+  for (i = 0; i < length / (block_size / 2) - 1; i ++) {
+    memset(tmpR, 0, block_size * sizeof(float));
+    memset(tmpI, 0, block_size * sizeof(float));
+    sample(signal, tmpR, i * block_size / 2, T);
+    for (j = 0; j < T; j++) tmpR[j] *= 0.54 - 0.46 * cos(2.0 * PI * j / (float)T);
+    FFT1D(tmpR, tmpI, block_size);
+    ModVct(tmpM, tmpR, tmpI, block_size);
+    for (j = 0; j < block_size; j++)
+      mean[j] = (i * mean[j] + tmpM[j]) / (i + 1);
+  }
+  CenterVct(mean, block_size);
+  free(tmpR);
+  free(tmpI);
+  free(tmpM);
+}
+
+void Hann(float *signal, float *mean, int length, int block_size)
+{
+  int i, j, T = 0;
+  float *tmpR = fmatrix_allocate_1d(block_size);
+  float *tmpI = fmatrix_allocate_1d(block_size);
+  float *tmpM = fmatrix_allocate_1d(block_size);
+
+  //meanFFT(signal, tmpR, length, block_size);
+  //findmax(tmpR, block_size, &T);
+  //T = block_size / (block_size / 2 - T);
+  T = block_size;
+  
+  for (i = 0; i < length / (block_size / 2) - 1; i ++) {
+    memset(tmpR, 0, block_size * sizeof(float));
+    memset(tmpI, 0, block_size * sizeof(float));
+    sample(signal, tmpR, i * block_size / 2, T);
+    for (j = 0; j < T; j++) tmpR[j] *= 0.5 * (1 - cos(2.0 * PI * j / (float)T));
+    FFT1D(tmpR, tmpI, block_size);
+    ModVct(tmpM, tmpR, tmpI, block_size);
+    for (j = 0; j < block_size; j++)
+      mean[j] = (i * mean[j] + tmpM[j]) / (i + 1);
+  }
+  CenterVct(mean, block_size);
+  free(tmpR);
+  free(tmpI);
+  free(tmpM);
+}
+
+float* LoadSignalDat2(char *name, int *length, float *Tech)
+{
+  int i;
+  float ech1,ech2;
+  char buff[NBCHAR];
+  float f;
+  FILE *fic;
+
+  //Allocation
+  float** Vct2D = fmatrix_allocate_2d(2, 10000000);
+
+  //nom du fichier dat
+  strcpy(buff, name);
+  strcat(buff, ".dat");
+  printf("\n  >> Ouverture de %s", buff);
+
+  //ouverture du fichier
+  fic = fopen(buff, "r");
+  if (fic == NULL) {
+    printf("\n- Grave erreur a l'ouverture de %s  -\n",buff);
+    exit(-1);
+  }
+ 
+  //Lecture Donnée & Longueur & Periode Ech
+  for (i = 0;; i++) {
+    fscanf(fic,"%f %f", &ech1, &ech2);
+    if (feof(fic)) break;
+    Vct2D[0][i] = ech1;
+    Vct2D[1][i] = ech2;
+  }
+
+  (*length) = i;
+  *Tech = Vct2D[0][1];
+  f = 1.0 / *Tech;
+  f = (int)f;
+  printf(" (%d echantillons)", (*length));
+  printf("\n  >> Techantillonnage:: %.0f echantillons/seconde", f);
+
+  //Chargement
+  float* VctFinal = fmatrix_allocate_1d((*length));
+  for(i = 0; i < (*length); i++) VctFinal[i] = Vct2D[1][i];
+ 
+  //End 
+  fclose(fic);
+  (*length) = i;
+  free_fmatrix_2d(Vct2D);
+  return VctFinal;
+}

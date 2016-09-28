@@ -1,0 +1,52 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[french]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{listings}
+\usepackage[margin=2cm]{geometry}
+\usepackage{array}
+\usepackage{hyperref}
+\usepackage{tikz}
+
+\title{IFT2015 automne 2016 - Devoir1} %trouver long trait d'union
+\author{Philippe Caron}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\subsection{Chemins sur une grille}
+
+\begin{tikzpicture}
+  \draw[step = 1cm, gray, very thin] (0, 0) grid (6, 6);
+  \foreach \x in {0, 1, 2, 3, 4}
+      \draw (0, \x) -- (\x cm + 0.5cm, -0.5) node[anchor = north] {$l_\x$};
+  \foreach \x in {0, 1, 2, 3, 4}
+      \draw (-0.2, \x) node[anchor = east] {$\x$};
+  \draw (-0.2, 5) node[anchor = east] {$...$};
+  \draw (-0.2, 6) node[anchor = east] {$n$};
+  \draw (5.5, -0.5) node[anchor = north] {$l_{...}$};
+  \draw (6.5, -0.5) node[anchor = north] {$l_n$};        
+  \filldraw[fill = white, draw = red, thick] (0, 0) circle (0.2) node[anchor = center] {1};
+  \filldraw[fill = white, draw = red, thick] (1, 0) circle (0.2) node[anchor = center] {1};
+  \filldraw[fill = white, draw = red, thick] (0, 1) circle (0.2) node[anchor = center] {1};
+  \filldraw[fill = white, draw = red, thick] (2, 0) circle (0.2) node[anchor = center] {1};
+  \filldraw[fill = white, draw = red, thick] (1, 1) circle (0.2) node[anchor = center] {2};
+  \filldraw[fill = white, draw = red, thick] (0, 2) circle (0.2) node[anchor = center] {1};
+  \filldraw[fill = white, draw = red, thick] (3, 0) circle (0.2) node[anchor = center] {1};
+  \filldraw[fill = white, draw = red, thick] (2, 1) circle (0.2) node[anchor = center] {3};
+  \filldraw[fill = white, draw = red, thick] (1, 2) circle (0.2) node[anchor = center] {3};
+  \filldraw[fill = white, draw = red, thick] (0, 3) circle (0.2) node[anchor = center] {1};
+  \filldraw[fill = white, draw = red, thick] (4, 0) circle (0.2) node[anchor = center] {1};
+  \filldraw[fill = white, draw = red, thick] (3, 1) circle (0.2) node[anchor = center] {4};
+  \filldraw[fill = white, draw = red, thick] (2, 2) circle (0.2) node[anchor = center] {6};
+  \filldraw[fill = white, draw = red, thick] (1, 3) circle (0.2) node[anchor = center] {4};
+  \filldraw[fill = white, draw = red, thick] (0, 4) circle (0.2) node[anchor = center] {1};
+  \fill[fill = black] (3.5, 3.5) circle (0.1);
+  \fill[fill = black] (4  , 4  ) circle (0.1);
+  \fill[fill = black] (4.5, 4.5) circle (0.1);
+  \draw (6, 6) -- (6.5, 5.5) node [anchor = north] {$l_{2n}$};
+  \filldraw[fill = white, draw = red, thick] (6, 6) circle (0.2) node[anchor = center] {?};
+\end{tikzpicture}
+
+\end{document}

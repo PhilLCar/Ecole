@@ -1,0 +1,81 @@
+IFT3205 Hiver 2015 TP9-RIFetRII
+
+L'énoncé du tp9 ainsi que les programmes fournis se trouvent sur le site 
+du cours:
+
+http://www.iro.umontreal.ca/~mignotte/ift3205.html
+
+Le tp9 est à remettre le vendredi 10 Avril 2015 electroniquement
+(avec remise) avant 16h00. 
+ 
+Pénalité de 10% par 24h de retard.
+
+
+Vous devez fournir les programmes (qui doivent produire les signaux résultats) suivants:
+
+     [20 pts]
+     Tp9_IFT3205_1.c
+     Affichant à l'écran le signal de sortie généré par le filtre pour les 
+     256 premiers échantillons
+     >SignalY.eps
+   
+     [10 pts] 
+     Creation de  >SoundFile.eps
+
+     [20 pts]
+     Tp9_IFT3205_2-2.c
+     Creant la degradation parasite sur SounFile.dat et creation de
+     >SoundFileDeg.wav
+     >SoundFileDeg.dat
+     >SoundFileDeg.eps
+
+     [20 pts]
+     Tp9_IFT3205_2-3.c
+     Créant la restoration du signal dégradé
+     >SoundFileRest.wav
+     >SoundFileRest.dat
+     >SoundFileRest.eps 
+
+     [10 pts]
+     Tp9_IFT3205_3-1.c
+     Simulant la sortie du canal pour les 10 premier echantillons du style
+     Reponse-Dirac:: [1.0000][-2.3333][0.6666][0.0000][0.0000][0.0000]
+     Reponse-Echelon:: [1.0000][-1.3333][-0.6667][-0.6667][-0.6667][-0.6667]
+
+     [10 pts]
+     Tp9_IFT3205_3-2.c
+     Simulant la sortie du canal sur SounFile.dat
+     >SoundFileInCanal.wav
+     >SoundFileInCanal.dat
+     >SoundFileInCanal.eps
+     et calculant le RSB
+     RSB=[-4.95 dB]
+     
+     [20 pts]
+     Tp9_IFT3205_3-4.c
+     Simulant la sortie du canal sur SounFile.dat
+     >SoundFileInCanalRestor.wav
+     >SoundFileInCanalRestor.dat
+     >SoundFileInCanalRestor.eps
+     et calculant le RSB
+     RSB=[1.38 dB]
+    
+
+Il n'y a pas de rapport pour ce TP, je vous invite
+tout de même à essayer de répondre aux questions Q1.2
+et Q3.3.    
+    
+Total: 110 points.
+
+
+Les programmes doivent compiler sous Linux avec le script fourni compilegcc
+et les fichiers FonctionDemo8.h et FonctionDemo8.c fournis.
+
+                               *****
+
+Nota: Le nom du repertoire dans lequel vous devez deposez vos fichiers
+est  TP9. Il n'y a pas de rapport. Essayer tout de même de répondre, pour vous, 
+aux (quelques) questions posées dans le rapport.
+
+
+Max

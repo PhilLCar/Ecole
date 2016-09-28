@@ -1,0 +1,67 @@
+IFT3205 Hiver 2015 TP6-AnalyseSpectrale
+
+L'énoncé du tp6 ainsi que les programmes fournis se trouvent sur le site 
+du cours:
+
+http://www.iro.umontreal.ca/~mignotte/ift3205.html
+
+Le tp6 est à remettre le Vendredi 03 Avril 2015 electroniquement
+(avec remise). 
+ 
+Pénalité de 10% par 24h de retard.
+
+
+Vous devez fournir les programmes (qui doivent produire les signaux résultats) suivants:
+
+     [15 pts]
+     Tp6_IFT3205_2-1b.c
+      Affichant à l'écran la TF du signal MOTEUR1.DAT et le numéro d'échantillon spectral associé au plus
+      grand pic et celui du clic 
+      >FFT_Moteur1.eps 
+     
+     [15 pts]
+     Tp3_IFT3205_3-1.c
+      Affichant à l'écran la TF du signal MOTEUR2.DAT
+      >FFT_Moteur2.eps 
+      
+     [20 pts]
+     Tp3_IFT3205_3-2.c
+      Affichant à l'écran la TF (periodogramme moyenné) du signal MOTEUR2.dat 
+      >FFT_Moteur2_PermMoy.eps 
+
+     [10 pts]
+     Tp3_IFT3205_3-3.c
+      Affichant à l'écran la TF (periodogramme moyenné pondéré pr Hanning) du signal MOTEUR2.dat 
+      >FFT_Moteur2_PermMoyHann.eps 
+   
+     [20 pts]
+     Tp3_IFT3205_3-4.c
+      Affichant à l'écran la TF, le periodogramme moyenné et le periodogramme moyenné 
+      pondéré pr Hamming du signal SPECTRE.DAT
+      >FFT_Spectre_PermMoyHann.eps 
+
+
+Rapport avec : 
+
+    [10 pts]
+     Réponse à la question 2.1(b)
+
+    [10 pts]
+     Réponse à la question 2.2
+
+    [10 pts]
+     Réponse à la question 3.4
+
+Total: 110 points.
+
+
+Les programmes doivent compiler sous Linux avec le script fourni compilegcc
+et les fichiers FonctionDemo6.h et FonctionDemo6.c fournis.
+
+                               *****
+
+Nota: Pour la commande remise (cf. man remise pour en savoir plus)
+le nom du repertoire dans lequel vous devez deposez vos fichiers
+est  TP6. Faites un rapport concis.
+
+Max

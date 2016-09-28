@@ -1,0 +1,36 @@
+######################################################################################
+	cmp	$0, %rax
+	jns	positive
+	push	%rax
+	mov	$0x2d, %rax	# puts char '-' in %rax
+	push	%rax
+	call	putchar
+	pop	%rax
+	neg	%rax
+positive:
+	mov	$1000000000000000000, %rcx
+	mov	$10, %rbx
+	xor	%rdx, %rdx
+	xor	%rsi, %rsi
+print_word_dec_loop:
+	div	%rcx
+	cmp	%rsi, %rax
+	je	new_elem
+	mov	$-1, %rsi
+	or	$48, %rax
+	push	%rax
+	call	putchar
+new_elem:
+	push	%rdx
+	xor	%rdx, %rdx
+	mov	%rcx, %rax
+	div	%rbx
+	cmp	$1, %rax
+	je	end_word_loop
+	mov	%rax, %rcx
+	pop	%rax
+	jmp	print_word_dec_loop
+end_word_loop:
+	or	$48, (%rsp)
+        call    putchar
+######################################################################################

@@ -1,0 +1,135 @@
+#include<stdio.h>
+#include<stdlib.h>
+#include<string.h>
+
+#define BUFF_SIZE 32768
+
+// VARS
+char* cipher;
+double results[100][2] = {0};
+
+// FUNCS
+char* vigenere(char* cipher);
+char* caesar(char* cipher, int offset);
+char* substitution(char* cipher, char sub_key[]);
+void* freq_analysis(char* cipher);
+void* osfreq_analysis(char* cipher, int start, int offset);
+char* read();
+char* sort_results();
+void clear();
+char* ftostring(char** buffer, char* filename);
+
+int main()
+{
+  /* char* test = read();
+  printf("Longueur estimée de la clef?");
+  char offset = getchar();
+  offset -=48;
+  for (int i = 0; i < offset; i++) {
+    osfreq_analysis(test, i, offset);
+    sort_results();
+    clear();
+  }
+  // puts(file);*//**/
+  cipher = 0;
+  ftostring(&cipher, "/home/phil/Ecole/IFT3275/german.txt");
+  freq_analysis(cipher);
+  sort_results();
+  free(cipher);/**/
+}
+
+void clear() {
+  for(int i = 0; i < 100; i++) {
+    results[i][0] = 0;
+    results[i][1] = 1;
+  }
+}
+
+char* read()
+{
+  int buf_size = 256;
+  int length = 0;
+  char* buf = malloc(buf_size);
+  memset(buf, 0, 256);
+  char c;
+  while ((c = getchar()) != '\n') {
+      if (length == buf_size) {
+	buf_size += 256;
+	char* temp = realloc(buf, buf_size);
+	if (temp == NULL) {
+	  return "ERROR WHILE READING USER INPUT: Not enough memory!";
+	  free(buf);
+	} else {
+	  buf = temp;
+	  memset(buf + length, 0, 256);
+	}
+      }
+      *(buf + length++) = c;
+  }
+  return buf;
+}
+
+char* ftostring(char** buff, char* filename) {
+  *(buff) = malloc(BUFF_SIZE);
+  FILE *f = fopen(filename, "r");
+  if (*(buff) && f)
+    fread(*(buff), 1, BUFF_SIZE, f);
+  printf("String read: %s\n", *(buff));
+  fclose(f);
+}
+
+
+char* vigenere(char* cipher)
+{
+	char* plain;
+	return plain;
+}
+
+char* caesar(char* cipher, int offset)
+{
+	char* plain;
+	return plain;
+}
+
+char* substitution(char* cipher, char sub_key[])
+{
+	char* plain;
+	return plain;
+}
+
+char* sort_results() {
+  printf("==========================================================================\n");
+  for (int i = 0; i < 100; i++) {
+    printf("%c: %f%\n", (char)results[i][0], results[i][1] * 100);
+  }
+  printf("==========================================================================\n");
+}
+
+void* freq_analysis(char* cipher)
+{
+  osfreq_analysis(cipher, 0, 1);
+}
+
+void* osfreq_analysis(char* cipher, int start, int offset)
+{
+  char c;
+  int i, j;
+  for (i = start, c = *(cipher + start); (c = *(cipher + i)) != 0; i += offset) {
+  read_cip:
+    j = -1;
+    while (results[++j][0] != 0)
+      if (results[j][0] == c) {
+	results[j][1]++;
+	i++;
+	if ((c = *(cipher + i)) == 0) goto end; 
+	goto read_cip;
+      }
+    results[j][0] = c;
+    results[j][1] = 1;
+    printf("%c\n", c);
+    continue;
+  end: break;
+  }
+  for (j = 0; j < 100; j++)
+     results[j][1] /= i;
+}

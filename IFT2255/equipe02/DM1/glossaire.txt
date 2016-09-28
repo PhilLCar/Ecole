@@ -1,0 +1,13 @@
+membre: Un membre est un individu addict au chocolat qui paye son abonement
+
+fournisseur:
+
+service de santé:
+
+Répertoire des Fournieeurs:
+
+Centre de Données:
+
+rapport:
+
+enregistrement:

@@ -1,0 +1,239 @@
+#include <stdio.h>
+#include <string.h>
+#include <ctype.h>
+
+
+#define CHUNK_SIZE 256
+
+#define FILTER_SPECIAL_CHAR    1
+#define FILTER_WHITE_SPACES    2
+#define FILTER_NUMBERS         4
+#define FILTER_MINUSCULES      8
+#define FILTER_SYMBOLS        16
+#define FILTER_ALL            31
+
+
+// GLOBAL VARS
+char* cipher;
+
+char* read()
+{
+  int buffer_size = CHUNK_SIZE;
+  int buffer_length = 0;
+  char* buffer = malloc(buffer_size);
+  char c;
+  
+  if (buffer == NULL) {
+    fprintf(stderr, "ERROR: Memory allocation failed!\n");
+    return "";
+  }
+
+  while ((c = getchar()) != '\n') {
+    // Memory extension
+    if (buffer_length == buf_size) {
+      buffer_size += CHUNK_SIZE;
+      char* temp = realloc(buffer, buffer_size);
+      if (temp == NULL) {
+	fprintf(stderr, "ERROR: Memory reallocation failed!\n");
+	return buffer;
+      } else buffer = temp;
+    }
+    *(buffer + buffer_length++) = c;
+  }
+  
+  *(buffer + buffer_length) = 0;
+
+  return buffer;
+}
+
+char *readFile(char *fileName)
+{
+  FILE* file = fopen(fileName, "r");
+  int buffer_size = CHUNK_SIZE;
+  int buffer_length = 0;
+  char* buffer;
+  char c;
+  
+  if (file == NULL) {
+    fprintf(stderr, "ERROR: Could not open file");
+    return NULL;
+  }
+
+  buffer = malloc(buffer_size);
+  
+  while ((c = fgetc(file)) != EOF) {
+    // Memory extension
+    if (buffer_length == buf_size) {
+      buffer_size += CHUNK_SIZE;
+      char* temp = realloc(buffer, buffer_size);
+      if (temp == NULL) {
+	fprintf(stderr, "ERROR: Memory reallocation failed!\n");
+	return buffer;
+      } else buffer = temp;
+    }
+    *(buffer + buffer_length++) = c;
+  }
+  
+  *(buffer + buffer_length) = 0;      
+  
+  return buffer;
+}
+
+char getdec(char plain, char cipher) {
+  return (plain - cipher + 26) % 26 + 0x41;
+}
+
+char getmax(char data[128]) {
+  char i, max;
+  for (i = 1, max = 0; i < 128; i++)
+    if (data[i] > data[max]) max = i;
+  return max;
+}
+
+char* filterout(char* cipher, int flags) {
+  int i, length, count = 0;
+  char* newcipher, c;
+  length = strlen(cipher);
+  newcipher = malloc(length);
+  if (!newcipher) {
+    fprintf(stderr, "ERROR: Memory allocation failed");
+    return "";
+  }
+  memset(newcipher, 0, length);
+  
+  for (i = 0; i < length; i++) {
+    c = *(cipher + i);
+    if (flags & FILTER_SPECIAL_CHARS)
+      if ((c < 0x40 && c != '\t' && c != '\n' & c != '\r') || c == 0x7F)
+	continue;
+    if (flags & FILTER_SYMBOLS)
+      if ((c > 0x20 && c < 0x30) || (c > 0x39 && c < 0x41) || (c > 0x5A && c < 0x61) || c > 0x7A)
+	continue;
+    if (flags & FILTER_WHITE_SPACES)
+      if (c == '\n' || c == '\r' || c == ' ' || c == '\t')
+	continue;
+    if (flags & FILTER_NUMBERS)
+      if (c > 0x30 && c < 0x3A)
+	continue;
+    if (flags & FILTER_MINUSCULES)
+      c = toupper(c);
+    *(newcipher + count++) = c;
+  }
+  char* temp = realloc(newcipher, count);
+  if (temp) return temp;
+  fprintf(stderr, "ERROR: Memory reallocation failed!");
+  return newcipher;
+}
+
+char* vigenere(char* cipher, char* key, int flags)
+{
+  int i, k = 0, lk = strlen(key);
+  int length, count = 0;
+  char* newcipher, c;
+  length = strlen(cipher);
+  newcipher = malloc(length);
+  if (!newcipher) {
+    fprintf(stderr, "ERROR: Memory allocation failed");
+    return "";
+  }
+  memset(newcipher, 0, length);
+  
+  for (i = 0; i < length; i++) {
+    c = *(cipher + i);
+    if (flags & FILTER_SPECIAL_CHARS)
+      if ((c < 0x40 && c != '\t' && c != '\n' & c != '\r') || c == 0x7F)
+	continue;
+    if (flags & FILTER_SYMBOLS)
+      if ((c > 0x20 && c < 0x30) || (c > 0x39 && c < 0x41) || (c > 0x5A && c < 0x61) || c > 0x7A)
+	continue;
+    if (flags & FILTER_WHITE_SPACES)
+      if (c == '\n' || c == '\r' || c == ' ' || c == '\t')
+	continue;
+    if (flags & FILTER_NUMBERS)
+      if (c > 0x30 && c < 0x3A)
+	continue;
+    if (flags & FILTER_MINUSCULES) 
+      if (c != toupper(c)) {
+	c = toupper(c);
+	*(newcipher + count++) = tolower(getdec(*(cipher + i), 0x41 + *(key + (k++ % lk))));
+      }
+    *(newcipher + count++) = getdec(*(cipher + i), 0x41 + *(key + (k++ % lk)));
+  }
+  return newcipher;
+}
+
+int vig_getkeylength(char* cipher) {
+  int i, j, k;
+  int tot = 0; count = 0, length = strlen(cipher);
+  float min, max, maxdiff = 0;
+  float num[128];
+  char c;
+  for (i = 1; i < length; i++) {
+    memset(num, 0, sizeof(num));
+    count = 0;
+    while (count < length) {
+      c = *(cipher + count);
+      count += i;
+      num[c] = (num[c] * tot + 1) / ++tot;
+    }
+    min = length;
+    max = 0;
+    for (j = 0; j < 128; j++) {
+      if (num[c]) {
+	if (num[c] < min) min = num[c];
+	else if (num[c] > max) max = num[c];
+      }
+    }
+    if (max - min > maxdiff) {
+      maxdiff = max - min;
+      k = i;
+    }
+    tot = 0;
+  }
+  printf("KEY LENGTH : %d\n", k);
+  return k;
+}
+
+char* vig_getkey(char* cipher, int flags)
+{
+  char* filteredcipher = filterout(cipher, FILTER_ALL);
+  if (!filteredcipher) {
+    fprintf(stderr, "ERROR: Could not get cipher filtered");
+    return "";
+  }
+  int i, j, k = vig_getkeylength(filteredcipher);
+  if (!k) {
+    fprintf(stderr, "ERROR: Can't have a key with a length of 0");
+    return;
+  }
+  int length = strlength(filteredcipher);
+  int num[128];
+  char* key = malloc(k);
+  if (!key) {
+    fprintf(stderr, "ERROR: Memory allocation failed!");
+    return;
+  }
+  char c;
+  for (i = 0; i < k; i++) {
+    memset(num, 0, sizeof(num));
+    for (j = i; j < length; j += k) {
+      c = *(filteredcipher + j);
+      num[c]++;
+    }
+    *(key + i) = getdec('e', getmax(num));
+  }
+  printf("KEY :\n%s\n", k);
+  free(filteredcipher);
+  return key;
+}
+
+int main() {
+  char* cipher = readFile("german.txt");
+  char* key = vig_getkey(cipher, FILTER_ALL);
+  char* plain = vigenere(cipher, key, FILTER_ALL);
+  printf("Voici le texte décrypté:\n\n%s", plain);
+  free(cipher);
+  free(key);
+  free(plain);
+  return 0;
+}

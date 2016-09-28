@@ -1,0 +1,82 @@
+IFT3205 TP1-TransfFourier
+
+L'énoncé du tp1 ainsi que les programmes fournis se trouvent sur le site 
+du cours:
+
+http://www.iro.umontreal.ca/~mignotte/ift3205.html
+
+Le tp1 est à remettre le vendredi 12 fevrier 2015 avant 15h30 en main propre 
+au demonstrateur (cad au tout debut de la session de TP). 
+ 
+Pénalité de 10% par 24h de retard.
+
+Vous devez fournir les programmes (qui doivent produire les images suivantes) suivantes:
+
+     [10 pts]
+     TpIFT3205-1-2.c      
+       image-TpIFT3205-1-2.pgm (l'image de texture que vous voulez)
+
+     [5 pts]
+     TpIFT3205-1-3.c
+       image-TpIFT3205-1-3.pgm (texture D1R.pgm recentrée et rehaussé avec la fonction log)
+       
+       [image-TpIFT3205-1-4a.pgm
+       image-TpIFT3205-1-4b.pgm
+       image-TpIFT3205-1-4c.pgm]
+
+     [5 pts]
+     TpIFT3205-2-1a.c
+       image-TpIFT3205-2-1a.pgm
+
+     [5 pts]
+     TpIFT3205-2-1b.c
+       image-TpIFT3205-2-1b.pgm
+
+     [5 pts]
+     TpIFT3205-2-1c.c
+       image-TpIFT3205-2-1c.pgm
+
+     [5 pts]
+     TpIFT3205-2-1d.c
+       image-TpIFT3205-2-1d.pgm
+
+     [5 pts]
+     TpIFT3205-2-1e.c
+       image-TpIFT3205-2-1e.pgm
+
+     [10 pts] 
+     TpIFT3205-2-2.c
+       image-TpIFT3205-2-2.pgm
+ 
+     [10 pts] 
+     TpIFT3205-3-2a.c
+       image-TpIFT3205-3-2a.pgm
+
+     [10 pts] 
+     TpIFT3205-3-2b.c
+       image-TpIFT3205-3-2b.pgm 
+
+qui doivent produire les images suivantes selon ce qui vous est demandé
+dans l'énoncé du tp1:
+
+
+Les programmes doivent compiler sous Linux avec le script fourni compilegcc
+et les fichiers FonctionDemo1.h et FonctionDemo1.c fournis
+(sinon, 0 pt pour l'exécution).
+
+                               *****
+
+Rapport: 30 points
+         
+         - Réponses aux questions posées dans l'énoncé du tp1:
+                    * 1-4: 15 points
+                    * 3-2: 15 points
+                    
+
+Total: 100 points.
+
+
+
+Nota: Pour la commande remise (cf. man remise pour en savoir plus)
+le nom du repertoire dans lequel vous devez deposez vos fichiers
+est  TP1

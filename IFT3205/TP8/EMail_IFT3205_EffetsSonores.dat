@@ -1,0 +1,38 @@
+
+----------------------------------
+---- TP no 10 ---------------------
+----------------------------------
+
+Creer un repertoire TP10 et copier les differents progs dans ce repertoire
+  
+Le programme Tp10_IFT3205_2-1.c chargera le signal SOUND_GoodMorningVietnam.dat et
+fera la remiere question et sauvera le résultat dans un fichier .wav
+ en utilisant la fonction "SaveSignalDatWav" 
+(utile pour creer les fichier .wav demandé dans la suite de ce TP)
+
+Bon Tp,
+Max
+
+ 
+=========
+Conseils
+========
+
+Ne faire que si vous avez fait les Tps précédents et si vous le désirez;
+Voir le fichier Barême pour plus d'explication.
+
+
+-------------
+
+
+
+
+
+
+
+
+ 
+
+
+
+

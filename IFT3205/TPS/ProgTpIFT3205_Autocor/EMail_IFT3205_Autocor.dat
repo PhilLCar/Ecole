@@ -1,0 +1,64 @@
+
+----------------------------------
+---- TP no 7 ---------------------
+----------------------------------
+
+Creer un repertoire TP7 et copier les differents progs dans ce repertoire
+  
+Le programme Tp7_IFT3205_2-1a.c lira le signal SIGNAL1.DAT et le chargera dans un vecteur 1D.
+
+Bon Tp,
+Max
+
+ 
+=========
+Conseils
+========
+
+
+Question 2.1
+------------
+Pour le calcul de la fonction d'autocorrelation, vous
+pouvez rester dans le domaine spatial pour la calculer
+(et considérer que le signal est toroidal)
+
+
+Question 4
+----------
+Utiliser, pour la representation en fausse couleur, la fonction:
+
+
+ConvertAndSaveImg("ImgSonogrammeA",SonoNB,width,length);
+
+float**  SonoNB : Image Sonogramme en Noir et Blanc
+width: Largeur du sonogramme
+length: Longueur du sonogramme
+
+
+Pour cette question; je rappelle que pour chaque fenêtre spectrale:
+Je garde le centre du spectre au centre informatique, je calcule son module,
+puis log10(1.0+Spectre); Sur les 512 echantillons spectrales, je garde le
+premier 8ieme (64 premiers echantillons) (ou de facon equivalente, je
+prends le premier quart des fréquences positives et tout cela devient une colonne 
+du sonnogramme noir et blanc
+
+La fonction ConvertAndSaveImg("ImgSonogrammeYesNo",SonoNB,(int)(WdthFFT/8),(int)LgthSonGr);
+
+s'arrangera pour NORMALISER l'amplitude du dpectre et lui mettre des fausses couleurs.
+
+
+
+-------------
+
+
+
+
+
+
+
+
+ 
+
+
+
+

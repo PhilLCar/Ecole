@@ -1,0 +1,79 @@
+/*------------------------------------------------------*/
+/* Prog    : Tp2_IFT3205-2-4.c                          */
+/* Auteur  :                                            */
+/* Date    : --/--/2010                                 */
+/* version :                                            */ 
+/* langage : C                                          */
+/* labo    : DIRO                                       */
+/*------------------------------------------------------*/
+
+/*------------------------------------------------*/
+/* FICHIERS INCLUS -------------------------------*/
+/*------------------------------------------------*/
+#include <stdio.h>
+#include <math.h>
+#include <stdlib.h>
+#include <string.h>
+
+#include "FonctionDemo2.h"
+#include "Traitement.c"
+
+/*------------------------------------------------*/
+/* DEFINITIONS -----------------------------------*/   
+/*------------------------------------------------*/
+#define NAME_VISUALISER "display "
+#define NAME_IMG_IN1  "UdM_1"
+#define NAME_IMG_IN2  "UdM_2"
+#define NAME_IMG_OUT1 "image-Out1"
+#define NAME_IMG_OUT2 "image-Out2"
+
+/*------------------------------------------------*/
+/* PROTOTYPE DE FONCTIONS  -----------------------*/   
+/*------------------------------------------------*/
+
+/*------------------------------------------------*/
+/* PROGRAMME PRINCIPAL   -------------------------*/                     
+/*------------------------------------------------*/
+int main(int argc,char **argv)
+ {
+  int i,j,k;
+  int length,width;
+  float Theta0;
+  int x0,y0;
+  char BufSystVisuImg[100];
+  float** imgM, ** imgR, ** imgI;
+
+  LoadImg(NAME_IMG_IN1, &imgR, &imgI, &imgM, &length, &width);
+
+  Rotate(&imgR, width, length, 0, 0, 1);
+
+  SaveImagePgm(NAME_IMG_OUT1, imgR, length, width);
+
+  FreeImg(imgR, imgI, imgM);
+
+
+  //Sauvegarde
+  //SaveImagePgm(NAME_IMG_OUT1,MatriceImg1,length,width);
+  //SaveImagePgm(NAME_IMG_OUT2,MatriceImg2,length,width);
+
+  //Commande systeme: VISU
+  strcpy(BufSystVisuImg,NAME_VISUALISER);
+  strcat(BufSystVisuImg,NAME_IMG_OUT1);
+  strcat(BufSystVisuImg,".pgm&");
+  printf(" %s",BufSystVisuImg);
+  system(BufSystVisuImg);
+  /*strcpy(BufSystVisuImg,NAME_VISUALISER);
+  strcat(BufSystVisuImg,NAME_IMG_OUT2);
+  strcat(BufSystVisuImg,".pgm&");
+  printf(" %s",BufSystVisuImg);
+  system(BufSystVisuImg);*/
+
+
+  //==End=========================================================
+
+  //retour sans probleme
+  printf("\n C'est fini ... \n\n");
+  return 0; 	 
+}
+
+

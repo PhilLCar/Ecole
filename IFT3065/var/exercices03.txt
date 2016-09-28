@@ -1,0 +1,118 @@
+Série d'exercices #3
+
+Exercice 1.
+
+La configuration initiale des répertoires sur github pour vos projets
+est maintenant complétée.  Les noms de compilateurs que vous avez
+choisis sont :
+
+  neko
+  denis-cdr
+  ceres
+  sedna
+  europa
+  mercure
+  neptune
+  haumea
+
+J'ai configuré les répertoire pour que les seuls usagers qui ont accès
+sont ceux dans l'équipe et moi.  Il me manque les identifiants
+github de :
+
+  Philippe Caron
+  Mehdi Naima
+  Katia Schmitz
+
+Afin de débuter l'utilisation de votre répertoire github vous devez
+vous assurer d'avoir le système "git" installé sur votre ordinateur
+et ensuite exécutez la commande :
+
+   git clone https://github.com/IFT3065-IFT6232/NOM_DE_VOTRE_COMPILATEUR.git
+
+où NOM_DE_VOTRE_COMPILATEUR doit être remplacé par le nom de votre
+compilateur.  Cela va créer le répertoire NOM_DE_VOTRE_COMPILATEUR
+qui contient uniquement le fichier README.md .
+
+Comme première étape, dans ce répertoire, modifiez le fichier
+README.md pour y ajouter les noms des membres de l'équipe.  En temps
+et lieux, vous pourrez aussi y ajouter des directives et autres
+informations utiles pour les usagers qui voudraient utiliser votre
+compilateur.  Ensuite faites un "commit" avec la commande :
+
+   git commit -a -m "Ajout des noms des membres de l'équipe"
+
+puis un "push" avec la commande :
+
+   git push
+
+ce qui va télécharger vos modifications vers le répertoire github.
+Vous pouvez visionner le nouveau README.md sur la page de votre projet à :
+
+   https://github.com/IFT3065-IFT6232/NOM_DE_VOTRE_COMPILATEUR
+
+Sur cette page vous pouvez visionner l'historique des modifications en
+cliquant le lien "commit.  Vous pouvez aussi visionner les fichiers
+du répertoire en cliquant sur un des noms de fichier (présentement
+seulement le fichier README.md que j'ai créé).
+
+C'est une bonne pratique de faire des "commit" et "push" régulièrement
+pour que tous les membres de l'équipe puissent avoir accès aux
+dernières modifications.
+
+Avant de débuter toute séance de modifications il est bon d'exécuter la
+commande :
+
+   git pull
+
+qui est équivalente à :
+
+   git fetch
+   git merge
+
+pour obtenir les dernières modifications du répertoire github
+(git fetch) et les intégrer à la copie locale sur votre ordinateur
+(git merge).
+
+Il arrive parfois que des modifications simultanées des membres de
+l'équipe soient conflictuelles, c'est-à-dire que le même endroit d'un
+fichier ait été modifié.  Dans ce cas, le système git va refuser de
+faire le "merge" et il faudra régler ce conflit en corrigeant
+manuellement le fichier.  C'est ce qu'on appèle un "merge conflict".
+La page suivante explique le problème et la procédure à suivre :
+
+   http://genomewiki.ucsc.edu/index.php/Resolving_merge_conflicts_in_Git
+
+Vous pouvez maintenant créer des fichiers et répertoires dans la
+copie locale sur votre ordinateur.  Il faudra ensuite faire :
+
+   git add <nouveau_fichier>
+
+pour chaque nouveau fichier que vous voulez que git gère.  Une fois les
+fichiers ajoutés il faut faire un "commit" et un "push".
+
+Un des premiers fichiers à ajouter est le fichier "makefile" de votre
+compilateur.  Au minimum votre makefile doit avoir les cibles suivantes :
+
+   make                 construit le compilateur
+   make clean           élimine tous les fichiers créés par un "make"
+   make check           exécute tous les tests unitaires
+
+
+Exercice 2.
+
+Supposez qu'une implantation de Scheme utilise le type suivant
+pour représenter les symboles :
+
+(define-type symbol
+  name ; chaîne correspondant au symbole, i.e. "foo" pour le symbole foo
+)
+
+Implantez les fonctions (string->symbol str) et (symbol->string sym)
+à l'aide de listes d'association et la fonction assoc.  Souvenez-vous que
+
+  (eq? (string->symbol "a") (string->symbol "a"))
+
+doit être #t.
+
+Implantez aussi une fonction (gensym) qui retourne un nouveau
+symbole et dont le nom est tiré de la séquence g1, g2, g3, ...

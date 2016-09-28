@@ -1,0 +1,150 @@
+/*
+  AUTHOR: Philippe Caron
+  DATE:   6 Feb 2016
+ */
+
+#include <stdio.h>
+#include <ctype.h>
+
+#ifdef _WIN32
+    #define CLEAR "cls"
+#else
+    #define CLEAR "clear"
+#endif
+
+// Conversion factor
+const float LBTOKG = 0.454;
+
+// Global vars
+int weight, count = 0, number = 0;
+float temp, mean = 0;
+char status;
+
+// UTILS
+float lbtokg(int lbweight)
+{
+  return lbweight * LBTOKG;
+}
+
+float FtoC(float Ftemp)
+{
+  return 5.0 / 9.0 * (Ftemp - 32);
+}
+
+// enlève les unités après les données
+void emptybuffer()
+{
+  while(getchar() != '\n');
+}
+// END UTILS
+
+char getstatus()
+{
+  char c;
+  do {
+    printf("Quel est le statut civil du patient? Pesez sur (H) pour de l'aide...\n");
+    scanf("%c", &c);
+    emptybuffer();
+    if (toupper(c) == 'H') {
+      system(CLEAR);
+      printf("Entrez une valeur parmis les suivantes:\n");
+      printf("\t- Célibataire (C)\n");
+      printf("\t- Marié       (M)\n");
+      printf("\t- Divorcé     (D)\n");
+      printf("\t- Séparé      (S)\n");
+      printf("\t- Autre       (A)\n\n");
+      printf("Faites (Entrer) pour continuer");
+      emptybuffer();
+    }
+    system(CLEAR);
+    printf("AJOUT D'UN NOUVEAU PATIENT :\n");
+    printf("============================\n\n");
+    printf("Quel est le poids du patient? [En livres]: %d\n", weight);
+    printf("[En kilos]: %0.3f kg\n\n", lbtokg(weight));
+    printf("Quel est la température du patient? [En Fareinheits]: %0.2f\n", temp);
+    printf("[En Celcius]: %0.3f °C\n\n", FtoC(temp));
+  } while(toupper(c) == 'H');
+  c = toupper(c);
+  if (c != 'C' && c != 'M' && c != 'D' && c != 'S') c = 'A';
+  return c;
+}
+
+void displayresults(int added)
+{
+  system(CLEAR);
+  if (added) printf("Patient ajouté avec succès..\n\n");
+  else printf("Le patient n'a pas été ajouté..\n\n");
+  printf("Nombre total de patient compatbilisés :           %7d\n", number);
+  printf("Moyenne de poids [kg] des patients célibataires : %7.4f\n", lbtokg(mean));
+}
+
+void review()
+{
+  system(CLEAR);
+  printf("VOULEZ VOUS AJOUTER CE PATIENT À LA LISTE?\n");
+  printf("==========================================\n");
+  printf("  Valeurs   |   Métrique   |   Impérial   \n");
+  printf("------------------------------------------\n");
+  printf("Poids       |");
+  printf("%10.3f kg |", lbtokg(weight));
+  printf("%6d    lbs \n", weight);
+  printf("Température |");
+  printf("%10.3f °C |", FtoC(temp));
+  printf("%9.2f  °F \n", temp);
+  printf("\nStatut : ");
+  switch (status) {
+  case 'C':
+    printf("Célibataire\n");
+    break;
+  case 'M':
+    printf("Marié\n");
+    break;
+  case 'D':
+    printf("Divorcé\n");
+    break;
+  case 'S':
+    printf("Séparé\n");
+    break;
+  case 'A':
+    printf("Autre\n");
+    break;
+  default:
+    displayresults(0);
+    return;
+  }
+  printf("\n\nFaites (O) pour l'ajouter ou (n) pour annuler...\n");
+  char c;
+  c = getchar();
+  if (c != '\n') emptybuffer();
+  if (toupper(c) != 'N') {
+    number++;
+    if (status == 'C')
+      mean = (mean * count + weight) / (float)++count;
+    displayresults(1);
+  } else displayresults(0);
+}
+
+int addpatient()
+{
+  system(CLEAR);
+  printf("AJOUT D'UN NOUVEAU PATIENT :\n");
+  printf("============================\n\n");
+  printf("Quel est le poids du patient? [En livres]: ");
+  scanf("%d", &weight);
+  emptybuffer();
+  printf("[En kilos]: %0.3f kg\n\n", lbtokg(weight));
+  printf("Quel est la température du patient? [En Fareinheits]: ");
+  scanf("%f", &temp);
+  emptybuffer();
+  printf("[En Celcius]: %0.3f °C\n\n", FtoC(temp));
+  status = getstatus();
+  review();
+}
+
+int main()
+{
+  do {
+    addpatient();
+    printf("Faites (Q) pour quitter, (Entrer) pour ajouter un autre patient...\n");
+  } while (toupper(getchar()) != 'Q');
+}

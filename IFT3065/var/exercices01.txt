@@ -1,0 +1,227 @@
+Série d'exercices #1
+
+Le but de cette série d'exercices est d'installer le compilateur
+Gambit sur votre ordinateur et de faire des expériences pour mieux
+comprendre le bootstrap d'un compilateur.
+
+
+Exercice 1.
+
+Assurez-vous que le programme git soit installé sur votre ordinateur
+(en exécutant la commande "git --help") et que le compilateur gcc est
+installé (en exécutant la commande "gcc -v").  Normalement ces outils
+sont installés sur linux.  Sur les ordinateurs Apple, il faut
+installer Xcode à partir du App Store.  Sur les ordinateurs Windows,
+il faut installer les outils MinGW et MSYS
+(http://sourceforge.net/projects/mingwbundle/files/mingw-msys-bundle-0.6/).
+Puisque le projet est à faire sous linux ou Mac OS X, si vous êtes
+sous Windows je vous suggère d'installer une machine virtuelle Ubuntu
+dans VirtualBox (voir https://www.virtualbox.org/wiki/Downloads).
+
+À l'aide de git, faites un clone du code source de Gambit se
+trouvant sur github (https://github.com/feeley/gambit).  Plus
+précisément, exécutez les commandes :
+
+     % git clone https://github.com/feeley/gambit.git
+     % cd gambit
+
+Ensuite, construisez le système Gambit avec les commandes suivantes :
+
+     % ./configure --prefix=$HOME/g4
+     % make -j4 from-scratch
+     % make check
+
+La dernière commande vérifie le bon fonctionnement du système et
+devrait afficher "ALL TESTS SUCCESSFUL".  Si c'est le cas, faites
+
+     % make install
+
+Cela va installer le système dans ~/g4 et en particulier les
+binaires exécutables de gsi et gsc (interprète et compilateur
+Gambit) dans ~/g4/bin .
+
+Maintenant ajoutez ~/g4/bin dans votre "PATH", par exemple si
+vous utilisez "bash" entrez cette commande (et ajoutez la aussi à
+votre fichier ~/.bashrc) :
+
+     export PATH=$HOME/g4/bin:$PATH
+
+Cela vous permettra de démarrer gsi et gsc simplement en entrant
+leur nom.
+
+
+Exercice 2.
+
+Familiarisez-vous avec la structure des sources de Gambit en inspectant
+le contenu des sous-répertoires :
+
+   gambit/ --> répertoire principal
+     gsc/        --> sources Scheme du compilateur Gambit
+     gsi/        --> sources Scheme de l'interprète Gambit
+     lib/        --> sources Scheme et C du "runtime library" (fonctions
+                     prédéfinies telles string-append, make-vector, etc
+                     ainsi que le garbage collector, les fonctions de
+                     bas-niveau pour l'interface au système d'exploitation)
+     include/    --> fichiers "gambit.h" et "config.h"
+     tests/      --> tests pour vérifier le bon fonctionnement du système
+     doc/        --> manuel d'utilisation de Gambit (gambit.pdf, ...)
+     examples/   --> quelques exemples d'utilisation (faire "make examples")
+     misc/       --> fichiers auxiliaires, benchmarks, makefiles pour
+                     Windows
+
+Les fichiers avec une extension ".scm" sont des fichiers de code
+source Scheme qui font partie du runtime, de l'interprète ou du
+compilateur Gambit, et sont compilés par le compilateur Gambit.
+
+
+Exercice 3.
+
+Je vous recommande fortement d'installer et apprendre à utiliser
+l'éditeur de texte emacs.  Outre le fait que c'est un éditeur de code
+et un environnement de développement complet, il est très bien adapté
+au développement de programmes Scheme.
+
+Configurez emacs en ajoutant dans le fichier $HOME/.emacs les
+lignes suivantes :
+
+   (setq load-path
+         (cons "~/g4/share/emacs/site-lisp"
+               load-path))
+   (setq scheme-program-name "gsi -:d-")
+   (setq gambit-repl-command-prefix "\e")
+   (require 'gambit)
+
+Cela va vous donner un environnement de travail convivial pour
+utiliser Gambit.  Les erreurs d'exécution seront signalées en
+colorant le code fautif en jaune, et il sera possible de faire
+une exécution "pas-à-pas" facilement.
+
+Lancez emacs, puis démarrez un sous-processus pour interagir avec
+l'interprète Gambit (en tappant <ESC> x run-scheme, note : "<ESC> x"
+peut aussi se faire avec la touche "Alt" et "x" ensemble).  Essayer
+d'évaluer quelques expressions interactivement pour vous assurer que
+ça fonctionne.  Remarquez ce qui se passe dans le cas d'une erreur
+d'évaluation, par exemple (/ 1 0).  Expérimentez avec les commandes
+"ctrl-x 1", ",t" et ",?".
+
+
+Exercice 4.
+
+Maintenant, vous allez faire une toute petite modification au
+compilateur Gambit et recompiler tout le système avec le nouveau
+compilateur.
+
+    - Faire un "make bootstrap".  Cela va copier le compilateur
+      exécutable "gsc/gsc" à "gsc-boot".  Le compilateur "gsc-boot"
+      est utilisé pour compiler le code source Scheme de Gambit.  Donc
+      après cette étape, "gsc-boot" correspond au compilateur Gambit
+      **non modifié**.
+
+    - Dans le fichier gambit/gsc/_parms.scm ajoutez votre nom
+      dans la chaîne compiler-version-string-suffix qui est définie
+      vers la fin du fichier, par exemple :
+
+      (define compiler-version-string-suffix " [Marc Feeley]")
+
+      Cette chaîne est utilisée dans l'identification de la version du
+      système.
+
+    - Faire un "make" pour construire le compilateur modifié.  La
+      compilation de "gsc/_parms.scm" se fera avec "gsc-boot" (le
+      compilateur Gambit **non modifié**).  Vous obtenez donc
+      un nouveau "gsc/gsc" (le compilateur Gambit **modifié**)
+      ainsi qu'un nouveau "gsi/gsi" :
+
+       gsc-boot  compilateur Gambit **non modifié**
+       gsc/gsc   compilateur Gambit **modifié** compilé avec gsc-boot
+       gsi/gsi   interprète Gambit compilé avec gsc-boot
+
+    - Exécuter le nouvel interprète en entrant la commande "gsi/gsi".
+      À noter que votre nom n'apparait pas dans la bannière de
+      bienvenue de l'interprète.  Quitter avec la commande ",q".
+
+    - Faire un "make bootstrap".  Cela va copier le compilateur
+      exécutable "gsc/gsc" à "gsc-boot".  Maintenant "gsc-boot"
+      correspond au compilateur Gambit **modifié**.
+
+    - Faire un "make bootclean" pour éliminer tous les modules du système
+      compilés avec le compilateur non modifié.
+
+    - Faire un deuxième "make" pour construire tout le système avec le
+      compilateur modifié.
+
+    - Exécuter le nouvel interprète en entrant la commande "gsi/gsi".
+      À noter que votre nom est maintenant indiqué dans la bannière de
+      bienvenue de l'interprète.  Quitter avec la commande ",q".
+
+    - Faire un "make install" pour installer cette nouvelle version du
+      système dans ~/g4/bin .
+
+
+Exercice 5.
+
+Maintenant, vous allez faire une modification au runtime de
+Gambit pour ajouter une nouvelle fonction prédéfinie.
+
+    - À la fin du fichier gambit/lib/_nonstd.scm ajoutez
+      une définition pour la fonction factorielle.  Par exemple
+
+      (define (fact n) (if (= n 0) 1 (* n (fact (- n 1)))))
+
+    - Faire un "make" pour construire tout le système avec la
+      nouvelle définition de fonction.
+
+    - Exécuter le nouvel interprète en entrant la commande "gsi/gsi".
+      Vérifier que la nouvelle définition est accessible en demandant
+      le calcul de (fact 1000).
+
+    - Faire un "make install" pour installer cette nouvelle version du
+      système dans ~/g4/bin .
+
+
+Exercice 6.
+
+Expliquez pourquoi il faut faire 2 "make" pour qu'une modification du
+code source du compilateur ait un effet sur le comportement de
+l'interprète, mais seulement 1 "make" pour qu'une modification du code
+source du runtime ait un effet sur le comportement de l'interprète.
+Indice : cherchez les endroits dans les sources de Gambit où on réfère
+à la variable compiler-version-string avec la commande :
+
+     % fgrep compiler-version-string */*.scm
+
+
+Exercice 7.
+
+Écrivez les fonctions Scheme suivantes (utilisez l'interprète gsi
+dans emacs pour déboguer, la section 5.5 du manuel explique comment
+configurer emacs pour utiliser l'interprète).  Une fois déboguées,
+ajoutez les au runtime de Gambit.
+
+   - (p arg1 arg2...)
+
+     La fonction p prend un nombre quelconque de paramètre.  Elle
+     imprime chaque paramètre à tour de rôle avec la fonction display
+     sur la sortie standard.  Par exemple:
+
+      (p "j'ai " (* 2 2) " pommes")  imprime  "j'ai 4 pommes"
+
+     Note: c'est une fonction très pratique pour le déboguage!
+
+   - (multimap fonction liste1 liste2...)
+
+     La fonction multimap est la variante générale de la
+     fonction prédéfinie map qui permet d'appliquer une fonction
+     à plus d'un paramètre sur autant de listes d'arguments.
+     Par exemple:
+
+      (multimap cons '(1 2 3) '(11 22 33)) => ((1 . 11) (2 . 22) (3 . 33))
+
+   - (flatten liste)
+
+     La fonction flatten prend une liste en paramètre.  Cette liste
+     peut contenir d'autres listes à un niveau d'imbrication quelconque.
+     La fonction flatten retourne une liste à un seul niveau contenant
+     toutes les valeurs non-liste contenues dans la liste.
+
+      (flatten '((1 2) (((3)) 4) 5)) => (1 2 3 4 5)

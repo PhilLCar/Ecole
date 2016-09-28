@@ -1,0 +1,92 @@
+
+----------------------------------
+---- TP no 1 ---------------------
+----------------------------------
+
+Creer un repertoire TP1
+  --> mkdir TP1
+
+Aller dans TP1
+  --> cd TP1
+
+Copier les differents progs dans votre repertoire
+
+Pour compiler le programme TpIFT3205-1-1
+ --> ./compilegcc TpIFT3205-1-1
+
+Pour executer le programme
+ --> ./TpIFT3205-1-1
+
+Pour editer le programme
+ --> emacs TpIFT3205-1-1.c
+ 
+
+Vous pouvez utiliser les fonctions suivantes qui sont à votre 
+disposition:
+
+/*----------------------------------------------------------------------*/
+ /* Transforme de Fourier bidimensionnelle:                              */
+ /* --------------------------------------                               */
+ /* FFTDD(MatriceImgR,MatriceImgI,LENGTH,WIDTH)                          */
+ /*                                                                      */
+ /* MatriceImgR: matrice associe a l'image (valeurs reelles)             */   
+ /* MatriceImgI: matrice remplies de zero  (valeurs imaginaires)         */
+ /* LENGTH     : Longueur (ou hauteur) de l'image                        */
+ /* WIDTH      : Largeur de l'image                                      */
+ /* ------                                                               */
+ /* Resultat de cette FFT:                                               */
+ /* MatriceImgR: Partie reelle de la FFT                                 */
+ /* MAtriceIMgI: Partie imaginaire de la FFT                             */
+ /*----------------------------------------------------------------------*/    
+ 
+ /*----------------------------------------------------------------------*/
+ /* Transforme de Fourier bidimensionnelle inverse:                      */
+ /* ----------------------------------------------                       */
+ /* IFFTDD(MatriceImgR,MatriceImgI,LENGTH,WIDTH)                         */
+ /*                                                                      */ 
+ /* MatriceImgR: Partie reelle de la FFT                                 */   
+ /* MatriceImgI: Partie imaginaire de la FFT                             */
+ /* LENGTH     : Longueur (ou hauteur) de la matrice                     */
+ /* WIDTH      : Largeur de la matrice                                   */
+ /* ------                                                               */
+ /* Resultat de cette FFT inverse :                                      */
+ /* MatriceImgR: Partie reelle de cette FFT inverse                      */
+ /* MAtriceIMgI: Partie imaginaire de cette FFT inverse                  */
+ /*----------------------------------------------------------------------*/     
+
+ /*----------------------------------------------------------------------*/
+ /* Module de la FFT                                                     */
+ /* ----------------                                                     */
+ /* Mod(MatriceImgM,MatriceImgR,MatriceImgI,LENGTH,WIDTH)                */ 
+ /*                                                                      */
+ /* MatriceImgR: partie reelle de la matrice                             */
+ /* MatriceImgI: partie imaginaire de la matrice                         */
+ /* ------                                                               */
+ /* Resultat:                                                            */
+ /* MatriceImgM: module de la matrice                                    */
+ /*----------------------------------------------------------------------*/
+
+ /*----------------------------------------------------------------------*/
+ /* Mult                                                                 */
+ /* ----                                                                 */
+ /* Mult(MatriceImgM,coef,LENGTH,WIDTH)                                  */
+ /*                                                                      */
+ /* Multiplie toutes les valeurs de la matrice MatriceImgM par coef      */
+ /*  avec un seuil de 255                                                */
+ /*----------------------------------------------------------------------*/                     
+ /*----------------------------------------------------------------------*/
+ /* Recal                                                                */
+ /* -----                                                                */
+ /* Recal(MatriceImgM,LENGTH,WIDTH);                                     */
+ /*                                                                      */ 
+ /* Recalibre les valeurs de la matrice MatriceImgM entre [0,..,255]     */
+ /*----------------------------------------------------------------------*/
+
+ Le programme TpIFT3205-1-1 chargera l'image D1r.pgm dans une matrice,
+calculera sa TF, son module et visualisera le resultat à l'écran après
+avois recaler les niveaux de gris de cette matrice entre 0 et 255 grâce 
+à la fonction Recal et la fonction Mult.
+
+ Bon Tp,
+
+ 

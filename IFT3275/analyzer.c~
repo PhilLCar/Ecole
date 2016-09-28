@@ -1,0 +1,36 @@
+#include<stdio.h>
+
+int main()
+{
+}
+
+
+char* vigenere(char* cipher)
+{
+	char* plain;
+	return plain;
+}
+
+char* cesar(char* cipher, int offset)
+{
+	char* plain;
+	return plain;
+}
+
+char* substitution(char* cipher, char[] sub_key)
+{
+	char* plain;
+	return plain;
+}
+
+char[][] freq_analysis(char* cipher)
+{
+	char[][] results;
+	return results;
+}
+
+char[][] freq_analysis(char* cipher, int offset)
+{
+	char[][] results;
+	return results;
+}

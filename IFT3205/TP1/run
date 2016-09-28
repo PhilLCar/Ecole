@@ -1,0 +1,5 @@
+./compileall
+./executeall
+echo Waiting for end of execution...
+sleep 1
+./clean

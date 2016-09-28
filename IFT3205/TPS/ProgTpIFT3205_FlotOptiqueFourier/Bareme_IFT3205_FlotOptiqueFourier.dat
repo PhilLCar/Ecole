@@ -1,0 +1,40 @@
+IFT3205 TP2-Intercor_&_Flot-Optique
+
+L'énoncé du tp2 ainsi que les programmes fournis se trouvent sur le site 
+du cours:
+
+http://www.iro.umontreal.ca/~mignotte/ift3205.html
+
+Le tp2 est à remettre le vendredi xx fevrier 20xx avant 16h00. 
+ 
+Pénalité de 10% par 24h de retard.
+
+Il n'y a pas de rapport écrit; seulement des programmes a rendre et des images résultats
+Vous devez fournir les programmes (qui doivent produire les images) suivants:
+
+     [50 pts]
+     Tp2_IFT3205_2-2.c
+      affichant à l'écran le vecteur de translation du style :
+              Translation (ligne=13::colonne=146) 
+       et l'image de l'interspectre (cad l'image du dirac).
+       >image-TpIFT3205_2-2.pgm  
+
+     
+     [50 pts] 
+     Tp2_IFT3205_2-3.c
+       affichant à l'écran l'image du flot optique 
+       >image-TpIFT3205_2-3.pgm  
+     
+
+Total: 100 points.
+
+
+Les programmes doivent compiler sous Linux avec le script fourni compilegcc
+et les fichiers FonctionDemo2.h et FonctionDemo2.c fournis.
+
+                               *****
+
+
+Nota: Pour la commande remise (cf. man remise pour en savoir plus)
+le nom du repertoire dans lequel vous devez deposez vos fichiers
+est  TP2

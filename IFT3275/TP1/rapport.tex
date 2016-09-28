@@ -1,0 +1,110 @@
+\documentclass{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[french]{babel}
+\usepackage{fontenc}
+\usepackage[margin=1in]{geometry}
+\usepackage{hyperref}
+\usepackage{amsmath}
+\usepackage{listings}
+
+\title{Devoir 1 - IFT3275}
+\date{\today}
+\author{Philippe Caron}
+
+\begin{document}
+\maketitle
+\section{Question 1}
+\subsection{Déchiffrement}
+Le message a pu être décodé en utilisant une attaque fréquentielle sur le texte chiffré. L'attaque a réévlé que le chiffre n'était pas une substitution monoalphabétique, mais plutôt un chiffre de vigenere avec un clef dont la longueur probable est 25.
+
+Par la suite, il a suffit de trouver le décalage de la lettre la plus fréquente sur l'ensemble des positions $25 * i + k$ avec la lettre 'E', où $i$ vaut de $0$ à $L \div 25$, $L$ représente la longueur du document et $k$ vaut de $0$ à $25$. Par cette méthode on obtient la clef suivante:
+\begin{center}
+  LSJFHTFSLMBSVOHBOSVTTMBOE
+\end{center}
+Ce qui permet de déchiffrer le texte.
+\subsection{Importance du texte}
+Sans lire allemand, la recherche de la première phrase sur Google permet de trouver que ce texte est en fait un discours que Hitler a prononcé le 22 juin 1941. Une traduction est disponible ici: \url{http://research.calvin.edu/german-propaganda-archive/hitler4.htm}. Dans ce discours il annonce que l'Allemagne entrera en guerre contre la Russie, il parle également d'une «attaque au proportions jusqu'à lors inégalées» (traduction libre de ``At this moment, an attack unprecedented in the history of the world in its extent and size has begun''). \\
+Sachant que l'Allemagne a attaquée l'Union Sovétique le 22 Juin, si ce message a effectivement été reçu le 19 Juin 1941, on ne peut vraiment pas dire qu'il soit sans importance! En fait, il donne la possibilité d'avertir les Russes de l'attaque imminente (ou de ne pas les avertir du tout). Il permet aussi de se positionner stratégiquement sachant qu'un fort contingent allemand risque de se diriger vers le front Ouest. Des machinations politiques à la stratégie militaire, ce message est une perle rare et ne devrait surtout pas être ignoré.
+
+\section{Question 2}
+Supposons que l'adversaire a accès au canal de transmission, par exemple, il a réussi à installer un dispositif qui sépare le signal du fil reliant la banque et le guichet de sorte qu'il peut recevoir une copie exacte des transmissions entre la banque et le guichet. Il ne connais peut-être pas exactement la manière dont l'information est codée, mais sa connaissance lui permet tout de même de séparé les message qui proviennent de la banque et ceux qui proviennent du guichet. Sinon il est fort probable que l'information soit transmise sur deux fils différents pour l'envoi et la réception, il n'a qu'à identifier ces fils, il peut également espionner le guichet et déduire que l'information qui survient immédiatement après une transaction vient du guichet, il pourrait éventuellement même installer un voltmètre dans son dispositif afin d'identifier le sens du courant.\\
+Tout cela n'a guère d'importance cependant, l'important est qu'il est possible pour l'adversaire de connaitre exactement l'information qui est envoyée du guichet à la banque pour un temps donné et vice-versa, que ce soit par un canal secondaire ou non. Si le flux n'utilise par d'IV, il lui suffit de copier le comportement du guichet pour une transaction passée. Sans même comprendre ce qu'il fait, il va pouvoir recevoir de la banque le même résultat qu'à la transaction précédente, exemple: un retrait de 20\$. Puis il peut répéter en volant des transactions jusqu'à vider le guichet. En volant des petits montants, 20\$ par personne par exemple, il y de bonne chances que ni la banque, ni les clients ne se rende compte de la supercherie avant très longtemps.\\
+Il est toutefois très probable que le flux soit initialisé aléatoirement à chaque fois, sans quoi la sécurité est serait vraiment très réduite. À ce moment, il aurait l'option de recueillir les message envoyés par le gichet et tenter de comprendre le fonctionnement du système en effectuant la même transaction à répétition. Au nombre de retrait de 20\$ qui sont faits à chaque jour, il ne risque pas de prendre trop de temps avant d'accumuler un répertoire de textes chiffrés assez considérable. Plus haut, on parlait de mimer les répones du guichet, mais on peut aussi mimer le comportement de la banque, c'est d'ailleurs favorable pour un coup rapide car aucune limite de 200\$ par jour n'est applicable si la banque n'est pas au courant des retrait. À chaque transaction le guichet demande une autorisation et la banque doit répondre par une forme de «OUI» ou «NON», si cette réponse n'est pas trop longue, l'adversaire peu faire une attaque exhaustive sur le guichet. Il peut rajouter des bits au messages, essayer de déclencher des erreurs en envoyant des messages aléatoires.
+
+\section{Question 3}
+Le message $m$ envoyé par Alice est authentifié par RSA comme suit:
+\begin{equation}
+  D(m)=m^d \pmod{N}
+\end{equation}
+Pour le décrypter, Bob qui possède $e$ et $N$ fait:
+\begin{equation}
+  E(m)=m^e \pmod{N}
+\end{equation}
+A priori, Bob n'a que récupéré le message, mais ce message contient plus d'information qu'il n'en parait. Dans le cas qui nous intéresse, $PGCD(m, N) \neq 1$. Or on sait que $N = pq$ et que $p$ et $q$ sont premier. Donc forcément, disons que $m = p$, $N = mq$. Quand bob recevra le message authentifié par Alice, il aura $m$ en sa possession, puisqu'il a déjà $N$, il peut déduire $q$ en faisant $q = N \div m$. Il aura alors $p$ et $q$, à ce moment, déduire d sera trivial puisque:
+\begin{equation}
+  d = e\pmod{(p-1)(q-1)}^{-1}
+\end{equation}
+Bob aura alors en sa possession les clefs publique et privée $((N, e), d)$ ce qui permet à Bob de lire tout ce qu'Alice lit, et de signer des message en son nom sans qu'il soit possible pour les autres de les différencier. Ce cas précis constitue évidemment une faille du système, mais est-ce vraiment une faiblesse dans la sécurité de RSA?\\
+Si l'on considère qu'Alice ne fait que transmettre des informations à Bob par rapport à un sujet quelconque, par exemple la hauteur de la neige dehors. Elle ne vérifie jamais la valeur de $m$ par rapport a $p$ et $q$ puisque cette comparaison n'a aucun intérêt pour elle. Il est alors possible que $m = p$, puisque la valeur de $m$ est déterminé par quelque chose d'aléatoire (dans ce cas-ci la hauteur de la neige, mais n'importe quel transmission qui n'est pas organisée risque de comporter une forte composante aléatoire) alors Bob a autant de chances de trouver $p$ en regardant les valeurs de $m$ qu'en devinant des nombres premiers au hasard. Au final, cette faiblesse a tellement peu de chance de se produire qu'elle n'en est pas vraiment une.\\
+Elle pourrait être comparée à la probabilité qu'une clef XOR ne soit composée que de 0, ce qui pour un générateur totalement aléatoire est équiprobable à n'importe quelle autre clef. Malgré cette éventualité, la probabilité est si faible que ce n'est pas réellement considérer comme une faiblesse.
+
+\pagebreak
+\section{Question 4}
+Voici la clef RSA générée:
+\hspace{1.5cm}
+\begin{lstlisting}
+-------------------------- RSA PUBLIC KEY ----------------------------
+N=
+6126753213598620157697723900316460032761171889742582442524140921488008
+1545564306041096838501924032824388219712718612181625172423192019695503
+9985311555932583881720602673863352028711467553487138174726830506936353
+8859557647343283159373314470658143717320037554745654036987665432681420
+7173687663120601482792020804805553678529419014173310952899646009845105
+7351721000026878872426808336056280811537806670289020520370182906728092
+0412907030341357078409255361986757381049435813699305158662941419831548
+0468207336886524789430052432766690991420658538076890504049370996597419
+852606773381801784969741820337494191913284734438961831879
+
+e=
+683929
+
+------------------------ RSA PRIVATE KEY -----------------------------
+d=
+2088346835213212962753164131203054404415297367534598334280477622529717
+9049382380558380441807915053141608311032093080289042902765695518124622
+9990913969932720822884349598476409615087640294539387312964749530196872
+3224220347234816562361627911711256255648001173860743608658515103682296
+3282569484950354456631779574619524014415892056178544915504552888835195
+1917018451581624068085686272517410654881800525778769459076809818513552
+1766828649813487592806789029264571488007919614013350913955377928890175
+2463875407294436738004453904240313631265293644662906662197424258618782
+271728976262378137923784784090542653905491300549706316137
+
+======================================================================
+p=
+5080980958023975098409839481049810394801937401934091327501938409130497
+1023947013977401937409137409137409137409173409173049173049712093740197
+4031913904701937403197409137409137409137409137409173409198095720982043
+9237957487509247509475072909020139093175091173059170571039471039571009
+8460938290850298024895097345878572740582783572087203872970301380297527
+8906967
+
+q=
+1205820935802395203957230957230957023975023975093275029375029375023975
+0293750293750392750239750239750239750239750293750293754029384023984029
+3570297513920859052703598402937508982309372809273283572093857023252242
+321870582930492374079328957204890375084252093752337
+\end{lstlisting}
+
+\pagebreak
+\section{Question 5}
+Si nous n'avions que la clef $k_1 \in K$ à déduire, il suffirait de faire une attaque exhaustive en essayant toutes les clefs, du genre $$ \text{DECODE}_{k_1}(c)\stackrel{?}{=}m $$
+Cette attaque nécessite d'évaluer DECODE un maximum de $|K|$ fois, avec une espérance de $\frac{|K|}{2}$. Mais on ne possède pas $\text{CODE}_{k_1}(m)$, rendant impossible cette approche. Cependant ont peut mettre cette expression en relation avec la seconde clef:
+\begin{align*}
+  c = \text{CODE}_{k_2}(\text{CODE}_{k_1}(m))\\
+  \text{DECODE}_{k_2}(c) = \text{CODE}_{k_1}(m)
+\end{align*}
+À ce moment, si on suppose que pour tout $x$, $\text{DECODE}_{k_x}(c)$ retourne une valeur différente, on peut essayer successivement toutes les clefs $k_1$ de l'ensemble $K$ pour chacune des clefs $k_2$ du même ensemble, ce qui revient à élavuer CODE $|K|^2$ fois, et DECODE $|K|$ fois (ou l'inverse dépendamment de quelle clef on met dans la boucle) donc $|K|^2+|K|$ évaluations au total. Puisqu'on a présumé qu'il n'y avait pas de recoupement, au moment ou $\text{DECODE}_{k_2}(c) = \text{CODE}_{k_1}(m)$ on sait que $k_1$ et $k_2$ ont les bonnes valeurs. Pour accélérer le processus, si cela vaut la peine, on peut d'emblée rejeter les éléments qui ne sont ni dans $M$ ni dans $C$, puisque par définition $\text{DECODE}_{k_2}(c) = \text{CODE}_{k_1}(m) \in (M \cap C)$.
+
+\end{document}

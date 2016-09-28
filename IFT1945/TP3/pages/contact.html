@@ -1,0 +1,92 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <meta charset="utf-8"/>
+    <title>Club d'observation floral de l'île de Montréal</title>
+    <script src="http://maps.googleapis.com/maps/api/js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/style.css">
+    <script>
+      function initialize() {
+      var mapProp = {
+      center:new google.maps.LatLng(45.506452, -73.614535),
+      zoom:15,
+      mapTypeId:google.maps.MapTypeId.ROADMAP
+      };
+      var map=new google.maps.Map(document.getElementById("googleMap"),mapProp);
+      }
+      google.maps.event.addDomListener(window, 'load', initialize);
+    </script>
+  </head>
+  <body>
+    <div id="conteneur">
+      <header>
+	<p>CLUB D'OBSERVATION FLORAL DE 'ÎLE DE MONTRÉAL</p>
+      </header>
+      <nav>
+	<table>
+	  <tr>
+	    <td><a href="../index.html">Accueil</a></td>
+	    <td><a href="rho.html">Rhododendrons</a></td>
+	    <td><a href="contact.html">Contact</a></td>
+	    <td><a href="form.html">Formulaire</a></td>
+	    <td><a href="media.html">Multimédia</a></td>
+	  </tr>
+	</table>
+      </nav>
+      <main>
+	<section id="left">
+	  <h1>Contact</h1>
+	  <h2>Liens utiles</h2>
+	  Voici quelques liens utiles qui pourraient vous intéresser:<br>
+	  <ul>
+	    <li>
+	      <a href="http://espacepourlavie.ca/jardin-botanique" target="blank">
+		Jardin Botanique de Montréal
+	      </a>
+	    </li><li>
+	      <a href="http://ville.montreal.qc.ca/portal/page?_pageid=7297,74117644&_dad=portal&_schema=PORTAL" target="blank">
+		Dont de fleur de la ville
+	      </a>
+	    </li>
+	  </ul>
+	  <h2>Pour nous joindre</h2>
+	  Telephone: <span id="phone">(514)321-4321</span><br><br>
+	  Email:
+	  <a href="mailto:admin@COFIN.ca">
+	    admin@COFIN.ca
+	  </a>
+	</section>
+	<section id="right">
+	  
+	  <!-- CHANGER POUR CSS ÉVENTUELLEMENT -->
+	  <div id="googleMap" style="width:500px;height:380px;"></div>
+	</section>
+      </main>
+      <footer>
+	<table>
+	  <tr>
+	    <td rowspan="3">
+	      <a href="http://jigsaw.w3.org/css-validator/check/referer" target="blank"> 
+		<img alt="CSS3" src="../images/css3.png" height="100"/>
+	      </a>
+	    </td>
+	    <td>
+	      <a href="http://www-desi.iro.umontreal.ca/~carophil/tp3/index.html">
+		http://www-desi.iro.umontreal.ca/~carophil/tp3/index.html
+	      </a>
+	    </td>
+	    <td rowspan="3">
+	      <a href="http://validator.w3.org/check/referer" target="blank"> 
+		<img alt="HTML5" src="../images/html5.png" height="100"/>
+	      </a> 
+	    </td>
+	  </tr><tr>
+	    <td>Philippe Caron</td>
+	  </tr><tr>
+	    <td>1049846 carophil</td>
+	  </tr>
+	</table>
+      </footer>
+    </div>
+  </body>
+</html>

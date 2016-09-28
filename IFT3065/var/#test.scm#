@@ -1,0 +1,36 @@
+
+
+
+(define (consume bindings fs)
+  (if (null? bindings)
+      '()
+      (list (comp-expr (list-ref (car bindings) 1) fs cte) (consume (cdr bindings) (+ fs 1)))))
+
+(define (append lst env frs)
+  (if (null? lst)
+      env
+      (cons (cons (caar lst) -frs) (append (cdr lst) env (+ frs 1)))))
+
+        ;; handle this form: (let ((var expr) ...) body)
+        ((and (list? expr)
+              (= (length expr) 3)
+              (eq? (list-ref expr 0) 'let))
+         (let ((binding (list-ref (list-ref expr 1) 0)))
+           (list
+	    ;(vector 'void)
+            (comp-expr (list-ref binding 1)
+                       fs
+                       cte)
+	    (if (null? (cdr (list-ref expr 1)))
+		(comp-expr (list-ref expr 2)
+			   (+ fs 1)
+			   (cons (cons (list-ref binding 0)
+				       (- (+ fs 1)))
+				 cte))
+		(comp-expr (list 'let (cdr (list-ref expr 1)) (list-ref expr 2))
+			   (+ fs 1)
+			   (cons (cons (list-ref binding 0)
+				       (- (+ fs 1)))
+				 cte)))
+            (vector 'xchg)
+            (vector 'pop))))

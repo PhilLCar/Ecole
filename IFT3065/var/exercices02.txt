@@ -1,0 +1,43 @@
+Série d'exercices #2
+
+Le but de cette série d'exercices est de vous familiariser avec
+l'architecture x86-64 et la programmation assembleur.
+
+
+Exercice 1.
+
+Télécharger le fichier stdio.tar.gz de la page du cours et
+extraire son contenu avec la commande :
+
+     % tar zxf stdio.tar.gz
+
+Puis compiler test.s (et sa librairie stdio.s) et faire son
+exécution avec les commandes :
+
+     % cd stdio
+     % gcc -o test stdio.s test.s
+     % ./test
+
+En supposant que vous avez un ordinateur basé sur l'architecture
+x86-64, cela devrait fonctionner sous linux et OS X car les fonctions
+d'entrée/sortie dans stdio.s sont écrites spécialement pour détecter
+le système d'exploitation et s'ajuster en conséquence.
+
+
+Exercice 2.
+
+Lire les commentaires de stdio.s pour bien comprendre les fonctions
+qui sont disponibles.
+
+Lire le code de test.s pour comprendre comment les fonctions de stdio.s
+sont appelées (instructions "push", "call" et "lea").
+
+
+Exercice 3.
+
+Le code dans stdio.s est incomplet.  La fonction print_word_dec affiche
+toujours 0.
+
+Compléter le codage de cette fonction pour qu'elle affiche la
+représentation décimale de l'entier 64 bits empilé sur la pile.  Votre
+code doit fonctionner avec des valeurs positives et négatives.

@@ -1,0 +1,27 @@
+      Indice      Tableau pers
+---------------------------------------------------
+      0           "16/11/1992"  2 tasses            
+      1           "02/05/1990"  1 tasse (par défaut)
+      2           "23/05/1996"  5 tasses            
+      3           "19/02/1985"  0 tasse             
+      4           "30/05/1991"  2 tasses            
+
+Personne consommant le plus : "23/05/1996"  5 tasses            .
+
+      Indice      Tableau pers
+---------------------------------------------------
+      0           "16/11/1992"  1 tasse             
+      1           "02/05/1990"  0 tasse             
+      2           "23/05/1996"  4 tasses            
+      3           "19/02/1985"  0 tasse             
+      4           "30/05/1991"  1 tasse             
+
+      Indice      Tableau pers
+---------------------------------------------------
+      0           "23/05/1996"  4 tasses            
+      1           "16/11/1992"  1 tasse             
+      2           "30/05/1991"  1 tasse             
+      3           "19/02/1985"  0 tasse             
+      4           "02/05/1990"  0 tasse             
+
+Il y a 3 personnes qui sont nées en mai.
