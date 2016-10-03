@@ -35,7 +35,7 @@ void stack(void *elem)
   stack_len++;
   if (stack_len > stack_cap) {
     stack_cap = stack_len;
-    tmp = realloc(stack_ptr, stack_cap * sizeof(void*));
+    tmp = realloc(stack_ptr, stack_cap * sizeof(bigint*));
     if (tmp = NULL) alert("STACK FAIL");
     stack_ptr = tmp;
   }
@@ -48,7 +48,21 @@ void checkstack()
 
 void add()
 {
-  
+  digits a = *(stack_ptr + stack_len - 1).value;
+  digits b = *(stack_ptr + stack_len - 2).value;
+  int res, carry = 0;
+  while (a.next != NULL && b.next != NULL) {
+    res = a.digit + b.digit + carry;
+    carry = res > 9; // pour add seulement
+    b.digit = res % 10;
+  }
+  if (a.next != NULL) {
+    
+  } else if (b.next != NULL) {
+
+  } else {
+
+  }
 }
 
 void parse()
@@ -108,6 +122,44 @@ void parsevariable()
 {
 }
 
+digits *newdigit(int digit) {
+  digits *tmp = malloc(sizeof(digits));
+  if (tmp == NULL)
+    alert("MEMERROR");
+  else {
+    tmp->digit = digit;
+    tmp->next = NULL;
+  }
+  return tmp;
+}
+
+void nextdigit(digits *old, int digit) {
+  if (old->next == NULL)
+    old->next = newdigit(digit);
+  else {
+    deldigits(old->next);
+    old->next = newdigit(digit);
+  }
+}
+
+void deldigits(digits *del) {
+  digits *tmp;
+  do {
+    tmp = del->next;
+    free(del);
+    del = tmp;
+  } while (del != NULL);
+}
+
+void newbigint() {
+  bigint *tmp = malloc(sizeof(bigint));
+  /// FAIRE newbigint ET RÉÉCRIRE parsenumber
+}
+
+void delbigint(bigint b) {
+  
+}
+
 int main()
 {
   stack_ptr = malloc(sizeof(bigint*));
@@ -117,3 +169,4 @@ int main()
   }
   return 0;
 }
+

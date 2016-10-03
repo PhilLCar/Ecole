@@ -1,0 +1,120 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[french]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{tcolorbox}
+\usepackage[margin=2cm]{geometry}
+\usepackage{array}
+\usepackage{hyperref}
+\usepackage{tikz}
+\usepackage{listings}
+\usepackage{eurosym}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{cancel}
+
+\title{IFT2015 automne 2016 - Devoir1} %trouver long trait d'union
+\author{Philippe Caron}
+\date{\today}
+
+\setcounter{section}{2}
+\renewcommand{\thesubsubsection}{\alph{subsubsection}.}
+\renewcommand{\thefootnote}{\fnsymbol{footnote}}
+\newenvironment{pseudo}{\begin{tcolorbox}[left skip = 2cm, right skip = 2cm]\itshape}{\end{tcolorbox}}
+\newcommand{\key}[1]{{\bf #1}}
+\newcommand{\name}[1]{{\scshape #1}}
+\newcommand\tab[1][0.5cm]{\hspace*{#1}}
+
+\lstset{frame=tb,
+  language=Python,
+  aboveskip=3mm,
+  belowskip=3mm,
+  showstringspaces=false,
+  columns=flexible,
+  basicstyle={\small\ttfamily},
+  numbers=none,
+  numberstyle=\tiny\color{pink},
+  keywordstyle=\color{purple},
+  commentstyle=\color{dkgreen},
+  stringstyle=\color{brown},
+  breaklines=true,
+  breakatwhitespace=true,
+  tabsize=3
+}
+
+\begin{document}
+\maketitle
+
+\subsection{Qu'est-ce qu'il fait? [Postscript]}
+\subsubsection{Manipulation de la pile}
+$\stackrel{\text{État initial}}{
+  \begin{tabular}{|c|}
+    \hline 1 \\
+    \hline 2 \\
+    \hline 3.25 \\
+    \hline 4e10 \\
+    \hline -5 \\
+    \hline 6 \\
+    \hline 7 \\
+    \hline 8 \\
+    \hline
+\end{tabular}}$
+$\Rightarrow$
+$\stackrel{\text{4 1 roll}}{
+  \begin{tabular}{|c|}
+    \hline 1 \\
+    \hline 2 \\
+    \hline 3.25 \\
+    \hline 4e10 \\
+    \hline 8 \\
+    \hline -5 \\
+    \hline 6 \\
+    \hline 7 \\
+    \hline
+\end{tabular}}$
+$\Rightarrow$
+$\stackrel{\text{pop}}{
+  \begin{tabular}{|c|}
+    \hline 1 \\
+    \hline 2 \\
+    \hline 3.25 \\
+    \hline 4e10 \\
+    \hline 8 \\
+    \hline -5 \\
+    \hline 6 \\
+    \hline
+\end{tabular}}$
+$\Rightarrow$
+$\stackrel{\text{exch}}{
+  \begin{tabular}{|c|}
+    \hline 1 \\
+    \hline 2 \\
+    \hline 3.25 \\
+    \hline 4e10 \\
+    \hline 8 \\
+    \hline 6 \\
+    \hline -5 \\
+    \hline
+\end{tabular}}$
+$\Rightarrow$
+$\stackrel{\text{7 -4 roll}}{
+  \begin{tabular}{|c|}
+    \hline 4e10 \\
+    \hline 8 \\
+    \hline 6 \\
+    \hline -5 \\
+    \hline 1 \\
+    \hline 2 \\
+    \hline 3.25 \\
+    \hline
+\end{tabular}}$
+
+\subsubsection{Opérateur mystique}
+L'opérateur mystique sélectionne la plus grande valeur entre $a$ et $b$. Le contenu de la pile après son utilisation est donc $a$ si $a \geq b$ ou $b$ sinon.
+
+\subsubsection{Parcours d'un tableau}
+L'opérateur \key{tbl.?} compte le nombre d'éléments négatifs du tableau.
+
+\subsubsection{Opérateur énigmatique}
+
+\end{document}

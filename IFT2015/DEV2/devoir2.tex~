@@ -1,0 +1,250 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[french]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{tcolorbox}
+\usepackage[margin=2cm]{geometry}
+\usepackage{array}
+\usepackage{hyperref}
+\usepackage{tikz}
+\usepackage{listings}
+\usepackage{eurosym}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{cancel}
+
+\title{IFT2015 automne 2016 - Devoir1} %trouver long trait d'union
+\author{Philippe Caron}
+\date{\today}
+
+\setcounter{section}{1}
+\renewcommand{\thesubsubsection}{\alph{subsubsection}.}
+\renewcommand{\thefootnote}{\fnsymbol{footnote}}
+\newenvironment{pseudo}{\begin{tcolorbox}[left skip = 2cm, right skip = 2cm]\itshape}{\end{tcolorbox}}
+\newcommand{\key}[1]{{\bf #1}}
+\newcommand{\name}[1]{{\scshape #1}}
+\newcommand\tab[1][0.5cm]{\hspace*{#1}}
+
+\lstset{frame=tb,
+  language=Python,
+  aboveskip=3mm,
+  belowskip=3mm,
+  showstringspaces=false,
+  columns=flexible,
+  basicstyle={\small\ttfamily},
+  numbers=none,
+  numberstyle=\tiny\color{pink},
+  keywordstyle=\color{purple},
+  commentstyle=\color{dkgreen},
+  stringstyle=\color{brown},
+  breaklines=true,
+  breakatwhitespace=true,
+  tabsize=3
+}
+
+\begin{document}
+\maketitle
+
+\subsection{Chemins sur une grille}
+\subsubsection{}
+On cherche à trouver le nombre de chemin qui se rendent à un point $(n, n)$ en partant de $(0, 0)$ en ne pouvant que monter (incrémenter $y$) et aller à droite (incrémenter $x$).
+\begin{center}
+  Soit $N_{x,y}$ le nombre de chemin qui se rendent au point $(x, y)$ tel que $ x, y \in \mathbb{N}$.
+\end{center}
+On trouve le nombre de chemin à chaque n\oe{}ud dans la grille grâce à la fonction récursive suivante:
+\begin{equation}
+  N_{x,y} =
+  \begin{cases}
+    1 & x = 0, y = 0\\
+    N_{0, y - 1} & x = 0, y \geq 1\\
+    N_{x - 1, 0} & x \geq 1, y = 0\\
+    N_{x - 1, y} + N_{x, y - 1} & x \geq 1, y \geq 1\\
+  \end{cases}
+\end{equation}
+
+\begin{tcolorbox}[arc = 0mm, opacityframe=0]
+  \begin{tikzpicture}
+    \fill[fill = white] (0,0) rectangle(6, 6);
+    \draw[step = 1cm, gray, very thin] (0, 0) grid (6, 6);
+    \foreach \x in {0, 1, 2, 3, 4}
+        \draw (0, \x) -- (\x cm + 0.5cm, -0.5) node[anchor = north] {$l_\x$};
+    \foreach \x in {0, 1, 2, 3, 4}
+        \draw (-0.2, \x) node[anchor = east] {$\x$};
+    \node[anchor = east] at (-0.2, 5) {$...$};
+    \node[anchor = east] at (-0.2, 6) {$n$};
+    \node[anchor = north] at (5.5, -0.5) {$l_{...}$};
+    \node[anchor = north] at (6.5, -0.5)  {$l_n$};        
+    \filldraw[fill = white, draw = red, thick] (0, 0) circle (0.2) node[anchor = center] {1};
+    \filldraw[fill = white, draw = red, thick] (1, 0) circle (0.2) node[anchor = center] {1};
+    \filldraw[fill = white, draw = red, thick] (0, 1) circle (0.2) node[anchor = center] {1};
+    \filldraw[fill = white, draw = red, thick] (2, 0) circle (0.2) node[anchor = center] {1};
+    \filldraw[fill = white, draw = red, thick] (1, 1) circle (0.2) node[anchor = center] {2};
+    \filldraw[fill = white, draw = red, thick] (0, 2) circle (0.2) node[anchor = center] {1};
+    \filldraw[fill = white, draw = red, thick] (3, 0) circle (0.2) node[anchor = center] {1};
+    \filldraw[fill = white, draw = red, thick] (2, 1) circle (0.2) node[anchor = center] {3};
+    \filldraw[fill = white, draw = red, thick] (1, 2) circle (0.2) node[anchor = center] {3};
+    \filldraw[fill = white, draw = red, thick] (0, 3) circle (0.2) node[anchor = center] {1};
+    \filldraw[fill = white, draw = red, thick] (4, 0) circle (0.2) node[anchor = center] {1};
+    \filldraw[fill = white, draw = red, thick] (3, 1) circle (0.2) node[anchor = center] {4};
+    \filldraw[fill = white, draw = red, thick] (2, 2) circle (0.2) node[anchor = center] {6};
+    \filldraw[fill = white, draw = red, thick] (1, 3) circle (0.2) node[anchor = center] {4};
+    \filldraw[fill = white, draw = red, thick] (0, 4) circle (0.2) node[anchor = center] {1};
+    \fill[fill = black] (3.8, 3.8) circle (0.05);
+    \fill[fill = black] (4  , 4  ) circle (0.05);
+    \fill[fill = black] (4.2, 4.2) circle (0.05);
+    \draw (6, 6) -- (6.5, 5.5) node [anchor = north] {$l_{2n}$};
+    \filldraw[fill = white, draw = red, thick] (6, 6) circle (0.2) node[anchor = center] {?};
+    \node[text width = 7cm, anchor = west, right] at (8, 3)
+         {En calculant la valeur de chaque n\oe{}ud en utilisant la fonction récursive définie à l'équation (1), on remarque très rapidement le développement du triangle de Pascal, ce qui nous donne un bon indice sur la manière de procéder.};
+  \end{tikzpicture}
+\end{tcolorbox}
+
+Tous les chemins menant à un même n\oe{}ud sont forcément de la même taille puisque la position dépend directement du nombre de déplacement, mais l'ordre dans lequel ces déplacement sont faits n'a pas d'importance. Appelons $\vec{i}$ et $\vec{j}$ les vecteurs unitaires croissants et parallèles à l'axe $x$ et l'axe $y$ respectivement tels que:
+$$l_{x,y}= ||x\vec{i} + y\vec{j}||$$
+Où $l_{x,y}$ est la longueur de tous les chemins se rendant à $N_{x,y}$.
+
+Pour obtenir le nombre de chemin, il suffit de trouver tous les réarangement possibles de $\vec{i}$ et $\vec{j}$. Prenons par exemple le point $(1, 2)$ sur le tableau:
+$$\begin{aligned}
+  l_{1, 2} &= ||\vec{i} + \vec{j} + \vec{j}||\\
+  &= ||\vec{j} + \vec{i} + \vec{j}||\\
+  &= ||\vec{j} + \vec{j} + \vec{i}||
+\end{aligned}$$
+On conclu que: $$N_{1, 2} = 3$$
+
+De manière générale, il y a $k!$ façon d'arranger $k$ éléments distincts. Puisque dans le cas qui nous intéresse les $\vec{i}$ et $\vec{j}$ sont indifférenciables, il faut enlever à ce nombre toutes les permutations composées strictement de $\vec{i}$ ou de $\vec{j}$. Ce qui nous conduit à la règle générale suivante:
+\begin{equation}
+  N_{x,y} = \frac{(x + y)!}{x! \cdot{} y!} = \binom{x+y}{x} = \binom{x+y}{y}
+\end{equation}
+
+Il s'en suit donc que le nombre de chemin possible dans une grille de taille $n$ est donné par:
+\begin{equation}
+  C(n) = N_{n, n} = \binom{2n}{n} = \frac{(2n)!}{n! \cdot{} n!}
+\end{equation}
+CQFD
+\subsubsection{}
+Afin de trouver une fonction simple asymptotiquement égale à $\ln C(n)$, substituons d'abord toutes les occurences de factorielle dans $C(n)$ par la formule de stirling.
+\begin{equation}
+  \begin{aligned}
+    \frac{(2n)!}{n! \cdot{} n!} &\stackrel{\text{Stirling}}{\sim} \frac{\sqrt{2\pi(2n)}\Big(\frac{(2n)}{e}\Big)^{(2n)}}{\bigg(\sqrt{2\pi n}\Big(\frac{n}{e}\Big)^n\bigg)^2} \text{  (quand  } n \to \infty \text{)}\\
+    &= \frac{2\sqrt{\pi n}\Big(\frac{2n}{e}\Big)^{2n}}{2\pi n \Big(\frac{n}{e}\Big)^{2n}}\\
+    &= \frac{2^{2n}}{\sqrt{\pi n}}\\
+    &= \frac{4^n}{\sqrt{\pi n}}
+  \end{aligned}
+\end{equation}
+Puis nous pouvons rajouter le logarithme naturel:
+\begin{equation}
+  \ln\Bigg(\frac{4^n}{\sqrt{\pi n}}\Bigg) = \ln(4)\cdot n - \frac{1}{2}\cdot\ln(\pi n)
+\end{equation}
+Dans l'équation (5), le terme avant la soustraction grandi plus vite, on fait donc l'hypothèse que la fonction la plus simple asymptotiquement égale à $\ln C(n)$ est $f(n)=\ln(4)\cdot n$, on fait le test des limites pour vérifier:\footnote{RH = Règle de l'Hôpital}
+\begin{equation}
+  \begin{aligned}
+    \lim\limits_{n \rightarrow +\infty} \frac{\ln C(n)}{f(n)} & \stackrel{5}{=}
+    \frac {\ln\Big(\frac{4^n}{\sqrt{\pi n}}\Big)} {\ln(4)\cdot n}\\
+    & \stackrel{4}{=} \frac {\ln(4)\cdot n - \frac{1}{2}\cdot\ln(\pi n)} {\ln(4)\cdot n}\\
+    & \stackrel{\text{RH}}{=} \frac {\big(\ln(4)\cdot n - \frac{1}{2}\cdot\ln(\pi n)\big)'}
+          {\big(\ln(4)\cdot n\big)'}\\
+          &= \frac {\ln(4) - \frac{1}{2 \pi n}} {\ln(4)}\\
+          &= \frac {\ln(4) - \cancelto{0}{\frac{1}{2 \pi n}}} {\ln(4)}\\  
+          &= \frac {\ln(4)} {\ln(4)}\\
+          &= 1   
+  \end{aligned}
+\end{equation}
+Nous avons ainsi prouvé que $\ln C(n) \sim f(n) \text{   (quand  } n \rightarrow \infty$) où:
+$$ f(n) = \ln (4^n) = n \cdot \ln (4) $$
+\subsection{Comment encoder les entiers?}
+\subsubsection{}
+Les valeurs sont les suivantes:
+$$\begin{aligned}
+  |\key{u}(10^{100})| &= 10^{100} + 1\\
+  |\key{b}(10^{100})| &= 333\\
+  |\key{f}(10^{100})| &= 667\\
+  |\key{g_1}(10^{100})| &= 350
+\end{aligned}$$
+De manière générale:
+$$\begin{aligned}
+  |\key{u}(n)| &= n + 1\\
+  |\key{b}(n)| &= \lg(n + 1)\\
+  |\key{f}(n)| &= 2 \cdot \lg(n + 1) + 1\\
+\end{aligned}$$
+\subsubsection{}
+Voici le pseudo-code pour l'encodage de $\key{b}(n)$, où «$/$» est la division entière, l'algorithme est facile à implémenter en python en utilisant, les strings, il suffit de remplacer $n$ par $str(n)$ à la dernière ligne.
+\begin{pseudo}
+  \name{EncodeBeta}$(n)$:\\
+  \tab{} \key{if} $n > 1$ \key{then}:\\
+  \tab{}\tab{} \key{return} \name{EncodeBeta}$(n / 2) \oplus modulo(n, 2)$\\
+  \tab{} \key{else}:\\
+  \tab{}\tab{} \key{return} $n$
+\end{pseudo}
+\subsubsection{}
+Voici le pseudo-code pour l'encodage de $\key{g_1}(n)$
+\begin{pseudo}
+  \name{EncodeGamma}$(n)$:\\
+  \tab{} \key{if} $n == 0$ \key{then}:\\
+  \tab{}\tab{} \key{return} ``"\\
+  \tab{} \key{else}:\\
+  \tab{}\tab{} $l \leftarrow$ \name{EncodeBeta}$(n)$\\
+  \tab{}\tab{} \key{return} \name{EncodeGamma}$(length(l) - 1) \oplus l$\\\\
+  
+  \name{EncodeOmega}$(n)$:\\
+  \tab{} \key{return} \name{EncodeGamma}$(n)$ $\oplus ``0"$
+\end{pseudo}
+Si on est vraiment attaché à ce que la fonction \name{EncodeOmega} soit purement récursive, on peut utiliser une variable booléenne dans les paramètres et conditionnellement ajouter un zéro à la fin de la chaîne, puis faire l'appel récursif avec «faux». Cependant, en plus d'être très désagréable à utiliser, cette fonction effectue des tests inutiles à chaque itération.
+
+\pagebreak
+Voici le code en Python:
+\begin{lstlisting}
+def encodeBeta(n):
+	if n > 1:
+		return encodeBeta(n // 2) + str(n % 2)
+	else:
+		return str(n)
+
+def encodeGamma(n):
+	if n == 0:
+		return ''
+	else:
+		l = encodeBeta(n)
+		return encodeGamma(len(l) - 1) + l
+
+def encodeOmega(n):
+	return encodeGamma(n) + '0'
+\end{lstlisting}
+
+\subsubsection{Bonus}
+Pour sauver du temps, la fonction $\key{g_1}$ n'a pas été implémentée, mais on suppose qu'elle fonctionne comme suit:
+\begin{itemize}
+\item Elle lit tous les mots du documents et les ajoute à une liste qui compte le nombre d'ajout
+\item Elle écris la liste au début du fichier ordonnée par fréquence
+\item Elle défini la longeur des fragments
+\item Elle écrit à la place de chaque mot un fragment de taille constante contenant l'index dans la liste
+\end{itemize}
+On considère donc un mot (séparé d'espace) comme étant un symbole. Ainsi pour avoir le ratio de compression il suffit d'avoir la taille de la liste au début (l'ordonner ne change pas la taille), le nombre de mots dans le texte (qui deviendrons des fragments) et le nombre d'octets dans le document original.
+
+On détermine la taille minimale des fragments en calculant le logarithme du nombre d'élément dans la liste (ce qui donne le nombre de bit minimum pour définir chacun des index), puis en divisant celui-ci par 8 pour obtenir le nombre d'octets nécessaire.
+
+Bien entendu, la fonction $\key{g_1}$ telle que définie présentement laisse beaucoup à désirer et serait très facile à optimiser, le code qui examine le ratio de compression est lui aussi très sommaire et pourrait être plus rigoureux, mais vu que le but n'est que d'étudier l'efficacité de la méthode, toute ces améliorations seraient fort coûteuses pour peu de résultat.
+
+Les textes choisi pour l'étude sont «Moby Dick», «War and Peace» et «World 192», et ils ont été comparés à la compression zip, voici les résultats:
+\begin{verbatim}
+mobydick.txt:
+Il y avait 1191463 dans le fichier,
+il y a maintenant 666794.
+Ratio de compression : 0.44035693932585396
+zip: 59%
+
+world192.txt:
+Il y avait 2473400 dans le fichier,
+il y a maintenant 1162955.
+Ratio de compression : 0.5298152340907254
+zip: 71%
+
+war+peace.txt:
+Il y avait 3202941 dans le fichier,
+il y a maintenant 1458212.
+Ratio de compression : 0.5447271741814788
+zip: 63%
+\end{verbatim}
+Comme on peut voir, cette méthode est assez efficace! Même si elle l'est environ 15\% moins que le zip à peu près, elle donne tout de même un résultat constant d'environ 50\% à chaque fois.
+
+Il est important de noter cependant que cela ne fonctionne qu'avec les textes fragmentés par des espaces, puisque toute la méthode repose entièrement là dessus. Sur des documents binaire, ou de code génétique, la compression résulterait en un plus gros fichier!
+\end{document}

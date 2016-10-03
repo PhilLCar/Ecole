@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>
+<html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>
+<html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>
+<html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js"> <!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>IFT 2255 - Aut 2016</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+
+    <link rel="stylesheet" href="../../../css/normalize.css">
+    <link rel="stylesheet" href="../../../css/main.css">
+    <script src="../../../js/vendor/modernizr-2.6.2.min.js"></script>
+
+    <link rel="stylesheet" href="../../../css/uj.css">
+    <script type="application/javascript" src="../../../js/main.js"></script>
+</head>
+<body>
+<!--[if lt IE 7]>
+<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">
+    upgrade your browser</a> to improve your experience.</p>
+<![endif]-->
+
+<!-- Add your site or application content here -->
+<div id="main" style="width: 95%;">
+    <div id="header">
+    </div>
+    <div id="title">
+        IFT 2255 - Aut 2016<br>Devoir maison 1    </div>
+    <div id="content"><div class="box">
+<h1>Glossaire</h1>
+
+<p>ACME: Organisation tierce, responsable de la comptabilisation et des procédures financières de ChocAn.</p>
+
+<p>Carte de membre: Carte en plastique gaufrée avec le nom et le numéro à neufs chiffres d'un membre, également doté d'une bande magnétique où ces informations sont encodées.</p>
+
+<p>CDC: Abréviation de Centre de Données ChocAn.</p>
+
+<p>Centre des Données ChocAn: Ordinateur central où se trouve le logiciel de traitement de données de ChocAn.</p>
+
+<p>Code de service: Code à six chiffres associé à un service de santé.</p>
+
+<p>Date de service: Date dans le format JJ-MM-AAAA requise lorsqu'un fournisseur offre un service à un membre.</p>
+
+<p>Enregistrement: Agrégation de données correspondant à un membre, un fournisseur ou un service offert par un fournisseur à un membre.</p>
+
+<p>Fournisseur: Professionnel de la santé affilié à ChocAn fournissant des services aux membres.</p>
+
+<p>Liste des services des fournisseurs: Rapport envoyé aux fournisseurs, en pièce jointe d'un courriel, contenant une liste des services fournis aux membres ainsi que le total des frais pour la semaine.</p>
+
+<p>Liste des services des membres: Rapport envoyé aux membres, en pièce jointe d'un courriel, contenant une liste, triée selon la date du service, des différents services reçus durant la semaine.</p>
+
+<p> Membre: Personne addicte au chocolat payant un frais d'adhésion mensuel pour pouvoir bénéficier des avantages offerts par ChocAn. </p>
+
+<p>Mode interactif: État du logiciel du Centre de Données de ChocAn pendant la journée, permettant aux opérateurs d'ajouter, supprimer et modifier les enregistrements des membres et des fournisseurs de ChocAn.</p>
+
+<p>Procédure comptable principale: Exécuté au Centre des Données ChocAn tous les vendredis à minuit, ou à la demande d'un gérant de ChocAn,  imprime les rapports des services fournis par les fournisseurs durant une semaine. </p>
+
+<p>Rapport de synthèse: Destiné au gérant de ChocAn, la liste des fournisseurs qui doivent être payés, le nombre de consultations de chacun et le total de leurs frais pour la semaine. Le nombre total de fournisseurs ayant fourni des services, le nombre total de consultations et le total des frais de la semaine y sont également inscrits.</p>
+
+<p>Répertoire des Fournisseurs: Répertoire contenant les différents services de santé offerts par les fournisseurs, chacun associé à un code de service.</p>
+
+<p>Terminal: Ordinateur spécialement conçu pour les fournisseurs, nécessitant un numéro de fournisseur valide et doté d'un lecteur de cartes acceptant les cartes de membres.</p>
+
+<p>Transfert électronique de fond (TEF): Enregistrement destiné aux banques à fins de paiements</p>
+
+</body>
+
+</html>
