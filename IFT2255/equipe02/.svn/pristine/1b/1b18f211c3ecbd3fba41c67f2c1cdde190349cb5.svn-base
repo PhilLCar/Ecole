@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>
+<html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>
+<html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>
+<html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js"> <!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>IFT 2255 - Aut 2016</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+
+    <link rel="stylesheet" href="../../../css/normalize.css">
+    <link rel="stylesheet" href="../../../css/main.css">
+    <script src="../../../js/vendor/modernizr-2.6.2.min.js"></script>
+
+    <link rel="stylesheet" href="../../../css/uj.css">
+    <script type="application/javascript" src="../../../js/main.js"></script>
+</head>
+<body>
+<!--[if lt IE 7]>
+<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">
+    upgrade your browser</a> to improve your experience.</p>
+<![endif]-->
+
+<!-- Add your site or application content here -->
+<div id="main" style="width: 95%;">
+    <div id="header">
+    </div>
+    <div id="title">
+        IFT 2255 - Aut 2016<br>Devoir maison 1    </div>
+    <div id="content"><div class="box">
+<h1>Cas d'utilisations</h1>
+
+<!-- Exemple HTML -->
+<pre style="font-family: 'Open Sans', sans-serif;">    
+	<b>Cas d'utilisation :</b> 
+	<b>But :</b> 
+	<b>Préconditions :</b>
+	<b>Acteurs :</b> 
+	<b>Scénario principal :</b>
+		1. Étape 1
+		  1.1. Étape 1.1
+		2. Étape 2
+		3. Étape 3
+	<b>Scénarios alternatifs :</b> 
+		1a.1. remplace étape 1 du scenario principal
+		1b.1. autre remplacement de la même étape
+		1b.2. suit 1b.1 indépendamment du scenario principal
+	<b>Postconditions :</b> 
+</pre>
+
+<!-- Vérifier Numéro Membre -->
+<pre style="font-family: 'Open Sans', sans-serif;">    
+	<b>Cas d'utilisation:</b> Vérifier un numéro de membre.
+	<b>But:</b> S'assurer de la validité du numéro de membre d'un patient, pour pouvoir facturé le service de santé à ChocAn.
+	<b>Préconditions:</b> Membre possède un numéro de membre (préférablement une carte) et fournisseur possède le terminal de ChocAn.
+ 	<b>Acteurs:</b> Fournisseur
+	<b>Scénario principal:</b>
+		1. Le membre présente sa carte au fournisseur
+		2. Le fournisseur l'insère dans le lecteur de carte de son terminal
+		3. Communications entre le terminal et le CDC
+		4. Réception du message
+			4a. "Validé" : Le numéro de membre est valide et le membre est en règle
+			4b. "Numéro Invalide" : Le numéro de membre est invalide ou inexistant
+			4c. "Membre suspendu" : Membre est suspendu, affiche les raisons sur le terminal
+	<b>Scénarios alternatifs :</b>
+		4a. Pas de message reçu, affiche de réessayer plus tard
+	<b>Postconditions :</b> Retour à la normale
+</pre>
+
+<!-- Facturer service de santé -->
+<pre style="font-family: 'Open Sans', sans-serif;">
+	<b>Cas d'utilisation:</b> Facturer un service de santé
+	<b>But:</b> Permettre au fournisseur de facturer un service de santé offert à un membre ChocAn valide.
+	<b>Préconditions:</b> Après avoir offert un service de santé, nécessite le code de service et un numéro de membre valide.
+	<b>Acteur principal: </b> Fournisseur
+	<b>Scénario principal:</b>
+		1. Fournisseur insère la carte du membre dans le lecteur.
+		2. Après validation, le fournisseur entre la date à laquelle le service à été fourni (JJ-MM-AAAA)
+		3. Fournisseur recherche le code à 6 chiffres du service offert dans le Répertoire des Fournisseurs et l'entre dans le terminal.
+		4. Affiche à l'écran le nom du service correspondant au code entré.
+		5. Demande la confirmation du fournisseur pour le service.
+		6. Système créé un enregistremant sur le disque contenant les champs suivant:
+			- Date et heure actuelle (JJ-MM-AAAA HH:MM:SS)
+			- Date à laquelle le service était fourni (JJ-MM-AA)
+			- Numéro du fournisseur (9 chiffres)
+			- Numéro du membre (9 chiffres)
+			- Code du service (6 chiffres)
+			- Commentaires facultatifs (100 charactères)		
+		7. Affiche le montant à payer pour le service et demande au fournisseur de remplir le formulaire de vérification.
+	<b>Scénarios alternatifs:</b>
+		1a. Fournisseur entre le numéro de membre directement dans le terminal.
+		2a. Si numéro Invalide, quitte cette fonctionnalitée.
+		4a. Si code invalide, affiche un message d'erreur et retourne à l'étape 3.
+		6a. Si fournisseur ne valide pas, quitte cette fonctionnalitée.		
+	<b>Postconditions:</b> L'enregistrement du service donné est inscrit sur le disque.	
+</pre>
+
+<!-- Exécuter procédure comptable principale -->
+<pre style="font-family: 'Open Sans', sans-serif;">    
+	<b>Cas d'utilisation: </b> Exécuter la procédure comptable principale.
+	<b>But :</b> Imprime tous les rapports nécessaires 
+	<b>Préconditions :</b> Centre des Données ChocAn à un fichier des services fournis durant la semaine.
+	<b>Acteur :</b> Temporel (Vendredi à minuit)
+	<b>Acteur secondaire:</b> Gérant ChocAn
+	<b>Scénario principal :</b>
+		1. Lit le fichier des services fournis durant la semaine.
+		2. Imprime et envoit à chaque membre le rapport de service fournis à chacun.
+		3. Imprime et envoit à chaque fournisseur le rapport de service fournis par chacun.
+		4. Imprime le rapport de synthèse destiné aux gérants ChocAn. 
+	<b>Postconditions :</b> 
+</pre>
+
+
+
+</body>
+
+</html>

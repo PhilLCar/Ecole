@@ -1,0 +1,17 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<root>
+  <label>[root]</label>
+    <branch>
+        <label>DM1</label>
+        <leaf><label>ChocAn.pdf</label><weight>2181</weight><value>100.0</value></leaf>
+        <leaf><label>cas_utilisation.html</label><weight>273</weight><value>100.0</value></leaf>
+        <leaf><label>data.zip</label><weight>25</weight><value>100.0</value></leaf>
+        <leaf><label>glossaire.html</label><weight>51</weight><value>100.0</value></leaf>
+        <leaf><label>project.xml</label><weight>2287</weight><value>100.0</value></leaf>
+    </branch>
+
+  <branch>
+      <label>[root]</label>
+      <leaf><label>README.txt</label><weight>5</weight><value>100.0</value></leaf>
+  </branch>
+</root>

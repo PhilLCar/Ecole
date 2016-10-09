@@ -1,0 +1,346 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<log>
+<logentry
+   revision="237">
+<author>pcaron</author>
+<date>2016-10-06T15:22:14.650278Z</date>
+<paths>
+<path
+   kind="file"
+   action="A">/equipe02/DM1/ChocAn.pdf</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM1/cas_utilisation.vpp</path>
+<path
+   kind="file"
+   action="A">/equipe02/DM1/data.zip</path>
+<path
+   kind="file"
+   action="A">/equipe02/DM1/project.xml</path>
+</paths>
+<msg>Downgrade du fichier vpp vers 13.1, devrait fonctionner maintenant</msg>
+</logentry>
+<logentry
+   revision="225">
+<author>gevrai</author>
+<date>2016-10-05T19:29:33.231469Z</date>
+<paths>
+<path
+   action="D"
+   kind="file">/equipe02/DM1/cas_utilisation.vpp~1</path>
+<path
+   action="D"
+   kind="file">/equipe02/DM1/glossaire.txt</path>
+</paths>
+<msg>Menage de fichiers inutiles</msg>
+</logentry>
+<logentry
+   revision="224">
+<author>gevrai</author>
+<date>2016-10-05T19:24:02.409558Z</date>
+<paths>
+<path
+   action="M"
+   kind="file">/equipe02/DM1/cas_utilisation.html</path>
+</paths>
+<msg>update cas_utilisation.html
+- Acceder repertoire des fournisseurs maintenant plus verbose
+- Typos et legeres modif ailleur
+</msg>
+</logentry>
+<logentry
+   revision="215">
+<author>gevrai</author>
+<date>2016-10-05T00:14:09.090735Z</date>
+<paths>
+<path
+   kind="file"
+   action="M">/equipe02/DM1/cas_utilisation.html</path>
+</paths>
+<msg>cas_utilisation.html Verification du numéro de membre
+- Ajout d'un paramètre de sécurité simple nécessitant une carte d'identité de la part du membre
+- Le message "Valide" affiche maintenant le nom du membre
+</msg>
+</logentry>
+<logentry
+   revision="213">
+<author>gevrai</author>
+<date>2016-10-04T23:55:39.502672Z</date>
+<paths>
+<path
+   kind="file"
+   action="M">/equipe02/DM1/cas_utilisation.html</path>
+</paths>
+<msg>update cas_utilisation.html
+- Cas d'utilisations séparés pour chaque rapports (membre, fournisseur, synthèse et TEF) pour mieux réfléter l'organisation du diagramme UML des CU
+- Modif et correction de typos sur certains CUs
+- Mise en page consistante
+
+</msg>
+</logentry>
+<logentry
+   revision="192">
+<author>gevrai</author>
+<date>2016-10-04T19:29:32.074901Z</date>
+<paths>
+<path
+   action="M"
+   kind="file">/equipe02/DM1/cas_utilisation.html</path>
+</paths>
+<msg>charset fixed to UTF-8</msg>
+</logentry>
+<logentry
+   revision="186">
+<author>pcaron</author>
+<date>2016-10-04T10:28:20.207350Z</date>
+<paths>
+<path
+   action="M"
+   kind="file">/equipe02/DM1/cas_utilisation.html</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM1/cas_utilisation.vpp</path>
+</paths>
+<msg>ajouts de cas d'utilisations et quelques changements</msg>
+</logentry>
+<logentry
+   revision="185">
+<author>pcaron</author>
+<date>2016-10-04T09:26:09.088911Z</date>
+<paths>
+<path
+   action="M"
+   kind="file">/equipe02/DM1/glossaire.html</path>
+</paths>
+<msg>cleanup du glossaire</msg>
+</logentry>
+<logentry
+   revision="184">
+<author>pcaron</author>
+<date>2016-10-04T08:53:25.312662Z</date>
+<paths>
+<path
+   kind="file"
+   action="M">/equipe02/DM1/cas_utilisation.vpp</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM1/cas_utilisation.vux</path>
+<path
+   kind="file"
+   copyfrom-path="/equipe02/DM1/glossaire.txt"
+   copyfrom-rev="119"
+   action="A">/equipe02/DM1/glossaire.txt</path>
+</paths>
+<msg>réglage des problèmes de lignes toutes croches</msg>
+</logentry>
+<logentry
+   revision="182">
+<author>gevrai</author>
+<date>2016-10-04T03:26:03.945954Z</date>
+<paths>
+<path
+   action="M"
+   kind="file">/equipe02/DM1/cas_utilisation.html</path>
+</paths>
+<msg>Ajout de 2 CUs dans cas_utilisation.html
+</msg>
+</logentry>
+<logentry
+   revision="145">
+<author>gevrai</author>
+<date>2016-09-30T17:26:36.840940Z</date>
+<paths>
+<path
+   action="M"
+   kind="file">/equipe02/DM1/cas_utilisation.html</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM1/cas_utilisation.vpp</path>
+</paths>
+<msg>Update minime des CU</msg>
+</logentry>
+<logentry
+   revision="144">
+<author>gevrai</author>
+<date>2016-09-30T17:02:01.714822Z</date>
+<paths>
+<path
+   action="M"
+   kind="file">/equipe02/DM1/cas_utilisation.html</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM1/cas_utilisation.vpp</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM1/glossaire.html</path>
+</paths>
+<msg>Mise en page et écriture du premier cas d'utilisation
+-Vérification du numéro de membre
+Légers changements dans le diagramme des CU
+
+</msg>
+</logentry>
+<logentry
+   revision="137">
+<author>gevrai</author>
+<date>2016-09-29T20:29:54.954351Z</date>
+<paths>
+<path
+   kind="file"
+   action="A">/equipe02/DM1/cas_utilisation.html</path>
+<path
+   kind="file"
+   action="A">/equipe02/DM1/cas_utilisation.vpp</path>
+<path
+   kind="file"
+   action="A">/equipe02/DM1/cas_utilisation.vpp~1</path>
+<path
+   kind="file"
+   action="A">/equipe02/DM1/cas_utilisation.vux</path>
+<path
+   kind="file"
+   action="D">/equipe02/DM1/glossaire.txt</path>
+</paths>
+<msg>Creation du diagramme UML des cas d'utilisations.
+Deletion de glossaire.txt maintenant obsolete.
+
+</msg>
+</logentry>
+<logentry
+   revision="127">
+<author>gevrai</author>
+<date>2016-09-28T01:53:28.612464Z</date>
+<paths>
+<path
+   kind="file"
+   action="M">/equipe02/DM1/glossaire.html</path>
+</paths>
+<msg>Edition de glossaire.html
+- Terme maintenant ordonnes alphabetiquements
+- Addition et modification de certaines definitions
+</msg>
+</logentry>
+<logentry
+   revision="126">
+<author>gevrai</author>
+<date>2016-09-28T01:35:42.415243Z</date>
+<paths>
+<path
+   action="A"
+   kind="file">/equipe02/DM1/glossaire.html</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM1/glossaire.txt</path>
+</paths>
+<msg>Creation de glossaire.html</msg>
+</logentry>
+<logentry
+   revision="119">
+<author>gevrai</author>
+<date>2016-09-27T21:17:30.499096Z</date>
+<paths>
+<path
+   kind="file"
+   action="M">/equipe02/DM1/glossaire.txt</path>
+</paths>
+<msg>merge resolved test</msg>
+</logentry>
+<logentry
+   revision="118">
+<author>pcaron</author>
+<date>2016-09-27T21:14:33.640089Z</date>
+<paths>
+<path
+   kind="file"
+   action="M">/equipe02/DM1/glossaire.txt</path>
+</paths>
+<msg>test de collision (l'autre)</msg>
+</logentry>
+<logentry
+   revision="115">
+<author>pcaron</author>
+<date>2016-09-27T21:13:10.822598Z</date>
+<paths>
+<path
+   action="A"
+   kind="file">/equipe02/DM1/glossaire.txt</path>
+</paths>
+<msg>glossaire</msg>
+</logentry>
+<logentry
+   revision="113">
+<author>pcaron</author>
+<date>2016-09-27T21:10:22.157175Z</date>
+<paths>
+<path
+   kind="dir"
+   action="A">/equipe02/DM1</path>
+</paths>
+<msg>BOUH</msg>
+</logentry>
+<logentry
+   revision="83">
+<author>pcaron</author>
+<date>2016-09-26T18:11:17.712519Z</date>
+<paths>
+<path
+   action="M"
+   kind="file">/equipe02/README.txt</path>
+</paths>
+<msg>Test commit</msg>
+</logentry>
+<logentry
+   revision="38">
+<author>gevrai</author>
+<date>2016-09-20T21:58:50.720273Z</date>
+<paths>
+<path
+   kind="file"
+   action="M">/equipe02/README.txt</path>
+</paths>
+<msg>Premier vrai commit, update README.txt</msg>
+</logentry>
+<logentry
+   revision="29">
+<author>gevrai</author>
+<date>2016-09-20T21:54:28.640049Z</date>
+<paths>
+<path
+   action="M"
+   kind="file">/equipe02/README.txt</path>
+</paths>
+<msg>Autre test de commit</msg>
+</logentry>
+<logentry
+   revision="14">
+<author>gevrai</author>
+<date>2016-09-20T21:37:16.520588Z</date>
+<paths>
+<path
+   action="M"
+   kind="file">/equipe02/README.txt</path>
+</paths>
+<msg>Second commit (README.txt modifications)</msg>
+</logentry>
+<logentry
+   revision="13">
+<author>gevrai</author>
+<date>2016-09-20T21:35:47.213985Z</date>
+<paths>
+<path
+   kind="file"
+   action="A">/equipe02/README.txt</path>
+</paths>
+<msg>First commit</msg>
+</logentry>
+<logentry
+   revision="1">
+<author>syriani</author>
+<date>2016-09-20T17:34:58.550413Z</date>
+<paths>
+<path
+   kind="dir"
+   action="A">/equipe02</path>
+</paths>
+</logentry>
+</log>

@@ -1,0 +1,9 @@
+flocon:
+java -cp bin Lindenmayer -D 2 -x 300 -y 400 -delta 60 -a 90 5 [+++F][++F][+F][--F][-F]F 'F:[+F][-F]FF' > flocon.eps
+
+fleurs des champs:
+java -cp bin Lindenmayer -D 4 -x 200 -y 100 -delta 10 -a 90 7 F 'F:F[+F]-F' 'F:F[-F]+F' 'F:FF' 'F:F[++F][--F]F' > fleur.eps
+
+neurones/internet/routes:
+java -cp bin Lindenmayer -D 6 -x 250 -y 300 -delta 20 -a 140 9 [++F][--F]F 'F:[++F]F-F' 'F:[--F]F+F' 'F:FF' 'F:[+++++++F][+++F][---F][-------F]FF' > reseau.eps
+

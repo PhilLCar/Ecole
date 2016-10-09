@@ -26,7 +26,7 @@
 \newcommand\tab[1][0.5cm]{\hspace*{#1}}
 
 \lstset{frame=tb,
-  language=Python,
+  language=PostScript,
   aboveskip=3mm,
   belowskip=3mm,
   showstringspaces=false,
@@ -35,7 +35,7 @@
   numbers=none,
   numberstyle=\tiny\color{pink},
   keywordstyle=\color{purple},
-  commentstyle=\color{dkgreen},
+  commentstyle=\color{brown},
   stringstyle=\color{brown},
   breaklines=true,
   breakatwhitespace=true,
@@ -47,6 +47,7 @@
 
 \subsection{Qu'est-ce qu'il fait? [Postscript]}
 \subsubsection{Manipulation de la pile}
+Le contenu de la pile est le suivant à chaque opération (la valeur sur le dessus est représentée en bas):
 $\stackrel{\text{État initial}}{
   \begin{tabular}{|c|}
     \hline 1 \\
@@ -116,5 +117,22 @@ L'opérateur mystique sélectionne la plus grande valeur entre $a$ et $b$. Le co
 L'opérateur \key{tbl.?} compte le nombre d'éléments négatifs du tableau.
 
 \subsubsection{Opérateur énigmatique}
+L'opérateur énigmatique retourne le $n$-ième de la suite de Fibonacci, définie récursivement comme suit:
+$$F_n =
+\begin{cases}
+  1 & \text{si } n \leq 1\\
+  F_{n-1} + F_{n-2} & \text{sinon}
+\end{cases}
+$$
 
+\subsubsection{Maximum dans un tableau}
+La fonction suivante permet de calculer le maximum d'un tableau:
+\begin{lstlisting}
+  /tbl.max % [x0 x1 ..] tbl.max m
+  {
+    0 exch {
+      2 copy lt { exch } if pop
+    } forall
+  } def
+\end{lstlisting}
 \end{document}

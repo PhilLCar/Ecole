@@ -1,0 +1,69 @@
+/T:x 250.0 def
+/T:y 300.0 def
+/T:a 140.0 def
+
+/T:draw % dessine une arrête
+{
+	T:x T:y moveto T:step
+	T:x T:y lineto stroke
+} def
+
+/T:step % avance la tortue d'un pas
+{
+	/T:x T:a cos 6.0 mul T:x add def
+	/T:y T:a sin 6.0 mul T:y add def
+} def
+
+/open % sauvegarde l'état
+{
+	3 dict begin
+} def
+
+/plus % tourne la tortue CCW
+{
+	/T:a T:a 20.0 add def
+} def
+
+/minus % tourne la tortue CW
+{
+	/T:a T:a 20.0 sub def
+} def
+
+/F % Règle d'expansion de F
+{
+	dup 0 eq
+	{
+		T:draw
+		pop
+	}{
+		1 sub
+		rand 4 mod
+		dup 3 eq {
+			pop open plus plus dup F end dup F minus F 
+		}{
+			dup 2 eq {
+				pop open minus minus dup F end dup F plus F 
+			}{
+				dup 1 eq {
+					pop dup F F 
+				}{
+					pop open plus plus plus plus plus plus plus dup F end open plus plus plus dup F end open minus minus minus dup F end open minus minus minus minus minus minus minus dup F end dup F F 
+				} ifelse
+			} ifelse
+		} ifelse
+	} ifelse
+} def
+
+/f % Règle d'expansion de f
+{
+	dup 0 eq
+	{
+		T:step
+		pop
+	}{
+		1 sub
+	} ifelse
+} def
+
+9
+open plus plus dup F end open minus minus dup F end F 

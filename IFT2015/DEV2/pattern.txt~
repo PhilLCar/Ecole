@@ -1,0 +1,9 @@
+flocon:
+java -cp bin Lindenmayer -D 2 -x 150 -y 200 -delta 60 -a 90 5 [+++F][++F][+F][--F][-F]F 'F:[+F][-F]FF' > lindenmayer.eps
+
+fleurs des champs:
+java -cp bin Lindenmayer -D 4 -x 250 -y 200 -delta 10 -a 90 8 F 'F:F[+F]-F' 'F:F[-F]+F' 'F:FF' 'F:F[++F][--F]F' > lindenmayer.eps
+
+neurones:
+java -cp bin Lindenmayer -D 6 -x 250 -y 300 -delta 20 -a 140 9 [++F][--F]F 'F:[++F]F-F' 'F:[--F]F+F' 'F:FF' 'F:[+++++++F][+++F][---F][-------F]FF' > lindenmayer.eps
+
