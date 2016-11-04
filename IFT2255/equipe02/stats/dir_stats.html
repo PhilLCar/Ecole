@@ -1,0 +1,161 @@
+<?xml version="1.0"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>StatSVN - Directory stats/</title>
+ <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"/>
+    <meta name="Generator" content="StatSVN 0.7.0"/>
+<link rel="stylesheet" href="objectlab-statcvs.css" type="text/css"/>
+<script type="text/javascript" charset="utf-8" src="http://bit.ly/javascript-api.js?version=latest&#38;login=statsvn&#38;apiKey=R_2c362b417d0517c27876cbaca1bb68cc"></script>
+<script type="text/javascript" charset="utf-8">
+   // wait until page is loaded to call API
+   var redir_url;
+   var short_url;
+   BitlyCB.myShortenCallback = function(data) {
+      // this is how to get a result of shortening a single url
+      var result;
+      short_url=null;
+      for (var r in data.results) {
+         result = data.results[r];
+         result['longUrl'] = r;
+         short_url = result['shortUrl'];
+         break;
+      }
+      if (short_url==null) // bit.ly failed
+      document.location=redir_url;
+      else
+      redirToTwitter();
+   };
+   function shortenTweet(url) {
+      if (short_url == null || redir_url!=url) {
+      redir_url = url;
+      BitlyClient.shorten(document.location, 'BitlyCB.myShortenCallback');
+      }
+      else
+      redirToTwitter();
+      return false;
+   }
+   function redirToTwitter() { 
+      // replace {0} which is visible as %7B0} in the link
+      document.location = redir_url.replace('%7B0}', short_url);
+   }
+</script>
+  </head>
+
+<body>
+
+<h1>Directory stats/</h1>
+<div id="parentlink">&#171; <a href="index.html">Development Statistics for /equipe02</a></div>
+<dl class="attributes">
+    <dt>Directory Created:</dt>
+    <dd><span class="date">2016-10-11 13:05</span></dd>
+    <dt>Total Files:</dt>
+    <dd>45</dd>
+    <dt>Deleted Files:</dt>
+    <dd>0</dd>
+    <dt>Lines of Code:</dt>
+    <dd>6731</dd>
+</dl>
+<p class="dirtree">
+<a href="dir.html">[root]</a>/<strong>stats</strong><br/>
+</p>
+
+<div class="section">
+<h2>Lines of Code</h2>
+<p class="chart"><img src="loc_module_stats.png" alt="stats/ Lines of Code" width="800" height="500" /></p></div>
+<div class="section">
+<h2>Developers</h2>
+  <table  rules="groups" summary="All authors and the number of their changes and lines of code in this directory">
+    <colgroup align="left"/>
+    <colgroup align="right"/>
+    <colgroup align="right"/>
+    <colgroup align="right"/>
+    <thead>
+      <tr>
+        <th>Author</th>
+        <th>Changes</th>
+        <th>Lines of Code</th>
+        <th>Lines per Change</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr  class="odd">
+        <th><a href="user_pcaron.html" class="author">pcaron</a></th>
+        <td>45 (100.0%)</td>
+        <td>6731 (100.0%)</td>
+        <td>149.5</td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>
+<div class="section">
+<h2>Most Recent Commits</h2>
+<dl class="commitlist">
+  <dt><a name="1"></a>
+    <a href="user_pcaron.html" class="author">pcaron</a>
+    <span class="date">2016-10-11 13:05</span>
+    <span class="revisionNumberOuter">Rev.: <span class="revisionNumberInner">450</span></span>
+  </dt>
+  <dd>
+    <p class="comment">
+ajout des statistiques
+    </p>
+    <p class="commitdetails"><strong>6731</strong> lines of code changed in <span class="files">45 files</span>:</p>
+    <ul class="commitdetails">
+      <li>
+        <strong>stats</strong>:
+        2016-09.html&#160;<span class="new">(new&#160;327)</span>,
+        activity.png&#160;<span class="new">(new&#160;63)</span>,
+        activity_day.png&#160;<span class="new">(new&#160;81)</span>,
+        activity_day_gevrai.png&#160;<span class="new">(new&#160;52)</span>,
+        activity_day_pcaron.png&#160;<span class="new">(new&#160;73)</span>,
+        activity_time.png&#160;<span class="new">(new&#160;78)</span>,
+        activity_time_gevrai.png&#160;<span class="new">(new&#160;65)</span>,
+        activity_time_pcaron.png&#160;<span class="new">(new&#160;58)</span>,
+        bug.png&#160;<span class="new">(new&#160;12)</span>,
+        churn.html&#160;<span class="new">(new&#160;56)</span>,
+        cloud.html&#160;<span class="new">(new&#160;172)</span>,
+        commitlog.html&#160;<span class="new">(new&#160;439)</span>,
+        commitscatterauthors.png&#160;<span class="new">(new&#160;87)</span>,
+        developers.html&#160;<span class="new">(new&#160;228)</span>,
+        dir.html&#160;<span class="new">(new&#160;201)</span>,
+        dir_DM1.html&#160;<span class="new">(new&#160;628)</span>,
+        dir_sizes.html&#160;<span class="new">(new&#160;90)</span>,
+        directories_loc_timeline.png&#160;<span class="new">(new&#160;60)</span>,
+        directory_sizes.png&#160;<span class="new">(new&#160;164)</span>,
+        directory_sizes_gevrai.png&#160;<span class="new">(new&#160;181)</span>,
+        directory_sizes_pcaron.png&#160;<span class="new">(new&#160;176)</span>,
+        file-deleted.png&#160;<span class="new">(new&#160;5)</span>,
+        file.png&#160;<span class="new">(new&#160;5)</span>,
+        file_count.png&#160;<span class="new">(new&#160;86)</span>,
+        file_size.png&#160;<span class="new">(new&#160;62)</span>,
+        file_sizes.html&#160;<span class="new">(new&#160;219)</span>,
+        folder-deleted.png&#160;<span class="new">(new&#160;5)</span>,
+        folder.png&#160;<span class="new">(new&#160;5)</span>,
+        index.html&#160;<span class="new">(new&#160;116)</span>,
+        jtreemap-1.1.0.jar&#160;<span class="new">(new&#160;650)</span>,
+        loc.html&#160;<span class="new">(new&#160;57)</span>,
+        loc.png&#160;<span class="new">(new&#160;80)</span>,
+        loc_module.png&#160;<span class="new">(new&#160;69)</span>,
+        loc_module_DM1.png&#160;<span class="new">(new&#160;85)</span>,
+        loc_per_author.png&#160;<span class="new">(new&#160;75)</span>,
+        loc_small.png&#160;<span class="new">(new&#160;54)</span>,
+        locandchurn.png&#160;<span class="new">(new&#160;110)</span>,
+        logfile.log&#160;<span class="new">(new&#160;666)</span>,
+        objectlab-statcvs.css&#160;<span class="new">(new&#160;175)</span>,
+        repomap-data.txt&#160;<span class="new">(new&#160;15)</span>,
+        repomap.html&#160;<span class="new">(new&#160;57)</span>,
+        tt-twitter-micro3.png&#160;<span class="new">(new&#160;6)</span>,
+        tweet-this.png&#160;<span class="new">(new&#160;47)</span>,
+        user_gevrai.html&#160;<span class="new">(new&#160;511)</span>,
+        user_pcaron.html&#160;<span class="new">(new&#160;280)</span>
+      </li>
+    </ul>
+  </dd>
+
+</dl>
+
+</div><div id="generatedby">Generated by <a href="http://www.statsvn.org">StatSVN</a> 0.7.0</div>
+</body>
+</html>

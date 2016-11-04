@@ -1,0 +1,116 @@
+C(rx) =
+	r1 <- 1 // r1 sera la constante 1
+	tant que rx =/= r1 faire [
+		r2 <- rx
+		MOD2(r2)
+		tant que r2 =/= r3 faire [ // r3 sera la constante 0
+			MUL3(rx)
+			inc(rx)
+			inc(r0)
+		]
+		r2 <- rx
+		MOD2(r2)
+		tant que r2 =/= r1 faire [
+			DIV2(rx)
+			inc(r0)
+		]
+	]
+	rx <- r0
+
+MOD2(rx) =
+	r4 <- 0
+	r5 <- 0
+	r6 <- 0
+	tant que r4 =/= rx faire [
+		inc(r4)
+		inc(r5)
+		r6 <- 0
+		r7 <- r4
+		tant que r7 =/= rx faire [
+			inc(r6)
+			inc(r7)
+		]
+		tant que r6 =/= r3 faire [ // r3 = 0
+			inc(r4)
+			r6 <- 0
+			r5 <- 0
+		]
+	]
+	rx <- r5
+
+def DIV2(rx) =
+	r8 <- 0
+	r10 <- 0
+	// r9 <- rx // Pour division safe
+	// MOD2(r9)
+	// tant que r9 =/= r3 faire [
+	// 	inc(r8)
+	//	inc(r9)
+	// ]
+	tant que r8 =/= rx faire [
+		inc(r8)
+		inc(r8)
+		inc(r10)
+	]
+	rx <- r10
+
+MUL3(rx) =
+	r11 <- 0
+	r12 <- 0
+	tant que r11 =/= rx faire [
+		inc(r11)
+		inc(r12)
+		inc(r12)
+		inc(r12)
+	]
+	rx <- r12
+
+
+======================== PYTHON ===========================
+
+def C(rx):
+	r0 = r1 = r2 = 0
+	while rx != 1:
+		while MOD2(rx) != 0:
+			rx = MUL3(rx)
+			rx += 1
+			r0 += 1
+		while MOD2(rx) != 1:
+			rx = DIV2(rx)
+			r0 += 1
+	return r0
+ 
+def MOD2(n):
+	p = r = i = j = 0
+	while i != n:
+		p += 1
+		r = 0
+		i += 1
+		j = i
+		while j != n:
+			r += 1
+			j += 1
+		while r != 0:
+			i += 1
+			r = 0
+			p = 0
+	return p
+
+def DIV2(n):
+	r = i = 0
+	#a = MOD2(n)
+	#while a != 0:
+	#	i += 1
+	#	a = 0
+	while i != n:
+		i += 2
+		r += 1
+	return r
+
+def MUL3(n):
+	r = i = 0
+	while r != n:
+		r += 1
+		i += 3
+	return i
+			

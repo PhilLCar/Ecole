@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/Arch Linux) (preloaded format=pdflatex 2016.9.9)  11 OCT 2016 12:04
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/Arch Linux) (preloaded format=pdflatex 2016.9.9)  12 OCT 2016 08:37
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1525,34 +1525,34 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
  [1
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] [2] [3]
-LaTeX Font Info:    Try loading font information for T1+cmtt on input line 145.
+LaTeX Font Info:    Try loading font information for T1+cmtt on input line 148.
 
 
 (/usr/share/texmf-dist/tex/latex/base/t1cmtt.fd
 File: t1cmtt.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
-Overfull \hbox (14.66194pt too wide) in paragraph at lines 248--249
+Overfull \hbox (14.66194pt too wide) in paragraph at lines 251--252
 [][] 
  []
 
 [4] [5]
 
 Package hyperref Warning: Difference (2) between bookmark levels is greater 
-(hyperref)                than one, level fixed on input line 276.
+(hyperref)                than one, level fixed on input line 279.
 
 [6]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 318.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 318.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 321.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 321.
  (./devoir2.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 318.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 318.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 321.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 321.
 Package rerunfilecheck Info: File `devoir2.out' has not changed.
 (rerunfilecheck)             Checksum: 174BA589614750E138C8010C6DC20157;440.
  ) 
 Here is how much of TeX's memory you used:
  31546 strings out of 493013
  609092 string characters out of 6139318
- 656952 words of memory out of 5000000
+ 656958 words of memory out of 5000000
  34627 multiletter control sequences out of 15000+600000
  22119 words of font info for 67 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -1577,7 +1577,7 @@ super/sfrm1000.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm1200.
 pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm1728.pfb></usr/share
 /texmf-dist/fonts/type1/public/cm-super/sftt0900.pfb></usr/share/texmf-dist/fon
 ts/type1/public/cm-super/sftt1000.pfb>
-Output written on devoir2.pdf (6 pages, 317699 bytes).
+Output written on devoir2.pdf (6 pages, 317586 bytes).
 PDF statistics:
  201 PDF objects out of 1000 (max. 8388607)
  169 compressed objects within 2 object streams

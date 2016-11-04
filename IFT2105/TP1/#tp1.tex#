@@ -1,0 +1,276 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[french]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{tcolorbox}
+\usepackage[margin=2cm]{geometry}
+\usepackage{array}
+\usepackage{hyperref}
+\usepackage{tikz}
+\usepackage{listings}
+\usepackage{eurosym}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{cancel}
+\usepackage{xcolor}
+\usepackage{booktabs}
+\usetikzlibrary{automata, arrows}
+
+\title{IFT 2105 A2016 - Devoir 1} %trouver long trait d'union
+\author{Philippe Caron}
+\date{\today}
+
+\renewcommand{\thesubsubsection}{\alph{subsubsection})}
+\renewcommand{\thefootnote}{\fnsymbol{footnote}}
+\newenvironment{pseudo}{\begin{tcolorbox}[left skip = 2cm, right skip = 2cm]}{\end{tcolorbox}}
+\newcommand{\key}[1]{\text{\texttt{#1}}}
+\newcommand{\com}[1]{\text{\color{gray} \hspace{1cm} // #1}}
+\newcommand{\name}[1]{\text{\bf \texttt{#1}}}
+\newcommand\tab[1][1cm]{\hspace*{#1}}
+
+\lstset{frame=tb,
+  language=C,
+  aboveskip=3mm,
+  belowskip=3mm,
+  showstringspaces=false,
+  columns=flexible,
+  basicstyle={\small\ttfamily},
+  numbers=none,
+  numberstyle=\tiny\color{pink},
+  keywordstyle=\color{purple},
+  commentstyle=\color{brown},
+  stringstyle=\color{brown},
+  breaklines=true,
+  breakatwhitespace=true,
+  tabsize=3
+}
+\begin{document}
+\maketitle
+\section{Languages RÉPÉTER et TANTQUE}
+Le programme suivant retourne le premier 1 de la suite de syracuse (à partir de quel moment, le cycle devient trivial 1, 4, 2, 1, ...). Afin de faciliter la lecture des macros sont utilisée. Le développement se fait en remplaçant l'appel par le texte contenu dans la macro, et l'argument de l'appel par l'argument spécifié:
+
+\vspace{2cm}
+
+\begin{align*}
+  &\name{C}(r_x) =\\
+  &\tab{}r_0 \leftarrow 0 \com{pour les appels subséquents de C($r_x$)} \\
+  &\tab{}r_1 \leftarrow 1 \com{$r_1$ sera la constante 1}\\
+  &\tab{}\key{tant que } r_x \neq r_1 \key{ faire } [\\
+    &\tab{}\tab{}r_2 \leftarrow r_x\\
+    &\tab{}\tab{}\key{MOD2}(r_2)\\
+    &\tab{}\tab{}\key{tant que } r_2 \neq r_3 \key{ faire } [ \com{$r_3$ sera la constante 0}\\
+      &\tab{}\tab{}\tab{}\key{MUL3}(r_x)\\
+      &\tab{}\tab{}\tab{}\key{inc}(r_x)\\
+      &\tab{}\tab{}\tab{}\key{inc}(r_0)\\
+      &\tab{}\tab{}]\\
+    &\tab{}\tab{}r_2 \leftarrow r_x\\
+    &\tab{}\tab{}\key{MOD2}(r_2)\\
+    &\tab{}\tab{}\key{tant que } r_2 \neq r_1 \key{ faire } [\\
+      &\tab{}\tab{}\tab{}\key{DIV2}(r_x)\\
+      &\tab{}\tab{}\tab{}\key{inc}(r_0)\\
+      &\tab{}\tab{}]\\
+    &\tab{}]\\
+  &\tab{}r_x \leftarrow r_0\\
+\end{align*}
+
+Un tel programme en langage RÉPÉTER serait impossible à concevoir puisqu'il faudrait connaître une borne supérieur à C(x), or on n'a jamais pu réussi à prouver que la suite de la conjecture de syracuse se terminait à tout coup, il est donc impossible de savoir si le programme va s'arrêter, et bien entendu impossible de trouver une borne supérieure.
+
+*Macros à la page suivante...
+
+\begin{align*}
+  &\name{MOD2}(r_x) =\\
+  &\tab{}r4 \leftarrow 0\\
+  &\tab{}r5 \leftarrow 0\\
+  &\tab{}r6 \leftarrow 0\\
+  &\tab{}\key{tant que } r_4 \neq r_x \key{ faire } [\\
+    &\tab{}\tab{}\key{inc}(r_4)\\
+    &\tab{}\tab{}\key{inc}(r_5)\\
+    &\tab{}\tab{}r_6 \leftarrow 0\\
+    &\tab{}\tab{}r_7 \leftarrow r_4\\
+    &\tab{}\tab{}\key{tant que } r_7 \neq r_x \key{ faire } [\\
+      &\tab{}\tab{}\tab{}\key{inc}(r_6)\\
+      &\tab{}\tab{}\tab{}\key{inc}(r_7)\\
+      &\tab{}\tab{}]\\
+    &\tab{}\tab{}\key{tant que } r_6 \neq r_3 \key{ faire } [ // r3 = 0\\
+      &\tab{}\tab{}\tab{}\key{inc}(r_4)\\
+      &\tab{}\tab{}\tab{}r_6 \leftarrow 0\\
+      &\tab{}\tab{}\tab{}r_5 \leftarrow 0\\
+      &\tab{}\tab{}]\\
+    &\tab{}]\\
+  &\tab{}r_x \leftarrow r_5\\
+  &\name{DIV2}(r_x) =\\
+  &\tab{}r_8 \leftarrow 0\\
+  &\tab{}r_{10} \leftarrow 0\\
+  &\tab{}\com{$r_9 \leftarrow r_x$ // Pour division sécuritaire (pas nécéssaire)}\\
+  &\tab{}\com{\key{MOD2}($r_9$)}\\
+  &\tab{}\com{\key{tant que $r_9 \neq r_3$ faire}} [\\
+    &\tab{}\com{\tab{}\key{inc}($r_8$)}\\
+    &\tab{}\com{\tab{}\key{inc}($r_9$)}\\
+    &\tab{}\com{]}\\
+  &\tab{}\key{tant que } r_8 \neq r_9 \key{ faire } [\\
+    &\tab{}\tab{}\key{inc}(r_8)\\
+    &\tab{}\tab{}\key{inc}(r_8)\\
+    &\tab{}\tab{}\key{inc}(r_{10}\\
+    &\tab{}]\\
+  &\tab{}r_x \leftarrow r_{10}\\
+  &\\
+  &\name{MUL3}(r_x) =\\
+  &\tab{}r_{11} \leftarrow 0\\
+  &\tab{}r_{12} \leftarrow 0\\
+  &\tab{}\key{tant que } r_{11} \neq r_x \key{ faire } [\\
+    &\tab{}\tab{}\key{inc}(r_{11})\\
+    &\tab{}\tab{}\key{inc}(r_{12})\\
+    &\tab{}\tab{}\key{inc}(r_{12})\\
+    &\tab{}\tab{}\key{inc}(r_{12})\\
+    &\tab{}]\\
+  &\tab{}r_x \leftarrow r_{12}
+\end{align*}
+
+\section{Langage régulier}
+\subsubsection{}
+Le langage $L=\{x\ | \text{ le nombre $x$ en binaire est divisible par 7}\}$ est régulier:
+\paragraph{Preuve} Pour représenter le langage, on imagine que chaque chiffre binaire rencontré est en fait une opération sur une valeur initiale de 0. Ainsi le chiffre 0 signifie $\times 2$ et le chiffre 1 signifie $\times 2 + 1$. Puis on évalue chacune de ces opération avec un module de 7. Le résultat est toujours parmis les 7 états représenté ci-dessous, et l'état 0 est l'état acceptant.
+
+Le langage est donc régulier puisqu'il peut-être représenté par un automate:
+
+\vspace{2cm}
+
+\begin{center}
+  \begin{tikzpicture}[>=stealth', auto, node distance = 4cm, scale = 1, transform shape]
+    \node[state]                                                         (D)      {3};
+    \node[state]                     [above left  of = D, xshift = 1cm]  (B)      {1};
+    \node[initial right, state, accepting] [below of = B]                      (A)      {0};
+    \node[state]                     [above right of = B]                (C)      {2};
+    \node[state]                     [below right of = D, xshift = -1cm] (F)      {5};
+    \node[state]                     [above       of = F]                (G)      {6};
+    \node[state]                     [below left  of = F]                (E)      {4};
+
+    \path[->] (A) edge [left]       node [align = center] {1} (B)
+    (A) edge [loop below] node [align = center] {0} (A)
+    (B) edge [above right]      node [align = center] {1} (D)
+    (B) edge [above left]       node [align = center] {0} (C)
+    (C) edge [bend left = 35] node [align = center] {1} (F)
+    (C) edge [bend left = 80] node [align = center] {0} (E)
+    (D) edge [above left]      node [align = center] {1} (A)
+    (D) edge [above]       node [align = center] {0} (G)
+    (E) edge [bend left = 80]  node [align = center] {1} (C)
+    (E) edge [bend left = 35]  node [align = center] {0} (B)
+    (F) edge [below right]      node [align = center] {1} (E)
+    (F) edge [above right]      node [align = center] {0} (D)
+    (G) edge [loop above] node [align = center] {1} (G)
+    (G) edge [right]      node [align = center] {0} (F);
+  \end{tikzpicture}
+\end{center}
+
+\pagebreak
+
+\subsubsection{}
+Le langage $L=\{\omega\ |\ |\omega|_a= 2 \times |\omega|_b + 10\}$ n'est pas régulier.
+\paragraph{Preuve} Soit $R = \{\omega \in \{a, b\}^* | \omega=a^n\cdot b^{2n+10}\} \subset L$, si $R$ n'est pas régulier et qu'il est compris dans $L$, alors $L$ n'est pas régulier.
+
+Supposons l'inverse, si $R$ est régulier, alors il existe un $p > 0$ t.q.:
+
+\begin{itemize}
+\item $\forall i \geq 0,\ xy^iz \in R$, si $|\omega| \geq p$\\
+\item $|y| > 0$\\
+\item $|xy| \leq p$
+\end{itemize}
+
+Prenons le mot $\omega = a^{2p + 10}b^p \in R$, avec $|\omega| = 3p + 10 > p$. Alors il s'en suit que y ne contient forcément que des $a$. Or cela signie que $xy^2z \notin R$. Nous arrivons à une contradiction. $R$ n'est pas régulier, ce qui implique de $L$ n'est pas régulier.
+
+\section{Langage hors contexte}
+\subsubsection{}
+Soit le langage suivant : $L=\{\omega\ |\ |\omega|_a = 3 |\omega|_b\}$
+$$G=(V,\Sigma,R,S)$$
+où:
+\begin{align*}
+  V &= \{S\}\\
+  \Sigma &= \{a, b\}\\
+  R &= \{ S \rightarrow SaSaSaSbS
+  \ |\ SaSaSbSaS
+  \ |\ SaSbSaSaS
+  \ |\ SbSaSaSaS
+  \ |\  \epsilon\}
+\end{align*}
+
+\subsubsection{}
+Le langage $L=\{\omega\ |\ \omega=x\cdot x\cdot x\}$ n'est pas hors contexte.
+\paragraph{Preuve} Supposons l'inverse, alors il existe un $p$ t.q.:
+\begin{itemize}
+\item $\forall i \geq 0,\ uv^ixy^iz \in L$, si $|\omega| \geq p$\\
+\item $|vy| > 0$\\
+\item $|vxy| \leq p$
+\end{itemize}
+Choisissons le mot $\omega = x^p\cdot x^p\cdot x^p \in L$, avec $|\omega| = 3p > p$. Pour que mot après pompage soit aussi dans $L$, il y doit avoir un mot de la forme $(x' \cdot \delta) \cdot (x' \cdot \delta) \cdot (x' \cdot \delta)$ où $x' \cdot \delta = x$. Or il y a 3 $\delta$, mais seulement deux fragments de pompage, il faut donc qu'un des fragment soit au mois de la taille de $|x| + |\delta|$ et qu'un autre fragment soit de la taille de $\delta$ pour que cela fonction. Mais c'est impossible puisque $\delta$ est non nul ($|y| > 0$), et $|x| + 2|\delta| > p \geq |vxy|$. On arrive donc à une contradiction et on prouve que $L$ n'est pas hors contexte.
+
+\pagebreak
+
+\section{Marchine de Turing}
+Pour décider si un nombre est dans la suite de Fibonacci, on utilise un algorithme permettant de calculer les termes de la suite sous la forme suivante:
+\begin{lstlisting}
+  abab
+  aabab
+  aaabaab
+  aaaaabaaab
+  aaaaaaaabaaaaab
+  ...
+\end{lstlisting}
+
+Les "b" ajoutent cependant 2 à la longueur de la chaîne c'est pourquoi on ajoute 2 au nombre de départ. La machine effectue le calcul de la suite de Fibonacci sur la suite préexistante de 1 et regarde si celle-ci la couvre complètement et exactement, si c'est le cas, la machine accèpte (A) sinon elle refuse (X).
+
+Cette machine de Turing utilise l'alphabet de ruban $\{0, 1, a, b\}$. Le tableau des état de la machine (21) est à la page suivante:
+
+\begin{center}
+  \begin{tabular}{c|c|c|c|c||c|c|c|c|c}
+    
+    \multicolumn{10}{c}{Tableau des états}\\
+    \toprule
+    State & Read & Write & Next & Direction & State & Read & Write & Next & Direction \\ \hline\hline
+    & 1 & a & $I_2$ & R &       & 1 & a & $D_3$ & L\\
+    $I_1$ & 0 & - & X     & - & $W_1$ & 0 & - & X    & -\\
+    & a & - & X     & - &       & a & a & $W_1$ & R\\
+    & b & - & X     & - &       & b & - & X    & -\\\hline
+    & 1 & b & $I_3$ & R &       & 1 & 1 & $M_1$ & R\\
+    $I_2$ & 0 & - & A     & - & $D_3$ & 0 & - & X    & -\\
+    & a & - & X     & - &       & a & a & $D_3$ & L\\
+    & b & - & X     & - &       & b & b & $D_3$ & L\\\hline
+    & 1 & a & $I_4$ & R &       & 1 & a & $F_1$ & L\\
+    $I_3$ & 0 & - & A     & - & $F_1$ & 0 & 0 & $M_4$ & R\\
+    & a & - & X     & - &       & a & - & X    & -\\
+    & b & - & X     & - &       & b & - & X    & -\\\hline
+    & 1 & a & $P_1$ & R &       & 1 & 1 & $K_1$ & L\\
+    $I_4$ & 0 & - & A     & - & $M_4$ & 0 & - & A    & -\\
+    & a & - & X     & - &       & a & a & $M_4$ & R\\
+    & b & - & X     & - &       & b & b & $M_4$ & R\\\hline
+    & 1 & 1 & $P_1$ & R &       & 1 & - & X    & -\\
+    $P_1$ & 0 & 1 & $P_2$ & R & $K_1$ & 0 & - & X    & -\\
+    & a & - & X     & - &       & a & b & $K_2$ & L\\
+    & b & - & X     & - &       & b & - & X    & -\\\hline
+    & 1 & 1 & $P_2$ & L &       & 1 & - & X    & -\\
+    $P_2$ & 0 & 1 & $P_2$ & L & $K_2$ & 0 & - & X    & -\\
+    & a & - & X     & - &       & a & a & $K_2$ & L\\
+    & b & b & $D_1$ & L &       & b & a & $K_2$ & L\\\hline
+    & 1 & - & X     & - &       & 1 & - & X    & -\\
+    $D_1$ & 0 & - & X     & - & $K_3$ & 0 & - & X    & -\\
+    & a & a & $D_1$ & L &       & a & b & $K_4$ & L\\
+    & b & b & $D_2$ & L &       & b & - & X    & -\\\hline
+    & 1 & - & X     & - &       & 1 & - & X & -\\
+    $D_2$ & 0 & 0 & $M_1$ & R & $K_4$ & 0 & - & X    & -\\
+    & a & a & $D_2$ & L &       & a & a & $K_4$ & L\\
+    & b & - & X     & - &       & b & a & $K_5$ & R\\\hline
+    & 1 & - & X     & - &       & 1 & 1 & $I_5$ & L\\
+    $M_1$ & 0 & - & X     & - & $K_5$ & 0 & - & A    & -\\
+    & a & 1 & $M_2$ & R &       & a & a & $K_5$ & R\\
+    & b & b & $F_1$ & L &       & b & b & $K_5$ & R\\\hline
+    & 1 & - & X     & - &       & 1 & - & X    & -\\
+    $M_2$ & 0 & - & X     & - & $I_5$ & 0 & - & X    & -\\
+    & a & a & $M_2$ & R &       & a & - & X    & -\\
+    & b & b & $M_3$ & R &       & b & b & $D_1$ & L\\\hline
+    & 1 & - & X     & - &       & & & & \\
+    $M_3$ & 0 & - & X     & - &       & & & &\\
+    & a & a & $M_3$ & R &       & & & &\\
+    & b & b & $W_1$ & R &       & & & & \\\hline
+  \end{tabular}
+\end{center}
+
+\end{document}

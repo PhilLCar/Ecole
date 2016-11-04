@@ -1,0 +1,64 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<root>
+  <label>[root]</label>
+    <branch>
+        <label>DM1</label>
+        <leaf><label>cas_utilisation.html</label><weight>298</weight><value>100.0</value></leaf>
+        <leaf><label>glossaire.html</label><weight>51</weight><value>100.0</value></leaf>
+        <leaf><label>rapport.htm</label><weight>444</weight><value>100.0</value></leaf>
+    </branch>
+
+    <branch>
+        <label>stats</label>
+        <leaf><label>2016-09.html</label><weight>327</weight><value>100.0</value></leaf>
+        <leaf><label>activity.png</label><weight>63</weight><value>100.0</value></leaf>
+        <leaf><label>activity_day.png</label><weight>81</weight><value>100.0</value></leaf>
+        <leaf><label>activity_day_gevrai.png</label><weight>52</weight><value>100.0</value></leaf>
+        <leaf><label>activity_day_pcaron.png</label><weight>73</weight><value>100.0</value></leaf>
+        <leaf><label>activity_time.png</label><weight>78</weight><value>100.0</value></leaf>
+        <leaf><label>activity_time_gevrai.png</label><weight>65</weight><value>100.0</value></leaf>
+        <leaf><label>activity_time_pcaron.png</label><weight>58</weight><value>100.0</value></leaf>
+        <leaf><label>bug.png</label><weight>12</weight><value>100.0</value></leaf>
+        <leaf><label>churn.html</label><weight>56</weight><value>100.0</value></leaf>
+        <leaf><label>cloud.html</label><weight>172</weight><value>100.0</value></leaf>
+        <leaf><label>commitlog.html</label><weight>439</weight><value>100.0</value></leaf>
+        <leaf><label>commitscatterauthors.png</label><weight>87</weight><value>100.0</value></leaf>
+        <leaf><label>developers.html</label><weight>228</weight><value>100.0</value></leaf>
+        <leaf><label>dir.html</label><weight>201</weight><value>100.0</value></leaf>
+        <leaf><label>dir_DM1.html</label><weight>628</weight><value>100.0</value></leaf>
+        <leaf><label>dir_sizes.html</label><weight>90</weight><value>100.0</value></leaf>
+        <leaf><label>directories_loc_timeline.png</label><weight>60</weight><value>100.0</value></leaf>
+        <leaf><label>directory_sizes.png</label><weight>164</weight><value>100.0</value></leaf>
+        <leaf><label>directory_sizes_gevrai.png</label><weight>181</weight><value>100.0</value></leaf>
+        <leaf><label>directory_sizes_pcaron.png</label><weight>176</weight><value>100.0</value></leaf>
+        <leaf><label>file-deleted.png</label><weight>5</weight><value>100.0</value></leaf>
+        <leaf><label>file.png</label><weight>5</weight><value>100.0</value></leaf>
+        <leaf><label>file_count.png</label><weight>86</weight><value>100.0</value></leaf>
+        <leaf><label>file_size.png</label><weight>62</weight><value>100.0</value></leaf>
+        <leaf><label>file_sizes.html</label><weight>219</weight><value>100.0</value></leaf>
+        <leaf><label>folder-deleted.png</label><weight>5</weight><value>100.0</value></leaf>
+        <leaf><label>folder.png</label><weight>5</weight><value>100.0</value></leaf>
+        <leaf><label>index.html</label><weight>116</weight><value>100.0</value></leaf>
+        <leaf><label>jtreemap-1.1.0.jar</label><weight>650</weight><value>100.0</value></leaf>
+        <leaf><label>loc.html</label><weight>57</weight><value>100.0</value></leaf>
+        <leaf><label>loc.png</label><weight>80</weight><value>100.0</value></leaf>
+        <leaf><label>loc_module.png</label><weight>69</weight><value>100.0</value></leaf>
+        <leaf><label>loc_module_DM1.png</label><weight>85</weight><value>100.0</value></leaf>
+        <leaf><label>loc_per_author.png</label><weight>75</weight><value>100.0</value></leaf>
+        <leaf><label>loc_small.png</label><weight>54</weight><value>100.0</value></leaf>
+        <leaf><label>locandchurn.png</label><weight>110</weight><value>100.0</value></leaf>
+        <leaf><label>logfile.log</label><weight>666</weight><value>100.0</value></leaf>
+        <leaf><label>objectlab-statcvs.css</label><weight>175</weight><value>100.0</value></leaf>
+        <leaf><label>repomap-data.txt</label><weight>15</weight><value>100.0</value></leaf>
+        <leaf><label>repomap.html</label><weight>57</weight><value>100.0</value></leaf>
+        <leaf><label>tt-twitter-micro3.png</label><weight>6</weight><value>100.0</value></leaf>
+        <leaf><label>tweet-this.png</label><weight>47</weight><value>100.0</value></leaf>
+        <leaf><label>user_gevrai.html</label><weight>511</weight><value>100.0</value></leaf>
+        <leaf><label>user_pcaron.html</label><weight>280</weight><value>100.0</value></leaf>
+    </branch>
+
+  <branch>
+      <label>[root]</label>
+      <leaf><label>README.txt</label><weight>5</weight><value>100.0</value></leaf>
+  </branch>
+</root>

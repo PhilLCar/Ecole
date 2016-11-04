@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<head>
+    <title>IFT 2255 - Aut 2016</title>
+	<meta charset="utf-8">
+	<style type="text/css">
+        table {     border: outset 2px black;
+                    border-collapse: collapse; }
+        th {        border-bottom: double 2px black; }
+        td {        border-bottom: solid 1px black; }
+        .first_col{ border-right: double 2px black; }
+    </style>
+</head>
+
+<body>
+	<div id="main" style="width: 95%;">
+	<div id="header"> </div>
+	<div id="title">IFT 2255 - Aut 2016 <br> Devoir maison 2 </div>
+	<div id="content">
+	<div class="box">
+
+<h1 style="text-align: center;"> Rapport sur le workflow d'analyse et de conception</h1>
+
+<h2> Informations générales</h2>
+
+    <p>
+        <b>Nom: </b> Gevrai Jodoin-Tremblay <br />
+        <b>Matricule: </b>9650 <br />
+        <b>Courriel: </b> gevrai.jodoin-tremblay@umontreal.ca <br />
+        <b>Temps mis: </b> ~10 heures
+    </p>
+
+    <p>
+        <b>Nom: </b> Philippe Caron <br />
+        <b>Matricule: </b>9846<br />
+        <b>Courriel: </b>philippe.caron.4@umontreal.ca <br />
+        <b>Temps mis:</b> ~4h
+    </p>
+
+<h2> Distribution des tâches</h2>
+
+    <p> <b>Soumetteur: </b>Gevrai Jodoin-Tremblay </p>
+
+    <table cellpadding="7px">
+        <thead>
+            <tr>
+                <th class="first_col"> Tâche </th>
+                <th> En équipe</th>
+                <th> Gevrai </th>
+                <th> Philippe </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="first_col"> Description du système </td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td class="first_col"> Diagrammes d'activité </td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td class="first_col"> Diagramme de classes participantes</td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td class="first_col"> Diagramme de classes</td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td class="first_col">Diagramme de séquence</td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
+
+<h2> Description du système </h2>
+
+Le but ultime de ce projet est d'informatiser toutes les données de ChocAn ainsi que d'automatiser plusieurs fonctionalités courantes, comme la création des rapports et des données de paiements. 
+Tout sera stocké au Centre de Donnée ChocAn, et ainsi il nous faudra (au minimum) un serveur sur lequel sera installé le logiciel. Des ordinateurs seront aussi nécessaires pour permettre l'accès aux gérants ChocAn.
+Le système interagira avec les autres systèmes principalement en créant les enregistrements et rapports nécessaires à chacun, excepté avec les terminals fournisseurs, qui devront se connecter au serveur. Ainsi, les fournisseurs interagiront avec le système grâce à un terminal, les clients par email??? et les gérants ChocAn avec leur ordinateur professionnel.
+
+<h2> Diagrammes d'activité </h2>
+
+
+<h2> Diagramme de classes participantes</h2> 
+
+
+<h2> Diagramme de classes </h2>
+
+
+<h2> Diagrammes de séquence </h2>
+
+
+<h2> Statistiques SVN </h2>
+
+
+
+</body>
+</html>
