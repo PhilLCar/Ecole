@@ -1,0 +1,39 @@
+import javax.swing.JPanel;
+
+/**
+ * The abstract Class Session, representing a session on the server for a user.
+ * 
+ * @author Philippe Caron
+ * @see SessionManager
+ */
+public abstract class Session {
+
+	/** The user whose session this is. */
+	private User user;
+
+	/**
+	 * Instantiates a new session for a specific user.
+	 *
+	 * @param user the user
+	 */
+	public Session(User user) {
+		this.user = user;
+	}
+	
+	/**
+	 * Gets the user of this session.
+	 *
+	 * @return the user
+	 */
+	public User getUser() {
+		return this.user;
+	}
+	
+	//TODO javadoc for Session.getUI
+	/**
+	 * Gets the ui for this session.
+	 *
+	 * @return the ui
+	 */
+	public abstract JPanel getUI();
+}

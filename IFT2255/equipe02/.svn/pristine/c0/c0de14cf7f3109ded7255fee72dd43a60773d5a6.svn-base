@@ -1,0 +1,20 @@
+public class ServerApplication {
+
+	private SessionManager sessionManager;
+	private Database database;
+
+	public void newConnection() {
+		// TODO - implement Application.newConnection
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * 
+	 * @param args
+	 */
+	public void main(string[] args) {
+		// TODO - implement Application.main
+		throw new UnsupportedOperationException();
+	}
+
+}

@@ -1,0 +1,19 @@
+public class MainAccountingJob {
+
+	private Date NextJobTimestamp;
+	private Timer timer;
+
+	public Date getNextJobTimestamp() {
+		return this.NextJobTimestamp;
+	}
+
+	public void setNextJobTimestamp(Date NextJobTimestamp) {
+		this.NextJobTimestamp = NextJobTimestamp;
+	}
+
+	public void run() {
+		// TODO - implement MainAccountingJob.run
+		throw new UnsupportedOperationException();
+	}
+
+}

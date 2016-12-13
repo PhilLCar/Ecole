@@ -1,0 +1,74 @@
+import java.util.ArrayList;
+
+/**
+ * The Class ServiceDBManager, implementation of the DataBaseManager interface for
+ * Service.
+ * 
+ * @author Gevrai Jodoin-Tremblay
+ * @see Service
+ */
+public class ServiceDBManager implements DataBaseManager<Service> {
+
+	private static final ArrayList<Service> services = DataBase.getDataBase().getServices();
+	
+	@Override
+	public int getUniqueID() {
+		int highestID = -1;
+		for (Service s : services){
+			if (s.getServID() > highestID){
+				highestID = s.getServID();
+			}
+		}
+		return highestID+1;
+	}
+
+	@Override
+	public Service find(int id) {
+		for (Service s : services){
+			if (id == s.getServID()){
+				return s;
+			}
+		}
+		return null;
+	}
+
+	@Override
+	public boolean exists(Service key) {
+		return services.contains(key);
+	}
+
+	@Override
+	public boolean add(Service elem) {
+		if (find(elem.getServID()) != null) {
+			return false;
+		}
+		return services.add(elem);
+	}
+
+	@Override
+	public boolean delete(Service elem) {
+		return services.remove(elem);
+	}
+
+	@Override
+	public Service delete(int id) {
+		for (int i = 0; i < services.size(); i++) {
+			if (services.get(i).getServID() == id) {
+				return services.remove(i);
+			}
+		}
+		return null;
+	}
+
+	@Override
+	public ArrayList<Service> filter(String search) {
+		ArrayList<Service> filteredList = new ArrayList<Service>();
+		for (Service s : services) {
+			if (s.getName().contains(search) || s.getDescription().contains(search)) {
+				filteredList.add(s);
+			}
+		}
+		return filteredList;
+	}
+
+}

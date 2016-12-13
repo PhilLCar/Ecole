@@ -1,0 +1,54 @@
+public class Service {
+
+	private int servID;
+	private string name;
+	private string description;
+
+	/**
+	 * 
+	 * @param servID
+	 * @param name
+	 * @param description
+	 */
+	public Service(int servID, string name, string description) {
+		// TODO - implement Service.Service
+		throw new UnsupportedOperationException();
+	}
+
+	public int getServID() {
+		return this.servID;
+	}
+
+	/**
+	 * 
+	 * @param servID
+	 */
+	public void setServID(int servID) {
+		this.servID = servID;
+	}
+
+	public string getName() {
+		return this.name;
+	}
+
+	/**
+	 * 
+	 * @param name
+	 */
+	public void setName(string name) {
+		this.name = name;
+	}
+
+	public string getDescription() {
+		return this.description;
+	}
+
+	/**
+	 * 
+	 * @param description
+	 */
+	public void setDescription(string description) {
+		this.description = description;
+	}
+
+}

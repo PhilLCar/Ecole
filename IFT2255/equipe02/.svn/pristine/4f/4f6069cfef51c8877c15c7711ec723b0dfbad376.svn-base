@@ -1,0 +1,45 @@
+import java.util.*;
+
+public class SessionManager {
+
+	private static List<List<Session>> activeSessions;
+
+	public void authenticate() {
+		// TODO - implement SessionManager.authenticate
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * 
+	 * @param userID
+	 * @param hash
+	 */
+	public void getSessionFromID(int userID, string hash) {
+		// TODO - implement SessionManager.getSessionFromID
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * 
+	 * @param userID
+	 */
+	private void createSession(int userID) {
+		// TODO - implement SessionManager.createSession
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * 
+	 * @param userID
+	 */
+	private void deleteSession(int userID) {
+		// TODO - implement SessionManager.deleteSession
+		throw new UnsupportedOperationException();
+	}
+
+	public SessionManager() {
+		// TODO - implement SessionManager.SessionManager
+		throw new UnsupportedOperationException();
+	}
+
+}

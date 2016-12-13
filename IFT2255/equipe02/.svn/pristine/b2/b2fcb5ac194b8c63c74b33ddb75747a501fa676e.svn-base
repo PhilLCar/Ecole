@@ -1,0 +1,48 @@
+public class UserDBManager {
+
+	/**
+	 * 
+	 * @param userID
+	 */
+	public void find(int userID) {
+		// TODO - implement UserDBManager.find
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * 
+	 * @param user
+	 */
+	public void add(User user) {
+		// TODO - implement UserDBManager.add
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * 
+	 * @param user
+	 */
+	public void delete(User user) {
+		// TODO - implement UserDBManager.delete
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * 
+	 * @param userID
+	 */
+	public void deleteByID(int userID) {
+		// TODO - implement UserDBManager.deleteByID
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * 
+	 * @param filter
+	 */
+	public List<User> showUsers(string filter) {
+		// TODO - implement UserDBManager.showUsers
+		throw new UnsupportedOperationException();
+	}
+
+}

@@ -1,0 +1,44 @@
+public class ServiceDBManager {
+
+	public List<Service> getRepository() {
+		// TODO - implement ServiceDBManager.getRepository
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * 
+	 * @param servID
+	 */
+	public Service find(int servID) {
+		// TODO - implement ServiceDBManager.find
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * 
+	 * @param keyword
+	 */
+	public List<Service> filterName(string keyword) {
+		// TODO - implement ServiceDBManager.filterName
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * 
+	 * @param service
+	 */
+	public boolean add(Service service) {
+		// TODO - implement ServiceDBManager.add
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * 
+	 * @param service
+	 */
+	public boolean delete(Service service) {
+		// TODO - implement ServiceDBManager.delete
+		throw new UnsupportedOperationException();
+	}
+
+}

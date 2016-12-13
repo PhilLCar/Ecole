@@ -1,0 +1,13 @@
+import junit.framework.TestCase;
+
+//compile javac -cp /usr/share/java/junit4.jar [classname.java]
+
+//run java -cp /usr/share/java/junit4.jar:. org.junit.runner.JUnitCore [class]
+
+public class ChocAnTests extends TestCase {
+  public void testTrue() {
+    assertTrue(true);
+  }
+  
+
+}

@@ -1,0 +1,128 @@
+
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
+public class Claim {
+
+	private LocalDateTime transactionTime;
+	private LocalDate serviceDate;
+	private int supID;
+	private int memID;
+	private int servID;
+	private String comment;
+
+	/**
+	 * 
+	 * @param transactionTime
+	 * @param serviceDate
+	 * @param supID
+	 * @param memID
+	 * @param servID
+	 * @param comment
+	 */
+	public Claim(String transactionTime, String serviceDate, int supID, int memID, int servID, String comment) {
+		this.transactionTime = LocalDateTime.parse(transactionTime, DateTimeFormatter.ISO_LOCAL_DATE_TIME);
+		this.serviceDate = LocalDate.parse(serviceDate, DateTimeFormatter.ISO_LOCAL_DATE);
+		this.supID = supID;
+		this.memID = memID;
+		this.servID = servID;
+		this.comment = comment;
+	}
+	
+	public Claim(String serviceDate, int supID, int memID, int servID, String comment) {
+		this(LocalDateTime.now().toString(), serviceDate, supID, memID, servID, comment);
+	}
+	
+	public Claim(String claim) {
+		String[] claimInfo = claim.split("\t", 6);
+		this.transactionTime = LocalDateTime.parse(claimInfo[0], DateTimeFormatter.ISO_LOCAL_DATE_TIME);
+		this.serviceDate = LocalDate.parse(claimInfo[1], DateTimeFormatter.ISO_LOCAL_DATE);
+		this.supID = Integer.parseInt(claimInfo[2]);
+		this.memID = Integer.parseInt(claimInfo[3]);
+		this.servID = Integer.parseInt(claimInfo[4]);
+		this.comment = claimInfo[5];
+	}
+
+	public String getTransactionTime() {
+		return transactionTime.toString();
+	}
+
+	/**
+	 * 
+	 * @param transactionTime
+	 */
+	public void setTransactionTime(String transactionTime) {
+		this.transactionTime = LocalDateTime.parse(transactionTime, DateTimeFormatter.ISO_LOCAL_DATE_TIME);
+	}
+
+	public String getServiceDate() {
+		return serviceDate.toString();
+	}
+
+	/**
+	 * 
+	 * @param serviceDate
+	 */
+	public void setServiceDate(String serviceDate) {
+		this.serviceDate = LocalDate.parse(serviceDate, DateTimeFormatter.ISO_LOCAL_DATE);
+	}
+
+	public int getSupID() {
+		return this.supID;
+	}
+
+	/**
+	 * 
+	 * @param supID
+	 */
+	public void setSupID(int supID) {
+		this.supID = supID;
+	}
+
+	public int getMemID() {
+		return this.memID;
+	}
+
+	/**
+	 * 
+	 * @param memID
+	 */
+	public void setMemID(int memID) {
+		this.memID = memID;
+	}
+
+	public int getServID() {
+		return this.servID;
+	}
+
+	/**
+	 * 
+	 * @param servID
+	 */
+	public void setServID(int servID) {
+		this.servID = servID;
+	}
+
+	public String getComment() {
+		return this.comment;
+	}
+
+	/**
+	 * 
+	 * @param comment
+	 */
+	public void setComment(String comment) {
+		this.comment = comment;
+	}
+
+	@Override
+	public String toString(){
+		return transactionTime.toString() + "\t" +
+				serviceDate.toString() + "\t" +
+				supID + "\t" +
+				memID + "\t" +
+				servID + "\t" +
+				comment;
+	}
+}

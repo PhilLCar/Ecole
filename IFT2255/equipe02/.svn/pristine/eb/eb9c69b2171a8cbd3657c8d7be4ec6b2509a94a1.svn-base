@@ -1,0 +1,24 @@
+public class Supervisor extends User {
+
+	public Supervisor(int userID, String hash, String name) {
+		setUserID(userID);
+		setHash(hash);
+		setName(name);
+	}
+	
+	public Supervisor(String member) {
+		String[] memInfo = member.split("\t", 3);
+		setUserID(Integer.parseInt(memInfo[0]));
+		setHash(memInfo[1]);
+		setName(memInfo[2]);
+	}
+
+	@Override
+	public String toString() {
+		String ret = "Supervisor\t" + 
+					getUserID() + "\t" + 
+					getHash() + "\t" +
+					getName() + "\t";
+		return ret;
+	}
+}

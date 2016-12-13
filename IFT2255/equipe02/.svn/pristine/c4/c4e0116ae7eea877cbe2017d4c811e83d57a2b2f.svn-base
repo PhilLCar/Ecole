@@ -1,0 +1,38 @@
+public class DataBase {
+
+	private static List<User> users;
+	private static List<Claim> claims;
+	private static List<EFT> dataEFT;
+	private static List<Service> services;
+	private static string FILENAME_USERS;
+	private static string FILENAME_CLAIMS;
+	private static string FILENAME_EFT;
+	private static string FILENAME_SERVICES;
+
+	public static List<User> getUsers() {
+		return this.users;
+	}
+
+	public static List<Claim> getClaims() {
+		return this.claims;
+	}
+
+	public static List<EFT> getDataEFT() {
+		return this.dataEFT;
+	}
+
+	public static List<Service> getServices() {
+		return this.services;
+	}
+
+	public static void populate() {
+		// TODO - implement DataBase.populate
+		throw new UnsupportedOperationException();
+	}
+
+	public static void dump() {
+		// TODO - implement DataBase.dump
+		throw new UnsupportedOperationException();
+	}
+
+}

@@ -1,0 +1,30 @@
+public class ClaimDBManager {
+
+	/**
+	 * 
+	 * @param servID
+	 */
+	public void findClaimByID(int servID) {
+		// TODO - implement ClaimDBManager.findClaimByID
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * 
+	 * @param userID
+	 */
+	public void findClaimsForUser(int userID) {
+		// TODO - implement ClaimDBManager.findClaimsForUser
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * 
+	 * @param claim
+	 */
+	public void add(Claim claim) {
+		// TODO - implement ClaimDBManager.add
+		throw new UnsupportedOperationException();
+	}
+
+}

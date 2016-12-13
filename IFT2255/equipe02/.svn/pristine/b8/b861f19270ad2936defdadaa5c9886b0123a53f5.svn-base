@@ -1,0 +1,7 @@
+Supervisor	100000	b468a378f511e9e84a225f313c315f07	Robert Plante
+Member	1	b21afc54fb48d153c19101658f4a2a48	Jean Guy	2313	Sainte-Catherine	Montreal	Quebec	H3C 2C8	0
+Member	2	b21afc54fb48d153c19101658f4a2a48	Monsieur Chose	2313	Sainte-Catherine	Montreal	Quebec	H3C 2C8	1
+Member	3	b21afc54fb48d153c19101658f4a2a48	Francois Boom	2313	Sainte-Catherine	Montreal	Quebec	H3C 2C8	2
+Member	200000	945e9f0b4e381b13aa70b94b89a28709	Jacques Tremblay	2313	Sainte-Catherine	Montreal	Quebec	H3C 2C8	0
+Supplier	300000	b473e4ec409f4f288a77f256c74aa52e	Le Centre sportif	2313	Sainte-Catherine	Montreal	Quebec	H3C 2C8
+Supplier	4	b21afc54fb48d153c19101658f4a2a48	L'autre centre sportif	2313	Sainte-Catherine	Montreal	Quebec	H3C 2C8

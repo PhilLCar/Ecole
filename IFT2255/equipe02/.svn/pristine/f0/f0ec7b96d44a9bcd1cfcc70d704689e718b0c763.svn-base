@@ -1,0 +1,73 @@
+import java.awt.FlowLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+
+//TODO javadoc UserInterface
+public class UserInterface extends JFrame {
+
+	/**
+	 *
+	 * @param userID
+	 * @param userPassword
+	 */
+	private void login(String user, String userPassword) {
+		int userID;
+		Session session;
+		try {
+			userID = Integer.parseInt(user);
+		} catch (Exception e) {
+			e.printStackTrace(System.err);
+			return;
+		}
+		session = SessionManager.authenticate(userID, userPassword);
+		if (session != null) {
+			session.getUI(this);
+		} else {
+			JOptionPane.showMessageDialog(new JPanel(), "Identifiants incorrects", "Erreur", JOptionPane.ERROR_MESSAGE);
+		}
+	}
+
+	public void disconnect(Session session) {
+		SessionManager.deleteSession(session);
+		new UserInterface();
+		dispose();
+	}
+
+	public UserInterface() {
+		setLayout(new FlowLayout());
+		JLabel loglab = new JLabel("Numéro d'utilisateur:");
+		JTextField login = new JTextField(20);
+		JLabel paslab = new JLabel("Mot de passe:");
+		JTextField pass = new JTextField(20);
+		JButton submit = new JButton("Connexion");
+		submit.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				login(login.getText(), pass.getText());
+			}
+		});
+		JButton quit = new JButton("Quitter");
+		quit.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				dispose();
+			}
+		});
+		add(loglab);
+		add(login);
+		add(paslab);
+		add(pass);
+		add(submit);
+		add(quit);
+		setSize(250, 180);
+		setVisible(true);
+	}
+
+}

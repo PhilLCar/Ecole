@@ -1,0 +1,32 @@
+public class Member extends User {
+
+	private Address address;
+	private int status;
+
+	public Adress getAddress() {
+		// TODO - implement Member.getAddress
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * 
+	 * @param address
+	 */
+	public void setAddress(Adress address) {
+		// TODO - implement Member.setAddress
+		throw new UnsupportedOperationException();
+	}
+
+	public int getStatus() {
+		return this.status;
+	}
+
+	/**
+	 * 
+	 * @param status
+	 */
+	public void setStatus(int status) {
+		this.status = status;
+	}
+
+}

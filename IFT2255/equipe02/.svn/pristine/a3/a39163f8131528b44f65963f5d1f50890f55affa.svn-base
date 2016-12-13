@@ -1,0 +1,117 @@
+import java.awt.GridLayout;
+import java.awt.Label;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.Date;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+
+
+/**
+ *
+ * The ServerApplication class is home to the main fonction of the application.
+ * It's responsability is to launch a window that gives the user the
+ * possibility to access the application or close the connexion. The 
+ * application is meant for members, suppliers and employees of ChocAn. The 
+ * members can access a report of the services they received. The suppliers 
+ * can access a list of all possibles services, can bill ChocAn for a service 
+ * and can ask for a weekly report of their activities. Employees of ChocAn 
+ * have access to a CRUD application for members and services. Managers of 
+ * ChocAn also have access to all the possible reports and may ask for the 
+ * creation of a specific report.
+ *
+ */
+public class ServerApplication {
+	private final static DataBase database = DataBase.getDataBase();
+	
+	// Scheduled jobs
+	@SuppressWarnings("unused")
+	private final static MainAccountingJob mainAccountingJob = new MainAccountingJob();
+	@SuppressWarnings("unused")
+	private final static ReceivableAccountsJob receivableAccountsJob = new ReceivableAccountsJob();
+
+	// Swing components
+	private static Label usersLabel = new Label();
+	private static Label claimsLabel = new Label();
+	private static Label servicesLabel = new Label();
+	private static Label eftsLabel = new Label();
+	private static JButton recreateDbButton = new JButton("Recréer la base de données");
+
+
+	public static void newConnection() {
+		new UserInterface();
+	}
+
+	private static void resetLabelText(){
+			usersLabel.setText("Users: " + database.getUsers().size());
+			usersLabel.setAlignment(Label.CENTER);
+			claimsLabel.setText("Claims: " + database.getClaims().size());
+			claimsLabel.setAlignment(Label.CENTER);
+			servicesLabel.setText("Services: " + database.getServices().size());
+			servicesLabel.setAlignment(Label.CENTER);
+			eftsLabel.setText("EFTs: " + database.getDataEFT().size());
+			eftsLabel.setAlignment(Label.CENTER);
+		}
+
+	/**
+	 *
+	 * Makes a window that will launch a session application. Args are pointless and will not interfere with the application.
+	 *
+	 * @param args no effects
+	 */
+	public static void main(String[] args) {
+		database.populate();
+		JFrame mainWindow = new JFrame();
+		mainWindow.setLayout(new GridLayout(9,1));
+		JButton newCon = new JButton("Simuler une connexion");
+		newCon.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				new UserInterface();
+			}
+
+		});
+		JButton quit = new JButton("Quitter");
+		quit.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				database.dump();
+				
+				//TEST_ReportCreator
+				ReportCreator rp = new ReportCreator();
+				rp.allReports(new Date(),new Date());
+				
+				System.exit(0);
+			}
+
+		});
+		mainWindow.add(newCon);
+		mainWindow.add(quit);
+
+		// Database informations and reload button
+		mainWindow.add(usersLabel);
+		mainWindow.add(claimsLabel);
+		mainWindow.add(servicesLabel);
+		mainWindow.add(eftsLabel);
+		mainWindow.add(recreateDbButton);
+		resetLabelText();
+
+
+		recreateDbButton.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				database.createDataBaseEntries(false);
+				resetLabelText();
+			}
+		});
+
+		mainWindow.setSize(200, 200);
+		mainWindow.setVisible(true);
+		mainWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+	}
+
+}

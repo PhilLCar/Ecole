@@ -1,0 +1,99 @@
+import java.util.*;
+
+/**
+* Class that manages which Session type will be launched and validates user authentication.
+*/
+public class SessionManager {
+
+	private static ArrayList<Session> activeSessions = new ArrayList<Session>();
+	private static UserDBManager userDB = new UserDBManager();
+
+	public static Session authenticate(int userID, String pass) throws ConnectionException {
+		User auth = userDB.find(userID);
+		if (auth == null) {
+			throw new ConnectionException("Mauvais code utilisateur",ConnectionException.USER_INVALID);
+		}
+		for (Session s : activeSessions) {
+			if (s.getUser().equals(auth))
+				throw new ConnectionException("Votre compte est déjà connecté",ConnectionException.USER_ALREADY_CONNECTED);
+		}
+		// Enlever true pour tester
+		if (true || User.MD5(pass).equals(auth.getHash())) {
+		//if (User.MD5(pass).equals(auth.getHash())) {
+			switch(auth.getClass().getName()){
+				case "Member":
+					MemberSession memberSession = new MemberSession((Member)auth);
+					activeSessions.add(memberSession);
+					return memberSession;
+				case "Supplier":
+					SupplierSession supplierSession = new SupplierSession((Supplier)auth);
+					activeSessions.add(supplierSession);
+					return supplierSession;
+				case "Supervisor":
+					SupervisorSession supervisorSession = new SupervisorSession((Supervisor)auth);
+					activeSessions.add(supervisorSession);
+					return supervisorSession;
+			}
+		}
+		throw new ConnectionException("Mot de passe incorrect",ConnectionException.USER_PASSWORD_INVALID);
+	}
+
+	/**
+	 * Get an active session from a userID, returns the session if it exists
+	 * and authentication hash is valid.
+	 *
+	 * @param userID userID of user we want the session
+	 * @param hash password hash to verify identity
+	 * @return session associated with userID, null if nonexistent or bad hash
+	 */
+	public static Session getSessionFromID(int userID, String hash) {
+		for (int i=0;i<activeSessions.size();i++) {
+			Session cur = activeSessions.get(i);
+			if (cur.getUser().getUserID() == userID) {
+				if (cur.getUser().getHash().equals(hash)) {
+					return cur;
+				} else
+					return null;
+			}
+		}
+		return null;
+	}
+
+	/**
+	 * Deletes an active session, returns true if the session was
+	 * deleted properly, false otherwise
+	 *
+	 * @param session session we want to delete
+	 * @return returns true if session was found and deleted, false otherwise
+	 */
+	public static boolean deleteSession(Session session) {
+		return activeSessions.remove(session);
+	}
+
+	/**
+	 * Deletes an active session from a userID, returns true if the session was
+	 * deleted properly, false otherwise
+	 *
+	 * @param userID userID of the user we want to delete the session
+	 * @return returns true if session was found and deleted, false otherwise
+	 */
+	public static boolean deleteSessionFromID(int userID) {
+		for (Session s : activeSessions) {
+			if (s.getUser().getUserID() == userID) {
+				return activeSessions.remove(s);
+			}
+		}
+		return false;
+	}
+
+	/**
+	 * Returns the number of active sessions on the system, representing the
+	 * number of unique users connected, no matter their type.
+	 *
+	 * @return the number of active sessions on the system
+	 */
+	public static int getNumberOfActiveSessions() {
+		return activeSessions.size();
+	}
+
+}

@@ -1,0 +1,310 @@
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Locale;
+
+/**
+ * The Class Claim, representing a claim in the DataBase that a supplier makes
+ * to ChocAn for a service offered to a member. <p>
+ *
+ * @author Gevrai Jodoin-Tremblay
+ * @see ClaimDBManager
+ */
+public class Claim {
+
+	/** The claim ID, unique */
+	private int claimID;
+
+	/** The transaction time, string representation is ISO compliant
+	 * <code>"YYYY-MM-DDTHH:MM:SS"</code>. */
+	private LocalDateTime transactionTime;
+
+	/** The service date, string representation is ISO compliant:
+	 * <code> "YYYY-MM-DD"</code>. */
+	private LocalDate serviceDate;
+
+	/** The supplier ID who sent the claim */
+	private int supID;
+
+	/** The member ID who received the service */
+	private int memID;
+
+	/** The service ID of the service given */
+	private int servID;
+
+	/** The comment written by the supplier when sending the claim */
+	private String comment;
+
+	/** The price due to ChocAn for the service */
+	private double price ;
+
+
+	/**
+	 * Instantiates a new claim.
+	 *
+	 * @param claimID the claim ID
+	 * @param transactionTime the transaction time
+	 * @param serviceDate the service date
+	 * @param supID the supplier ID
+	 * @param memID the member ID
+	 * @param servID the service ID
+	 * @param comment the comment that the supplier wrote when creating the claim
+	 */
+	public Claim(int claimID, String transactionTime, String serviceDate, int supID, int memID, int servID, double price, String comment) {
+		this.claimID = claimID;
+		this.transactionTime = LocalDateTime.parse(transactionTime, DateTimeFormatter.ISO_LOCAL_DATE_TIME);
+		this.serviceDate = LocalDate.parse(serviceDate, DateTimeFormatter.ISO_LOCAL_DATE);
+		this.supID = supID;
+		this.memID = memID;
+		this.servID = servID;
+		this.price = price;
+		this.comment = comment;
+	}
+
+	/**
+	 * Instantiates a new claim without specifying a specific ID, will thus
+	 * find a unique one to create the Claim properly, in the DataBase.
+	 *
+	 * @param transactionTime the transaction time
+	 * @param serviceDate the service date
+	 * @param supID the supplier ID
+	 * @param memID the member ID
+	 * @param servID the service ID
+	 * @param price price to charge ChocAn for the service
+	 * @param comment the comment
+	 */
+	public Claim(String transactionTime, String serviceDate, int supID, int memID, int servID, double price, String comment) {
+		this.claimID = new ClaimDBManager().getUniqueID();
+		this.transactionTime = LocalDateTime.parse(transactionTime, DateTimeFormatter.ISO_LOCAL_DATE_TIME);
+		this.serviceDate = LocalDate.parse(serviceDate, DateTimeFormatter.ISO_LOCAL_DATE);
+		this.supID = supID;
+		this.memID = memID;
+		this.servID = servID;
+		this.price = price;
+		this.comment = comment;
+	}
+
+	/**
+	 * Instantiates a new claim without specifying the transactionTime,
+	 * thus assuming it's right now.
+	 *
+	 * @param claimID the claim ID
+	 * @param serviceDate the service date
+	 * @param supID the supplier ID
+	 * @param memID the member ID
+	 * @param servID the service ID
+	 * @param price price to charge ChocAn for the service
+	 * @param comment the comment
+	 */
+	public Claim(int claimID, String serviceDate, int supID, int memID, int servID, double price, String comment) {
+		this(	claimID,
+				LocalDateTime.now().toString(), serviceDate,
+				supID, memID, servID, price, comment);
+	}
+
+	/**
+	 * Instantiates a new claim without specifying the transactionTime,
+	 * thus assuming it's right now.
+	 *
+	 * @param serviceDate the service date
+	 * @param supID the supplier ID
+	 * @param memID the member ID
+	 * @param servID the service ID
+	 * @param price price to charge ChocAn for the service
+	 * @param comment the comment
+	 */
+	public Claim(String serviceDate, int supID, int memID, int servID, double price, String comment) {
+		this(	new ClaimDBManager().getUniqueID(),
+				LocalDateTime.now().toString(), serviceDate,
+				supID, memID, servID, price, comment);
+	}
+
+	/**
+	 * Instantiates a new claim from a string formatted correctly, normally
+	 * coming from a line of the DataBase directly.<p>
+	 * Time strings are in ISO format <p>
+	 * Format (tab separated): <code>claimID transactionTime serviceDate supID
+	 * memID servID price comment</code>
+	 *
+	 * @param claim the claim string from the DB
+	 */
+	public Claim(String claim) {
+		String[] claimInfo = claim.split("\t", 8);
+		this.claimID = Integer.parseInt(claimInfo[0]);
+		this.transactionTime = LocalDateTime.parse(claimInfo[1], DateTimeFormatter.ISO_LOCAL_DATE_TIME);
+		this.serviceDate = LocalDate.parse(claimInfo[2], DateTimeFormatter.ISO_LOCAL_DATE);
+		this.supID = Integer.parseInt(claimInfo[3]);
+		this.memID = Integer.parseInt(claimInfo[4]);
+		this.servID = Integer.parseInt(claimInfo[5]);
+		this.price = Double.parseDouble(claimInfo[6]);
+		this.comment = claimInfo[7];
+	}
+
+	/**
+	 * Formats the informations of a Claim into a string ready for storage
+	 * in the DataBase<p>
+	 * Time strings are in ISO format <p>
+	 * Format (tab separated): <code>claimID transactionTime serviceDate supID
+	 * memID servID price comment</code>
+	 *
+	 * @return String correctly formatted of the claim, ready to dump in the
+	 * DataBase.
+	 */
+	@Override
+	public String toString(){
+		return  "" + claimID + "\t"
+				+ transactionTime.toString() + "\t"
+				+ serviceDate.toString() + "\t"
+				+ supID + "\t"
+				+ memID + "\t"
+				+ servID + "\t"
+				+ String.format(Locale.US, "%.2f", price) + "\t"
+				+ comment;
+	}
+
+	/**
+	 * Gets the claim ID.
+	 *
+	 * @return the claim ID
+	 */
+	public int getClaimID() {
+		return claimID;
+	}
+
+	/**
+	 * Gets the transaction time.
+	 *
+	 * @return the transaction time
+	 */
+	public String getTransactionTime() {
+		return transactionTime.toString();
+	}
+
+	/**
+	 * Sets the transaction time.
+	 *
+	 * @param transactionTime the new transaction time
+	 */
+	public void setTransactionTime(LocalDateTime transactionTime) {
+		this.transactionTime = transactionTime;
+	}
+
+	/**
+	 * Sets the transaction time from a string representation in ISO format.
+	 *
+	 * @param transactionTime string representing the new transaction time, in ISO format
+	 */
+	public void setTransactionTime(String transactionTime) {
+		this.transactionTime = LocalDateTime.parse(transactionTime, DateTimeFormatter.ISO_LOCAL_DATE_TIME);
+	}
+
+	/**
+	 * Gets the service date.
+	 *
+	 * @return the service date
+	 */
+	public LocalDate getServiceDate() {
+		return serviceDate;
+	}
+
+	/**
+	 * Sets the service date from a string representation in ISO format.
+	 *
+	 * @param serviceDate string representing the new service date, in ISO format
+	 */
+	public void setServiceDate(LocalDate serviceDate) {
+		this.serviceDate = serviceDate;
+	}
+
+	/**
+	 * Sets the service date.
+	 *
+	 * @param serviceDate the new service date, in ISO format
+	 */
+	public void setServiceDate(String serviceDate) {
+		this.serviceDate = LocalDate.parse(serviceDate, DateTimeFormatter.ISO_LOCAL_DATE);
+	}
+
+	/**
+	 * Gets the sup ID.
+	 *
+	 * @return the sup ID
+	 */
+	public int getSupID() {
+		return this.supID;
+	}
+
+	/**
+	 * Sets the sup ID.
+	 *
+	 * @param supID the new sup ID
+	 */
+	public void setSupID(int supID) {
+		this.supID = supID;
+	}
+
+	/**
+	 * Gets the member ID.
+	 *
+	 * @return the member ID
+	 */
+	public int getMemID() {
+		return this.memID;
+	}
+
+	/**
+	 * Sets the member ID.
+	 *
+	 * @param memID the new member ID
+	 */
+	public void setMemID(int memID) {
+		this.memID = memID;
+	}
+
+	/**
+	 * Gets the service ID.
+	 *
+	 * @return the service ID
+	 */
+	public int getServID() {
+		return this.servID;
+	}
+
+	/**
+	 * Sets the service ID.
+	 *
+	 * @param servID the new service ID
+	 */
+	public void setServID(int servID) {
+		this.servID = servID;
+	}
+
+	/**
+	 * Gets the comment.
+	 *
+	 * @return the comment
+	 */
+	public String getComment() {
+		return this.comment;
+	}
+
+	/**
+	 * Sets the comment.
+	 *
+	 * @param comment the new comment
+	 */
+	public void setComment(String comment) {
+		this.comment = comment;
+	}
+
+	/**
+	 * Gets the price.
+	 *
+	 * @return the price
+	 */
+	public double getPrice() {
+		return price;
+	}
+
+
+}

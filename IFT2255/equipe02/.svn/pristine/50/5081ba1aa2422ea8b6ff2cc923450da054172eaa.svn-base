@@ -1,0 +1,5 @@
+public class EFT {
+
+	private string donnéesTEF;
+
+}

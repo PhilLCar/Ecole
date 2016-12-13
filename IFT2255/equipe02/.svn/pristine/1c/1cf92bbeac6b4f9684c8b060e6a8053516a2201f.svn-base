@@ -1,0 +1,82 @@
+public class Address {
+
+	private string streetNumber;
+	private string streetName;
+	private string city;
+	private string province;
+	private string zipCode;
+
+	public string getStreetNumber() {
+		return this.streetNumber;
+	}
+
+	/**
+	 * 
+	 * @param streetNumber
+	 */
+	public void setStreetNumber(string streetNumber) {
+		this.streetNumber = streetNumber;
+	}
+
+	public string getStreetName() {
+		return this.streetName;
+	}
+
+	/**
+	 * 
+	 * @param streetName
+	 */
+	public void setStreetName(string streetName) {
+		this.streetName = streetName;
+	}
+
+	public string getCity() {
+		return this.city;
+	}
+
+	/**
+	 * 
+	 * @param city
+	 */
+	public void setCity(string city) {
+		this.city = city;
+	}
+
+	public string getProvince() {
+		return this.province;
+	}
+
+	/**
+	 * 
+	 * @param province
+	 */
+	public void setProvince(string province) {
+
+	}
+
+	public string getZipCode() {
+		return this.zipCode;
+	}
+
+	/**
+	 * 
+	 * @param zipCode
+	 */
+	public void setZipCode(string zipCode) {
+
+	}
+
+	/**
+	 * 
+	 * @param streetNumber
+	 * @param streetName
+	 * @param city
+	 * @param province
+	 * @param zipCode
+	 */
+	public Address(string streetNumber, string streetName, string city, string province, string zipCode) {
+		// TODO - implement Address.Address
+		throw new UnsupportedOperationException();
+	}
+
+}

@@ -1,0 +1,50 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[french]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{tcolorbox}
+\usepackage[margin=2cm]{geometry}
+\usepackage{array}
+\usepackage{hyperref}
+\usepackage{tikz}
+\usepackage{listings}
+\usepackage{eurosym}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{cancel}
+\usepackage{pdfpages}
+
+\title{IFT2015 automne 2016 - Devoir1} %trouver long trait d'union
+\author{Philippe Caron}
+\date{\today}
+
+\setcounter{section}{4}
+\renewcommand{\thesubsubsection}{\alph{subsubsection}.}
+\renewcommand{\thefootnote}{\fnsymbol{footnote}}
+\newenvironment{pseudo}{\begin{tcolorbox}[left skip = 1cm, right skip = 1cm]}{\end{tcolorbox}}
+\newcommand{\key}[1]{{\bf #1}}
+\newcommand{\name}[1]{{\scshape #1}}
+\newcommand\tab[1][0.5cm]{\hspace*{#1}}
+
+\lstset{frame=tb,
+  language=Python,
+  aboveskip=3mm,
+  belowskip=3mm,
+  showstringspaces=false,
+  columns=flexible,
+  basicstyle={\small\ttfamily},
+  numbers=none,
+  numberstyle=\tiny\color{pink},
+  keywordstyle=\color{purple},
+  commentstyle=\color{dkgreen},
+  stringstyle=\color{brown},
+  breaklines=true,
+  breakatwhitespace=true,
+  tabsize=3
+}
+
+\begin{document}
+\maketitle
+\section{Tableaux de hachage}
+
+\end{document}

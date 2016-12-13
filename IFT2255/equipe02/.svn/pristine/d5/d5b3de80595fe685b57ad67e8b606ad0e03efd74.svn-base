@@ -1,0 +1,43 @@
+public abstract class User {
+
+	private int userID;
+	private string hash;
+	private string name;
+
+	public int getUserID() {
+		return this.userID;
+	}
+
+	/**
+	 * 
+	 * @param userID
+	 */
+	public void setUserID(int userID) {
+		this.userID = userID;
+	}
+
+	public string getHash() {
+		return this.hash;
+	}
+
+	/**
+	 * 
+	 * @param pass
+	 */
+	public void setHash(string pass) {
+		this.hash = pass;
+	}
+
+	public string getName() {
+		return this.name;
+	}
+
+	/**
+	 * 
+	 * @param name
+	 */
+	public void setName(string name) {
+		this.name = name;
+	}
+
+}

@@ -1,0 +1,765 @@
+<?xml version="1.0"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>StatSVN - Directory DM3/Documentation/javadoc/</title>
+ <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"/>
+    <meta name="Generator" content="StatSVN 0.7.0"/>
+<link rel="stylesheet" href="objectlab-statcvs.css" type="text/css"/>
+<script type="text/javascript" charset="utf-8" src="http://bit.ly/javascript-api.js?version=latest&#38;login=statsvn&#38;apiKey=R_2c362b417d0517c27876cbaca1bb68cc"></script>
+<script type="text/javascript" charset="utf-8">
+   // wait until page is loaded to call API
+   var redir_url;
+   var short_url;
+   BitlyCB.myShortenCallback = function(data) {
+      // this is how to get a result of shortening a single url
+      var result;
+      short_url=null;
+      for (var r in data.results) {
+         result = data.results[r];
+         result['longUrl'] = r;
+         short_url = result['shortUrl'];
+         break;
+      }
+      if (short_url==null) // bit.ly failed
+      document.location=redir_url;
+      else
+      redirToTwitter();
+   };
+   function shortenTweet(url) {
+      if (short_url == null || redir_url!=url) {
+      redir_url = url;
+      BitlyClient.shorten(document.location, 'BitlyCB.myShortenCallback');
+      }
+      else
+      redirToTwitter();
+      return false;
+   }
+   function redirToTwitter() { 
+      // replace {0} which is visible as %7B0} in the link
+      document.location = redir_url.replace('%7B0}', short_url);
+   }
+</script>
+  </head>
+
+<body>
+
+<h1>Directory DM3/Documentation/javadoc/</h1>
+<div id="parentlink">&#171; <a href="index.html">Development Statistics for /equipe02</a></div>
+<dl class="attributes">
+    <dt>Directory Created:</dt>
+    <dd><span class="date">2016-11-30 20:30</span></dd>
+    <dt>Total Files:</dt>
+    <dd>39</dd>
+    <dt>Deleted Files:</dt>
+    <dd>0</dd>
+    <dt>Lines of Code:</dt>
+    <dd>12749</dd>
+</dl>
+<p class="dirtree">
+<a href="dir.html">[root]</a>/<a href="dir_DM3.html">DM3</a>/<a href="dir_DM3_Documentation.html">Documentation</a>/<strong>javadoc</strong><br/>
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<img src="folder.png" width="15" height="13" alt="directory in repo" title="directory in repo"/> 
+<a href="dir_DM3_Documentation_javadoc_class-use.html">class-use</a> 
+(24 files, 3563 lines)<br />
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<img src="folder.png" width="15" height="13" alt="directory in repo" title="directory in repo"/> 
+<a href="dir_DM3_Documentation_javadoc_index-files.html">index-files</a> 
+(14 files, 2435 lines)<br />
+</p>
+
+<div class="section">
+<h2>Lines of Code</h2>
+<p class="chart"><img src="loc_module_DM3_Documentation_javadoc.png" alt="DM3/Documentation/javadoc/ Lines of Code" width="800" height="500" /></p></div>
+<div class="section">
+<h2>Developers</h2>
+  <table  rules="groups" summary="All authors and the number of their changes and lines of code in this directory">
+    <colgroup align="left"/>
+    <colgroup align="right"/>
+    <colgroup align="right"/>
+    <colgroup align="right"/>
+    <thead>
+      <tr>
+        <th>Author</th>
+        <th>Changes</th>
+        <th>Lines of Code</th>
+        <th>Lines per Change</th>
+      </tr>
+    </thead>
+    <tfoot>
+      <tr>
+        <th>Totals</th>
+        <td>425 (100.0%)</td>
+        <td>14050 (100.0%)</td>
+        <td>33.0</td>
+      </tr>
+    </tfoot>
+    <tbody>
+      <tr  class="odd">
+        <th><a href="user_gevrai.html" class="author">gevrai</a></th>
+        <td>75 (17.6%)</td>
+        <td>12234 (87.1%)</td>
+        <td>163.1</td>
+      </tr>
+      <tr  class="even">
+        <th><a href="user_f.brobillard.html" class="author">f.brobillard</a></th>
+        <td>350 (82.4%)</td>
+        <td>1816 (12.9%)</td>
+        <td>5.1</td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>
+<div class="section">
+<h2>Most Recent Commits</h2>
+<dl class="commitlist">
+  <dt><a name="13"></a>
+    <a href="user_f.brobillard.html" class="author">f.brobillard</a>
+    <span class="date">2016-12-04 23:34</span>
+    <span class="revisionNumberOuter">Rev.: <span class="revisionNumberInner">1833</span></span>
+  </dt>
+  <dd>
+    <p class="comment">
+Ajout d'une technicalité au manuel
+    </p>
+    <p class="commitdetails"><strong>80</strong> lines of code changed in <span class="files">35 files</span>:</p>
+    <ul class="commitdetails">
+      <li>
+        <strong>DM3/Documentation/javadoc</strong>:
+        Address.html&#160;<span class="change">(+1&#160;-1)</span>,
+        Claim.html&#160;<span class="change">(+1&#160;-1)</span>,
+        ClaimDBManager.html&#160;<span class="change">(+1&#160;-1)</span>,
+        DataBase.html&#160;<span class="change">(+1&#160;-1)</span>,
+        DataBaseManager.html&#160;<span class="change">(+1&#160;-1)</span>,
+        EFT.html&#160;<span class="change">(+1&#160;-1)</span>,
+        EftDBManager.html&#160;<span class="change">(+1&#160;-1)</span>,
+        MainAccountingJob.html&#160;<span class="change">(+1&#160;-1)</span>,
+        Member.html&#160;<span class="change">(+1&#160;-1)</span>,
+        MemberSession.html&#160;<span class="change">(+1&#160;-1)</span>,
+        ReceivableAccountsJob.html&#160;<span class="change">(+1&#160;-1)</span>,
+        ReportCreator.html&#160;<span class="change">(+1&#160;-1)</span>,
+        ServerApplication.html&#160;<span class="change">(+1&#160;-1)</span>,
+        Service.html&#160;<span class="change">(+1&#160;-1)</span>,
+        ServiceDBManager.html&#160;<span class="change">(+1&#160;-1)</span>,
+        Session.html&#160;<span class="change">(+1&#160;-1)</span>,
+        SessionManager.html&#160;<span class="change">(+1&#160;-1)</span>,
+        Supervisor.html&#160;<span class="change">(+1&#160;-1)</span>,
+        SupervisorSession.html&#160;<span class="change">(+1&#160;-1)</span>,
+        Supplier.html&#160;<span class="change">(+1&#160;-1)</span>,
+        SupplierSession.html&#160;<span class="change">(+46&#160;-23)</span>,
+        User.html&#160;<span class="change">(+1&#160;-1)</span>,
+        UserDBManager.html&#160;<span class="change">(+1&#160;-1)</span>,
+        UserInterface.html&#160;<span class="change">(+1&#160;-1)</span>,
+        allclasses-frame.html&#160;<span class="change">(+1&#160;-1)</span>,
+        allclasses-noframe.html&#160;<span class="change">(+1&#160;-1)</span>,
+        constant-values.html&#160;<span class="change">(+1&#160;-1)</span>,
+        deprecated-list.html&#160;<span class="change">(+1&#160;-1)</span>,
+        help-doc.html&#160;<span class="change">(+1&#160;-1)</span>,
+        index.html&#160;<span class="change">(+1&#160;-1)</span>,
+        overview-tree.html&#160;<span class="change">(+1&#160;-1)</span>,
+        package-frame.html&#160;<span class="change">(+1&#160;-1)</span>,
+        package-summary.html&#160;<span class="change">(+1&#160;-1)</span>,
+        package-tree.html&#160;<span class="change">(+1&#160;-1)</span>,
+        serialized-form.html&#160;<span class="change">(+1&#160;-1)</span>
+      </li>
+    </ul>
+  </dd>
+
+  <dt><a name="12"></a>
+    <a href="user_f.brobillard.html" class="author">f.brobillard</a>
+    <span class="date">2016-12-04 22:25</span>
+    <span class="revisionNumberOuter">Rev.: <span class="revisionNumberInner">1796</span></span>
+  </dt>
+  <dd>
+    <p class="comment">
+Javadoc pour SupervisorSession
+    </p>
+    <p class="commitdetails"><strong>246</strong> lines of code changed in <span class="files">35 files</span>:</p>
+    <ul class="commitdetails">
+      <li>
+        <strong>DM3/Documentation/javadoc</strong>:
+        Address.html&#160;<span class="change">(+2&#160;-2)</span>,
+        Claim.html&#160;<span class="change">(+3&#160;-6)</span>,
+        ClaimDBManager.html&#160;<span class="change">(+3&#160;-5)</span>,
+        DataBase.html&#160;<span class="change">(+2&#160;-2)</span>,
+        DataBaseManager.html&#160;<span class="change">(+3&#160;-5)</span>,
+        EFT.html&#160;<span class="change">(+3&#160;-6)</span>,
+        EftDBManager.html&#160;<span class="change">(+3&#160;-5)</span>,
+        MainAccountingJob.html&#160;<span class="change">(+2&#160;-2)</span>,
+        Member.html&#160;<span class="change">(+22&#160;-7)</span>,
+        MemberSession.html&#160;<span class="change">(+2&#160;-2)</span>,
+        ReceivableAccountsJob.html&#160;<span class="change">(+12&#160;-8)</span>,
+        ReportCreator.html&#160;<span class="change">(+10&#160;-3)</span>,
+        ServerApplication.html&#160;<span class="change">(+2&#160;-2)</span>,
+        Service.html&#160;<span class="change">(+3&#160;-4)</span>,
+        ServiceDBManager.html&#160;<span class="change">(+3&#160;-5)</span>,
+        Session.html&#160;<span class="change">(+2&#160;-2)</span>,
+        SessionManager.html&#160;<span class="change">(+2&#160;-2)</span>,
+        Supervisor.html&#160;<span class="change">(+3&#160;-4)</span>,
+        SupervisorSession.html&#160;<span class="change">(+101&#160;-11)</span>,
+        Supplier.html&#160;<span class="change">(+3&#160;-5)</span>,
+        SupplierSession.html&#160;<span class="change">(+10&#160;-7)</span>,
+        User.html&#160;<span class="change">(+4&#160;-3)</span>,
+        UserDBManager.html&#160;<span class="change">(+3&#160;-5)</span>,
+        UserInterface.html&#160;<span class="change">(+2&#160;-2)</span>,
+        allclasses-frame.html&#160;<span class="change">(+2&#160;-2)</span>,
+        allclasses-noframe.html&#160;<span class="change">(+2&#160;-2)</span>,
+        constant-values.html&#160;<span class="change">(+10&#160;-3)</span>,
+        deprecated-list.html&#160;<span class="change">(+2&#160;-2)</span>,
+        help-doc.html&#160;<span class="change">(+2&#160;-2)</span>,
+        index.html&#160;<span class="change">(+7&#160;-8)</span>,
+        overview-tree.html&#160;<span class="change">(+2&#160;-2)</span>,
+        package-frame.html&#160;<span class="change">(+2&#160;-2)</span>,
+        package-summary.html&#160;<span class="change">(+8&#160;-5)</span>,
+        package-tree.html&#160;<span class="change">(+2&#160;-2)</span>,
+        serialized-form.html&#160;<span class="change">(+2&#160;-2)</span>
+      </li>
+    </ul>
+  </dd>
+
+  <dt><a name="11"></a>
+    <a href="user_gevrai.html" class="author">gevrai</a>
+    <span class="date">2016-12-04 20:30</span>
+    <span class="revisionNumberOuter">Rev.: <span class="revisionNumberInner">1746</span></span>
+  </dt>
+  <dd>
+    <p class="comment">
+Rapport edit: distribution des taches
+    </p>
+    <p class="commitdetails"><strong>115</strong> lines of code changed in <span class="files">35 files</span>:</p>
+    <ul class="commitdetails">
+      <li>
+        <strong>DM3/Documentation/javadoc</strong>:
+        Address.html&#160;<span class="change">(+2&#160;-2)</span>,
+        Claim.html&#160;<span class="change">(+6&#160;-3)</span>,
+        ClaimDBManager.html&#160;<span class="change">(+5&#160;-3)</span>,
+        DataBase.html&#160;<span class="change">(+2&#160;-2)</span>,
+        DataBaseManager.html&#160;<span class="change">(+7&#160;-5)</span>,
+        EFT.html&#160;<span class="change">(+6&#160;-3)</span>,
+        EftDBManager.html&#160;<span class="change">(+5&#160;-3)</span>,
+        MainAccountingJob.html&#160;<span class="change">(+2&#160;-2)</span>,
+        Member.html&#160;<span class="change">(+5&#160;-3)</span>,
+        MemberSession.html&#160;<span class="change">(+2&#160;-2)</span>,
+        ReceivableAccountsJob.html&#160;<span class="change">(+5&#160;-3)</span>,
+        ReportCreator.html&#160;<span class="change">(+2&#160;-2)</span>,
+        ServerApplication.html&#160;<span class="change">(+2&#160;-2)</span>,
+        Service.html&#160;<span class="change">(+4&#160;-3)</span>,
+        ServiceDBManager.html&#160;<span class="change">(+5&#160;-3)</span>,
+        Session.html&#160;<span class="change">(+2&#160;-2)</span>,
+        SessionManager.html&#160;<span class="change">(+2&#160;-2)</span>,
+        Supervisor.html&#160;<span class="change">(+4&#160;-3)</span>,
+        SupervisorSession.html&#160;<span class="change">(+2&#160;-2)</span>,
+        Supplier.html&#160;<span class="change">(+5&#160;-3)</span>,
+        SupplierSession.html&#160;<span class="change">(+2&#160;-2)</span>,
+        User.html&#160;<span class="change">(+2&#160;-2)</span>,
+        UserDBManager.html&#160;<span class="change">(+5&#160;-3)</span>,
+        UserInterface.html&#160;<span class="change">(+2&#160;-2)</span>,
+        allclasses-frame.html&#160;<span class="change">(+2&#160;-2)</span>,
+        allclasses-noframe.html&#160;<span class="change">(+2&#160;-2)</span>,
+        constant-values.html&#160;<span class="change">(+2&#160;-2)</span>,
+        deprecated-list.html&#160;<span class="change">(+2&#160;-2)</span>,
+        help-doc.html&#160;<span class="change">(+2&#160;-2)</span>,
+        index.html&#160;<span class="change">(+8&#160;-7)</span>,
+        overview-tree.html&#160;<span class="change">(+2&#160;-2)</span>,
+        package-frame.html&#160;<span class="change">(+2&#160;-2)</span>,
+        package-summary.html&#160;<span class="change">(+3&#160;-3)</span>,
+        package-tree.html&#160;<span class="change">(+2&#160;-2)</span>,
+        serialized-form.html&#160;<span class="change">(+2&#160;-2)</span>
+      </li>
+    </ul>
+  </dd>
+
+  <dt><a name="10"></a>
+    <a href="user_f.brobillard.html" class="author">f.brobillard</a>
+    <span class="date">2016-12-04 12:01</span>
+    <span class="revisionNumberOuter">Rev.: <span class="revisionNumberInner">1668</span></span>
+  </dt>
+  <dd>
+    <p class="comment">
+Plus que 2 erreurs dans la compilation de la javadoc
+    </p>
+    <p class="commitdetails"><strong>110</strong> lines of code changed in <span class="files">35 files</span>:</p>
+    <ul class="commitdetails">
+      <li>
+        <strong>DM3/Documentation/javadoc</strong>:
+        Address.html&#160;<span class="change">(+1&#160;-1)</span>,
+        Claim.html&#160;<span class="change">(+2&#160;-1)</span>,
+        ClaimDBManager.html&#160;<span class="change">(+6&#160;-6)</span>,
+        DataBase.html&#160;<span class="change">(+1&#160;-1)</span>,
+        DataBaseManager.html&#160;<span class="change">(+1&#160;-1)</span>,
+        EFT.html&#160;<span class="change">(+1&#160;-1)</span>,
+        EftDBManager.html&#160;<span class="change">(+1&#160;-1)</span>,
+        MainAccountingJob.html&#160;<span class="change">(+1&#160;-1)</span>,
+        Member.html&#160;<span class="change">(+1&#160;-1)</span>,
+        MemberSession.html&#160;<span class="change">(+3&#160;-2)</span>,
+        ReceivableAccountsJob.html&#160;<span class="change">(+11&#160;-14)</span>,
+        ReportCreator.html&#160;<span class="change">(+4&#160;-5)</span>,
+        ServerApplication.html&#160;<span class="change">(+1&#160;-1)</span>,
+        Service.html&#160;<span class="change">(+1&#160;-1)</span>,
+        ServiceDBManager.html&#160;<span class="change">(+1&#160;-1)</span>,
+        Session.html&#160;<span class="change">(+7&#160;-3)</span>,
+        SessionManager.html&#160;<span class="change">(+2&#160;-1)</span>,
+        Supervisor.html&#160;<span class="change">(+1&#160;-1)</span>,
+        SupervisorSession.html&#160;<span class="change">(+15&#160;-11)</span>,
+        Supplier.html&#160;<span class="change">(+1&#160;-1)</span>,
+        SupplierSession.html&#160;<span class="change">(+5&#160;-3)</span>,
+        User.html&#160;<span class="change">(+1&#160;-1)</span>,
+        UserDBManager.html&#160;<span class="change">(+1&#160;-1)</span>,
+        UserInterface.html&#160;<span class="change">(+15&#160;-3)</span>,
+        allclasses-frame.html&#160;<span class="change">(+1&#160;-1)</span>,
+        allclasses-noframe.html&#160;<span class="change">(+1&#160;-1)</span>,
+        constant-values.html&#160;<span class="change">(+1&#160;-1)</span>,
+        deprecated-list.html&#160;<span class="change">(+1&#160;-1)</span>,
+        help-doc.html&#160;<span class="change">(+1&#160;-1)</span>,
+        index.html&#160;<span class="change">(+1&#160;-1)</span>,
+        overview-tree.html&#160;<span class="change">(+1&#160;-1)</span>,
+        package-frame.html&#160;<span class="change">(+1&#160;-1)</span>,
+        package-summary.html&#160;<span class="change">(+16&#160;-8)</span>,
+        package-tree.html&#160;<span class="change">(+1&#160;-1)</span>,
+        serialized-form.html&#160;<span class="change">(+1&#160;-1)</span>
+      </li>
+    </ul>
+  </dd>
+
+  <dt><a name="9"></a>
+    <a href="user_f.brobillard.html" class="author">f.brobillard</a>
+    <span class="date">2016-12-04 11:20</span>
+    <span class="revisionNumberOuter">Rev.: <span class="revisionNumberInner">1666</span></span>
+  </dt>
+  <dd>
+    <p class="comment">
+JUnit testing et toujours plus de javadoc
+    </p>
+    <p class="commitdetails"><strong>453</strong> lines of code changed in <span class="files">35 files</span>:</p>
+    <ul class="commitdetails">
+      <li>
+        <strong>DM3/Documentation/javadoc</strong>:
+        Address.html&#160;<span class="change">(+2&#160;-2)</span>,
+        Claim.html&#160;<span class="change">(+2&#160;-2)</span>,
+        ClaimDBManager.html&#160;<span class="change">(+4&#160;-4)</span>,
+        DataBase.html&#160;<span class="change">(+4&#160;-4)</span>,
+        DataBaseManager.html&#160;<span class="change">(+2&#160;-2)</span>,
+        EFT.html&#160;<span class="change">(+33&#160;-13)</span>,
+        EftDBManager.html&#160;<span class="change">(+2&#160;-2)</span>,
+        MainAccountingJob.html&#160;<span class="change">(+2&#160;-2)</span>,
+        Member.html&#160;<span class="change">(+71&#160;-10)</span>,
+        MemberSession.html&#160;<span class="change">(+12&#160;-26)</span>,
+        ReceivableAccountsJob.html&#160;<span class="change">(+42&#160;-6)</span>,
+        ReportCreator.html&#160;<span class="change">(+21&#160;-25)</span>,
+        ServerApplication.html&#160;<span class="change">(+2&#160;-2)</span>,
+        Service.html&#160;<span class="change">(+2&#160;-2)</span>,
+        ServiceDBManager.html&#160;<span class="change">(+2&#160;-2)</span>,
+        Session.html&#160;<span class="change">(+2&#160;-2)</span>,
+        SessionManager.html&#160;<span class="change">(+80&#160;-15)</span>,
+        Supervisor.html&#160;<span class="change">(+2&#160;-2)</span>,
+        SupervisorSession.html&#160;<span class="change">(+2&#160;-2)</span>,
+        Supplier.html&#160;<span class="change">(+2&#160;-2)</span>,
+        SupplierSession.html&#160;<span class="change">(+14&#160;-21)</span>,
+        User.html&#160;<span class="change">(+2&#160;-2)</span>,
+        UserDBManager.html&#160;<span class="change">(+2&#160;-2)</span>,
+        UserInterface.html&#160;<span class="change">(+2&#160;-2)</span>,
+        allclasses-frame.html&#160;<span class="change">(+3&#160;-2)</span>,
+        allclasses-noframe.html&#160;<span class="change">(+3&#160;-2)</span>,
+        constant-values.html&#160;<span class="change">(+64&#160;-5)</span>,
+        deprecated-list.html&#160;<span class="change">(+2&#160;-2)</span>,
+        help-doc.html&#160;<span class="change">(+2&#160;-2)</span>,
+        index.html&#160;<span class="change">(+1&#160;-1)</span>,
+        overview-tree.html&#160;<span class="change">(+11&#160;-2)</span>,
+        package-frame.html&#160;<span class="change">(+6&#160;-2)</span>,
+        package-summary.html&#160;<span class="change">(+17&#160;-2)</span>,
+        package-tree.html&#160;<span class="change">(+11&#160;-2)</span>,
+        serialized-form.html&#160;<span class="change">(+22&#160;-2)</span>
+      </li>
+    </ul>
+  </dd>
+
+  <dt><a name="8"></a>
+    <a href="user_gevrai.html" class="author">gevrai</a>
+    <span class="date">2016-12-03 20:31</span>
+    <span class="revisionNumberOuter">Rev.: <span class="revisionNumberInner">1628</span></span>
+  </dt>
+  <dd>
+    <p class="comment">
+SessionManager now throws exeptions instead of showing interface popups
+    </p>
+    <p class="commitdetails"><strong>9</strong> lines of code changed in <span class="files">1 file</span>:</p>
+    <ul class="commitdetails">
+      <li>
+        <strong>DM3/Documentation/javadoc</strong>:
+        SupplierSession.html&#160;<span class="change">(+9)</span>
+      </li>
+    </ul>
+  </dd>
+
+  <dt><a name="7"></a>
+    <a href="user_f.brobillard.html" class="author">f.brobillard</a>
+    <span class="date">2016-12-02 13:59</span>
+    <span class="revisionNumberOuter">Rev.: <span class="revisionNumberInner">1539</span></span>
+  </dt>
+  <dd>
+    <p class="comment">
+Javadoc correcte pour SupplierSession
+    </p>
+    <p class="commitdetails"><strong>56</strong> lines of code changed in <span class="files">35 files</span>:</p>
+    <ul class="commitdetails">
+      <li>
+        <strong>DM3/Documentation/javadoc</strong>:
+        Address.html&#160;<span class="change">(+1&#160;-1)</span>,
+        Claim.html&#160;<span class="change">(+1&#160;-1)</span>,
+        ClaimDBManager.html&#160;<span class="change">(+1&#160;-1)</span>,
+        DataBase.html&#160;<span class="change">(+1&#160;-1)</span>,
+        DataBaseManager.html&#160;<span class="change">(+1&#160;-1)</span>,
+        EFT.html&#160;<span class="change">(+1&#160;-1)</span>,
+        EftDBManager.html&#160;<span class="change">(+1&#160;-1)</span>,
+        MainAccountingJob.html&#160;<span class="change">(+1&#160;-1)</span>,
+        Member.html&#160;<span class="change">(+1&#160;-1)</span>,
+        MemberSession.html&#160;<span class="change">(+1&#160;-1)</span>,
+        ReceivableAccountsJob.html&#160;<span class="change">(+1&#160;-1)</span>,
+        ReportCreator.html&#160;<span class="change">(+1&#160;-1)</span>,
+        ServerApplication.html&#160;<span class="change">(+1&#160;-1)</span>,
+        Service.html&#160;<span class="change">(+1&#160;-1)</span>,
+        ServiceDBManager.html&#160;<span class="change">(+1&#160;-1)</span>,
+        Session.html&#160;<span class="change">(+1&#160;-1)</span>,
+        SessionManager.html&#160;<span class="change">(+1&#160;-1)</span>,
+        Supervisor.html&#160;<span class="change">(+1&#160;-1)</span>,
+        SupervisorSession.html&#160;<span class="change">(+1&#160;-1)</span>,
+        Supplier.html&#160;<span class="change">(+1&#160;-1)</span>,
+        SupplierSession.html&#160;<span class="change">(+22&#160;-5)</span>,
+        User.html&#160;<span class="change">(+1&#160;-1)</span>,
+        UserDBManager.html&#160;<span class="change">(+1&#160;-1)</span>,
+        UserInterface.html&#160;<span class="change">(+1&#160;-1)</span>,
+        allclasses-frame.html&#160;<span class="change">(+1&#160;-1)</span>,
+        allclasses-noframe.html&#160;<span class="change">(+1&#160;-1)</span>,
+        constant-values.html&#160;<span class="change">(+1&#160;-1)</span>,
+        deprecated-list.html&#160;<span class="change">(+1&#160;-1)</span>,
+        help-doc.html&#160;<span class="change">(+1&#160;-1)</span>,
+        index.html&#160;<span class="change">(+1&#160;-1)</span>,
+        overview-tree.html&#160;<span class="change">(+1&#160;-1)</span>,
+        package-frame.html&#160;<span class="change">(+1&#160;-1)</span>,
+        package-summary.html&#160;<span class="change">(+1&#160;-1)</span>,
+        package-tree.html&#160;<span class="change">(+1&#160;-1)</span>,
+        serialized-form.html&#160;<span class="change">(+1&#160;-1)</span>
+      </li>
+    </ul>
+  </dd>
+
+  <dt><a name="6"></a>
+    <a href="user_f.brobillard.html" class="author">f.brobillard</a>
+    <span class="date">2016-12-02 12:06</span>
+    <span class="revisionNumberOuter">Rev.: <span class="revisionNumberInner">1532</span></span>
+  </dt>
+  <dd>
+    <p class="comment">
+Commencer le manuel d'utilisateur qui se retrouve dans la section documentation. Écrit en LaTeX.
+    </p>
+    <p class="commitdetails"><strong>79</strong> lines of code changed in <span class="files">35 files</span>:</p>
+    <ul class="commitdetails">
+      <li>
+        <strong>DM3/Documentation/javadoc</strong>:
+        Address.html&#160;<span class="change">(+1&#160;-1)</span>,
+        Claim.html&#160;<span class="change">(+1&#160;-1)</span>,
+        ClaimDBManager.html&#160;<span class="change">(+1&#160;-1)</span>,
+        DataBase.html&#160;<span class="change">(+1&#160;-1)</span>,
+        DataBaseManager.html&#160;<span class="change">(+1&#160;-1)</span>,
+        EFT.html&#160;<span class="change">(+1&#160;-1)</span>,
+        EftDBManager.html&#160;<span class="change">(+1&#160;-1)</span>,
+        MainAccountingJob.html&#160;<span class="change">(+1&#160;-1)</span>,
+        Member.html&#160;<span class="change">(+1&#160;-1)</span>,
+        MemberSession.html&#160;<span class="change">(+1&#160;-1)</span>,
+        ReceivableAccountsJob.html&#160;<span class="change">(+1&#160;-1)</span>,
+        ReportCreator.html&#160;<span class="change">(+28&#160;-6)</span>,
+        ServerApplication.html&#160;<span class="change">(+1&#160;-1)</span>,
+        Service.html&#160;<span class="change">(+1&#160;-1)</span>,
+        ServiceDBManager.html&#160;<span class="change">(+1&#160;-1)</span>,
+        Session.html&#160;<span class="change">(+1&#160;-1)</span>,
+        SessionManager.html&#160;<span class="change">(+1&#160;-1)</span>,
+        Supervisor.html&#160;<span class="change">(+1&#160;-1)</span>,
+        SupervisorSession.html&#160;<span class="change">(+1&#160;-1)</span>,
+        Supplier.html&#160;<span class="change">(+1&#160;-1)</span>,
+        SupplierSession.html&#160;<span class="change">(+12&#160;-4)</span>,
+        User.html&#160;<span class="change">(+1&#160;-1)</span>,
+        UserDBManager.html&#160;<span class="change">(+1&#160;-1)</span>,
+        UserInterface.html&#160;<span class="change">(+1&#160;-1)</span>,
+        allclasses-frame.html&#160;<span class="change">(+1&#160;-1)</span>,
+        allclasses-noframe.html&#160;<span class="change">(+1&#160;-1)</span>,
+        constant-values.html&#160;<span class="change">(+1&#160;-1)</span>,
+        deprecated-list.html&#160;<span class="change">(+1&#160;-1)</span>,
+        help-doc.html&#160;<span class="change">(+1&#160;-1)</span>,
+        index.html&#160;<span class="change">(+1&#160;-1)</span>,
+        overview-tree.html&#160;<span class="change">(+1&#160;-1)</span>,
+        package-frame.html&#160;<span class="change">(+1&#160;-1)</span>,
+        package-summary.html&#160;<span class="change">(+7&#160;-3)</span>,
+        package-tree.html&#160;<span class="change">(+1&#160;-1)</span>,
+        serialized-form.html&#160;<span class="change">(+1&#160;-1)</span>
+      </li>
+    </ul>
+  </dd>
+
+  <dt><a name="5"></a>
+    <a href="user_f.brobillard.html" class="author">f.brobillard</a>
+    <span class="date">2016-12-02 09:29</span>
+    <span class="revisionNumberOuter">Rev.: <span class="revisionNumberInner">1527</span></span>
+  </dt>
+  <dd>
+    <p class="comment">
+Interface facturation service et submitclaim
+    </p>
+    <p class="commitdetails"><strong>444</strong> lines of code changed in <span class="files">35 files</span>:</p>
+    <ul class="commitdetails">
+      <li>
+        <strong>DM3/Documentation/javadoc</strong>:
+        Address.html&#160;<span class="change">(+2&#160;-2)</span>,
+        Claim.html&#160;<span class="change">(+2&#160;-2)</span>,
+        ClaimDBManager.html&#160;<span class="change">(+2&#160;-2)</span>,
+        DataBase.html&#160;<span class="change">(+2&#160;-2)</span>,
+        DataBaseManager.html&#160;<span class="change">(+2&#160;-2)</span>,
+        EFT.html&#160;<span class="change">(+2&#160;-2)</span>,
+        EftDBManager.html&#160;<span class="change">(+2&#160;-2)</span>,
+        MainAccountingJob.html&#160;<span class="change">(+46&#160;-32)</span>,
+        Member.html&#160;<span class="change">(+2&#160;-2)</span>,
+        MemberSession.html&#160;<span class="change">(+8&#160;-10)</span>,
+        ReceivableAccountsJob.html&#160;<span class="change">(+81&#160;-63)</span>,
+        ReportCreator.html&#160;<span class="change">(+80&#160;-6)</span>,
+        ServerApplication.html&#160;<span class="change">(+13&#160;-4)</span>,
+        Service.html&#160;<span class="change">(+2&#160;-2)</span>,
+        ServiceDBManager.html&#160;<span class="change">(+2&#160;-2)</span>,
+        Session.html&#160;<span class="change">(+6&#160;-10)</span>,
+        SessionManager.html&#160;<span class="change">(+21&#160;-4)</span>,
+        Supervisor.html&#160;<span class="change">(+2&#160;-2)</span>,
+        SupervisorSession.html&#160;<span class="change">(+8&#160;-10)</span>,
+        Supplier.html&#160;<span class="change">(+2&#160;-2)</span>,
+        SupplierSession.html&#160;<span class="change">(+58&#160;-30)</span>,
+        User.html&#160;<span class="change">(+2&#160;-2)</span>,
+        UserDBManager.html&#160;<span class="change">(+2&#160;-2)</span>,
+        UserInterface.html&#160;<span class="change">(+6&#160;-6)</span>,
+        allclasses-frame.html&#160;<span class="change">(+2&#160;-2)</span>,
+        allclasses-noframe.html&#160;<span class="change">(+2&#160;-2)</span>,
+        constant-values.html&#160;<span class="change">(+45&#160;-2)</span>,
+        deprecated-list.html&#160;<span class="change">(+2&#160;-2)</span>,
+        help-doc.html&#160;<span class="change">(+2&#160;-2)</span>,
+        index.html&#160;<span class="change">(+1&#160;-1)</span>,
+        overview-tree.html&#160;<span class="change">(+8&#160;-4)</span>,
+        package-frame.html&#160;<span class="change">(+2&#160;-2)</span>,
+        package-summary.html&#160;<span class="change">(+11&#160;-4)</span>,
+        package-tree.html&#160;<span class="change">(+8&#160;-4)</span>,
+        serialized-form.html&#160;<span class="change">(+6&#160;-21)</span>
+      </li>
+    </ul>
+  </dd>
+
+  <dt><a name="4"></a>
+    <a href="user_f.brobillard.html" class="author">f.brobillard</a>
+    <span class="date">2016-12-01 22:54</span>
+    <span class="revisionNumberOuter">Rev.: <span class="revisionNumberInner">1512</span></span>
+  </dt>
+  <dd>
+    <p class="comment">
+Facturation jusqu'à submitClaim, qui n'est pas encore implémenté.
+    </p>
+    <p class="commitdetails"><strong>52</strong> lines of code changed in <span class="files">35 files</span>:</p>
+    <ul class="commitdetails">
+      <li>
+        <strong>DM3/Documentation/javadoc</strong>:
+        Address.html&#160;<span class="change">(+1&#160;-1)</span>,
+        Claim.html&#160;<span class="change">(+1&#160;-1)</span>,
+        ClaimDBManager.html&#160;<span class="change">(+1&#160;-1)</span>,
+        DataBase.html&#160;<span class="change">(+1&#160;-1)</span>,
+        DataBaseManager.html&#160;<span class="change">(+1&#160;-1)</span>,
+        EFT.html&#160;<span class="change">(+1&#160;-1)</span>,
+        EftDBManager.html&#160;<span class="change">(+1&#160;-1)</span>,
+        MainAccountingJob.html&#160;<span class="change">(+1&#160;-1)</span>,
+        Member.html&#160;<span class="change">(+1&#160;-1)</span>,
+        MemberSession.html&#160;<span class="change">(+1&#160;-1)</span>,
+        ReceivableAccountsJob.html&#160;<span class="change">(+1&#160;-1)</span>,
+        ReportCreator.html&#160;<span class="change">(+1&#160;-1)</span>,
+        ServerApplication.html&#160;<span class="change">(+1&#160;-1)</span>,
+        Service.html&#160;<span class="change">(+1&#160;-1)</span>,
+        ServiceDBManager.html&#160;<span class="change">(+1&#160;-1)</span>,
+        Session.html&#160;<span class="change">(+1&#160;-1)</span>,
+        SessionManager.html&#160;<span class="change">(+1&#160;-1)</span>,
+        Supervisor.html&#160;<span class="change">(+1&#160;-1)</span>,
+        SupervisorSession.html&#160;<span class="change">(+1&#160;-1)</span>,
+        Supplier.html&#160;<span class="change">(+1&#160;-1)</span>,
+        SupplierSession.html&#160;<span class="change">(+18&#160;-5)</span>,
+        User.html&#160;<span class="change">(+1&#160;-1)</span>,
+        UserDBManager.html&#160;<span class="change">(+1&#160;-1)</span>,
+        UserInterface.html&#160;<span class="change">(+1&#160;-1)</span>,
+        allclasses-frame.html&#160;<span class="change">(+1&#160;-1)</span>,
+        allclasses-noframe.html&#160;<span class="change">(+1&#160;-1)</span>,
+        constant-values.html&#160;<span class="change">(+1&#160;-1)</span>,
+        deprecated-list.html&#160;<span class="change">(+1&#160;-1)</span>,
+        help-doc.html&#160;<span class="change">(+1&#160;-1)</span>,
+        index.html&#160;<span class="change">(+1&#160;-1)</span>,
+        overview-tree.html&#160;<span class="change">(+1&#160;-1)</span>,
+        package-frame.html&#160;<span class="change">(+1&#160;-1)</span>,
+        package-summary.html&#160;<span class="change">(+1&#160;-1)</span>,
+        package-tree.html&#160;<span class="change">(+1&#160;-1)</span>,
+        serialized-form.html&#160;<span class="change">(+1&#160;-1)</span>
+      </li>
+    </ul>
+  </dd>
+
+  <dt><a name="3"></a>
+    <a href="user_f.brobillard.html" class="author">f.brobillard</a>
+    <span class="date">2016-12-01 21:49</span>
+    <span class="revisionNumberOuter">Rev.: <span class="revisionNumberInner">1510</span></span>
+  </dt>
+  <dd>
+    <p class="comment">
+verifyMemberStatus et son GUI pour les fournisseurs
+    </p>
+    <p class="commitdetails"><strong>35</strong> lines of code changed in <span class="files">35 files</span>:</p>
+    <ul class="commitdetails">
+      <li>
+        <strong>DM3/Documentation/javadoc</strong>:
+        Address.html&#160;<span class="change">(+1&#160;-1)</span>,
+        Claim.html&#160;<span class="change">(+1&#160;-1)</span>,
+        ClaimDBManager.html&#160;<span class="change">(+1&#160;-1)</span>,
+        DataBase.html&#160;<span class="change">(+1&#160;-1)</span>,
+        DataBaseManager.html&#160;<span class="change">(+1&#160;-1)</span>,
+        EFT.html&#160;<span class="change">(+1&#160;-1)</span>,
+        EftDBManager.html&#160;<span class="change">(+1&#160;-1)</span>,
+        MainAccountingJob.html&#160;<span class="change">(+1&#160;-1)</span>,
+        Member.html&#160;<span class="change">(+1&#160;-1)</span>,
+        MemberSession.html&#160;<span class="change">(+1&#160;-1)</span>,
+        ReceivableAccountsJob.html&#160;<span class="change">(+1&#160;-1)</span>,
+        ReportCreator.html&#160;<span class="change">(+1&#160;-1)</span>,
+        ServerApplication.html&#160;<span class="change">(+1&#160;-1)</span>,
+        Service.html&#160;<span class="change">(+1&#160;-1)</span>,
+        ServiceDBManager.html&#160;<span class="change">(+1&#160;-1)</span>,
+        Session.html&#160;<span class="change">(+1&#160;-1)</span>,
+        SessionManager.html&#160;<span class="change">(+1&#160;-1)</span>,
+        Supervisor.html&#160;<span class="change">(+1&#160;-1)</span>,
+        SupervisorSession.html&#160;<span class="change">(+1&#160;-1)</span>,
+        Supplier.html&#160;<span class="change">(+1&#160;-1)</span>,
+        SupplierSession.html&#160;<span class="change">(+1&#160;-1)</span>,
+        User.html&#160;<span class="change">(+1&#160;-1)</span>,
+        UserDBManager.html&#160;<span class="change">(+1&#160;-1)</span>,
+        UserInterface.html&#160;<span class="change">(+1&#160;-1)</span>,
+        allclasses-frame.html&#160;<span class="change">(+1&#160;-1)</span>,
+        allclasses-noframe.html&#160;<span class="change">(+1&#160;-1)</span>,
+        constant-values.html&#160;<span class="change">(+1&#160;-1)</span>,
+        deprecated-list.html&#160;<span class="change">(+1&#160;-1)</span>,
+        help-doc.html&#160;<span class="change">(+1&#160;-1)</span>,
+        index.html&#160;<span class="change">(+1&#160;-1)</span>,
+        overview-tree.html&#160;<span class="change">(+1&#160;-1)</span>,
+        package-frame.html&#160;<span class="change">(+1&#160;-1)</span>,
+        package-summary.html&#160;<span class="change">(+1&#160;-1)</span>,
+        package-tree.html&#160;<span class="change">(+1&#160;-1)</span>,
+        serialized-form.html&#160;<span class="change">(+1&#160;-1)</span>
+      </li>
+    </ul>
+  </dd>
+
+  <dt><a name="2"></a>
+    <a href="user_f.brobillard.html" class="author">f.brobillard</a>
+    <span class="date">2016-12-01 21:44</span>
+    <span class="revisionNumberOuter">Rev.: <span class="revisionNumberInner">1509</span></span>
+  </dt>
+  <dd>
+    <p class="comment">
+verifyMemberStatus et son GUI pour les fournisseurs
+    </p>
+    <p class="commitdetails"><strong>261</strong> lines of code changed in <span class="files">35 files</span>:</p>
+    <ul class="commitdetails">
+      <li>
+        <strong>DM3/Documentation/javadoc</strong>:
+        Address.html&#160;<span class="change">(+6&#160;-8)</span>,
+        Claim.html&#160;<span class="change">(+7&#160;-12)</span>,
+        ClaimDBManager.html&#160;<span class="change">(+7&#160;-11)</span>,
+        DataBase.html&#160;<span class="change">(+6&#160;-8)</span>,
+        DataBaseManager.html&#160;<span class="change">(+6&#160;-10)</span>,
+        EFT.html&#160;<span class="change">(+7&#160;-12)</span>,
+        EftDBManager.html&#160;<span class="change">(+7&#160;-11)</span>,
+        MainAccountingJob.html&#160;<span class="change">(+6&#160;-8)</span>,
+        Member.html&#160;<span class="change">(+7&#160;-11)</span>,
+        MemberSession.html&#160;<span class="change">(+6&#160;-8)</span>,
+        ReceivableAccountsJob.html&#160;<span class="change">(+10&#160;-46)</span>,
+        ReportCreator.html&#160;<span class="change">(+10&#160;-9)</span>,
+        ServerApplication.html&#160;<span class="change">(+11&#160;-9)</span>,
+        Service.html&#160;<span class="change">(+7&#160;-10)</span>,
+        ServiceDBManager.html&#160;<span class="change">(+7&#160;-11)</span>,
+        Session.html&#160;<span class="change">(+6&#160;-8)</span>,
+        SessionManager.html&#160;<span class="change">(+6&#160;-8)</span>,
+        Supervisor.html&#160;<span class="change">(+7&#160;-10)</span>,
+        SupervisorSession.html&#160;<span class="change">(+6&#160;-8)</span>,
+        Supplier.html&#160;<span class="change">(+7&#160;-11)</span>,
+        SupplierSession.html&#160;<span class="change">(+15&#160;-14)</span>,
+        User.html&#160;<span class="change">(+6&#160;-8)</span>,
+        UserDBManager.html&#160;<span class="change">(+7&#160;-11)</span>,
+        UserInterface.html&#160;<span class="change">(+36&#160;-17)</span>,
+        allclasses-frame.html&#160;<span class="change">(+3&#160;-3)</span>,
+        allclasses-noframe.html&#160;<span class="change">(+3&#160;-3)</span>,
+        constant-values.html&#160;<span class="change">(+5&#160;-7)</span>,
+        deprecated-list.html&#160;<span class="change">(+5&#160;-7)</span>,
+        help-doc.html&#160;<span class="change">(+6&#160;-12)</span>,
+        index.html&#160;<span class="change">(+7&#160;-8)</span>,
+        overview-tree.html&#160;<span class="change">(+5&#160;-7)</span>,
+        package-frame.html&#160;<span class="change">(+3&#160;-3)</span>,
+        package-summary.html&#160;<span class="change">(+8&#160;-8)</span>,
+        package-tree.html&#160;<span class="change">(+5&#160;-7)</span>,
+        serialized-form.html&#160;<span class="change">(+5&#160;-7)</span>
+      </li>
+    </ul>
+  </dd>
+
+  <dt><a name="1"></a>
+    <a href="user_gevrai.html" class="author">gevrai</a>
+    <span class="date">2016-11-30 20:30</span>
+    <span class="revisionNumberOuter">Rev.: <span class="revisionNumberInner">1429</span></span>
+  </dt>
+  <dd>
+    <p class="comment">
+Added javadoc html files
+    </p>
+    <p class="commitdetails"><strong>12110</strong> lines of code changed in <span class="files">39 files</span>:</p>
+    <ul class="commitdetails">
+      <li>
+        <strong>DM3/Documentation/javadoc</strong>:
+        Address.html&#160;<span class="new">(new&#160;483)</span>,
+        Claim.html&#160;<span class="new">(new&#160;779)</span>,
+        ClaimDBManager.html&#160;<span class="new">(new&#160;527)</span>,
+        DataBase.html&#160;<span class="new">(new&#160;393)</span>,
+        DataBaseManager.html&#160;<span class="new">(new&#160;397)</span>,
+        EFT.html&#160;<span class="new">(new&#160;566)</span>,
+        EftDBManager.html&#160;<span class="new">(new&#160;506)</span>,
+        MainAccountingJob.html&#160;<span class="new">(new&#160;294)</span>,
+        Member.html&#160;<span class="new">(new&#160;426)</span>,
+        MemberSession.html&#160;<span class="new">(new&#160;312)</span>,
+        ReceivableAccountsJob.html&#160;<span class="new">(new&#160;328)</span>,
+        ReportCreator.html&#160;<span class="new">(new&#160;365)</span>,
+        ServerApplication.html&#160;<span class="new">(new&#160;285)</span>,
+        Service.html&#160;<span class="new">(new&#160;469)</span>,
+        ServiceDBManager.html&#160;<span class="new">(new&#160;455)</span>,
+        Session.html&#160;<span class="new">(new&#160;313)</span>,
+        SessionManager.html&#160;<span class="new">(new&#160;290)</span>,
+        Supervisor.html&#160;<span class="new">(new&#160;336)</span>,
+        SupervisorSession.html&#160;<span class="new">(new&#160;338)</span>,
+        Supplier.html&#160;<span class="new">(new&#160;381)</span>,
+        SupplierSession.html&#160;<span class="new">(new&#160;348)</span>,
+        User.html&#160;<span class="new">(new&#160;445)</span>,
+        UserDBManager.html&#160;<span class="new">(new&#160;455)</span>,
+        UserInterface.html&#160;<span class="new">(new&#160;408)</span>,
+        allclasses-frame.html&#160;<span class="new">(new&#160;42)</span>,
+        allclasses-noframe.html&#160;<span class="new">(new&#160;42)</span>,
+        constant-values.html&#160;<span class="new">(new&#160;122)</span>,
+        deprecated-list.html&#160;<span class="new">(new&#160;122)</span>,
+        help-doc.html&#160;<span class="new">(new&#160;223)</span>,
+        index.html&#160;<span class="new">(new&#160;72)</span>,
+        overview-tree.html&#160;<span class="new">(new&#160;183)</span>,
+        package-frame.html&#160;<span class="new">(new&#160;46)</span>,
+        package-list&#160;<span class="new">(new&#160;1)</span>,
+        package-summary.html&#160;<span class="new">(new&#160;276)</span>,
+        package-tree.html&#160;<span class="new">(new&#160;183)</span>,
+        package-use.html&#160;<span class="new">(new&#160;141)</span>,
+        script.js&#160;<span class="new">(new&#160;30)</span>,
+        serialized-form.html&#160;<span class="new">(new&#160;154)</span>,
+        stylesheet.css&#160;<span class="new">(new&#160;574)</span>
+      </li>
+    </ul>
+  </dd>
+
+</dl>
+
+</div><div id="generatedby">Generated by <a href="http://www.statsvn.org">StatSVN</a> 0.7.0</div>
+</body>
+</html>

@@ -1,0 +1,113 @@
+import java.math.BigInteger;
+import java.security.MessageDigest;
+
+/**
+ * The abstract Class User, representing any user using the system.
+ * 
+ * @author Philippe Caron
+ */
+public abstract class User {
+
+	/** The user ID. */
+	private int userID;
+	
+	/** The hash of the user's password. */
+	private String hash;
+	
+	/** The name of the user. */
+	private String name;
+
+	/**
+	 * Gets the user ID.
+	 *
+	 * @return the user ID
+	 */
+	public int getUserID() {
+		return this.userID;
+	}
+
+	/**
+	 * Sets the user ID.
+	 *
+	 * @param userID the new user ID
+	 */
+	public void setUserID(int userID) {
+		this.userID = userID;
+	}
+
+	/**
+	 * Gets the hash of the user's password.
+	 *
+	 * @return the hash of the user's password
+	 */
+	public String getHash() {
+		return this.hash;
+	}
+
+	/**
+	 * Sets the hash of the user's password.
+	 *
+	 * @param hash the new hash of the user's password
+	 */
+	public void setHash(String hash) {
+		this.hash = hash;
+	}
+
+	/**
+	 * Sets the hash of the user's password, from a plaintext password
+	 *
+	 * @param password the password for the user, which will be hashed
+	 */
+	public void setHashFromPassword(String password){
+		this.hash = MD5(password);
+	}
+
+	/**
+	 * Gets the name of the user
+	 *
+	 * @return the name of the user
+	 */
+	public String getName() {
+		return this.name;
+	}
+
+	/**
+	 * Sets the name of the user.
+	 *
+	 * @param name the new name of the user
+	 */
+	public void setName(String name) {
+		this.name = name;
+	}
+	
+	//TODO add source link for User.MD5
+	/**
+	 * The MD5 algorithm hashing a plaintext entry into a 128-bit hash value.
+	 * This is used because it is highly unsafe to save plaintext passwords
+	 * of any kind into a database.
+	 * 
+	 * @param plaintext the plaintext to hash
+	 * @return the hashed version of the plaintext in entry
+	 */
+	public static String MD5(String plaintext) {
+		String hashtext = null;
+		try 
+        {
+            MessageDigest m = MessageDigest.getInstance("MD5");
+            m.reset();
+            m.update(plaintext.getBytes());
+            byte[] digest = m.digest();
+            BigInteger bigInt = new BigInteger(1, digest);
+            hashtext = bigInt.toString(16);
+            while(hashtext.length() < 32 ){
+              hashtext = "0" + hashtext;   
+            }
+        } catch (Exception e) 
+        {
+              e.printStackTrace(System.out);
+        }
+		return hashtext;
+	}
+	
+	public abstract String toString();
+}

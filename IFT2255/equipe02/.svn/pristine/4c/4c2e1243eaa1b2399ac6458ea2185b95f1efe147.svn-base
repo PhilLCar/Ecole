@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Devoir 3 - Génie logiciel</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="public/stylesheets/style.css" media="screen">
+	<style type="text/css">
+        table {     border: outset 2px black;
+                    border-collapse: collapse; }
+        th {        border-bottom: double 2px black; }
+        td {        border-bottom: solid 1px black;
+                    border-right: double 1px black; }
+        .first_col{ border-right: double 2px black; }
+        h2 {        text-decoration:underline;}
+    </style>
+</head>
+
+<body>
+    <nav class="nav">
+        <ul>
+            <li>
+                <a href="#exigences">Exigences</a>
+            </li>
+            <li>
+                <a href="#analyse">Analyse</a>
+            </li>
+            <li>
+                <a href="#conception">Conception</a>
+            </li>
+            <li>
+                <a href="#implementation">Implémentation</a>
+            </li>
+            <li>
+                <a href="#test">Test</a>
+            </li>
+            <li>
+                <a href="#svn">Statistiques SVN</a>
+            </li>
+        </ul>
+
+    </nav>
+
+    <main>
+
+        <h1 style="text-align: center;">
+        IFT 2255 - Devoir 3 - Implémentation et tests</h1>
+        <h2>
+        Information générale</h2>
+        <p>
+            <span style="font-weight: bold;">Nom: </span>Félix Bélanger-Robillard
+            <br />
+            <span style="font-weight: bold;">Matricule: </span>3159
+            <br />
+            <span style="font-weight: bold;">Courriel: </span>felix.belanger-robillard@umontreal.ca
+            <br />
+            <span style="font-weight: bold;">temps mis: </span>14 heures
+        </p>
+        <p>
+            <span style="font-weight: bold;">Nom: </span>Antoine Zimmermann
+            <br />
+            <span style="font-weight: bold;">Matricule: </span>1429
+            <br />
+            <span style="font-weight: bold;">Courriel: </span>antoine.zimmermann@umontreal.ca
+            <br />
+            <span style="font-weight: bold;">temps mis: </span>16 heures
+        </p>
+
+        <p>
+            <b>Nom: </b> Gevrai Jodoin-Tremblay <br />
+            <b>Matricule: </b>9650 <br />
+            <b>Courriel: </b> gevrai.jodoin-tremblay@umontreal.ca <br />
+            <b>Temps mis: </b> 25+ heures
+        </p>
+
+        <p>
+            <b>Nom: </b> Philippe Caron <br />
+            <b>Matricule: </b>9846<br />
+            <b>Courriel: </b>philippe.caron.4@umontreal.ca <br />
+            <b>Temps mis:</b> ~12 heures
+        </p>
+        <h2>
+        Distribution des tâches</h2>
+        <p>
+            <span style="font-weight: bold;">Soumetteur: Félix</span>
+        </p>
+        <table cellpadding="7px">
+            <thead>
+                <tr>
+                    <th class="first_col"> Tâche </th>
+                    <th> En équipe </th>
+                    <th> Antoine </th>
+                    <th> Félix </th>
+                    <th> Gevrai </th>
+                    <th> Philippe </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="first_col"> Implémentation</td>
+                    <!-- équipe -->   <td></td> 
+                    <!-- Antoine -->  <td>Création de tous les rapports </td>
+                    <!-- Félix -->    <td>Interfaces membre et fournisseur</td>
+                    <!-- Gevrai -->   <td>Base de données+Managers, Procédure comptable principale, Traitement du fichier de comptes reçus</td>
+                    <!-- Philippe --> <td>SessionManager, interfaces utilisateurs</td>
+                </tr>
+            </tbody>
+            <tbody>
+                <tr>
+                    <td class="first_col"> Tests unitaires JUnit</td>
+                    <!-- équipe -->   <td></td> 
+                    <!-- Antoine -->  <td> <a href="./Tests/ServiceDBManagerTest.java"> Suppression d'un service</td>
+                    <!-- Félix -->    <td> <a href="./Tests/ReceivableAccountsJobTest.java"> Traiter comptes reçus (ACME) </a> </td>
+                    <!-- Gevrai -->   <td> <a href="Tests/SessionManagerTest.java"> Gérer session (Membre) </a> </td>
+                    <!-- Philippe --> <td> <a href=""> TODO</a> </td>
+                </tr>
+            </tbody>
+            <tbody>
+                <tr>
+                    <td class="first_col"> Javadoc</td>
+                    <!-- équipe -->   <td></td> 
+                    <!-- Antoine -->  <td> </td>
+                    <!-- Félix -->    <td> 30% </td>
+                    <!-- Gevrai -->   <td> 70% </td>
+                    <!-- Philippe --> <td></td>
+                </tr>
+            </tbody>
+            <tbody>
+                <tr>
+                    <td class="first_col"> Manuel utilisateur</td>
+                    <!-- équipe -->   <td></td> 
+                    <!-- Antoine -->  <td> </td>
+                    <!-- Félix -->    <td> 100% </td>
+                    <!-- Gevrai -->   <td></td>
+                    <!-- Philippe --> <td></td>
+                </tr>
+            </tbody>
+            <tbody>
+                <tr>
+                    <td class="first_col"> Rapport</td>
+                    <!-- équipe -->   <td></td> 
+                    <!-- Antoine -->  <td> </td>
+                    <!-- Félix -->    <td> 70% </td>
+                    <!-- Gevrai -->   <td> 30% </td>
+                    <!-- Philippe --> <td></td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="tasks">
+            <h2>
+        Hypothèses</h2>
+
+
+            </p>
+        </div>
+        <div class="tasks" id="resume"></div>
+        <h2>
+        Résumé</h2>
+
+        <p> </p>
+
+        <div class="tasks" id="exigences">
+            <h2>
+      <a href="">Exigences</a>
+    </h2>
+
+            <h3> Glossaire </h3>
+            <p>
+                <b>ACME:</b> Organisation tierce, responsable de la comptabilisation et des procédures financières de ChocAn.</br>
+
+                <b>Carte de membre:</b> Carte en plastique gaufrée avec le nom et le numéro à neufs chiffres d'un membre, également doté d'une bande magnétique où ces informations sont encodées.</br>
+                <b>CDC:</b> Abréviation de Centre de Données ChocAn.</br>
+                <b>Centre des Données ChocAn:</b> Ordinateur central où se trouve le logiciel de traitement de données de ChocAn.</br>
+                <b>Code de service:</b> Code à six chiffres associé à un service de santé.</br>
+                <b>Date de service:</b> Date dans le format JJ-MM-AAAA requise lorsqu'un fournisseur offre un service à un membre.</br>
+                <b>Enregistrement:</b> Agrégation de données correspondant à un membre, un fournisseur ou un service offert par un fournisseur à un membre.</br>
+                <b>Fournisseur:</b> Professionnel de la santé affilié à ChocAn fournissant des services aux membres.</br>
+                <b>Liste des services des fournisseurs:</b> Rapport envoyé aux fournisseurs, en pièce jointe d'un courriel, contenant une liste des services fournis aux membres ainsi que le total des frais pour la semaine.</br>
+                <b>Liste des services des membres:</b> Rapport envoyé aux membres, en pièce jointe d'un courriel, contenant une liste, triée selon la date du service, des différents services reçus durant la semaine.</br>
+                <b>Membre:</b> Personne addicte au chocolat payant un frais d'adhésion mensuel pour pouvoir bénéficier des avantages offerts par ChocAn.</br>
+                <b>Mode interactif:</b> État du logiciel du Centre de Données de ChocAn pendant la journée, permettant aux opérateurs d'ajouter, supprimer et modifier les enregistrements des membres et des fournisseurs de ChocAn.</br>
+                <b>Procédure comptable principale:</b> Exécuté au Centre des Données ChocAn tous les vendredis à minuit, ou à la demande d'un gérant de ChocAn, imprime les rapports des services fournis par les fournisseurs durant une semaine.</br>
+                <b>Rapport de synthèse:</b> Destiné au gérant de ChocAn, la liste des fournisseurs qui doivent être payés, le nombre de consultations de chacun et le total de leurs frais pour la semaine. Le nombre total de fournisseurs ayant fourni des
+                services, le nombre total de consultations et le total des frais de la semaine y sont également inscrits.</br>
+                <b>Répertoire des Fournisseurs:</b> Répertoire contenant les différents services de santé offerts par les fournisseurs, chacun associé à un code de service.</br>
+                <b>Terminal:</b> Ordinateur spécialement conçu pour les fournisseurs, nécessitant un numéro de fournisseur valide et doté d'un lecteur de cartes acceptant les cartes de membres.</br>
+                <b>Transfert électronique de fond (TEF):</b> Enregistrement destiné aux banques à fins de paiements
+            </p>
+
+            <h3>Cas d'utilisations</h3> <pre>
+<!-- Vérifier Numéro Membre -->
+<b>Cas d'utilisation:</b> Vérifier un numéro de membre.
+<b>But:</b> S'assurer de la validité du numéro de membre d'un patient, pour pouvoir facturé le service de santé à ChocAn.
+<b>Préconditions:</b> La communication fonctionne entre un terminal fournisseur et le CDC, le CDC a une base de donnée contenant les numéros de membres et leur statut.
+<b>Acteurs:</b> Fournisseur (terminal)
+<b>Scénario principal:</b>
+1. Le CDC reçoit un numéro de membre à vérifier
+2. Compare ce numéro avec la base de donnée et produit un message selon les options suivantes:
+- "Validé" : Le numéro de membre est valide et le nom du membre est affiché
+- "Numéro Invalide" : Le numéro de membre est invalide ou inexistant
+- "Membre suspendu" : Le statut du membre est 'suspendu'
+3. Le message est envoyé au terminal du fournisseur ayant fait la requête
+<b>Postconditions :</b> Retour à la normale
+
+<!-- Facturer service de santé -->
+<b>Cas d'utilisation:</b> Facturer un service de santé
+<b>But:</b> Permettre au fournisseur de facturer un service de santé offert à un membre ChocAn valide.
+<b>Préconditions:</b> Nécessite un communication fiable entre le terminal et le CDC, un code de service et un numéro de membre valide.
+<b>Acteur principal: </b> Fournisseur (terminal)
+<b>Scénario principal:</b>
+1. Système reçoit un enregistrement les champs suivant:
+- Date et heure actuelle (JJ-MM-AAAA HH:MM:SS)
+- Date à laquelle le service était fourni (JJ-MM-AA)
+- Numéro du fournisseur (9 chiffres)
+- Numéro du membre (9 chiffres)
+- Code du service (6 chiffres)
+- Commentaires facultatifs (100 charactères)
+2. Vérifie que le numéro de membre est bien valide.
+3. Si numéro valide, sauvegarde l'enregistrement dans la base de donnée.
+4. Renvoit au terminal du fournisseur le montant à dû pour le service.
+<b>Scénarios alternatifs:</b>
+3a. Si numéro de membre invalide, renvoit en message la raison de refu et quitte.
+<b>Postconditions:</b> L'enregistrement du service donné est inscrit sur le disque, si celui-ci est valide.
+
+<!-- Accéder au répertoire des fournisseurs -->
+<b>Cas d'utilisation: </b> Accéder au répertoire des fournisseurs.
+<b>But :</b> Envoyer le répertoire des fourniseurs à un fournisseur.
+<b>Préconditions :</b> L'enregistrement du fournisseur dans le CDC comprend une adresse email valide et le répertoire des fournisseurs existe dans la base de donnée.
+<b>Acteur :</b> Fournisseur
+<b>Acteur secondaire :</b> Gérant
+<b>Scénario principal :</b>
+1. Un fournisseur demande le répertoire des fournisseurs (CDC reçoit une demande associé au numéro du fournisseur demandant)
+2. Cherche le numéro de fournisseur parmi les enregistrements et retourne son adresse email.
+3. Envoie le répertoire des fournisseurs à l'adresse email retourné ci-haut.
+<b>Scénario alternatif :</b>
+1a. Un gérant créer un nouveau fournisseur, et demande ainsi qu'on lui envoie le répertoire des fournisseurs.
+2a. Le numéro du fournisseur est invalide, quitte tout simplement.
+<b>Postconditions:</b> Retour à la normale
+
+<!-- Modifier le répertoire des fournisseurs -->
+<b>Cas d'utilisation: </b> Modifier le répertoire des fournisseurs
+<b>But :</b> Permettre aux gérants ChocAn de mettre à jour les codes associés à chaque service
+<b>Préconditions :</b> Centre des Données ChocAn a une base de données sur chaque service et du code qui lui est associé
+<b>Acteur :</b> Gérant
+<b>Scénario principal :</b>
+1. Affiche une interface permettant de chercher ou ajouter une entrée sur la base de donnée
+2. Le gérant cherche une entrée
+3. Affiche un formulaire permettant de modifier ou supprimer l'entrée
+4. Si le gérant quitte l'entrée en cours:
+a. S'il y a des changements non enregistrés, affiche un message avec les options suivantes
+- Sauvegarder et quitter (par défaut)
+- Quitter sans sauvegarder
+- Annuler
+b. S'il n'y a pas de différences entre l'entrée affichée et celle dans la base de donnée, ferme simplement l'entrée en cours
+5. Retour à l'étape 1
+<b>Scénario alternatifs :</b>
+2a. Le gérant ajoute une nouvelle entrée
+2b. Le gérant quitte l'interface
+3.1 À tout moment lors de l'édition de l'entrée, le gérant peut enregister les changements effectués, ce qui envoit les changements directement sur la base de donnée
+<b>Postconditions:</b> La base de donnée est mise à jour et reflète les changements effectués par le gérant
+
+<!-- Exécuter procédure comptable principale -->
+<b>Cas d'utilisation: </b> Exécuter la procédure comptable principale.
+<b>But :</b> Imprime et envoie tous les rapports nécessaires à la comptabilité de la semaine.
+<b>Préconditions :</b> Centre des Données ChocAn à un fichier des services fournis durant la semaine.
+<b>Acteur :</b> Temporel (Vendredi à minuit)
+<b>Acteur secondaire:</b> Gérant ChocAn
+<b>Scénario principal :</b>
+0. La date et l'heure déclenche la procédure.
+1. Lit le fichier des services fournis durant la semaine.
+2. Exécute le cas d'utilisation "Créer rapport de membre" pour chaque membre ayant reçu au moins un service durant la semaine.
+3. Exécute le cas d'utilisation "Créer rapport de fournisseur" pour chaque fournisseur ayant offert au moins un service durant la semaine.
+4. Exécute le cas d'utilisation "Créer rapport de synthèse"
+5. Exécute le cas d'utilisation "Créer enregistrement de données TEF"
+<b>Scénarios alternatifs:</b>
+0a. Un gérant ChocAn peut déclencher cette procédure dans le cas d'un problème dans la procédure automatique.
+<b>Postconditions:</b> Mise à jour des enregistrements nécessaires dans le CDC.
+
+<!-- Créer rapport de membre -->
+<b>Cas d'utilisation: </b> Créer rapport de membre.
+<b>But :</b> Créer et envoyer un rapport de tous les services fournis à un membre durant une semaine donnée, par défaut la semaine courante.
+<b>Préconditions :</b> Centre des Données ChocAn a un fichier des services fournis durant la semaine.
+<b>Acteur :</b> Membre
+<b>Acteur secondaire:</b> Gérant ChocAn et procédure comptable principale.
+<b>Scénario principal :</b>
+0. Un membre demande le rapport à une semaine donnée ou la semaine courante si non spécifié.
+1. Lit le fichier des services fournis durant la semaine.
+2. Crée un rapport avec les champs suivants:
+- Nom du membre (25 charactères)
+- Numéro du membre (9 chiffres)
+- Adresse du membre (25 charactères)
+- Ville du membre (14 charactères)
+- Province du membre (2 lettres)
+- Code postal du membre (5 chiffres)
+- Pour chaque services fourni:
+- Date de service (JJ-MM-AAAA)
+- Nom du fournisseur (25 charactères)
+- Nom du service (20 charactères)
+3. Envoie le rapport ainsi créé au membre concerné en pièce jointe d'un courriel
+<b>Scénarios alternatifs:</b>
+0a. Un gérant ChocAn demande le rapport fournis à une semaine donnée, ou la semaine courante si non spécifié.
+3a. Affiche le rapport ainsi créé à l'écran du terminal du gérant, qui peut l'envoyer au client s'il le désire.
+0b. La procédure comptable principale demande le rapport à la semaine courante.
+<b>Postconditions:</b> Retour à la normale
+
+<!-- Créer rapport de fournisseur -->
+<b>Cas d'utilisation: </b> Créer rapport de fournisseur.
+<b>But :</b> Créer et envoyer un rapport de tous les services fournis par un fournisseur durant une semaine donnée, par défaut la semaine courante.
+<b>Préconditions :</b> Centre des Données ChocAn a un fichier des services fournis durant la semaine.
+<b>Acteur :</b> Fournisseur
+<b>Acteur secondaire:</b> Gérant ChocAn et procédure comptable principale.
+<b>Scénario principal :</b>
+0. Un fournisseur demande le rapport à une semaine donnée ou la semaine courante si non spécifié.
+1. Lit le fichier des services fournis durant la semaine.
+2. Crée un rapport avec les champs suivants:
+- Nom du fournisseur (25 charactères)
+- Numéro du fournisseur (9 chiffres)
+- Adresse du fournisseur (25 charactères)
+- Ville du fournisseur (14 charactères)
+- Province du fournisseur (2 lettres)
+- Code postal du fournisseur (5 chiffres)
+- Pour chaque services fourni:
+- Date de service (JJ-MM-AAAA)
+- Date et heure à laquelle les données étaient reçues par l'ordinateur (JJ-MM-AAAA HH:MM:SS)
+- Nom du membre (25 charactères)
+- Numéro du membre (9 chiffres)
+- Code du service (6 chiffres)
+- Montant à payer (jusqu'à 999.99$)
+3. Envoie le rapport ainsi créé au fournisseur concerné en pièce jointe d'un courriel
+<b>Scénarios alternatifs:</b>
+0a. Un gérant ChocAn demande le rapport à une semaine donnée, ou la semaine courante si non spécifié.
+3a. Affiche le rapport ainsi créé à l'écran du terminal du gérant, qui peut l'envoyer au fournisseur s'il le désire.
+0b. La procédure comptable principale demande le rapport à la semaine courante.
+<b>Postconditions:</b> Retour à la normale
+
+<!-- Créer rapport de synthèse -->
+<b>Cas d'utilisation: </b> Créer rapport de synthèse.
+<b>But :</b> Créer et afficher un rapport de synthèse des comptes payables de la semaine donnée, ou la semaine courante si non spécifié.
+<b>Préconditions :</b> Centre des Données ChocAn à un fichier des services fournis durant la semaine.
+<b>Acteur :</b> Gérant ChocAn
+<b>Acteur secondaire:</b> Procédure comptable principale
+<b>Scénario principal :</b>
+0. Un gérant ChocAn demande le rapport à une semaine donnée ou la semaine courante si non spécifié.
+1. Créer un rapport avec les champs suivants:
+- Pour chaque fournisseur devant être payé durant la semaine spécifiée:
+- Numéro du fournisseur (9 chiffres)
+- Nombres de consultations données par le fournisseur
+- Total de leurs frais pour la semaine
+- Nombre total de fournisseurs qui ont fournis des services durant la semaine spécifiée.
+- Nombre total de consultations données durant la semaine spécifiée.
+- Total des frais de la semaine spécifiée.
+<b>Scénarios alternatifs:</b>
+0a. La procédure comptable principale demande le rapport à la semaine courante.
+<b>Postconditions:</b> Retour à la normale
+
+<!-- Créer les enregistrements des données des TEF -->
+<b>Cas d'utilisation: </b> Créer les enregistrements des données des TEF
+<b>But :</b> Créer les données TEF nécessaires destinés aux banques.
+<b>Préconditions :</b> Centre des Données ChocAn à un fichier des services fournis durant la semaine.
+<b>Acteur :</b> Gérant ChocAn
+<b>Acteur secondaire:</b> Procédure comptable principale
+<b>Scénario principal :</b>
+0. Un gérant ChocAn demande le rapport à une semaine donnée ou la semaine courante si non spécifié.
+1. Lire le fichier des services fournis durant la semaine demandée
+2. Créer un fichier avec, pour chacun des fournisseurs, les champs suivants:
+- Nom du fournisseur
+- Compte bancaire du fournisseur
+- Montant total à payer au fournisseur
+<b>Scénarios alternatifs:</b>
+0a. La procédure comptable principale demande le rapport à la semaine courante.
+<b>Postconditions:</b> Retour à la normale
+
+<!-- Mettre à jour les enregistrements d'adhésion -->
+<b>Cas d'utilisation: </b> Mettre à jour les enregistrements d'adhésion
+<b>But :</b> Maintenir l'exactitude des enregistrements afin de contrôler le statut des membres
+<b>Préconditions :</b> Centre des Données ChocAn a sur son serveur les enregistrements d'adhésion
+<b>Acteur :</b> ACME (temporel, tous les soirs à 21h)
+<b>Scénario principal :</b>
+1. L'ordinateur d'ACME envoie au CDC les enregistrements de chacun des membres qui doivent être modifiés, consistant des champs suivants:
+- Numéro de membre
+- Statut du membre
+- Date du dernier paiement (JJ-MM-AAAA)
+2. Le logiciel du CDC met à jour les enregistrements de membres devant être modifiés (automatisation du cas d'utilisation "Ajouter, supprimer, modifier membre).
+3. Le logiciel du CDC envoie à ACME les enregistrements de membres qui ont été modifiés, ajoutés ou supprimés durant la journée.
+<b>Scénario alternatif :</b>
+2a. Un des numéro de membre est invalide, envoit cette information à un gérant ChocAn pour inspection et continue avec le prochain enregistrement.
+<b>Postconditions:</b> Les nouveaux enregistrements et les statuts de membres sont à jour et concordent entre ACME et le CDC.
+
+<!-- Modification d'un membre -->
+<b>Cas d'utilisation: </b> Ajouter, modifier ou supprimer un membre
+<b>But :</b> Permettre aux gérants de supprimer, ajouter, ou modifier les informations d'un membre
+<b>Préconditions :</b> Centre des Données ChocAn a une base de données contenant les informations de chacuns des membres
+<b>Acteur :</b> Gérant
+<b>Scénario principal :</b>
+1. Affiche une interface pour effectuer une requête sur la base de donnée ou ajouter une nouvelle entrée.
+2. Le gérant entre un numéro de membre
+3. Affiche un formulaire permettant de modifier les informations du membres ou de supprimer le membre
+4. Après avoir compléter le formulaire, demande à l'acteur de valider les changements.
+<b>Scénario alternatif :</b>
+2a. Le gérant ajoute un nouveau membre
+<b>Postconditions:</b> La base de donnée est mise à jour et reflète les changements effectués par le gérant ou ACME
+
+<!-- Modification d'un fournisseur -->
+<b>Cas d'utilisation: </b> Ajouter, modifier ou supprimer un fournisseur
+<b>But :</b> Permettre au gérants de supprimer, ajouter, ou modifier les informations d'un fournisseur
+<b>Préconditions :</b> Centre des Données ChocAn a une base de données de chaque fournisseur
+<b>Acteur :</b> Gérant
+<b>Scénario principal :</b>
+1. Affiche une interface pour effectuer une requête sur la base de donnée ou ajouter une nouvelle entrée.
+2. Le gérant entre un numéro de fournisseur
+3. Affiche un formulaire permettant de modifier les informations du fournisseur ou de supprimer le fournisseur
+4. Après avoir compléter le formulaire, demande au gérant de valider
+<b>Scénario alternatif :</b>
+2a. Le gérant ajoute un nouveau fournisseur
+5a. Envoit au nouveau fournisseur le Répertoire des Fournisseurs par email.
+<b>Postconditions:</b> La base de donnée est mise à jour et reflète les changements effectués par le gérant.
+</pre>
+
+            <h3> Risques potentiels du projet </h3>
+            <ol>
+                <li>
+                    <h4> Possibilité pour un fournisseur/quiconque de facturer un service au numéro de n'importe quel membre</h4> Puisqu'on ne demande aucune autre preuve d'identité que le numéro de membre, quiconque peut, avec un numéro de membre valide, facturer un service de santé à ChocAn bien qu'il ne soit pas réellement membre. </li>
+                <li>
+                    <h4>  Risque de perte de données puisque le CDC n'implémente pas de sauvegarde de secours</h4> Il serait plus sécuritaire d'implémenter une sauvegarde quotidienne (backup) de toute la base de donnée du CDC vers un ou plusieurs autre disques (et/ou serveurs) pour s'assurer que, en cas de panne, ChocAn ne perde pas ses données.
+                </li>
+                <li>
+                    <h4>Cohérence de la base de donnée du CDC</h4> La mise à jour de la base de donnée entre le CDC et ACME s'effectue chaque jour pour vérifier le statut des membres. La pertinence du système repose sur la bonne communication entre ces deux bases de données, il faudra donc s'assurer
+                    que la transmission de données et la mise-à-jour parrallèle entre ces systèmes soit convenable. </li>
+                <li>
+                    <h4>  Les problèmes de connections internet ne permettent pas de vérifier un numéro de membre </h4> Si la communication est impossible pour un long délai entre le terminal d'un fournisseur et le CDC, le fournisseur ne peut pas vérifier la validité d'un numéro de membre. Il ne voudra donc probablement pas offrir les services de santé
+                    de peur que le membre soit invalide et qu'il ne puisse pas facturer le service à ChocAn. </li>
+                <li>
+                    <h4> Impossible d'avoir plus de 100 000 clients puisque le numéro de membre ne peut que comporter 6 chiffres.</h4> Dans le but de prévoir l'expansion du nombre de membre de ChocAn à plus de cent mille membres, il serait judicieux de permettent plus de numéro/code de membre possibles. </li>
+            </ol>
+
+            <h3> Besoins non-fonctionnels </h3>
+            <ol>
+                <li>
+                    <h4>Implantation du logiciel en Java</h4> Afin de faciliter son implantation et sa portabilité, le logiciel sera programmé en Java.
+                </li>
+                <li>
+                    <h4> Doit être robuste </h4> Puisque ce logiciel est requis pour que les fournisseurs puissent effectuer toutes leurs transactions, le CDC doit être accessible sans interruptions. Une interruptions serait catastrophique et nuirait aux services offerts aux membres
+                    par les fournisseurs, qui, par exemple, ne pourrait vérifier la validité d'un numéro de membre.
+                </li>
+                <li>
+                    <h4>Doit être aisément maintenu/adaptable</h4> Ce logiciel doit interagir avec l'ordinateur d'ACME, ce qui signifie qu'il faut prévoir une certaine flexibilité au niveau de la transmission de données. De plus, si l'ordinateur d'ACME est mis-à-jour, il faut pouvoir efficacement
+                    mettre le logiciel du CDC à niveau en parrallèle.
+                </li>
+                <li>
+                    <h4>Doit être sécuritaire</h4> La base de données contiendra les informations personnels de pleins de client qui, comme le nom de l'organisation l'indique, désirent rester anonyme. Il sera important de s'assurer que l'information est bien protégée.
+                </li>
+                <li>
+                    <h4>Doit pouvoir être facilement opéré par quelqu'un avec de faible connaissances de l'informatique</h4> Les principaux utilisateurs du logiciel seront les gérants ChocAn qui, bien qu'ils recevront probablement une formation pour utiliser convenablement le logiciel, ne seront pas nécessairement des professionels de l'informatique. Ainsi,
+                    il faut que le logiciel soit facilement utilisable et que les commandes possibles soient bien documentées.</li>
+            </ol>
+
+
+        </div>
+
+        <div class="tasks" id="analyse">
+            <h2>
+          <a href="">Analyse</a>
+        </h2>
+            <h3> Diagrammes d'activité </h3>
+
+            <h4> Principal </h4>
+            <img src="images/Main_act.png" alt="Diagramme d'activité principale" /><br>
+            <h4> Produire Rapport</h4>
+            <img src="images/Produire Rapport_act.png" alt="Diagramme d'activité pour 'Produire Rapport'" /><br>
+            <h4> Maintenir Client</h4>
+            <img src="images/Maintenir_Client_act.png" alt="Diagramme d'activité pour 'Maintenir client'" /><br>
+            <h4> Maintenir Service</h4>
+            <img src="images/Maintenir_Service_act.png" alt="Diagramme d'activité pour 'Maintenir service'" /><br>
+
+            <h3> Diagramme de classes participantes</h3>
+
+            <img src="images/classes_participantes.png" alt="Diagramme de classes participantes" /><br>
+
+
+        </div>
+
+        <div class="tasks" id="conception">
+            <h2> <a href="">Conception</a> </h2>
+
+            <h3> Diagramme de classes </h3>
+
+            <img src="images/classes.png" alt="Diagramme de classes" /><br>
+
+            <h3> Diagrammes de séquence </h3>
+
+            <h4> Authentification utilisateur</h4>
+            <img src="images/Authentification.png" alt="Diagramme de séquence 'Authentification'" /><br>
+
+            <h4>Accès au répertoire des fournisseurs</h4>
+            <img src="images/Accès_répertoire_fournisseurs.png" alt="Diagramme de séquence 'Accès au répertoire des fournisseurs'" /><br>
+
+            <h4>Maintenir service</h4>
+            <img src="images/Maintenir_service.png" alt="Diagramme de séquence 'Maintenir service'" /><br>
+
+            <h4>Maintenir utilisateur</h4>
+            <img src="images/Maintenir_utilisateur.png" alt="Diagramme de séquence 'Maintenir utilisateur'" /><br>
+
+            <h4>Paiement membre</h4>
+            <img src="images/Paiement_membre.png" alt="Diagramme de séquence 'Paiement membre'" /><br>
+
+            <h4>Procédure comptable principale</h4>
+            <img src="images/Procédure_comptable_principale.png" alt="Diagramme de séquence 'Procédure comptable principale'" /><br>
+
+            <h4>Produire rapport comptes payables</h4>
+            <img src="images/Produire_rapport_comptes_payables.png" alt="Diagramme de séquence 'Produire rapport comptes payables'" /><br>
+
+            <h4>Produire rapport fournisseur</h4>
+            <img src="images/Produire_rapport_fournisseur.png" alt="Diagramme de séquence 'Produire rapport fournisseur'" /><br>
+
+            <h4>Produire rapport membre</h4>
+            <img src="images/Produire_rapport_membre.png" alt="Diagramme de séquence 'Produire rapport membre'" /><br>
+
+            <h4>Produire rapport des Transferts Électronique de Fonds</h4>
+            <img src="images/Produire_rapport_TEF.png" alt="Diagramme de séquence 'Produire rapport des Transferts Électronique de Fonds'" /><br>
+
+            <h4>Soumettre réclamation</h4>
+            <img src="images/Soumettre_réclamation.png" alt="Diagramme de séquence 'Soumettre réclamation'" /><br>
+
+            <h4>Vérifier client</h4>
+            <img src="images/Vérifier_client.png" alt="Diagramme de séquence 'Vérifier client'" /><br>
+
+
+        </div>
+
+        <div class="tasks" id="implementation">
+            <h2>
+                          <a href="">Implémentation</a>
+                        </h2>
+
+            <h3>Code source</h3>
+            <h3>Configuration et ANT</h3>
+            <h3>Manuel d'utilisateur</h3>
+            <h3>Javadoc</h3>
+
+        </div>
+
+        <div class="tasks" id="test">
+            <h2>
+                                  <a href="">Test</a>
+                                </h2>
+            <h3>Tests unitaires</h3>
+        </div>
+        <div id="svn" class="tasks">
+
+            <h2>
+        Statistiques SVN</h2>
+            <p>
+                <img src="public/image/percentOfAuthorship_devoir2.png" alt="Commits SVN" />
+                <img src="public/image/statistics_devoir2.png" alt="Statistiques SVN" />
+
+
+            </p>
+        </div>
+
+    </main>
+
+</body>
+
+</html>

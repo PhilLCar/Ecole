@@ -1,0 +1,37 @@
+import static org.junit.Assert.*;
+
+import org.junit.Test;
+
+public class ReceivableAccountsJobTest {
+
+  /**
+  * For the parseLineAndModifyUserStatus(String line) method
+  */
+  @Test
+  public void validInputShouldReturnTrue() {
+    // Valid statuses for a Member
+    assertTrue(parseLineAndModifyUserStatus("200000 0"));
+    assertTrue(parseLineAndModifyUserStatus("200000 1"));
+  }
+
+  /**
+  * For the parseLineAndModifyUserStatus(String line) method
+  */
+  @Test
+  public void InvalidInputShouldReturnFalse() {
+    // users that are not members
+    assertFalse(parseLineAndModifyUserStatus("100000  1"));
+    assertFalse(parseLineAndModifyUserStatus("100000  0"));
+    assertFalse(parseLineAndModifyUserStatus("300000  1"));
+    assertFalse(parseLineAndModifyUserStatus("300000  0"));
+    // Space instead of tab
+    assertFalse(parseLineAndModifyUserStatus("200000 0"));
+    // invalid status code
+    assertFalse(parseLineAndModifyUserStatus("200000  8"));
+    // invalid memberID
+    assertFalse(parseLineAndModifyUserStatus("1992221  0"));
+
+  }
+
+
+}

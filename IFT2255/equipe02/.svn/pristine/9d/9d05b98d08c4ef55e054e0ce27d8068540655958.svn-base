@@ -1,0 +1,125 @@
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.util.ArrayList;
+
+public class DataBase {
+	
+	private final static String FILENAME_USERS = "src/Data/Users.db";
+	private final static String FILENAME_CLAIMS = "src/Data/Claims.db";
+	private final static String FILENAME_EFT = "src/Data/EFT.db";
+	private final static String FILENAME_SERVICES = "src/Data/Services.db";
+	
+	private final static DataBase singleton = new DataBase();
+
+	private ArrayList<User> users;
+	private ArrayList<Claim> claims;
+	private ArrayList<EFT> dataEFT;
+	private ArrayList<Service> services;
+	
+	private DataBase() {
+		this.users = new ArrayList<User>();
+		this.claims = new ArrayList<Claim>();
+		this.dataEFT = new ArrayList<EFT>();
+		this.services = new ArrayList<Service>();
+	}
+	
+	public static DataBase getDataBase() {
+		return singleton;
+	}
+
+	public ArrayList<User> getUsers() {
+		return users;
+	}
+
+	public ArrayList<Claim> getClaims() {
+		return claims;
+	}
+
+	public ArrayList<EFT> getDataEFT() {
+		return dataEFT;
+	}
+
+	public ArrayList<Service> getServices() {
+		return services;
+	}
+
+	private void populateUsers() {
+		try {
+			FileReader fr = new FileReader(FILENAME_USERS);
+			BufferedReader br = new BufferedReader(fr);
+			String r;
+			String[] line;
+			while ((r = br.readLine()) != null) {
+				line = r.split("\t", 2);
+				switch(line[0]){
+				case "Member":
+					users.add(new Member(line[1]));
+					break;
+				case "Supplier":
+					users.add(new Supplier(line[1]));
+					break;
+				case "Supervisor":
+					users.add(new Supervisor(line[1]));
+					break;
+				default:
+					throw new Exception("Database is corrupt.");
+				}
+			}
+			br.close();
+		} catch (Exception e) {
+			e.printStackTrace(System.err);
+		}
+	}
+
+	private void populateClaims() {
+		try {
+			FileReader fr = new FileReader(FILENAME_CLAIMS);
+			BufferedReader br = new BufferedReader(fr);
+			String line;
+			while ((line = br.readLine()) != null)
+				claims.add(new Claim(line));
+			br.close();
+		} catch (Exception e) {
+			e.printStackTrace(System.err);
+		}
+	}
+	
+	private void populateEFT() {
+		try {
+			FileReader fr = new FileReader(FILENAME_EFT);
+			BufferedReader br = new BufferedReader(fr);
+			String line;
+			while ((line = br.readLine()) != null)
+				dataEFT.add(new EFT(line));
+			br.close();
+		} catch (Exception e) {
+			e.printStackTrace(System.err);
+		}
+	}
+
+	private void populateServices() {
+		try {
+			FileReader fr = new FileReader(FILENAME_SERVICES);
+			BufferedReader br = new BufferedReader(fr);
+			String line;
+			while ((line = br.readLine()) != null)
+				services.add(new Service(line));
+			br.close();
+		} catch (Exception e) {
+			e.printStackTrace(System.err);
+		}
+	}
+	
+	public void populate() {
+		populateUsers();
+		populateClaims();
+		populateEFT();
+		populateServices();
+	}
+
+	public void dump() {
+		// TODO - implement DataBase.dump
+		throw new UnsupportedOperationException();
+	}
+
+}

@@ -1,0 +1,357 @@
+import java.awt.Label;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.swing.*;
+
+/**
+ * The Class SupplierSession, which is used manage the Suppliers' GUI and their
+ * requests to the database.
+ *
+ *
+ *
+ */
+public class SupplierSession extends Session {
+
+	public int supplierID;
+
+	/**
+	 * Takes a MemberID and a String that states whether the Member is valid or
+	 * not. If not, it says why.
+	 *
+	 * @author Félix Bélanger-Robillard
+	 * @param userID
+	 *            int used to query the database
+	 * @return a String with corresponding Member status
+	 */
+	public static String verifyMemberStatus(int userID) {
+
+		UserDBManager usersdb = new UserDBManager();
+		User validateduser = usersdb.find(userID);
+		if (validateduser != null && validateduser instanceof Member) {
+			switch (((Member) validateduser).getStatus()) {
+			case Member.STATUS_VALID: return "Validé";
+			case Member.STATUS_SUSPENDED: return "Membre suspendu pour frais impayés";
+			case Member.STATUS_LATEPAYMENT: return "Le membre est en retard sur son payement";
+			default: return "Numéro invalide";
+			}
+		} else return "Numéro invalide";
+	}
+
+	/**
+	 * Adds a new claim to the database.
+	 *
+	 * @param memID
+	 *            member's id number
+	 * @param supplierID
+	 *            supplier's id number
+	 * @param servID
+	 *            service's id number
+	 * @param comment
+	 *            Whatever the supplier deemed fit to add
+	 * @param servicedate
+	 *            Date the Member received the supplier's services
+	 */
+	public static void submitClaim(int memID, int supplierID, int servID, String comment, String servicedate) {
+		// TODO validation of the servicedate format. ATM, it lands and
+		// exception and the submission cannot be completed.
+		Claim newClaim = new Claim(servicedate, supplierID, memID, servID, 0, comment);
+		ClaimDBManager db = new ClaimDBManager();
+		db.add(newClaim);
+	}
+
+	/**
+	 * Instantiates a SupplierSession
+	 *
+	 * @param supplier
+	 *            the supplier that asks for a session
+	 */
+	public SupplierSession(Supplier supplier) {
+		super(supplier);
+		supplierID=supplier.getUserID();
+	}
+
+	/*
+	 * Shows main menu for suppliers.
+	 *
+	 * @author Philippe Caron
+	 *
+	 * @param UI Active GUI to be modified by the method
+	 */
+	@Override
+	public void getUI(UserInterface UI) {
+		UI.getContentPane().removeAll();
+		JButton verif = new JButton("Vérifier un membre");
+		JButton bill = new JButton("Facturer un service de santé");
+		JButton repo = new JButton("Accéder au répertoire de fournisseurs");
+		JButton quit = new JButton("Quitter");
+
+		verif.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				verifyUI(UI);
+			}
+
+		});
+
+		bill.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				billUI(UI);
+
+			}
+
+		});
+
+		repo.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				repositoryUI(UI);
+			}
+
+		});
+
+		Session thisSession = this;
+		quit.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				UI.disconnect(thisSession);
+			}
+
+		});
+
+		UI.setTitle("Menu Fournisseur");
+		UI.add(new Label("Choisissez parmis l'une des options suivantes:"));
+		UI.add(verif);
+		UI.add(bill);
+		UI.add(repo);
+		UI.add(quit);
+		UI.setSize(300, 190);
+		UI.setVisible(true);
+	}
+
+	/**
+	 * Enters billing procedure for suppliers. In order, they have to verify the
+	 * member status, then input the date of service, the service ID and
+	 * comments. These infos are then submitted to the database for the
+	 * suppliers to be paid.
+	 *
+	 * @author Félix Bélanger-Robillard
+	 * @param UI
+	 *            Active GUI to be modified by the method
+	 */
+	public void billUI(UserInterface UI) {
+
+		UI.getContentPane().removeAll();
+		JTextField num = new JTextField(20);
+		JButton verif = new JButton("Vérifier un membre");
+		JButton back = new JButton("Retour");
+
+		verif.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				try {
+					JOptionPane.showMessageDialog(new JPanel(), verifyMemberStatus(Integer.parseInt(num.getText())),
+							"Statut", JOptionPane.WARNING_MESSAGE);
+					final int memberID = Integer.parseInt(num.getText());
+					if (verifyMemberStatus(memberID) == "Validé") {
+						UI.getContentPane().removeAll();
+						UI.add(new JLabel("Date"));
+						JTextField datefield = new JTextField(15);
+						UI.add(datefield);
+						UI.add(new JLabel("Code de service"));
+						JTextField servicecodefield = new JTextField(15);
+						UI.add(servicecodefield);
+						UI.add(new JLabel("Commentaires"));
+						JTextField commentsfield = new JTextField(15);
+						UI.add(commentsfield);
+						JButton submitClaim = new JButton("Soumettre");
+						submitClaim.addActionListener(new ActionListener() {
+
+							@Override
+							public void actionPerformed(ActionEvent e) {
+								boolean success = false;
+								try {
+									final int servID = Integer.parseInt(servicecodefield.getText());
+									final String comments = commentsfield.getText();
+									final String date = datefield.getText();
+									submitClaim(memberID, supplierID, servID, comments, date);
+									success = true;
+								}
+
+								finally {
+									String msg;
+									if (success)
+										msg = "Facture soumise à ChocAn avec succès, retour au menu principal.";
+									else
+										msg = "La facture n'a pas pu être soumise, retour au menu principal.";
+									JOptionPane.showMessageDialog(new JPanel(), msg);
+									getUI(UI);
+								}
+							}
+
+						});
+						UI.add(submitClaim);
+						UI.setTitle("Facture pour membre: " + memberID);
+						UI.setSize(200, 400);
+						UI.setVisible(true);
+						UI.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+					} else
+						JOptionPane.showMessageDialog(new JPanel(), verifyMemberStatus(memberID));
+
+				} catch (Exception ex) {
+					JOptionPane.showMessageDialog(new JPanel(), "Format du numéro de membre invalide", "Erreur",
+							JOptionPane.ERROR_MESSAGE);
+				}
+			}
+
+		});
+
+		back.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				getUI(UI);
+			}
+
+		});
+
+		UI.setTitle("Menu Fournisseur - Facturer un service");
+		UI.add(new Label("Entrez le numéro du membre ci-dessous:"));
+		UI.add(num);
+		UI.add(verif);
+		UI.add(back);
+		UI.setSize(300, 130);
+		UI.setVisible(true);
+	}
+
+	/**
+	 * Creates the GUI for verifying member IDs.
+	 *
+	 * @param UI
+	 *            Active GUI to be modified by the method
+	 */
+	public void verifyUI(UserInterface UI) {
+		UI.getContentPane().removeAll();
+		JTextField num = new JTextField(20);
+		JButton verif = new JButton("Vérifier un membre");
+		JButton back = new JButton("Retour");
+
+		verif.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				try {
+					JOptionPane.showMessageDialog(new JPanel(), verifyMemberStatus(Integer.parseInt(num.getText())),
+							"Statut", JOptionPane.WARNING_MESSAGE);
+				} catch (Exception ex) {
+					JOptionPane.showMessageDialog(new JPanel(), "Format du numéro de membre invalide", "Erreur",
+							JOptionPane.ERROR_MESSAGE);
+				}
+			}
+
+		});
+
+		back.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				getUI(UI);
+			}
+
+		});
+
+		UI.setTitle("Menu Fournisseur - Vérifier un membre");
+		UI.add(new Label("Entrez le numéro du membre ci-dessous:"));
+		UI.add(num);
+		UI.add(verif);
+		UI.add(back);
+		UI.setSize(300, 130);
+		UI.setVisible(true);
+	}
+
+	/*
+	 * Creates the GUI to find services IDs in the database.
+	 *
+	 * @param UI Active GUI to be modified by the method
+	 */
+	public void repositoryUI(UserInterface UI) {
+		UI.getContentPane().removeAll();
+		JTextField num = new JTextField(20);
+		JTextField descr = new JTextField(20);
+		JButton verif = new JButton("Voir les fournisseurs");
+		JButton back = new JButton("Retour");
+		JList<UserPrint> result = new JList<UserPrint>();
+		UserDBManager udbm = new UserDBManager();
+
+		DefaultListModel<UserPrint> model = new DefaultListModel<UserPrint>();
+
+		verif.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				try {
+					model.clear();
+					if (!num.getText().equals("")) {
+						User res = udbm.find(Integer.parseInt(num.getText()));
+						if (res != null && res.getClass().getName() == "Supplier") {
+							model.addElement(new UserPrint(res));
+							result.setModel(model);
+						}
+					} else {
+						ArrayList<User> alu = udbm.filter(descr.getText());
+						for (User u : alu)
+							if (u.getClass().getName() == "Supplier")
+								model.addElement(new UserPrint(u));
+						result.setModel(model);
+
+					}
+				} catch (Exception ex) {
+					JOptionPane.showMessageDialog(new JPanel(), "Format du numéro de fournisseur invalide", "Erreur",
+							JOptionPane.ERROR_MESSAGE);
+				}
+			}
+
+		});
+
+		back.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				getUI(UI);
+			}
+
+		});
+
+		UI.setTitle("Menu Fournisseur - Répertoire des fournisseurs");
+		UI.add(new Label("Entrez le numéro du fournisseur ci-dessous:"));
+		UI.add(new Label("Entrez la recherche ci-dessous:"));
+		UI.add(num);
+		UI.add(descr);
+		UI.add(verif);
+		UI.add(back);
+		UI.add(result);
+		UI.setSize(500, 500);
+		UI.setVisible(true);
+	}
+
+	private class UserPrint {
+		private User u;
+
+		public UserPrint(User u) {
+			this.u = u;
+		}
+
+		@Override
+		public String toString() {
+			return u.getUserID() + "                      " + u.getName();
+		}
+	}
+}

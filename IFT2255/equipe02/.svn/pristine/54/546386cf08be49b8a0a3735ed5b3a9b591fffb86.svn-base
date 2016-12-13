@@ -1,0 +1,218 @@
+import java.awt.Label;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.List;
+
+import javax.swing.*;
+
+//TODO javadoc SupplierSession
+public class SupplierSession extends Session {
+
+	public List<Service> fetchRepository() {
+		// TODO - implement SupplierSession.fetchRepository
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * Takes a MemberID and a String that states whether the Member is valid or not. If not, it says why.
+	 * @author Félix Bélanger-Robillard
+	 * @param userID
+	 */
+	public static String verifyMemberStatus(int userID) {
+		// TODO - implement SupplierSession.verifyMemberStatus
+
+		UserDBManager usersdb = new UserDBManager();
+		User validateduser = usersdb.find(userID);
+		if(validateduser!=null && validateduser instanceof Member)
+		{
+		if(((Member) validateduser).getStatus()==0)	return "Validé";
+		else return "Membre suspendu pour frais impayés";
+		}
+		else return "Numéro invalide";
+	}
+
+	public static JPanel claimUI(){
+		JPanel ret = new JPanel();
+		// Vérification Membre
+		JLabel memberlabel = new JLabel("Numéro de membre:");
+		ret.add(memberlabel);
+		JTextField membernumber = new JTextField(15);
+		ret.add(membernumber);
+		JButton verifynumber = new JButton("Vérifier");
+		verifynumber.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				int memberid=-1;
+				try {
+
+					memberid = Integer.parseInt(membernumber.getText());
+				}
+
+				finally {
+					final int memberID = memberid;
+					if (verifyMemberStatus(memberid)=="Validé") {
+						JFrame inputBill = new JFrame();
+						JPanel inputBillPanel = new JPanel();
+						inputBillPanel.add(new JLabel("Date"));
+						JTextField datefield = new JTextField(15);
+						inputBillPanel.add(datefield);
+						inputBillPanel.add(new JLabel("Code de service"));
+						JTextField servicecodefield = new JTextField(15);
+						inputBillPanel.add(servicecodefield);
+						inputBillPanel.add(new JLabel("Commentaires"));
+						JTextField commentsfield = new JTextField(15);
+						inputBillPanel.add(commentsfield);
+						JButton submitClaim = new JButton("Soumettre");
+						submitClaim.addActionListener(new ActionListener() {
+
+							@Override
+							public void actionPerformed(ActionEvent e) {
+								boolean success=false;
+								try {
+								  final int servID = Integer.parseInt(servicecodefield.getText());
+									final String comments = commentsfield.getText();
+									final String date = datefield.getText();
+									submitClaim(memberID,servID , comments,date);
+									success=true;
+								}
+
+								finally {
+									String msg;
+									if(success) msg="Facture soumise à ChocAn avec succès";
+									else msg = "La facture n'a pas pu être soumise. Veuillez vérifier vos informations";
+									JOptionPane.showMessageDialog(new JPanel(), msg);
+								}
+							}
+
+						});
+						inputBillPanel.add(submitClaim);
+						inputBill.add(inputBillPanel);
+						inputBill.setSize(200, 400);
+						inputBill.setVisible(true);
+						inputBill.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+					}
+					else JOptionPane.showMessageDialog(new JPanel(),verifyMemberStatus(memberid) );
+
+
+				}
+			}
+
+		});
+
+		ret.add(verifynumber);
+		return ret;
+	}
+	/**
+	 *
+	 * @param memID
+	 * @param servID
+	 * @param comment
+	 */
+	public static void submitClaim(int memID, int servID, String comment, String dateofservice) {
+		// TODO - implement SupplierSession.submitClaim
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 *
+	 * @param userID
+	 * @param hash
+	 */
+	public SupplierSession(Supplier supplier) {
+		super(supplier);
+	}
+
+	@Override
+	public void getUI(UserInterface UI) {
+		UI.getContentPane().removeAll();
+		JButton verif = new JButton("Vérifier un membre");
+		JButton bill = new JButton("Facturer un service de santé");
+		JButton repo = new JButton("Accéder au répertoire de fournisseurs");
+		JButton quit = new JButton("Quitter");
+		
+		verif.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				verifyUI(UI);
+			}
+			
+		});
+		
+		bill.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+		});
+		
+		repo.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+			}
+			
+		});
+		
+		Session thisSession = this;
+		quit.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				UI.disconnect(thisSession);
+			}
+			
+		});
+		
+		UI.setTitle("Menu Fournisseur");
+		UI.add(new Label("Choisissez parmis l'une des options suivantes:"));
+		UI.add(verif);
+		UI.add(bill);
+		UI.add(repo);
+		UI.add(quit);
+		UI.setSize(300, 190);
+		UI.setVisible(true);
+	}
+	
+	public void verifyUI(UserInterface UI) {
+		UI.getContentPane().removeAll();
+		JTextField num = new JTextField(20);
+		JButton verif = new JButton("Vérifier un membre");
+		JButton back = new JButton("Retour");
+		
+		verif.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				try {
+					JOptionPane.showMessageDialog(new JPanel(), verifyMemberStatus(Integer.parseInt(num.getText())), "Statut", JOptionPane.WARNING_MESSAGE);
+				} catch (Exception ex) {
+					JOptionPane.showMessageDialog(new JPanel(), "Format du numéro de membre invalide", "Erreur", JOptionPane.ERROR_MESSAGE);
+				}
+			}
+			
+		});
+		
+		back.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				getUI(UI);
+			}
+			
+		});
+		
+		UI.setTitle("Menu Fournisseur - Vérifier un membre");
+		UI.add(new Label("Entrez le numéro du membre ci-dessous:"));
+		UI.add(num);
+		UI.add(verif);
+		UI.add(back);
+		UI.setSize(300, 130);
+		UI.setVisible(true);
+	}
+
+}

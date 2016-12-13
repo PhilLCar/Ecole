@@ -1,0 +1,50 @@
+import java.awt.FlowLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+
+public class ServerApplication {
+
+	private final static SessionManager sessionManager = new SessionManager();
+	private final static DataBase database = DataBase.getDataBase();
+
+	public static void newConnection() {
+		new UserInterface();
+	}
+
+	/**
+	 * 
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		database.populate();
+		JFrame mainWindow = new JFrame();
+		mainWindow.setLayout(new FlowLayout());
+		JButton newCon = new JButton("Simuler une connexion");
+		newCon.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				new UserInterface();
+			}
+			
+		});
+		JButton quit = new JButton("Quitter");
+		quit.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				System.exit(0);
+			}
+			
+		});
+		mainWindow.add(newCon);
+		mainWindow.add(quit);
+		mainWindow.setSize(200, 200);
+		mainWindow.setVisible(true);
+		mainWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	}
+
+}

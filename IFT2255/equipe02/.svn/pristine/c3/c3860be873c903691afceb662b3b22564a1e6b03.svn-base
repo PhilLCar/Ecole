@@ -1,0 +1,76 @@
+import java.awt.Component;
+import java.awt.FlowLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+
+public class UserInterface extends JFrame {
+
+	private boolean loggedin;
+	private int userID;
+	private String hash;
+
+	public void displayInterface() {
+		
+	}
+
+	/**
+	 * 
+	 * @param userID
+	 * @param userPassword
+	 */
+	private void login(String user, String userPassword) {
+		int userID;
+		Session session;
+		try {
+			userID = Integer.parseInt(user);
+		} catch (Exception e) {
+			e.printStackTrace(System.err);
+			return;
+		}
+		session = SessionManager.authenticate(userID, userPassword);
+		if (session != null) {
+			getContentPane().removeAll();
+			setContentPane(session.getUI());
+			pack();
+			setVisible(true);
+		} else {
+			JOptionPane.showMessageDialog(new JPanel(), "Bad login or password", "Error", JOptionPane.ERROR_MESSAGE);
+		}
+	}
+
+	private void disconnect() {
+		// TODO - implement UserInterface.disconnect
+		throw new UnsupportedOperationException();
+	}
+
+	public UserInterface() {
+		setLayout(new FlowLayout());
+		JLabel loglab = new JLabel("Login:");
+		JTextField login = new JTextField(20);
+		JLabel paslab = new JLabel("Password:");
+		JTextField pass = new JTextField(20);
+		JButton submit = new JButton("Submit");
+		submit.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				login(login.getText(), pass.getText());
+			}
+		});
+		add(loglab);
+		add(login);
+		add(paslab);
+		add(pass);
+		add(submit);
+		setSize(250, 200);
+		setVisible(true);
+	}
+
+}

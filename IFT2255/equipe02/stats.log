@@ -1,0 +1,3790 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<log>
+<logentry
+   revision="1836">
+<author>f.brobillard</author>
+<date>2016-12-05T04:42:23.682838Z</date>
+<paths>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/rapport.html</path>
+</paths>
+<msg>Test unitaire dans le rapport</msg>
+</logentry>
+<logentry
+   revision="1835">
+<author>gevrai</author>
+<date>2016-12-05T04:40:42.009080Z</date>
+<paths>
+<path
+   kind="file"
+   action="A">/equipe02/DM3/images/tests_unitaires.png</path>
+</paths>
+<msg>added picture for unit testing in report</msg>
+</logentry>
+<logentry
+   revision="1833">
+<author>f.brobillard</author>
+<date>2016-12-05T04:34:45.022894Z</date>
+<paths>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Documentation/Manuel/manuel.aux</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Documentation/Manuel/manuel.log</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Documentation/Manuel/manuel.pdf</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Documentation/Manuel/manuel.tex</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Documentation/javadoc/Address.html</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Documentation/javadoc/Claim.html</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Documentation/javadoc/ClaimDBManager.html</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Documentation/javadoc/DataBase.html</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Documentation/javadoc/DataBaseManager.html</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Documentation/javadoc/EFT.html</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Documentation/javadoc/EftDBManager.html</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Documentation/javadoc/MainAccountingJob.html</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Documentation/javadoc/Member.html</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Documentation/javadoc/MemberSession.html</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Documentation/javadoc/ReceivableAccountsJob.html</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Documentation/javadoc/ReportCreator.html</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Documentation/javadoc/ServerApplication.html</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Documentation/javadoc/Service.html</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Documentation/javadoc/ServiceDBManager.html</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Documentation/javadoc/Session.html</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Documentation/javadoc/SessionManager.html</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Documentation/javadoc/Supervisor.html</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Documentation/javadoc/SupervisorSession.html</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Documentation/javadoc/Supplier.html</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Documentation/javadoc/SupplierSession.html</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Documentation/javadoc/User.html</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Documentation/javadoc/UserDBManager.html</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Documentation/javadoc/UserInterface.html</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Documentation/javadoc/allclasses-frame.html</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Documentation/javadoc/allclasses-noframe.html</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Documentation/javadoc/constant-values.html</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Documentation/javadoc/deprecated-list.html</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Documentation/javadoc/help-doc.html</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Documentation/javadoc/index.html</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Documentation/javadoc/overview-tree.html</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Documentation/javadoc/package-frame.html</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Documentation/javadoc/package-summary.html</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Documentation/javadoc/package-tree.html</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Documentation/javadoc/serialized-form.html</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Sources/SessionManager.java</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/rapport.html</path>
+</paths>
+<msg>Ajout d'une technicalité au manuel</msg>
+</logentry>
+<logentry
+   revision="1830">
+<author>gevrai</author>
+<date>2016-12-05T04:24:45.596054Z</date>
+<paths>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/build.xml</path>
+</paths>
+<msg>fix ant for some configs</msg>
+</logentry>
+<logentry
+   revision="1829">
+<author>gevrai</author>
+<date>2016-12-05T04:19:02.008151Z</date>
+<paths>
+<path
+   kind="file"
+   action="A">/equipe02/DM3/images/reverseChocAn.png</path>
+</paths>
+<msg>added final diagram image</msg>
+</logentry>
+<logentry
+   revision="1827">
+<author>gevrai</author>
+<date>2016-12-05T04:12:49.932835Z</date>
+<paths>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/build.xml</path>
+</paths>
+<msg>now release is default and it runs properly</msg>
+</logentry>
+<logentry
+   revision="1826">
+<author>gevrai</author>
+<date>2016-12-05T04:12:21.393241Z</date>
+<paths>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Tests/VerifyMemberTest.java</path>
+</paths>
+<msg>fixed last assert</msg>
+</logentry>
+<logentry
+   revision="1823">
+<author>gevrai</author>
+<date>2016-12-05T04:04:36.534896Z</date>
+<paths>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/build.xml</path>
+</paths>
+<msg>Ant unit testing working properly</msg>
+</logentry>
+<logentry
+   revision="1821">
+<author>f.brobillard</author>
+<date>2016-12-05T03:55:38.435031Z</date>
+<paths>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Sources/User.java</path>
+</paths>
+<msg>Enlever un TODO réglé</msg>
+</logentry>
+<logentry
+   revision="1818">
+<author>f.brobillard</author>
+<date>2016-12-05T03:50:43.234159Z</date>
+<paths>
+<path
+   kind="dir"
+   action="D">/equipe02/DM3/Application</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Sources/MemberSession.java</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Sources/SupervisorSession.java</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Sources/SupplierSession.java</path>
+</paths>
+<msg>Je passe à travers des TODO</msg>
+</logentry>
+<logentry
+   revision="1816">
+<author>azimmermann</author>
+<date>2016-12-05T03:48:53.522447Z</date>
+<paths>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Documentation/ChocAn.vpp</path>
+</paths>
+<msg>Diagramme de classe final</msg>
+</logentry>
+<logentry
+   revision="1809">
+<author>pcaron</author>
+<date>2016-12-05T03:42:36.412646Z</date>
+<paths>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Tests/VerifyMemberTest.java</path>
+</paths>
+<msg>Changement au test unitaire VerifyMember</msg>
+</logentry>
+<logentry
+   revision="1799">
+<author>azimmermann</author>
+<date>2016-12-05T03:29:30.094305Z</date>
+<paths>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Documentation/ChocAn.vpp</path>
+</paths>
+<msg></msg>
+</logentry>
+<logentry
+   revision="1797">
+<author>pcaron</author>
+<date>2016-12-05T03:28:22.610789Z</date>
+<paths>
+<path
+   kind="dir"
+   action="M">/equipe02/DM3</path>
+<path
+   kind="dir"
+   copyfrom-path="/equipe02/DM3/Application"
+   copyfrom-rev="1758"
+   action="A">/equipe02/DM3/Application</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Application/SimulationServeurChocAn.jar</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/build.xml</path>
+</paths>
+<msg>Avancement des test unitaires</msg>
+</logentry>
+<logentry
+   revision="1796">
+<author>f.brobillard</author>
+<date>2016-12-05T03:25:51.626764Z</date>
+<paths>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Documentation/javadoc/Address.html</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Documentation/javadoc/Claim.html</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Documentation/javadoc/ClaimDBManager.html</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Documentation/javadoc/DataBase.html</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Documentation/javadoc/DataBaseManager.html</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Documentation/javadoc/EFT.html</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Documentation/javadoc/EftDBManager.html</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Documentation/javadoc/MainAccountingJob.html</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Documentation/javadoc/Member.html</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Documentation/javadoc/MemberSession.html</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Documentation/javadoc/ReceivableAccountsJob.html</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Documentation/javadoc/ReportCreator.html</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Documentation/javadoc/ServerApplication.html</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Documentation/javadoc/Service.html</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Documentation/javadoc/ServiceDBManager.html</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Documentation/javadoc/Session.html</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Documentation/javadoc/SessionManager.html</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Documentation/javadoc/Supervisor.html</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Documentation/javadoc/SupervisorSession.html</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Documentation/javadoc/Supplier.html</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Documentation/javadoc/SupplierSession.html</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Documentation/javadoc/User.html</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Documentation/javadoc/UserDBManager.html</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Documentation/javadoc/UserInterface.html</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Documentation/javadoc/allclasses-frame.html</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Documentation/javadoc/allclasses-noframe.html</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Documentation/javadoc/constant-values.html</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Documentation/javadoc/deprecated-list.html</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Documentation/javadoc/help-doc.html</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Documentation/javadoc/index.html</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Documentation/javadoc/overview-tree.html</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Documentation/javadoc/package-frame.html</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Documentation/javadoc/package-summary.html</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Documentation/javadoc/package-tree.html</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Documentation/javadoc/serialized-form.html</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Sources/SupervisorSession.java</path>
+</paths>
+<msg>Javadoc pour SupervisorSession</msg>
+</logentry>
+<logentry
+   revision="1788">
+<author>gevrai</author>
+<date>2016-12-05T03:11:49.407576Z</date>
+<paths>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Sources/ClaimDBManager.java</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Sources/DataBase.java</path>
+</paths>
+<msg>Removed unecessary TODOs</msg>
+</logentry>
+<logentry
+   revision="1783">
+<author>f.brobillard</author>
+<date>2016-12-05T03:03:43.979246Z</date>
+<paths>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/rapport.html</path>
+</paths>
+<msg>Texte pour les tests, reste à ajouter l'image</msg>
+</logentry>
+<logentry
+   revision="1780">
+<author>f.brobillard</author>
+<date>2016-12-05T03:01:38.588184Z</date>
+<paths>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/rapport.html</path>
+</paths>
+<msg>Hypothèses et résumé</msg>
+</logentry>
+<logentry
+   revision="1773">
+<author>f.brobillard</author>
+<date>2016-12-05T02:42:03.523002Z</date>
+<paths>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/rapport.html</path>
+</paths>
+<msg>test unitaire de Phil ajouté au rapport</msg>
+</logentry>
+<logentry
+   revision="1772">
+<author>gevrai</author>
+<date>2016-12-05T02:37:35.391255Z</date>
+<paths>
+<path
+   kind="dir"
+   action="A">/equipe02/DM3/lib</path>
+<path
+   action="A"
+   kind="file">/equipe02/DM3/lib/hamcrest-core-1.3.jar</path>
+<path
+   kind="file"
+   action="A">/equipe02/DM3/lib/junit-4.12.jar</path>
+</paths>
+<msg>Added junit jars for ant to make unit testings</msg>
+</logentry>
+<logentry
+   revision="1770">
+<author>pcaron</author>
+<date>2016-12-05T02:32:38.001107Z</date>
+<paths>
+<path
+   kind="file"
+   action="A">/equipe02/DM3/Tests/VerifyMemberTest.java</path>
+</paths>
+<msg>Ajout du test unitaire</msg>
+</logentry>
+<logentry
+   revision="1767">
+<author>f.brobillard</author>
+<date>2016-12-05T02:26:27.946751Z</date>
+<paths>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/rapport.html</path>
+</paths>
+<msg>Merge 2.0 du rapport</msg>
+</logentry>
+<logentry
+   revision="1765">
+<author>gevrai</author>
+<date>2016-12-05T02:19:52.085761Z</date>
+<paths>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Sources/ReceivableAccountsJob.java</path>
+</paths>
+<msg>Added formatting requirements of ACME's file in doc</msg>
+</logentry>
+<logentry
+   revision="1764">
+<author>gevrai</author>
+<date>2016-12-05T02:17:21.030159Z</date>
+<paths>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/rapport.html</path>
+</paths>
+<msg>Rapport.html edition...</msg>
+</logentry>
+<logentry
+   revision="1760">
+<author>f.brobillard</author>
+<date>2016-12-05T02:07:08.547208Z</date>
+<paths>
+<path
+   kind="dir"
+   action="D">/equipe02/DM3/Application</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Documentation/Manuel/manuel.log</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Documentation/Manuel/manuel.pdf</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Documentation/Manuel/manuel.tex</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Sources/SupervisorSession.java</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/rapport.html</path>
+</paths>
+<msg>Manuel final</msg>
+</logentry>
+<logentry
+   revision="1758">
+<author>pcaron</author>
+<date>2016-12-05T01:54:07.270379Z</date>
+<paths>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Sources/SupervisorSession.java</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Sources/SupplierSession.java</path>
+<path
+   kind="dir"
+   action="D">/equipe02/DM3/classes</path>
+</paths>
+<msg>Remplacement des chiffres par leur constante associée (relativement au statut des membres)</msg>
+</logentry>
+<logentry
+   revision="1751">
+<author>pcaron</author>
+<date>2016-12-05T01:44:19.485022Z</date>
+<paths>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Sources/SupervisorSession.java</path>
+</paths>
+<msg>Modification des statuts</msg>
+</logentry>
+<logentry
+   revision="1750">
+<author>gevrai</author>
+<date>2016-12-05T01:41:44.035919Z</date>
+<paths>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Sources/Member.java</path>
+</paths>
+<msg>Added late status code</msg>
+</logentry>
+<logentry
+   revision="1749">
+<author>pcaron</author>
+<date>2016-12-05T01:41:18.392978Z</date>
+<paths>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Sources/User.java</path>
+</paths>
+<msg>Ajout des sources de l'algo MD5</msg>
+</logentry>
+<logentry
+   revision="1747">
+<author>pcaron</author>
+<date>2016-12-05T01:35:32.725279Z</date>
+<paths>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Sources/User.java</path>
+</paths>
+<msg>Ajout des sources de l'algo MD5</msg>
+</logentry>
+<logentry
+   revision="1746">
+<author>gevrai</author>
+<date>2016-12-05T01:30:29.566406Z</date>
+<paths>
+<path
+   copyfrom-path="/equipe02/DM3/Application"
+   copyfrom-rev="1655"
+   action="A"
+   kind="dir">/equipe02/DM3/Application</path>
+<path
+   kind="file"
+   copyfrom-path="/equipe02/DM3/Application/Database/MemberStatusFromACME.txt"
+   copyfrom-rev="1657"
+   action="A">/equipe02/DM3/Application/Database/MemberStatusFromACME.txt</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Application/SimulationServeurChocAn.jar</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Documentation/javadoc/Address.html</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Documentation/javadoc/Claim.html</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Documentation/javadoc/ClaimDBManager.html</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Documentation/javadoc/DataBase.html</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Documentation/javadoc/DataBaseManager.html</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Documentation/javadoc/EFT.html</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Documentation/javadoc/EftDBManager.html</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Documentation/javadoc/MainAccountingJob.html</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Documentation/javadoc/Member.html</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Documentation/javadoc/MemberSession.html</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Documentation/javadoc/ReceivableAccountsJob.html</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Documentation/javadoc/ReportCreator.html</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Documentation/javadoc/ServerApplication.html</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Documentation/javadoc/Service.html</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Documentation/javadoc/ServiceDBManager.html</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Documentation/javadoc/Session.html</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Documentation/javadoc/SessionManager.html</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Documentation/javadoc/Supervisor.html</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Documentation/javadoc/SupervisorSession.html</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Documentation/javadoc/Supplier.html</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Documentation/javadoc/SupplierSession.html</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Documentation/javadoc/User.html</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Documentation/javadoc/UserDBManager.html</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Documentation/javadoc/UserInterface.html</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Documentation/javadoc/allclasses-frame.html</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Documentation/javadoc/allclasses-noframe.html</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Documentation/javadoc/constant-values.html</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Documentation/javadoc/deprecated-list.html</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Documentation/javadoc/help-doc.html</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Documentation/javadoc/index.html</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Documentation/javadoc/overview-tree.html</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Documentation/javadoc/package-frame.html</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Documentation/javadoc/package-summary.html</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Documentation/javadoc/package-tree.html</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Documentation/javadoc/serialized-form.html</path>
+<path
+   action="A"
+   kind="dir"
+   copyfrom-path="/equipe02/DM3/classes"
+   copyfrom-rev="1655">/equipe02/DM3/classes</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/classes/Member.class</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/classes/MemberSession.class</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/classes/ReceivableAccountsJob.class</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/classes/ServerApplication.class</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/classes/SessionManager.class</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/classes/SupervisorSession$2.class</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/classes/SupervisorSession$3.class</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/classes/SupervisorSession.class</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/rapport.html</path>
+</paths>
+<msg>Rapport edit: distribution des taches</msg>
+</logentry>
+<logentry
+   revision="1740">
+<author>azimmermann</author>
+<date>2016-12-05T01:16:47.953758Z</date>
+<paths>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Documentation/ChocAn.vpp</path>
+</paths>
+<msg></msg>
+</logentry>
+<logentry
+   revision="1737">
+<author>azimmermann</author>
+<date>2016-12-05T01:09:25.284761Z</date>
+<paths>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Documentation/ChocAn.vpp</path>
+</paths>
+<msg></msg>
+</logentry>
+<logentry
+   revision="1730">
+<author>pcaron</author>
+<date>2016-12-05T00:51:24.245791Z</date>
+<paths>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Sources/SupervisorSession.java</path>
+</paths>
+<msg>ajout de la modification des gérants et fournisseurs</msg>
+</logentry>
+<logentry
+   revision="1725">
+<author>pcaron</author>
+<date>2016-12-05T00:26:44.574778Z</date>
+<paths>
+<path
+   kind="dir"
+   action="D">/equipe02/DM3/Sources/Data</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Sources/SupervisorSession.java</path>
+</paths>
+<msg>ajout de la fonction "modifyMember()"</msg>
+</logentry>
+<logentry
+   revision="1724">
+<author>azimmermann</author>
+<date>2016-12-05T00:18:57.514912Z</date>
+<paths>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Tests/ServiceDBManagerTest.java</path>
+</paths>
+<msg></msg>
+</logentry>
+<logentry
+   revision="1723">
+<author>gevrai</author>
+<date>2016-12-05T00:02:55.010175Z</date>
+<paths>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Sources/ReceivableAccountsJob.java</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Tests/ReceivableAccountsJobTest.java</path>
+</paths>
+<msg>Fixed parsing error in ReceivableAccountJob.parseLineAndModifyUserStatus</msg>
+</logentry>
+<logentry
+   revision="1718">
+<author>azimmermann</author>
+<date>2016-12-04T23:29:24.967473Z</date>
+<paths>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Sources/ReportCreator.java</path>
+</paths>
+<msg></msg>
+</logentry>
+<logentry
+   revision="1717">
+<author>azimmermann</author>
+<date>2016-12-04T23:27:03.380843Z</date>
+<paths>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Sources/ReportCreator.java</path>
+</paths>
+<msg></msg>
+</logentry>
+<logentry
+   revision="1716">
+<author>gevrai</author>
+<date>2016-12-04T23:24:56.637268Z</date>
+<paths>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Sources/DataBaseManager.java</path>
+</paths>
+<msg>Fixed java doc errors concerning unknown tag &lt;T&gt;</msg>
+</logentry>
+<logentry
+   revision="1715">
+<author>azimmermann</author>
+<date>2016-12-04T23:24:10.161498Z</date>
+<paths>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Tests/ServiceDBManagerTest.java</path>
+</paths>
+<msg></msg>
+</logentry>
+<logentry
+   revision="1714">
+<author>gevrai</author>
+<date>2016-12-04T23:21:33.140251Z</date>
+<paths>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/build.xml</path>
+</paths>
+<msg>build.xml: added target descriptions, for ant -p to show more informations</msg>
+</logentry>
+<logentry
+   revision="1710">
+<author>pcaron</author>
+<date>2016-12-04T22:54:41.598972Z</date>
+<paths>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Sources/ServerApplication.java</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Sources/SupervisorSession.java</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Sources/SupplierSession.java</path>
+</paths>
+<msg>Changements mineurs au programme</msg>
+</logentry>
+<logentry
+   revision="1707">
+<author>azimmermann</author>
+<date>2016-12-04T21:46:27.375989Z</date>
+<paths>
+<path
+   kind="file"
+   action="A">/equipe02/DM3/Tests/ServiceDBManagerTest.java</path>
+</paths>
+<msg>ServiceDBManagerTest.java : test de delete(int id)</msg>
+</logentry>
+<logentry
+   revision="1679">
+<author>f.brobillard</author>
+<date>2016-12-04T18:20:25.030752Z</date>
+<paths>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Sources/Claim.java</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Sources/ClaimDBManager.java</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Sources/DataBaseManager.java</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Sources/ReceivableAccountsJob.java</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Sources/ReportCreator.java</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Sources/Session.java</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Sources/SessionManager.java</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Sources/SupervisorSession.java</path>
+</paths>
+<msg>Encapsulation pour l'interface SupervisorSession</msg>
+</logentry>
+<logentry
+   revision="1668">
+<author>f.brobillard</author>
+<date>2016-12-04T17:01:12.405709Z</date>
+<paths>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Documentation/javadoc/Address.html</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Documentation/javadoc/Claim.html</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Documentation/javadoc/ClaimDBManager.html</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Documentation/javadoc/DataBase.html</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Documentation/javadoc/DataBaseManager.html</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Documentation/javadoc/EFT.html</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Documentation/javadoc/EftDBManager.html</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Documentation/javadoc/MainAccountingJob.html</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Documentation/javadoc/Member.html</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Documentation/javadoc/MemberSession.html</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Documentation/javadoc/ReceivableAccountsJob.html</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Documentation/javadoc/ReportCreator.html</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Documentation/javadoc/ServerApplication.html</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Documentation/javadoc/Service.html</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Documentation/javadoc/ServiceDBManager.html</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Documentation/javadoc/Session.html</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Documentation/javadoc/SessionManager.html</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Documentation/javadoc/Supervisor.html</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Documentation/javadoc/SupervisorSession.html</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Documentation/javadoc/Supplier.html</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Documentation/javadoc/SupplierSession.html</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Documentation/javadoc/User.html</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Documentation/javadoc/UserDBManager.html</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Documentation/javadoc/UserInterface.html</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Documentation/javadoc/allclasses-frame.html</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Documentation/javadoc/allclasses-noframe.html</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Documentation/javadoc/constant-values.html</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Documentation/javadoc/deprecated-list.html</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Documentation/javadoc/help-doc.html</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Documentation/javadoc/index.html</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Documentation/javadoc/overview-tree.html</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Documentation/javadoc/package-frame.html</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Documentation/javadoc/package-summary.html</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Documentation/javadoc/package-tree.html</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Documentation/javadoc/serialized-form.html</path>
+</paths>
+<msg>Plus que 2 erreurs dans la compilation de la javadoc</msg>
+</logentry>
+<logentry
+   revision="1667">
+<author>f.brobillard</author>
+<date>2016-12-04T16:41:52.387497Z</date>
+<paths>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Sources/MemberSession.java</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Sources/Session.java</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Sources/SessionManager.java</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Sources/UserInterface.java</path>
+</paths>
+<msg>Travaille restant principalement pour SupervisorSession, les autres classes ont leur javadoc d'écrite</msg>
+</logentry>
+<logentry
+   revision="1666">
+<author>f.brobillard</author>
+<date>2016-12-04T16:20:17.921892Z</date>
+<paths>
+<path
+   action="D"
+   kind="dir">/equipe02/DM3/Application</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Documentation/Manuel/manuel.log</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Documentation/Manuel/manuel.pdf</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Documentation/Manuel/manuel.tex</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Documentation/javadoc/Address.html</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Documentation/javadoc/Claim.html</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Documentation/javadoc/ClaimDBManager.html</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Documentation/javadoc/DataBase.html</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Documentation/javadoc/DataBaseManager.html</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Documentation/javadoc/EFT.html</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Documentation/javadoc/EftDBManager.html</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Documentation/javadoc/MainAccountingJob.html</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Documentation/javadoc/Member.html</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Documentation/javadoc/MemberSession.html</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Documentation/javadoc/ReceivableAccountsJob.html</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Documentation/javadoc/ReportCreator.html</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Documentation/javadoc/ServerApplication.html</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Documentation/javadoc/Service.html</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Documentation/javadoc/ServiceDBManager.html</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Documentation/javadoc/Session.html</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Documentation/javadoc/SessionManager.html</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Documentation/javadoc/Supervisor.html</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Documentation/javadoc/SupervisorSession.html</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Documentation/javadoc/Supplier.html</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Documentation/javadoc/SupplierSession.html</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Documentation/javadoc/User.html</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Documentation/javadoc/UserDBManager.html</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Documentation/javadoc/UserInterface.html</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Documentation/javadoc/allclasses-frame.html</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Documentation/javadoc/allclasses-noframe.html</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Documentation/javadoc/constant-values.html</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Documentation/javadoc/deprecated-list.html</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Documentation/javadoc/help-doc.html</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Documentation/javadoc/index.html</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Documentation/javadoc/overview-tree.html</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Documentation/javadoc/package-frame.html</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Documentation/javadoc/package-summary.html</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Documentation/javadoc/package-tree.html</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Documentation/javadoc/serialized-form.html</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Sources/MemberSession.java</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Sources/SessionManager.java</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Sources/SupplierSession.java</path>
+<path
+   kind="file"
+   action="A">/equipe02/DM3/Tests/ReceivableAccountsJobTest.java</path>
+<path
+   kind="dir"
+   action="D">/equipe02/DM3/classes</path>
+</paths>
+<msg>JUnit testing et toujours plus de javadoc</msg>
+</logentry>
+<logentry
+   revision="1657">
+<author>gevrai</author>
+<date>2016-12-04T07:08:20.459182Z</date>
+<paths>
+<path
+   action="A"
+   kind="file">/equipe02/DM3/Application/Database/MemberStatusFromACME.txt</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Sources/MainAccountingJob.java</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Sources/Member.java</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Sources/ReceivableAccountsJob.java</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Sources/ServerApplication.java</path>
+</paths>
+<msg>Member status automatic update functionality first draft, probably buggy</msg>
+</logentry>
+<logentry
+   revision="1651">
+<author>gevrai</author>
+<date>2016-12-04T05:38:03.462085Z</date>
+<paths>
+<path
+   action="M"
+   kind="dir">/equipe02/DM3</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Sources/SessionManager.java</path>
+<path
+   action="A"
+   kind="file">/equipe02/DM3/Tests/SessionManagerTest.java</path>
+</paths>
+<msg>Created junit test file: SessionManagerTest.java</msg>
+</logentry>
+<logentry
+   revision="1637">
+<author>gevrai</author>
+<date>2016-12-04T04:08:54.286216Z</date>
+<paths>
+<path
+   kind="file"
+   action="A">/equipe02/DM3/Sources/ConnectionException.java</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Sources/SessionManager.java</path>
+</paths>
+<msg>fixed SessionManager.getSessionFromID hash comparison</msg>
+</logentry>
+<logentry
+   revision="1628">
+<author>gevrai</author>
+<date>2016-12-04T01:31:42.233196Z</date>
+<paths>
+<path
+   copyfrom-path="/equipe02/DM3/Application"
+   copyfrom-rev="1498"
+   action="A"
+   kind="dir">/equipe02/DM3/Application</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Application/Database/Claims.db</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Application/Database/EFT.db</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Application/Database/Services.db</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Application/Database/Users.db</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Application/SimulationServeurChocAn.jar</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Documentation/javadoc/SupplierSession.html</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Sources/ClaimDBManager.java</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Sources/DataBase.java</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Sources/EftDBManager.java</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Sources/ServerApplication.java</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Sources/ServiceDBManager.java</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Sources/SessionManager.java</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Sources/UserInterface.java</path>
+<path
+   action="A"
+   kind="dir"
+   copyfrom-path="/equipe02/DM3/classes"
+   copyfrom-rev="1498">/equipe02/DM3/classes</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/classes/DataBase.class</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/classes/EFT.class</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/classes/MainAccountingJob.class</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/classes/MemberSession.class</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/classes/ReceivableAccountsJob.class</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/classes/ReportCreator.class</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/classes/ServerApplication$2.class</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/classes/ServerApplication.class</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/classes/Session.class</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/classes/SessionManager.class</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/classes/Supervisor.class</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/classes/SupervisorSession$1.class</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/classes/SupervisorSession$2.class</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/classes/SupervisorSession$3.class</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/classes/SupervisorSession.class</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/classes/Supplier.class</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/classes/SupplierSession.class</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/classes/UserDBManager.class</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/classes/UserInterface.class</path>
+</paths>
+<msg>SessionManager now throws exeptions instead of showing interface popups</msg>
+</logentry>
+<logentry
+   revision="1627">
+<author>gevrai</author>
+<date>2016-12-04T01:01:22.473297Z</date>
+<paths>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Sources/SessionManager.java</path>
+</paths>
+<msg>Added deleteSessionFromID and fixed part of javadoc</msg>
+</logentry>
+<logentry
+   revision="1624">
+<author>azimmermann</author>
+<date>2016-12-04T00:16:54.954558Z</date>
+<paths>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Tests/ChocAnTests.java</path>
+</paths>
+<msg></msg>
+</logentry>
+<logentry
+   revision="1623">
+<author>azimmermann</author>
+<date>2016-12-04T00:13:48.890188Z</date>
+<paths>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Tests/ChocAnTests.java</path>
+</paths>
+<msg></msg>
+</logentry>
+<logentry
+   revision="1582">
+<author>gevrai</author>
+<date>2016-12-03T08:24:36.621445Z</date>
+<paths>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Sources/EFT.java</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Sources/MainAccountingJob.java</path>
+</paths>
+<msg>Added automatic EFTs creation with MainAccountingJob</msg>
+</logentry>
+<logentry
+   revision="1581">
+<author>gevrai</author>
+<date>2016-12-03T08:22:46.042447Z</date>
+<paths>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Sources/DataBase.java</path>
+</paths>
+<msg>added entries in the database</msg>
+</logentry>
+<logentry
+   revision="1579">
+<author>gevrai</author>
+<date>2016-12-03T07:32:28.189100Z</date>
+<paths>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Sources/ReportCreator.java</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/build.xml</path>
+</paths>
+<msg>Fixed javadoc and changed files to work with ant</msg>
+</logentry>
+<logentry
+   revision="1546">
+<author>azimmermann</author>
+<date>2016-12-02T21:46:47.649816Z</date>
+<paths>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Sources/ReportCreator.java</path>
+</paths>
+<msg></msg>
+</logentry>
+<logentry
+   revision="1539">
+<author>f.brobillard</author>
+<date>2016-12-02T18:59:25.554279Z</date>
+<paths>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Documentation/javadoc/Address.html</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Documentation/javadoc/Claim.html</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Documentation/javadoc/ClaimDBManager.html</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Documentation/javadoc/DataBase.html</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Documentation/javadoc/DataBaseManager.html</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Documentation/javadoc/EFT.html</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Documentation/javadoc/EftDBManager.html</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Documentation/javadoc/MainAccountingJob.html</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Documentation/javadoc/Member.html</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Documentation/javadoc/MemberSession.html</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Documentation/javadoc/ReceivableAccountsJob.html</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Documentation/javadoc/ReportCreator.html</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Documentation/javadoc/ServerApplication.html</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Documentation/javadoc/Service.html</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Documentation/javadoc/ServiceDBManager.html</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Documentation/javadoc/Session.html</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Documentation/javadoc/SessionManager.html</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Documentation/javadoc/Supervisor.html</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Documentation/javadoc/SupervisorSession.html</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Documentation/javadoc/Supplier.html</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Documentation/javadoc/SupplierSession.html</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Documentation/javadoc/User.html</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Documentation/javadoc/UserDBManager.html</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Documentation/javadoc/UserInterface.html</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Documentation/javadoc/allclasses-frame.html</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Documentation/javadoc/allclasses-noframe.html</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Documentation/javadoc/constant-values.html</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Documentation/javadoc/deprecated-list.html</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Documentation/javadoc/help-doc.html</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Documentation/javadoc/index.html</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Documentation/javadoc/overview-tree.html</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Documentation/javadoc/package-frame.html</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Documentation/javadoc/package-summary.html</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Documentation/javadoc/package-tree.html</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Documentation/javadoc/serialized-form.html</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Sources/SupplierSession.java</path>
+</paths>
+<msg>Javadoc correcte pour SupplierSession</msg>
+</logentry>
+<logentry
+   revision="1537">
+<author>f.brobillard</author>
+<date>2016-12-02T18:37:28.062475Z</date>
+<paths>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Documentation/Manuel/manuel.log</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Documentation/Manuel/manuel.pdf</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Documentation/Manuel/manuel.tex</path>
+</paths>
+<msg>Le manuel utilisateur est maintenant à réviser.</msg>
+</logentry>
+<logentry
+   revision="1535">
+<author>azimmermann</author>
+<date>2016-12-02T17:51:41.435761Z</date>
+<paths>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Sources/SupervisorSession.java</path>
+</paths>
+<msg></msg>
+</logentry>
+<logentry
+   revision="1534">
+<author>f.brobillard</author>
+<date>2016-12-02T17:47:06.423639Z</date>
+<paths>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Documentation/Manuel/manuel.tex</path>
+</paths>
+<msg>Section fournisseur du manuel d'u'utilisateur</msg>
+</logentry>
+<logentry
+   revision="1533">
+<author>azimmermann</author>
+<date>2016-12-02T17:42:12.026256Z</date>
+<paths>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Sources/SupervisorSession.java</path>
+</paths>
+<msg></msg>
+</logentry>
+<logentry
+   revision="1532">
+<author>f.brobillard</author>
+<date>2016-12-02T17:06:36.584114Z</date>
+<paths>
+<path
+   kind="dir"
+   action="A">/equipe02/DM3/Documentation/Manuel</path>
+<path
+   kind="file"
+   action="A">/equipe02/DM3/Documentation/Manuel/manuel.aux</path>
+<path
+   kind="file"
+   action="A">/equipe02/DM3/Documentation/Manuel/manuel.log</path>
+<path
+   kind="file"
+   action="A">/equipe02/DM3/Documentation/Manuel/manuel.pdf</path>
+<path
+   kind="file"
+   action="A">/equipe02/DM3/Documentation/Manuel/manuel.tex</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Documentation/javadoc/Address.html</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Documentation/javadoc/Claim.html</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Documentation/javadoc/ClaimDBManager.html</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Documentation/javadoc/DataBase.html</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Documentation/javadoc/DataBaseManager.html</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Documentation/javadoc/EFT.html</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Documentation/javadoc/EftDBManager.html</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Documentation/javadoc/MainAccountingJob.html</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Documentation/javadoc/Member.html</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Documentation/javadoc/MemberSession.html</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Documentation/javadoc/ReceivableAccountsJob.html</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Documentation/javadoc/ReportCreator.html</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Documentation/javadoc/ServerApplication.html</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Documentation/javadoc/Service.html</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Documentation/javadoc/ServiceDBManager.html</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Documentation/javadoc/Session.html</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Documentation/javadoc/SessionManager.html</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Documentation/javadoc/Supervisor.html</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Documentation/javadoc/SupervisorSession.html</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Documentation/javadoc/Supplier.html</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Documentation/javadoc/SupplierSession.html</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Documentation/javadoc/User.html</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Documentation/javadoc/UserDBManager.html</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Documentation/javadoc/UserInterface.html</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Documentation/javadoc/allclasses-frame.html</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Documentation/javadoc/allclasses-noframe.html</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Documentation/javadoc/constant-values.html</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Documentation/javadoc/deprecated-list.html</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Documentation/javadoc/help-doc.html</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Documentation/javadoc/index.html</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Documentation/javadoc/overview-tree.html</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Documentation/javadoc/package-frame.html</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Documentation/javadoc/package-summary.html</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Documentation/javadoc/package-tree.html</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Documentation/javadoc/serialized-form.html</path>
+</paths>
+<msg>Commencer le manuel d'utilisateur qui se retrouve dans la section documentation. Écrit en LaTeX.</msg>
+</logentry>
+<logentry
+   revision="1531">
+<author>f.brobillard</author>
+<date>2016-12-02T16:35:24.380354Z</date>
+<paths>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Sources/ReportCreator.java</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Sources/SupplierSession.java</path>
+</paths>
+<msg>Javadoc pour ReportCreator et SupplierSession</msg>
+</logentry>
+<logentry
+   revision="1530">
+<author>azimmermann</author>
+<date>2016-12-02T15:23:05.482616Z</date>
+<paths>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Sources/ServerApplication.java</path>
+</paths>
+<msg>
+</msg>
+</logentry>
+<logentry
+   revision="1529">
+<author>azimmermann</author>
+<date>2016-12-02T15:22:16.565277Z</date>
+<paths>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Sources/DataBase.java</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Sources/ReportCreator.java</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Sources/ServerApplication.java</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Sources/UserDBManager.java</path>
+</paths>
+<msg>ReportCreator v1 terminee
+</msg>
+</logentry>
+<logentry
+   revision="1527">
+<author>f.brobillard</author>
+<date>2016-12-02T14:29:52.839320Z</date>
+<paths>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Documentation/javadoc/Address.html</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Documentation/javadoc/Claim.html</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Documentation/javadoc/ClaimDBManager.html</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Documentation/javadoc/DataBase.html</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Documentation/javadoc/DataBaseManager.html</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Documentation/javadoc/EFT.html</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Documentation/javadoc/EftDBManager.html</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Documentation/javadoc/MainAccountingJob.html</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Documentation/javadoc/Member.html</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Documentation/javadoc/MemberSession.html</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Documentation/javadoc/ReceivableAccountsJob.html</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Documentation/javadoc/ReportCreator.html</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Documentation/javadoc/ServerApplication.html</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Documentation/javadoc/Service.html</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Documentation/javadoc/ServiceDBManager.html</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Documentation/javadoc/Session.html</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Documentation/javadoc/SessionManager.html</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Documentation/javadoc/Supervisor.html</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Documentation/javadoc/SupervisorSession.html</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Documentation/javadoc/Supplier.html</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Documentation/javadoc/SupplierSession.html</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Documentation/javadoc/User.html</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Documentation/javadoc/UserDBManager.html</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Documentation/javadoc/UserInterface.html</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Documentation/javadoc/allclasses-frame.html</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Documentation/javadoc/allclasses-noframe.html</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Documentation/javadoc/constant-values.html</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Documentation/javadoc/deprecated-list.html</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Documentation/javadoc/help-doc.html</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Documentation/javadoc/index.html</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Documentation/javadoc/overview-tree.html</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Documentation/javadoc/package-frame.html</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Documentation/javadoc/package-summary.html</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Documentation/javadoc/package-tree.html</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Documentation/javadoc/serialized-form.html</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Sources/SupplierSession.java</path>
+</paths>
+<msg>Interface facturation service et submitclaim</msg>
+</logentry>
+<logentry
+   revision="1526">
+<author>pcaron</author>
+<date>2016-12-02T11:24:27.718338Z</date>
+<paths>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Sources/SupplierSession.java</path>
+</paths>
+<msg>Ajout d'un début d'interface pour le répertoire des fournissseurs</msg>
+</logentry>
+<logentry
+   revision="1525">
+<author>pcaron</author>
+<date>2016-12-02T10:14:10.749135Z</date>
+<paths>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Sources/ReportCreator.java</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Sources/SupervisorSession.java</path>
+</paths>
+<msg>Intégration du rapport fournisseur</msg>
+</logentry>
+<logentry
+   revision="1524">
+<author>pcaron</author>
+<date>2016-12-02T10:04:14.446167Z</date>
+<paths>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Sources/DataBase.java</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Sources/ReportCreator.java</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Sources/SessionManager.java</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Sources/Supervisor.java</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Sources/SupervisorSession.java</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Sources/Supplier.java</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Sources/SupplierSession.java</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Sources/UserInterface.java</path>
+</paths>
+<msg>ajout du support de rapport de membre</msg>
+</logentry>
+<logentry
+   revision="1523">
+<author>pcaron</author>
+<date>2016-12-02T08:04:10.140015Z</date>
+<paths>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Sources/DataBase.java</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Sources/MemberSession.java</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Sources/ServerApplication.java</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Sources/Session.java</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Sources/SessionManager.java</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Sources/SupervisorSession.java</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Sources/SupplierSession.java</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Sources/UserInterface.java</path>
+</paths>
+<msg>changement à l'interface</msg>
+</logentry>
+<logentry
+   revision="1516">
+<author>gevrai</author>
+<date>2016-12-02T05:26:58.415312Z</date>
+<paths>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Sources/MainAccountingJob.java</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Sources/ReceivableAccountsJob.java</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Sources/ServerApplication.java</path>
+</paths>
+<msg>ReceivableAccountsJob timing implemented, but still does nothing, as well as integration with ServerApp</msg>
+</logentry>
+<logentry
+   revision="1514">
+<author>gevrai</author>
+<date>2016-12-02T04:35:05.308675Z</date>
+<paths>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Sources/MainAccountingJob.java</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Sources/ServerApplication.java</path>
+</paths>
+<msg>MainAccountingJob.java implemented, as well as integration with ServerApp</msg>
+</logentry>
+<logentry
+   revision="1512">
+<author>f.brobillard</author>
+<date>2016-12-02T03:54:21.900423Z</date>
+<paths>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Documentation/javadoc/Address.html</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Documentation/javadoc/Claim.html</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Documentation/javadoc/ClaimDBManager.html</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Documentation/javadoc/DataBase.html</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Documentation/javadoc/DataBaseManager.html</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Documentation/javadoc/EFT.html</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Documentation/javadoc/EftDBManager.html</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Documentation/javadoc/MainAccountingJob.html</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Documentation/javadoc/Member.html</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Documentation/javadoc/MemberSession.html</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Documentation/javadoc/ReceivableAccountsJob.html</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Documentation/javadoc/ReportCreator.html</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Documentation/javadoc/ServerApplication.html</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Documentation/javadoc/Service.html</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Documentation/javadoc/ServiceDBManager.html</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Documentation/javadoc/Session.html</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Documentation/javadoc/SessionManager.html</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Documentation/javadoc/Supervisor.html</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Documentation/javadoc/SupervisorSession.html</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Documentation/javadoc/Supplier.html</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Documentation/javadoc/SupplierSession.html</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Documentation/javadoc/User.html</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Documentation/javadoc/UserDBManager.html</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Documentation/javadoc/UserInterface.html</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Documentation/javadoc/allclasses-frame.html</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Documentation/javadoc/allclasses-noframe.html</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Documentation/javadoc/constant-values.html</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Documentation/javadoc/deprecated-list.html</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Documentation/javadoc/help-doc.html</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Documentation/javadoc/index.html</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Documentation/javadoc/overview-tree.html</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Documentation/javadoc/package-frame.html</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Documentation/javadoc/package-summary.html</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Documentation/javadoc/package-tree.html</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Documentation/javadoc/serialized-form.html</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Sources/SupplierSession.java</path>
+</paths>
+<msg>Facturation jusqu'à submitClaim, qui n'est pas encore implémenté.</msg>
+</logentry>
+<logentry
+   revision="1510">
+<author>f.brobillard</author>
+<date>2016-12-02T02:49:31.016807Z</date>
+<paths>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Documentation/javadoc/Address.html</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Documentation/javadoc/Claim.html</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Documentation/javadoc/ClaimDBManager.html</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Documentation/javadoc/DataBase.html</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Documentation/javadoc/DataBaseManager.html</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Documentation/javadoc/EFT.html</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Documentation/javadoc/EftDBManager.html</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Documentation/javadoc/MainAccountingJob.html</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Documentation/javadoc/Member.html</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Documentation/javadoc/MemberSession.html</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Documentation/javadoc/ReceivableAccountsJob.html</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Documentation/javadoc/ReportCreator.html</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Documentation/javadoc/ServerApplication.html</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Documentation/javadoc/Service.html</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Documentation/javadoc/ServiceDBManager.html</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Documentation/javadoc/Session.html</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Documentation/javadoc/SessionManager.html</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Documentation/javadoc/Supervisor.html</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Documentation/javadoc/SupervisorSession.html</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Documentation/javadoc/Supplier.html</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Documentation/javadoc/SupplierSession.html</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Documentation/javadoc/User.html</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Documentation/javadoc/UserDBManager.html</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Documentation/javadoc/UserInterface.html</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Documentation/javadoc/allclasses-frame.html</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Documentation/javadoc/allclasses-noframe.html</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Documentation/javadoc/constant-values.html</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Documentation/javadoc/deprecated-list.html</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Documentation/javadoc/help-doc.html</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Documentation/javadoc/index.html</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Documentation/javadoc/overview-tree.html</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Documentation/javadoc/package-frame.html</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Documentation/javadoc/package-summary.html</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Documentation/javadoc/package-tree.html</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Documentation/javadoc/serialized-form.html</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Sources/SupplierSession.java</path>
+</paths>
+<msg>verifyMemberStatus et son GUI pour les fournisseurs</msg>
+</logentry>
+<logentry
+   revision="1509">
+<author>f.brobillard</author>
+<date>2016-12-02T02:44:01.481345Z</date>
+<paths>
+<path
+   action="D"
+   kind="dir">/equipe02/DM3/Application</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Documentation/javadoc/Address.html</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Documentation/javadoc/Claim.html</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Documentation/javadoc/ClaimDBManager.html</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Documentation/javadoc/DataBase.html</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Documentation/javadoc/DataBaseManager.html</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Documentation/javadoc/EFT.html</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Documentation/javadoc/EftDBManager.html</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Documentation/javadoc/MainAccountingJob.html</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Documentation/javadoc/Member.html</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Documentation/javadoc/MemberSession.html</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Documentation/javadoc/ReceivableAccountsJob.html</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Documentation/javadoc/ReportCreator.html</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Documentation/javadoc/ServerApplication.html</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Documentation/javadoc/Service.html</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Documentation/javadoc/ServiceDBManager.html</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Documentation/javadoc/Session.html</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Documentation/javadoc/SessionManager.html</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Documentation/javadoc/Supervisor.html</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Documentation/javadoc/SupervisorSession.html</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Documentation/javadoc/Supplier.html</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Documentation/javadoc/SupplierSession.html</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Documentation/javadoc/User.html</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Documentation/javadoc/UserDBManager.html</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Documentation/javadoc/UserInterface.html</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Documentation/javadoc/allclasses-frame.html</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Documentation/javadoc/allclasses-noframe.html</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Documentation/javadoc/constant-values.html</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Documentation/javadoc/deprecated-list.html</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Documentation/javadoc/help-doc.html</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Documentation/javadoc/index.html</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Documentation/javadoc/overview-tree.html</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Documentation/javadoc/package-frame.html</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Documentation/javadoc/package-summary.html</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Documentation/javadoc/package-tree.html</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Documentation/javadoc/serialized-form.html</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Sources/SupplierSession.java</path>
+<path
+   kind="dir"
+   action="D">/equipe02/DM3/classes</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/public/stylesheets/style.css</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/rapport.html</path>
+</paths>
+<msg>verifyMemberStatus et son GUI pour les fournisseurs</msg>
+</logentry>
+<logentry
+   revision="1500">
+<author>gevrai</author>
+<date>2016-12-02T01:32:17.181514Z</date>
+<paths>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/build.xml</path>
+</paths>
+<msg>Fixed javadoc creation from ant not working</msg>
+</logentry>
+<logentry
+   revision="1495">
+<author>gevrai</author>
+<date>2016-12-02T00:25:22.129817Z</date>
+<paths>
+<path
+   action="A"
+   kind="dir">/equipe02/DM3/Application</path>
+<path
+   action="A"
+   kind="dir">/equipe02/DM3/Application/Database</path>
+<path
+   action="A"
+   kind="file">/equipe02/DM3/Application/Database/Claims.db</path>
+<path
+   kind="file"
+   action="A">/equipe02/DM3/Application/Database/EFT.db</path>
+<path
+   kind="file"
+   action="A">/equipe02/DM3/Application/Database/Services.db</path>
+<path
+   kind="file"
+   action="A">/equipe02/DM3/Application/Database/Users.db</path>
+<path
+   kind="file"
+   action="A">/equipe02/DM3/Application/SimulationServeurChocAn.jar</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Documentation/ChocAn.vpp</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Sources/EftDBManager.java</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Sources/ReceivableAccountsJob.java</path>
+<path
+   action="A"
+   kind="dir">/equipe02/DM3/classes</path>
+<path
+   action="A"
+   kind="file">/equipe02/DM3/classes/Address.class</path>
+<path
+   kind="file"
+   action="A">/equipe02/DM3/classes/Claim.class</path>
+<path
+   kind="file"
+   action="A">/equipe02/DM3/classes/ClaimDBManager.class</path>
+<path
+   action="A"
+   kind="file">/equipe02/DM3/classes/DataBase.class</path>
+<path
+   action="A"
+   kind="file">/equipe02/DM3/classes/DataBaseManager.class</path>
+<path
+   action="A"
+   kind="file">/equipe02/DM3/classes/EFT.class</path>
+<path
+   action="A"
+   kind="file">/equipe02/DM3/classes/EftDBManager.class</path>
+<path
+   action="A"
+   kind="file">/equipe02/DM3/classes/MainAccountingJob.class</path>
+<path
+   action="A"
+   kind="file">/equipe02/DM3/classes/Member.class</path>
+<path
+   action="A"
+   kind="file">/equipe02/DM3/classes/MemberSession.class</path>
+<path
+   action="A"
+   kind="file">/equipe02/DM3/classes/ReceivableAccountsJob.class</path>
+<path
+   kind="file"
+   action="A">/equipe02/DM3/classes/ReportCreator.class</path>
+<path
+   kind="file"
+   action="A">/equipe02/DM3/classes/ServerApplication$1.class</path>
+<path
+   action="A"
+   kind="file">/equipe02/DM3/classes/ServerApplication$2.class</path>
+<path
+   action="A"
+   kind="file">/equipe02/DM3/classes/ServerApplication$3.class</path>
+<path
+   kind="file"
+   action="A">/equipe02/DM3/classes/ServerApplication.class</path>
+<path
+   kind="file"
+   action="A">/equipe02/DM3/classes/Service.class</path>
+<path
+   kind="file"
+   action="A">/equipe02/DM3/classes/ServiceDBManager.class</path>
+<path
+   kind="file"
+   action="A">/equipe02/DM3/classes/Session.class</path>
+<path
+   kind="file"
+   action="A">/equipe02/DM3/classes/SessionManager.class</path>
+<path
+   kind="file"
+   action="A">/equipe02/DM3/classes/Supervisor.class</path>
+<path
+   kind="file"
+   action="A">/equipe02/DM3/classes/SupervisorSession$1.class</path>
+<path
+   kind="file"
+   action="A">/equipe02/DM3/classes/SupervisorSession$2.class</path>
+<path
+   action="A"
+   kind="file">/equipe02/DM3/classes/SupervisorSession$3.class</path>
+<path
+   kind="file"
+   action="A">/equipe02/DM3/classes/SupervisorSession.class</path>
+<path
+   kind="file"
+   action="A">/equipe02/DM3/classes/Supplier.class</path>
+<path
+   kind="file"
+   action="A">/equipe02/DM3/classes/SupplierSession.class</path>
+<path
+   kind="file"
+   action="A">/equipe02/DM3/classes/User.class</path>
+<path
+   action="A"
+   kind="file">/equipe02/DM3/classes/UserDBManager.class</path>
+<path
+   action="A"
+   kind="file">/equipe02/DM3/classes/UserInterface$1.class</path>
+<path
+   action="A"
+   kind="file">/equipe02/DM3/classes/UserInterface.class</path>
+</paths>
+<msg>Added necessary files and directories for ant to work properly</msg>
+</logentry>
+<logentry
+   revision="1470">
+<author>gevrai</author>
+<date>2016-12-01T20:51:18.679901Z</date>
+<paths>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Sources/DataBase.java</path>
+<path
+   kind="file"
+   action="A">/equipe02/DM3/build.xml</path>
+</paths>
+<msg>Created build.xml and fixed Database files to work with it</msg>
+</logentry>
+<logentry
+   revision="1469">
+<author>f.brobillard</author>
+<date>2016-12-01T20:50:55.177164Z</date>
+<paths>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Sources/Data/Users.db</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Sources/DataBase.java</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Sources/MemberSession.java</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Sources/ServerApplication.java</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Sources/SupervisorSession.java</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Sources/SupplierSession.java</path>
+</paths>
+<msg>Terminer de mettre les interfaces en français. L'interface de membre est terminée. Il faut implanter les actionListener des autres sessions.</msg>
+</logentry>
+<logentry
+   revision="1438">
+<author>gevrai</author>
+<date>2016-12-01T02:59:50.887137Z</date>
+<paths>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Sources/Data/EFT.db</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Sources/Data/Services.db</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Sources/ServerApplication.java</path>
+</paths>
+<msg>Added recreateDB button to bootstart the database with some fake data</msg>
+</logentry>
+<logentry
+   revision="1435">
+<author>f.brobillard</author>
+<date>2016-12-01T02:23:16.421086Z</date>
+<paths>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Sources/Claim.java</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Sources/ReportCreator.java</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Sources/ServerApplication.java</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Sources/SupervisorSession.java</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Sources/UserInterface.java</path>
+</paths>
+<msg>Traduction des interfaces de login et de superviseur. Ajout de commentaires pour la doc au niveau de ServerApplication</msg>
+</logentry>
+<logentry
+   revision="1429">
+<author>gevrai</author>
+<date>2016-12-01T01:30:40.273608Z</date>
+<paths>
+<path
+   kind="dir"
+   action="A">/equipe02/DM3/Documentation/javadoc</path>
+<path
+   kind="file"
+   action="A">/equipe02/DM3/Documentation/javadoc/Address.html</path>
+<path
+   kind="file"
+   action="A">/equipe02/DM3/Documentation/javadoc/Claim.html</path>
+<path
+   action="A"
+   kind="file">/equipe02/DM3/Documentation/javadoc/ClaimDBManager.html</path>
+<path
+   action="A"
+   kind="file">/equipe02/DM3/Documentation/javadoc/DataBase.html</path>
+<path
+   action="A"
+   kind="file">/equipe02/DM3/Documentation/javadoc/DataBaseManager.html</path>
+<path
+   action="A"
+   kind="file">/equipe02/DM3/Documentation/javadoc/EFT.html</path>
+<path
+   action="A"
+   kind="file">/equipe02/DM3/Documentation/javadoc/EftDBManager.html</path>
+<path
+   action="A"
+   kind="file">/equipe02/DM3/Documentation/javadoc/MainAccountingJob.html</path>
+<path
+   action="A"
+   kind="file">/equipe02/DM3/Documentation/javadoc/Member.html</path>
+<path
+   kind="file"
+   action="A">/equipe02/DM3/Documentation/javadoc/MemberSession.html</path>
+<path
+   action="A"
+   kind="file">/equipe02/DM3/Documentation/javadoc/ReceivableAccountsJob.html</path>
+<path
+   action="A"
+   kind="file">/equipe02/DM3/Documentation/javadoc/ReportCreator.html</path>
+<path
+   action="A"
+   kind="file">/equipe02/DM3/Documentation/javadoc/ServerApplication.html</path>
+<path
+   kind="file"
+   action="A">/equipe02/DM3/Documentation/javadoc/Service.html</path>
+<path
+   kind="file"
+   action="A">/equipe02/DM3/Documentation/javadoc/ServiceDBManager.html</path>
+<path
+   kind="file"
+   action="A">/equipe02/DM3/Documentation/javadoc/Session.html</path>
+<path
+   kind="file"
+   action="A">/equipe02/DM3/Documentation/javadoc/SessionManager.html</path>
+<path
+   kind="file"
+   action="A">/equipe02/DM3/Documentation/javadoc/Supervisor.html</path>
+<path
+   kind="file"
+   action="A">/equipe02/DM3/Documentation/javadoc/SupervisorSession.html</path>
+<path
+   kind="file"
+   action="A">/equipe02/DM3/Documentation/javadoc/Supplier.html</path>
+<path
+   action="A"
+   kind="file">/equipe02/DM3/Documentation/javadoc/SupplierSession.html</path>
+<path
+   kind="file"
+   action="A">/equipe02/DM3/Documentation/javadoc/User.html</path>
+<path
+   kind="file"
+   action="A">/equipe02/DM3/Documentation/javadoc/UserDBManager.html</path>
+<path
+   kind="file"
+   action="A">/equipe02/DM3/Documentation/javadoc/UserInterface.html</path>
+<path
+   kind="file"
+   action="A">/equipe02/DM3/Documentation/javadoc/allclasses-frame.html</path>
+<path
+   action="A"
+   kind="file">/equipe02/DM3/Documentation/javadoc/allclasses-noframe.html</path>
+<path
+   action="A"
+   kind="dir">/equipe02/DM3/Documentation/javadoc/class-use</path>
+<path
+   action="A"
+   kind="file">/equipe02/DM3/Documentation/javadoc/class-use/Address.html</path>
+<path
+   action="A"
+   kind="file">/equipe02/DM3/Documentation/javadoc/class-use/Claim.html</path>
+<path
+   action="A"
+   kind="file">/equipe02/DM3/Documentation/javadoc/class-use/ClaimDBManager.html</path>
+<path
+   action="A"
+   kind="file">/equipe02/DM3/Documentation/javadoc/class-use/DataBase.html</path>
+<path
+   action="A"
+   kind="file">/equipe02/DM3/Documentation/javadoc/class-use/DataBaseManager.html</path>
+<path
+   kind="file"
+   action="A">/equipe02/DM3/Documentation/javadoc/class-use/EFT.html</path>
+<path
+   action="A"
+   kind="file">/equipe02/DM3/Documentation/javadoc/class-use/EftDBManager.html</path>
+<path
+   action="A"
+   kind="file">/equipe02/DM3/Documentation/javadoc/class-use/MainAccountingJob.html</path>
+<path
+   action="A"
+   kind="file">/equipe02/DM3/Documentation/javadoc/class-use/Member.html</path>
+<path
+   kind="file"
+   action="A">/equipe02/DM3/Documentation/javadoc/class-use/MemberSession.html</path>
+<path
+   kind="file"
+   action="A">/equipe02/DM3/Documentation/javadoc/class-use/ReceivableAccountsJob.html</path>
+<path
+   kind="file"
+   action="A">/equipe02/DM3/Documentation/javadoc/class-use/ReportCreator.html</path>
+<path
+   kind="file"
+   action="A">/equipe02/DM3/Documentation/javadoc/class-use/ServerApplication.html</path>
+<path
+   kind="file"
+   action="A">/equipe02/DM3/Documentation/javadoc/class-use/Service.html</path>
+<path
+   action="A"
+   kind="file">/equipe02/DM3/Documentation/javadoc/class-use/ServiceDBManager.html</path>
+<path
+   action="A"
+   kind="file">/equipe02/DM3/Documentation/javadoc/class-use/Session.html</path>
+<path
+   kind="file"
+   action="A">/equipe02/DM3/Documentation/javadoc/class-use/SessionManager.html</path>
+<path
+   kind="file"
+   action="A">/equipe02/DM3/Documentation/javadoc/class-use/Supervisor.html</path>
+<path
+   action="A"
+   kind="file">/equipe02/DM3/Documentation/javadoc/class-use/SupervisorSession.html</path>
+<path
+   action="A"
+   kind="file">/equipe02/DM3/Documentation/javadoc/class-use/Supplier.html</path>
+<path
+   action="A"
+   kind="file">/equipe02/DM3/Documentation/javadoc/class-use/SupplierSession.html</path>
+<path
+   action="A"
+   kind="file">/equipe02/DM3/Documentation/javadoc/class-use/User.html</path>
+<path
+   action="A"
+   kind="file">/equipe02/DM3/Documentation/javadoc/class-use/UserDBManager.html</path>
+<path
+   action="A"
+   kind="file">/equipe02/DM3/Documentation/javadoc/class-use/UserInterface.html</path>
+<path
+   action="A"
+   kind="file">/equipe02/DM3/Documentation/javadoc/constant-values.html</path>
+<path
+   kind="file"
+   action="A">/equipe02/DM3/Documentation/javadoc/deprecated-list.html</path>
+<path
+   action="A"
+   kind="file">/equipe02/DM3/Documentation/javadoc/help-doc.html</path>
+<path
+   action="A"
+   kind="dir">/equipe02/DM3/Documentation/javadoc/index-files</path>
+<path
+   kind="file"
+   action="A">/equipe02/DM3/Documentation/javadoc/index-files/index-1.html</path>
+<path
+   kind="file"
+   action="A">/equipe02/DM3/Documentation/javadoc/index-files/index-10.html</path>
+<path
+   kind="file"
+   action="A">/equipe02/DM3/Documentation/javadoc/index-files/index-11.html</path>
+<path
+   kind="file"
+   action="A">/equipe02/DM3/Documentation/javadoc/index-files/index-12.html</path>
+<path
+   kind="file"
+   action="A">/equipe02/DM3/Documentation/javadoc/index-files/index-13.html</path>
+<path
+   kind="file"
+   action="A">/equipe02/DM3/Documentation/javadoc/index-files/index-14.html</path>
+<path
+   kind="file"
+   action="A">/equipe02/DM3/Documentation/javadoc/index-files/index-2.html</path>
+<path
+   action="A"
+   kind="file">/equipe02/DM3/Documentation/javadoc/index-files/index-3.html</path>
+<path
+   kind="file"
+   action="A">/equipe02/DM3/Documentation/javadoc/index-files/index-4.html</path>
+<path
+   kind="file"
+   action="A">/equipe02/DM3/Documentation/javadoc/index-files/index-5.html</path>
+<path
+   kind="file"
+   action="A">/equipe02/DM3/Documentation/javadoc/index-files/index-6.html</path>
+<path
+   action="A"
+   kind="file">/equipe02/DM3/Documentation/javadoc/index-files/index-7.html</path>
+<path
+   action="A"
+   kind="file">/equipe02/DM3/Documentation/javadoc/index-files/index-8.html</path>
+<path
+   action="A"
+   kind="file">/equipe02/DM3/Documentation/javadoc/index-files/index-9.html</path>
+<path
+   action="A"
+   kind="file">/equipe02/DM3/Documentation/javadoc/index.html</path>
+<path
+   action="A"
+   kind="file">/equipe02/DM3/Documentation/javadoc/overview-tree.html</path>
+<path
+   action="A"
+   kind="file">/equipe02/DM3/Documentation/javadoc/package-frame.html</path>
+<path
+   action="A"
+   kind="file">/equipe02/DM3/Documentation/javadoc/package-list</path>
+<path
+   action="A"
+   kind="file">/equipe02/DM3/Documentation/javadoc/package-summary.html</path>
+<path
+   kind="file"
+   action="A">/equipe02/DM3/Documentation/javadoc/package-tree.html</path>
+<path
+   action="A"
+   kind="file">/equipe02/DM3/Documentation/javadoc/package-use.html</path>
+<path
+   action="A"
+   kind="file">/equipe02/DM3/Documentation/javadoc/script.js</path>
+<path
+   action="A"
+   kind="file">/equipe02/DM3/Documentation/javadoc/serialized-form.html</path>
+<path
+   action="A"
+   kind="file">/equipe02/DM3/Documentation/javadoc/stylesheet.css</path>
+</paths>
+<msg>Added javadoc html files</msg>
+</logentry>
+<logentry
+   revision="1427">
+<author>gevrai</author>
+<date>2016-12-01T00:54:48.479276Z</date>
+<paths>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Sources/Member.java</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Sources/ReportCreator.java</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Sources/Session.java</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Sources/SessionManager.java</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Sources/Supervisor.java</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Sources/SupervisorSession.java</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Sources/Supplier.java</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Sources/SupplierSession.java</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Sources/User.java</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Sources/UserDBManager.java</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Sources/UserInterface.java</path>
+</paths>
+<msg>javadoc for User, Member, Supervisor, Supplier, UserDBManager and added TODOs to not forget other javadoc</msg>
+</logentry>
+<logentry
+   revision="1418">
+<author>gevrai</author>
+<date>2016-11-30T23:59:44.690696Z</date>
+<paths>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Sources/Claim.java</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Sources/MainAccountingJob.java</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Sources/ReceivableAccountsJob.java</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Sources/ReportCreator.java</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Sources/ServerApplication.java</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Sources/Service.java</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Sources/ServiceDBManager.java</path>
+</paths>
+<msg>Added javadoc for Service and ServiceDBManager, as well as TODOs in some classes</msg>
+</logentry>
+<logentry
+   revision="1415">
+<author>gevrai</author>
+<date>2016-11-30T23:39:56.526725Z</date>
+<paths>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Sources/Address.java</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Sources/Claim.java</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Sources/ClaimDBManager.java</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Sources/Data/Claims.db</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Sources/DataBase.java</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Sources/DataBaseManager.java</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Sources/EFT.java</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Sources/EftDBManager.java</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Sources/Member.java</path>
+</paths>
+<msg>Javadoc for Adress, Claim, Member, EFT, DataBase, DataBaseManager, ClaimDBManager, EftDBManager mostly done</msg>
+</logentry>
+<logentry
+   revision="1406">
+<author>azimmermann</author>
+<date>2016-11-30T22:13:44.081207Z</date>
+<paths>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Sources/DataBase.java</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Sources/ReportCreator.java</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Sources/ServerApplication.java</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Sources/UserDBManager.java</path>
+</paths>
+<msg></msg>
+</logentry>
+<logentry
+   revision="1385">
+<author>gevrai</author>
+<date>2016-11-30T08:13:10.985111Z</date>
+<paths>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Sources/Data/EFT.db</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Sources/EFT.java</path>
+</paths>
+<msg>Minor fix on EFT ammountDue formatting in database</msg>
+</logentry>
+<logentry
+   revision="1384">
+<author>gevrai</author>
+<date>2016-11-30T07:29:18.474085Z</date>
+<paths>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Sources/ServerApplication.java</path>
+</paths>
+<msg>Minor change in case someone created its own DB</msg>
+</logentry>
+<logentry
+   revision="1383">
+<author>gevrai</author>
+<date>2016-11-30T07:22:32.037273Z</date>
+<paths>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Sources/Data/Claims.db</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Sources/Data/EFT.db</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Sources/Data/Services.db</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Sources/DataBase.java</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Sources/EFT.java</path>
+</paths>
+<msg>Fixed DataBase.createDataBaseEntries object creation method</msg>
+</logentry>
+<logentry
+   revision="1382">
+<author>gevrai</author>
+<date>2016-11-30T06:55:47.182621Z</date>
+<paths>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Sources/Data/Claims.db</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Sources/Data/EFT.db</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Sources/Data/Services.db</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Sources/DataBase.java</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Sources/ServerApplication.java</path>
+</paths>
+<msg>Implemented 'safe' database creation and dump database on quitting</msg>
+</logentry>
+<logentry
+   revision="1381">
+<author>gevrai</author>
+<date>2016-11-30T05:56:52.289376Z</date>
+<paths>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Sources/EFT.java</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Sources/EftDBManager.java</path>
+</paths>
+<msg>Implemented EFT and EftDBManager</msg>
+</logentry>
+<logentry
+   revision="1380">
+<author>azimmermann</author>
+<date>2016-11-30T05:34:31.511942Z</date>
+<paths>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Sources/ClaimDBManager.java</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Sources/ReportCreator.java</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Sources/ServerApplication.java</path>
+</paths>
+<msg></msg>
+</logentry>
+<logentry
+   revision="1363">
+<author>azimmermann</author>
+<date>2016-11-29T23:42:55.043092Z</date>
+<paths>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Sources/Claim.java</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Sources/ClaimDBManager.java</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Sources/ReportCreator.java</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Sources/SupervisorSession.java</path>
+</paths>
+<msg></msg>
+</logentry>
+<logentry
+   revision="1352">
+<author>f.brobillard</author>
+<date>2016-11-29T22:32:03.818424Z</date>
+<paths>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Sources/Data/Users.db</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Sources/ServerApplication.java</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Sources/SessionManager.java</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Sources/SupervisorSession.java</path>
+</paths>
+<msg>Test d'authentification mis à true pour la période de test</msg>
+</logentry>
+<logentry
+   revision="1348">
+<author>f.brobillard</author>
+<date>2016-11-29T21:51:57.366238Z</date>
+<paths>
+<path
+   action="A"
+   kind="file">/equipe02/DM3/Tests/ChocAnTests.java</path>
+</paths>
+<msg>classe test junit, les commentaires sont les commandes à entrer pour la compilation et l'exécution pour un environnement linux</msg>
+</logentry>
+<logentry
+   revision="1344">
+<author>f.brobillard</author>
+<date>2016-11-29T21:11:11.513616Z</date>
+<paths>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/rapport.html</path>
+</paths>
+<msg>Ajout de sections pour les exigences des barêmes d'évaluation du DM3</msg>
+</logentry>
+<logentry
+   revision="1343">
+<author>f.brobillard</author>
+<date>2016-11-29T21:08:24.057447Z</date>
+<paths>
+<path
+   action="A"
+   kind="dir">/equipe02/DM3/images</path>
+<path
+   action="A"
+   kind="file">/equipe02/DM3/images/Accès_répertoire_fournisseurs.png</path>
+<path
+   kind="file"
+   action="A">/equipe02/DM3/images/Authentification.png</path>
+<path
+   kind="file"
+   action="A">/equipe02/DM3/images/Main_act.png</path>
+<path
+   kind="file"
+   action="A">/equipe02/DM3/images/Maintenir_Client.png</path>
+<path
+   kind="file"
+   action="A">/equipe02/DM3/images/Maintenir_Client_act.png</path>
+<path
+   kind="file"
+   action="A">/equipe02/DM3/images/Maintenir_Service.png</path>
+<path
+   kind="file"
+   action="A">/equipe02/DM3/images/Maintenir_Service_act.png</path>
+<path
+   action="A"
+   kind="file">/equipe02/DM3/images/Maintenir_service.png</path>
+<path
+   action="A"
+   kind="file">/equipe02/DM3/images/Maintenir_service_act.png</path>
+<path
+   kind="file"
+   action="A">/equipe02/DM3/images/Maintenir_utilisateur.png</path>
+<path
+   kind="file"
+   action="A">/equipe02/DM3/images/Paiement_membre.png</path>
+<path
+   kind="file"
+   action="A">/equipe02/DM3/images/Procédure_comptable_principale.png</path>
+<path
+   action="A"
+   kind="file">/equipe02/DM3/images/Produire Rapport_act.png</path>
+<path
+   action="A"
+   kind="file">/equipe02/DM3/images/Produire_rapport_TEF.png</path>
+<path
+   action="A"
+   kind="file">/equipe02/DM3/images/Produire_rapport_comptes_payables.png</path>
+<path
+   action="A"
+   kind="file">/equipe02/DM3/images/Produire_rapport_fournisseur.png</path>
+<path
+   action="A"
+   kind="file">/equipe02/DM3/images/Produire_rapport_membre.png</path>
+<path
+   action="A"
+   kind="file">/equipe02/DM3/images/Soumettre_réclamation.png</path>
+<path
+   action="A"
+   kind="file">/equipe02/DM3/images/Vérifier_client.png</path>
+<path
+   action="A"
+   kind="file">/equipe02/DM3/images/cas_utilisation.png</path>
+<path
+   kind="file"
+   action="A">/equipe02/DM3/images/classes.png</path>
+<path
+   action="A"
+   kind="file">/equipe02/DM3/images/classes_participantes.png</path>
+<path
+   action="A"
+   kind="file">/equipe02/DM3/images/loc_per_author.png</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/public/stylesheets/style.css</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/rapport.html</path>
+</paths>
+<msg>Division de ce qui a déjà été fait en workflows dans le rapport. Les artéfacts devront tout de même être mis à jour.</msg>
+</logentry>
+<logentry
+   revision="1329">
+<author>gevrai</author>
+<date>2016-11-29T17:06:08.314195Z</date>
+<paths>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Sources/ClaimDBManager.java</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Sources/ReportCreator.java</path>
+</paths>
+<msg>Refactor method to ClaimDBManager.findClaimsForUserID</msg>
+</logentry>
+<logentry
+   revision="1328">
+<author>gevrai</author>
+<date>2016-11-29T16:58:52.227362Z</date>
+<paths>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Sources/ClaimDBManager.java</path>
+</paths>
+<msg>ClaimDBManager.findClaimsForUsers added</msg>
+</logentry>
+<logentry
+   revision="1327">
+<author>f.brobillard</author>
+<date>2016-11-29T16:42:05.728305Z</date>
+<paths>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Sources/ReportCreator.java</path>
+</paths>
+<msg>Debugging au niveau du flow de création de session</msg>
+</logentry>
+<logentry
+   revision="1324">
+<author>f.brobillard</author>
+<date>2016-11-29T16:03:40.895245Z</date>
+<paths>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Sources/ServerApplication.java</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Sources/SupervisorSession.java</path>
+</paths>
+<msg>Corrections minimales sur l'utilisation de certaines méthodes</msg>
+</logentry>
+<logentry
+   revision="1320">
+<author>azimmermann</author>
+<date>2016-11-29T07:47:05.200913Z</date>
+<paths>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Sources/ReportCreator.java</path>
+</paths>
+<msg></msg>
+</logentry>
+<logentry
+   revision="1314">
+<author>gevrai</author>
+<date>2016-11-29T02:45:08.867914Z</date>
+<paths>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Sources/DataBase.java</path>
+</paths>
+<msg>Fixed import on DataBase.java</msg>
+</logentry>
+<logentry
+   revision="1311">
+<author>gevrai</author>
+<date>2016-11-29T02:30:23.722530Z</date>
+<paths>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Sources/DataBase.java</path>
+</paths>
+<msg>First database.dump draft, not functionning properly yet</msg>
+</logentry>
+<logentry
+   revision="1310">
+<author>gevrai</author>
+<date>2016-11-29T00:37:13.285075Z</date>
+<paths>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Sources/ClaimDBManager.java</path>
+</paths>
+<msg>Added function ClaimDBManager.findClaimsBySupplierID</msg>
+</logentry>
+<logentry
+   revision="1308">
+<author>azimmermann</author>
+<date>2016-11-29T00:13:18.668043Z</date>
+<paths>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Documentation/ChocAn.vpp</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Sources/Member.java</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Sources/ReportCreator.java</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Sources/ServerApplication.java</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Sources/SupervisorSession.java</path>
+</paths>
+<msg>Ajout de getAddress dans Member
+Modifications de ReportCreator : Fait pour le rapportMembre</msg>
+</logentry>
+<logentry
+   revision="1307">
+<author>gevrai</author>
+<date>2016-11-28T23:58:25.982149Z</date>
+<paths>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Sources/Claim.java</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Sources/ClaimDBManager.java</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Sources/Data/Claims.db</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Sources/DataBaseManager.java</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Sources/ServiceDBManager.java</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Sources/UserDBManager.java</path>
+</paths>
+<msg>First draft of all DBManagers done.</msg>
+</logentry>
+<logentry
+   revision="1303">
+<author>pcaron</author>
+<date>2016-11-28T15:11:40.307920Z</date>
+<paths>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Sources/MemberSession.java</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Sources/ServerApplication.java</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Sources/Session.java</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Sources/SupervisorSession.java</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Sources/SupplierSession.java</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Sources/UserInterface.java</path>
+</paths>
+<msg>changement du fonctionnement pour permettre les connexions multiples</msg>
+</logentry>
+<logentry
+   revision="1281">
+<author>pcaron</author>
+<date>2016-11-27T12:08:04.395892Z</date>
+<paths>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Sources/Data/Users.db</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Sources/MemberSession.java</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Sources/ServerApplication.java</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Sources/Session.java</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Sources/SessionManager.java</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Sources/SupervisorSession.java</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Sources/SupplierSession.java</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Sources/UserInterface.java</path>
+</paths>
+<msg>Ajout du login membre</msg>
+</logentry>
+<logentry
+   revision="1280">
+<author>pcaron</author>
+<date>2016-11-27T11:08:08.284868Z</date>
+<paths>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Sources/DataBase.java</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Sources/ServerApplication.java</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Sources/SessionManager.java</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Sources/UserInterface.java</path>
+</paths>
+<msg>Modifications à UserInterface</msg>
+</logentry>
+<logentry
+   revision="1279">
+<author>pcaron</author>
+<date>2016-11-27T10:36:18.129046Z</date>
+<paths>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Sources/SessionManager.java</path>
+</paths>
+<msg>Changement mineur au dernier commit</msg>
+</logentry>
+<logentry
+   revision="1278">
+<author>pcaron</author>
+<date>2016-11-27T10:26:38.554583Z</date>
+<paths>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Sources/Address.java</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Sources/Claim.java</path>
+<path
+   action="A"
+   kind="dir">/equipe02/DM3/Sources/Data</path>
+<path
+   action="A"
+   kind="file">/equipe02/DM3/Sources/Data/Claims.db</path>
+<path
+   action="A"
+   kind="file">/equipe02/DM3/Sources/Data/EFT.db</path>
+<path
+   action="A"
+   kind="file">/equipe02/DM3/Sources/Data/Services.db</path>
+<path
+   action="A"
+   kind="file">/equipe02/DM3/Sources/Data/Users.db</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Sources/DataBase.java</path>
+<path
+   kind="file"
+   action="A">/equipe02/DM3/Sources/DataBaseManager.java</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Sources/EFT.java</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Sources/MainAccountingJob.java</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Sources/Member.java</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Sources/MemberSession.java</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Sources/ReceivableAccountsJob.java</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Sources/ReportCreator.java</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Sources/ServerApplication.java</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Sources/Service.java</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Sources/ServiceDBManager.java</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Sources/Session.java</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Sources/SessionManager.java</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Sources/Supervisor.java</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Sources/SupervisorSession.java</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Sources/Supplier.java</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Sources/SupplierSession.java</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Sources/User.java</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Sources/UserDBManager.java</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Sources/UserInterface.java</path>
+</paths>
+<msg>Début du codage</msg>
+</logentry>
+<logentry
+   revision="1270">
+<author>gevrai</author>
+<date>2016-11-26T00:51:24.622525Z</date>
+<paths>
+<path
+   kind="file"
+   action="A">/equipe02/DM3/Sources/Address.java</path>
+<path
+   action="A"
+   kind="file">/equipe02/DM3/Sources/Claim.java</path>
+<path
+   action="A"
+   kind="file">/equipe02/DM3/Sources/ClaimDBManager.java</path>
+<path
+   action="A"
+   kind="file">/equipe02/DM3/Sources/DataBase.java</path>
+<path
+   action="A"
+   kind="file">/equipe02/DM3/Sources/EFT.java</path>
+<path
+   action="A"
+   kind="file">/equipe02/DM3/Sources/EftDBManager.java</path>
+<path
+   action="A"
+   kind="file">/equipe02/DM3/Sources/MainAccountingJob.java</path>
+<path
+   action="A"
+   kind="file">/equipe02/DM3/Sources/Member.java</path>
+<path
+   action="A"
+   kind="file">/equipe02/DM3/Sources/MemberSession.java</path>
+<path
+   kind="file"
+   action="A">/equipe02/DM3/Sources/ReceivableAccountsJob.java</path>
+<path
+   kind="file"
+   action="A">/equipe02/DM3/Sources/ReportCreator.java</path>
+<path
+   action="A"
+   kind="file">/equipe02/DM3/Sources/ServerApplication.java</path>
+<path
+   action="A"
+   kind="file">/equipe02/DM3/Sources/Service.java</path>
+<path
+   action="A"
+   kind="file">/equipe02/DM3/Sources/ServiceDBManager.java</path>
+<path
+   kind="file"
+   action="A">/equipe02/DM3/Sources/Session.java</path>
+<path
+   kind="file"
+   action="A">/equipe02/DM3/Sources/SessionManager.java</path>
+<path
+   kind="file"
+   action="A">/equipe02/DM3/Sources/Supervisor.java</path>
+<path
+   kind="file"
+   action="A">/equipe02/DM3/Sources/SupervisorSession.java</path>
+<path
+   kind="file"
+   action="A">/equipe02/DM3/Sources/Supplier.java</path>
+<path
+   kind="file"
+   action="A">/equipe02/DM3/Sources/SupplierSession.java</path>
+<path
+   kind="file"
+   action="A">/equipe02/DM3/Sources/User.java</path>
+<path
+   kind="file"
+   action="A">/equipe02/DM3/Sources/UserDBManager.java</path>
+<path
+   action="A"
+   kind="file">/equipe02/DM3/Sources/UserInterface.java</path>
+</paths>
+<msg>Basic codebase imported from class diagram into 'Sources' directory</msg>
+</logentry>
+<logentry
+   revision="1269">
+<author>gevrai</author>
+<date>2016-11-26T00:49:22.668384Z</date>
+<paths>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Documentation/ChocAn.vpp</path>
+</paths>
+<msg>Last (?) modifications on class diagram before code exportation v3</msg>
+</logentry>
+<logentry
+   revision="1268">
+<author>gevrai</author>
+<date>2016-11-26T00:43:47.705549Z</date>
+<paths>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Documentation/ChocAn.vpp</path>
+</paths>
+<msg>Last (?) modifications on class diagram before code exportation v2</msg>
+</logentry>
+<logentry
+   revision="1267">
+<author>gevrai</author>
+<date>2016-11-26T00:41:38.217696Z</date>
+<paths>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Documentation/ChocAn.vpp</path>
+</paths>
+<msg>Last (?) modifications on class diagram before code exportation</msg>
+</logentry>
+<logentry
+   revision="1264">
+<author>gevrai</author>
+<date>2016-11-25T21:33:09.355854Z</date>
+<paths>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Documentation/ChocAn.vpp</path>
+</paths>
+<msg>Save class diagram</msg>
+</logentry>
+<logentry
+   revision="1262">
+<author>gevrai</author>
+<date>2016-11-25T20:27:06.071016Z</date>
+<paths>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Documentation/ChocAn.vpp</path>
+</paths>
+<msg>Modifications apportees pendant meetup</msg>
+</logentry>
+<logentry
+   revision="1241">
+<author>gevrai</author>
+<date>2016-11-25T04:05:11.870266Z</date>
+<paths>
+<path
+   action="M"
+   kind="file">/equipe02/DM3/Documentation/ChocAn.vpp</path>
+</paths>
+<msg>Minor changes to class diagram</msg>
+</logentry>
+<logentry
+   revision="1237">
+<author>gevrai</author>
+<date>2016-11-24T21:25:07.746870Z</date>
+<paths>
+<path
+   kind="file"
+   action="M">/equipe02/DM3/Documentation/ChocAn.vpp</path>
+</paths>
+<msg>Modifications au diagramme de classe: Communication avec interface utilisateur non-implantée</msg>
+</logentry>
+<logentry
+   revision="1220">
+<author>gevrai</author>
+<date>2016-11-24T00:42:52.107837Z</date>
+<paths>
+<path
+   action="A"
+   kind="file">/equipe02/DM3/Documentation/ChocAn.vpp</path>
+</paths>
+<msg>Modifications (non terminees) au digramme de classes avant export en fichier .java</msg>
+</logentry>
+<logentry
+   revision="1199">
+<author>f.brobillard</author>
+<date>2016-11-22T22:20:20.120431Z</date>
+<paths>
+<path
+   action="A"
+   kind="dir">/equipe02/DM3</path>
+<path
+   action="A"
+   kind="dir">/equipe02/DM3/API</path>
+<path
+   action="A"
+   kind="dir">/equipe02/DM3/Documentation</path>
+<path
+   action="A"
+   kind="dir">/equipe02/DM3/Sources</path>
+<path
+   kind="dir"
+   action="A">/equipe02/DM3/Tests</path>
+<path
+   kind="dir"
+   action="A">/equipe02/DM3/public</path>
+<path
+   action="A"
+   kind="dir">/equipe02/DM3/public/image</path>
+<path
+   action="A"
+   kind="dir">/equipe02/DM3/public/stylesheets</path>
+<path
+   action="A"
+   kind="file">/equipe02/DM3/public/stylesheets/style.css</path>
+<path
+   kind="dir"
+   action="A">/equipe02/DM3/public/vpp</path>
+<path
+   kind="file"
+   action="A">/equipe02/DM3/rapport.html</path>
+</paths>
+<msg>Directory pour DM3</msg>
+</logentry>
+</log>

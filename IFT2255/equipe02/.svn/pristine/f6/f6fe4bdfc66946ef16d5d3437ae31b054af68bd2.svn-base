@@ -1,0 +1,67 @@
+public class Service {
+
+	private int servID;
+	private String name;
+	private String description;
+
+	/**
+	 * 
+	 * @param servID
+	 * @param name
+	 * @param description
+	 */
+	public Service(int servID, String name, String description) {
+		this.servID = servID;
+		this.name = name;
+		this.description = description;
+	}
+	
+	public Service(String service) {
+		String[] servInfo = service.split("\t", 3);
+		this.servID = Integer.parseInt(servInfo[0]);
+		this.name = servInfo[1];
+		this.description = servInfo[2];
+	}
+
+	public int getServID() {
+		return this.servID;
+	}
+
+	/**
+	 * 
+	 * @param servID
+	 */
+	public void setServID(int servID) {
+		this.servID = servID;
+	}
+
+	public String getName() {
+		return this.name;
+	}
+
+	/**
+	 * 
+	 * @param name
+	 */
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getDescription() {
+		return this.description;
+	}
+
+	/**
+	 * 
+	 * @param description
+	 */
+	public void setDescription(String description) {
+		this.description = description;
+	}
+	
+	@Override
+	public String toString(){
+		return servID + "\t" + name + "\t" + description;
+	}
+
+}

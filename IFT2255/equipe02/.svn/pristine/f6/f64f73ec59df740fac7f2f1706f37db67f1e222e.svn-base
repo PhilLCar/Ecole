@@ -1,0 +1,565 @@
+import java.util.Date;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+
+import java.awt.Label;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.text.SimpleDateFormat;
+
+// TODO javadoc for SupervisorSession
+/**
+ * The Class SupervisorSession, which is used manage the Supervisors' GUI and
+ * their requests to the database.
+ *
+ *
+ *
+ */
+public class SupervisorSession extends Session {
+
+	/**
+	 *
+	 * Will print all reports due to this date.
+	 */
+	public void printReport() {
+		// TODO - implement SupervisorSession.printSynthesisReport
+		ReportCreator rp = new ReportCreator();
+		rp.allReports(new Date(), new Date());
+	}
+
+	public void modifyMember(int userID, String name, String pass, Address address, int status) {
+		User user = new UserDBManager().find(userID);
+		if (user == null) {
+			user = new Member(userID + "\t" + User.MD5(pass) + name + "\t" + "\t" + address.getStreetNumber() + "\t"
+																				  + address.getStreetName() + "\t"
+																				  + address.getCity() + "\t" 
+																				  + address.getProvince() + "\t"
+																				  + address.getZipCode() + "\t" + status);
+			new UserDBManager().add(user);
+		} else if (!user.getClass().getName().equals("Member"))
+			return;
+		else {
+			user.setName(name);
+			user.setHashFromPassword(pass);
+			((Member) user).setAddress(address);
+			((Member) user).setStatus(status);
+		}
+	}
+	
+	public void deleteUser(int userID) {
+		new UserDBManager().delete(userID);
+	}
+
+	public void modifySuper(String userID, String name, String pass) {
+	}
+
+	public void modifySupplier(String userID, String name, String pass, String Address) {
+	}
+
+	public void modifyService() {
+		// TODO - implement SupervisorSession.modifyService
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * Instantiates Session using parent's method, with current user.
+	 * 
+	 * @param supervisor
+	 *            current session user
+	 */
+	public SupervisorSession(Supervisor supervisor) {
+		super(supervisor);
+	}
+
+	@Override
+	public void getUI(UserInterface UI) {
+		// Procédure comptable
+		// Rapports
+		// Utilisateurs
+		// Services
+		JButton users = new JButton("Utilisateurs");
+		users.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				usersUI(UI);
+			}
+
+		});
+		JButton services = new JButton("Services");
+		services.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				modifyServiceUI(UI);
+
+			}
+
+		});
+		JButton reports = new JButton("Rapports");
+		reports.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				reportsUI(UI);
+			}
+
+		});
+		JButton quit = new JButton("Quitter");
+		Session thisSession = this;
+		quit.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				UI.disconnect(thisSession);
+			}
+
+		});
+
+		UI.getContentPane().removeAll();
+		UI.setTitle("Menu Gerant");
+		UI.add(new Label("Choisissez parmis l'une des options suivantes"));
+		UI.add(users);
+		UI.add(services);
+		UI.add(reports);
+		UI.add(quit);
+		UI.setSize(330, 130);
+		UI.setVisible(true);
+	}
+
+	private void usersUI(UserInterface UI) {
+		UI.getContentPane().removeAll();
+		JButton member = new JButton("Membre");
+		JButton supplier = new JButton("Fournisseur");
+		JButton supervisor = new JButton("Gerant");
+		JButton back = new JButton("Retour");
+
+		member.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				memberUI(UI);
+			}
+
+		});
+
+		supplier.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+
+			}
+
+		});
+
+		supervisor.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+			}
+
+		});
+
+		back.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				getUI(UI);
+			}
+
+		});
+
+		UI.setTitle("Menu Gerant - Modifier un utilisateur");
+		UI.add(new Label("Quel type d'utilisateur voulez-vous modifier"));
+		UI.add(member);
+		UI.add(supplier);
+		UI.add(supervisor);
+		UI.add(back);
+		UI.setSize(320, 130);
+		UI.setVisible(true);
+	}
+
+	/*
+	 * Will change the current GUI to the Reports GUI. Supervisor will be able
+	 * to access different types of reports.
+	 * 
+	 * @param UI current UI, to be modified by method.
+	 */
+	private void reportsUI(UserInterface UI) {
+		UI.getContentPane().removeAll();
+		JButton member = new JButton("Rapport de membre");
+		JButton supplier = new JButton("Rapport de fournisseur");
+		JButton supervisor = new JButton("Rapport de synthese");
+		JButton back = new JButton("Retour");
+
+		member.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				memberReportUI(UI);
+			}
+
+		});
+
+		supplier.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				supplierReportUI(UI);
+			}
+
+		});
+
+		supervisor.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+			}
+
+		});
+
+		back.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				getUI(UI);
+			}
+
+		});
+
+		UI.setTitle("Menu Gerant - Creer un rapport");
+		UI.add(new Label("Quel type de rapport voulez-vous creer?"));
+		UI.add(member);
+		UI.add(supplier);
+		UI.add(supervisor);
+		UI.add(back);
+		UI.setSize(255, 190);
+		UI.setVisible(true);
+	}
+
+	/*
+	 * Will change the current GUI to the Member's Reports GUI. Supervisor will
+	 * be able to create specific reports or go back.
+	 * 
+	 * @param UI current UI, to be modified by method.
+	 */
+	private void memberReportUI(UserInterface UI) {
+		UI.getContentPane().removeAll();
+		JButton report = new JButton("Generer un rapport");
+		JButton back = new JButton("Retour");
+		JTextField num = new JTextField(20);
+		JTextField from = new JTextField(10);
+		JTextField to = new JTextField(10);
+
+		report.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				SimpleDateFormat parser = new SimpleDateFormat("yyyy-mm-dd");
+				try {
+					new ReportCreator().memberReport(Integer.parseInt(num.getText()), parser.parse(from.getText()),
+							parser.parse(to.getText()));
+					Date dateReport = new Date();
+					SimpleDateFormat formater = new SimpleDateFormat("dd-MM-yy");
+					String nameReportFile = ReportCreator.MEMBER_REPORT_PATH
+							+ (new UserDBManager()).find(Integer.parseInt(num.getText())).getName() + "_"
+							+ formater.format(dateReport) + ".txt";
+					FileReader fr = new FileReader(nameReportFile);
+					BufferedReader br = new BufferedReader(fr);
+					String content = "", line;
+					while ((line = br.readLine()) != null)
+						content += line + "\n";
+					JOptionPane.showMessageDialog(new JPanel(), content, "Rapport de " + getUser().getName(),
+							JOptionPane.OK_OPTION);
+					br.close();
+					fr.close();
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			}
+
+		});
+
+		back.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				reportsUI(UI);
+			}
+
+		});
+
+		UI.setTitle("Menu Gerant - Creer un rapport de membre");
+		UI.add(new Label("Numéro du membre:"));
+		UI.add(num);
+		UI.add(new Label("Entrez la plage que vous voulez couvrir (yyyy-mm-dd):"));
+		UI.add(from);
+		UI.add(to);
+		UI.add(back);
+		UI.add(report);
+		UI.setSize(340, 190);
+		UI.setVisible(true);
+	}
+
+	/**
+	 * Will change the current GUI to the Supplier's Reports GUI. Supervisor
+	 * will be able to create Supplier's reports or go back.
+	 * 
+	 * @param UI
+	 *            current UI, to be modified by method.
+	 */
+	private void supplierReportUI(UserInterface UI) {
+		UI.getContentPane().removeAll();
+		JButton report = new JButton("Generer un rapport");
+		JButton back = new JButton("Retour");
+		JTextField num = new JTextField(20);
+		JTextField from = new JTextField(10);
+		JTextField to = new JTextField(10);
+
+		report.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				SimpleDateFormat parser = new SimpleDateFormat("yyyy-mm-dd");
+				try {
+					new ReportCreator().supplierReport(Integer.parseInt(num.getText()), parser.parse(from.getText()),
+							parser.parse(to.getText()));
+					Date dateReport = new Date();
+					SimpleDateFormat formater = new SimpleDateFormat("dd-MM-yy");
+					String nameReportFile = ReportCreator.SUPPLIER_REPORT_PATH
+							+ (new UserDBManager()).find(Integer.parseInt(num.getText())).getName() + "_"
+							+ formater.format(dateReport) + ".txt";
+					FileReader fr = new FileReader(nameReportFile);
+					BufferedReader br = new BufferedReader(fr);
+					String content = "", line;
+					while ((line = br.readLine()) != null)
+						content += line + "\n";
+					JOptionPane.showMessageDialog(new JPanel(), content, "Rapport de " + getUser().getName(),
+							JOptionPane.OK_OPTION);
+					br.close();
+					fr.close();
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			}
+
+		});
+
+		back.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				reportsUI(UI);
+			}
+
+		});
+
+		UI.setTitle("Menu Gerant - Creer un rapport de fournisseur");
+		UI.add(new Label("Numero du fournisseur:"));
+		UI.add(num);
+		UI.add(new Label("Entrez la plage que vous voulez couvrir (yyyy-mm-dd):"));
+		UI.add(from);
+		UI.add(to);
+		UI.add(back);
+		UI.add(report);
+		UI.setSize(340, 190);
+		UI.setVisible(true);
+	}
+
+	/**
+	 * Will change the current GUI to the CRUD Services GUI. Supervisor will be
+	 * able to create, modify and delete services or go back.
+	 * 
+	 * @param UI
+	 *            current UI, to be modified by method.
+	 */
+	private void modifyServiceUI(UserInterface UI) {
+		UI.getContentPane().removeAll();
+		JButton addservice = new JButton("Ajouter");
+		JButton updateservice = new JButton("Modifier");
+		JButton deleteservice = new JButton("Supprimer");
+		JButton back = new JButton("Retour");
+
+		addservice.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				// newServiceUI(UI);
+			}
+
+		});
+
+		updateservice.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				// updateserviceUI(UI);
+			}
+
+		});
+
+		deleteservice.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// deleteserviceUI(UI);
+			}
+
+		});
+
+		back.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				getUI(UI);
+			}
+
+		});
+
+		UI.setTitle("Menu Gerant - Services");
+		UI.add(addservice);
+		UI.add(updateservice);
+		UI.add(deleteservice);
+		UI.add(back);
+		UI.setSize(320, 130);
+		UI.setVisible(true);
+	}
+
+	// PAS FINIE EN TRAIN D'ÊTRE IMPLÉMENTÉE
+	private void memberUI(UserInterface UI) {
+		UI.getContentPane().removeAll();
+		JTextField num = new JTextField(6);
+		JTextField name = new JTextField(21);
+		JTextField pass = new JTextField(21);
+		JTextField streetNum = new JTextField(6);
+		JTextField street = new JTextField(14);
+		JTextField city = new JTextField(10);
+		JTextField prov = new JTextField(10);
+		JTextField zip = new JTextField(7);
+		JComboBox<String> status = new JComboBox<String>(new String[] { "Valide", "En retard", "Suspendu" });
+		JButton val = new JButton("Valider");
+		JButton del = new JButton("Supprimer");
+		JButton back = new JButton("Retour");
+
+		num.addKeyListener(new KeyListener() {
+
+			@Override
+			public void keyTyped(KeyEvent e) {
+				// if (e.getKeyCode() == KeyEvent.VK_ALT) return;
+				// num.setText(num.getText() + e.getKeyChar());
+				// if (e.getKeyCode() == KeyEvent.VK_BACK_SPACE &&
+				// num.getText().length() > 0)
+				// num.setText(num.getText().substring(0,num.getText().length()
+				// - 2 ));
+			}
+
+			@Override
+			public void keyPressed(KeyEvent arg0) {
+			}
+
+			@Override
+			public void keyReleased(KeyEvent e) {
+				if (num.getText().equals(""))
+					return;
+				User user = new UserDBManager().find(Integer.parseInt(num.getText()));
+				if (user != null && user.getClass().getName().equals("Member")) {
+					name.setText(user.getName());
+					streetNum.setText(((Member) user).getAddress().getStreetNumber());
+					street.setText(((Member) user).getAddress().getStreetName());
+					city.setText(((Member) user).getAddress().getCity());
+					prov.setText(((Member) user).getAddress().getProvince());
+					zip.setText(((Member) user).getAddress().getZipCode());
+					switch (((Member) user).getStatus()) {
+					case 0:
+						status.setSelectedItem("Valide");
+						break;
+					case 1:
+						status.setSelectedItem("En retard");
+						break;
+					case 2:
+						status.setSelectedItem("Suspendu");
+						break;
+					default:
+						status.setSelectedItem("Valide");
+						break;
+
+					}
+				}
+			}
+
+		});
+
+		val.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				int stat = 0;
+				Address address = new Address(streetNum.getText(), street.getText(), city.getText(), prov.getText(), zip.getText());
+				
+				switch ((String) status.getSelectedItem()) {
+				case "Valide":
+					stat = 0;
+					break;
+				case "En retard":
+					stat = 1;
+					break;
+				case "Suspendu":
+					stat = 2;
+					break;
+
+				}
+				
+				modifyMember(Integer.parseInt(num.getText()), name.getText(), pass.getText(), address, stat);
+			}
+
+		});
+		
+		del.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				int userID = Integer.parseInt(num.getText());
+				if (new UserDBManager().find(userID).getClass().getName().equals("Member"))
+					deleteUser(userID);
+			}
+			
+		});
+
+		back.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				usersUI(UI);
+			}
+
+		});
+
+		UI.setTitle("Menu Gerant - Modifier un membre");
+		UI.add(num);
+		UI.add(name);
+		UI.add(pass);
+		UI.add(streetNum);
+		UI.add(street);
+		UI.add(city);
+		UI.add(prov);
+		UI.add(zip);
+		UI.add(status);
+		UI.add(del);
+		UI.add(val);
+		UI.add(back);
+		UI.setSize(270, 250);
+		UI.setVisible(true);
+	}
+}

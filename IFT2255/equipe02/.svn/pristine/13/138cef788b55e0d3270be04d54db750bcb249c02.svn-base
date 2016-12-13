@@ -1,0 +1,67 @@
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+
+public class MemberSession extends Session {
+
+	/**
+	 * 
+	 * @param amount
+	 */
+	public void pay(float amount) {
+		// TODO - implement MemberSession.pay
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * 
+	 * @param userID
+	 * @param hash
+	 */
+	public MemberSession(Member member) {
+		super(member);
+	}
+	
+	@Override
+	public void getUI(UserInterface UI) {
+		UI.getContentPane().removeAll();
+		UI.setTitle("Menu membre");
+		
+		UI.add(new JLabel("Entrez le montant que vous souhaitez payer:"));
+		// TODO Affichier montant du
+		
+		JTextField payfield = new JTextField(25);
+		UI.add(payfield);
+		
+		JButton paybutton = new JButton("Payer");
+		paybutton.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				JOptionPane.showMessageDialog(new JPanel(), "Félicitations, paiement complété");
+			}
+
+		});
+		
+		JButton quit = new JButton("Quitter");
+		Session thisSession = this;
+		quit.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				UI.disconnect(thisSession);
+			}
+
+		});
+		
+		UI.add(paybutton);
+		UI.add(quit);
+		UI.setSize(330, 120);
+		UI.setVisible(true);
+	}
+}

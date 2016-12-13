@@ -1,0 +1,799 @@
+import java.util.Date;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
+
+import java.awt.Label;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.text.SimpleDateFormat;
+
+/**
+ * The Class SupervisorSession, which is used manage the Supervisors' GUI and
+ * their requests to the database.
+ *
+ *
+ *
+ */
+public class SupervisorSession extends Session {
+
+	/**
+	 *
+	 * Will print all reports due to this date.
+	 */
+	public void printReport() {
+		// TODO - implement SupervisorSession.printSynthesisReport
+		ReportCreator rp = new ReportCreator();
+		rp.allReports(new Date(), new Date());
+	}
+	/**
+	* Changes a user's data to the new submitted data if he is a Member.
+	* If the user doesn't exist, a new one is created.
+	* This method is used by ChocAn's supervisors to update or create members.
+	* @param userID number that identifies a unique user
+	* @param name name of the user
+	* @param pass password of the user
+	* @param address physical address of the user
+	* @param status int that defines whether the user is active, late for payment or disabled
+	*/
+	public void modifyMember(int userID, String name, String pass, Address address, int status) {
+		User user = new UserDBManager().find(userID);
+		if (user == null) {
+			user = new Member(userID + "\t" + User.MD5(pass) + "\t" + name + "\t" + address.getStreetNumber() + "\t"
+																				  + address.getStreetName() + "\t"
+																				  + address.getCity() + "\t"
+																				  + address.getProvince() + "\t"
+																				  + address.getZipCode() + "\t" + status);
+			new UserDBManager().add(user);
+		} else if (!user.getClass().getName().equals("Member"))
+			return;
+		else {
+			user.setName(name);
+			user.setHashFromPassword(pass);
+			((Member) user).setAddress(address);
+			((Member) user).setStatus(status);
+		}
+	}
+/**
+* Will create or modify a supervisor's data based on its userID.
+* @param userID number that identifies a unique user
+* @param name name of the user
+* @param pass password of the user
+*/
+
+	public void modifySuper(int userID, String name, String pass) {
+		User user = new UserDBManager().find(userID);
+		if (user == null) {
+			user = new Supplier(userID + "\t" + User.MD5(pass) + "\t" + name);
+			new UserDBManager().add(user);
+		} else if (!user.getClass().getName().equals("Supervisor"))
+			return;
+		else {
+			user.setName(name);
+			user.setHashFromPassword(pass);
+		}
+	}
+	/**
+	* Will create or modify a supplier's data based on its userID.
+	* @param userID number that identifies a unique user
+	* @param name name of the user
+	* @param pass password of the user
+	* @param address physical address of the user
+	*/
+	public void modifySupplier(int userID, String name, String pass, Address address) {
+		User user = new UserDBManager().find(userID);
+		if (user == null) {
+			user = new Supplier(userID + "\t" + User.MD5(pass) + "\t" + name + "\t" + address.getStreetNumber() + "\t"
+																			  	    + address.getStreetName() + "\t"
+																				    + address.getCity() + "\t"
+																				    + address.getProvince() + "\t"
+																				    + address.getZipCode());
+			new UserDBManager().add(user);
+		} else if (!user.getClass().getName().equals("Supplier"))
+			return;
+		else {
+			user.setName(name);
+			user.setHashFromPassword(pass);
+			((Supplier) user).setAddress(address);
+		}
+	}
+	/**
+	* Will create or modify a services's data based on its servID.
+	* @param servID number that identifies a unique service
+	* @param name name of the service
+	* @param descr description of the service
+	*/
+	public void modifyService(int servID, String name, String descr) {
+		Service service = new ServiceDBManager().find(servID);
+		if (service == null) {
+			service = new Service(servID, name, descr);
+			new ServiceDBManager().add(service);
+		} else {
+			service.setName(name);
+			service.setDescription(descr);
+		}
+	}
+
+	/**
+	 * Instantiates Session using parent's method, with current user.
+	 *
+	 * @param supervisor
+	 *            current session user
+	 */
+	public SupervisorSession(Supervisor supervisor) {
+		super(supervisor);
+	}
+
+	@Override
+	public void getUI(UserInterface UI) {
+		// Procédure comptable
+		// Rapports
+		// Utilisateurs
+		// Services
+		JButton users = new JButton("Utilisateurs");
+		users.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				usersUI(UI);
+			}
+
+		});
+		JButton services = new JButton("Services");
+		services.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				modifyServiceUI(UI);
+
+			}
+
+		});
+		JButton reports = new JButton("Rapports");
+		reports.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				reportsUI(UI);
+			}
+
+		});
+		JButton quit = new JButton("Quitter");
+		Session thisSession = this;
+		quit.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				UI.disconnect(thisSession);
+			}
+
+		});
+
+		UI.getContentPane().removeAll();
+		UI.setTitle("Menu Gerant");
+		UI.add(new Label("Choisissez parmis l'une des options suivantes"));
+		UI.add(users);
+		UI.add(services);
+		UI.add(reports);
+		UI.add(quit);
+		UI.setSize(330, 130);
+		UI.setVisible(true);
+	}
+	/*
+	 * Will change the current GUI to the Users' GUI. Supervisor will be able
+	 * to add, modify or delete all types of users through it.
+	 *
+	 * @param UI current UI, to be modified by method.
+	 */
+	private void usersUI(UserInterface UI) {
+		UI.getContentPane().removeAll();
+		JButton member = new JButton("Membre");
+		JButton supplier = new JButton("Fournisseur");
+		JButton supervisor = new JButton("Gerant");
+		JButton back = new JButton("Retour");
+
+		member.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				memberUI(UI);
+			}
+
+		});
+
+		supplier.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				supplierUI(UI);
+			}
+
+		});
+
+		supervisor.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				superUI(UI);
+			}
+
+		});
+
+		back.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				getUI(UI);
+			}
+
+		});
+
+		UI.setTitle("Menu Gerant - Modifier un utilisateur");
+		UI.add(new Label("Quel type d'utilisateur voulez-vous modifier"));
+		UI.add(member);
+		UI.add(supplier);
+		UI.add(supervisor);
+		UI.add(back);
+		UI.setSize(320, 130);
+		UI.setVisible(true);
+	}
+
+	/*
+	 * Will change the current GUI to the Reports GUI. Supervisor will be able
+	 * to access different types of reports.
+	 *
+	 * @param UI current UI, to be modified by method.
+	 */
+	private void reportsUI(UserInterface UI) {
+		UI.getContentPane().removeAll();
+		JButton member = new JButton("Rapport de membre");
+		JButton supplier = new JButton("Rapport de fournisseur");
+		JButton supervisor = new JButton("Rapport de synthese");
+		JButton back = new JButton("Retour");
+
+		member.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				memberReportUI(UI);
+			}
+
+		});
+
+		supplier.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				supplierReportUI(UI);
+			}
+
+		});
+
+		supervisor.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+			}
+
+		});
+
+		back.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				getUI(UI);
+			}
+
+		});
+
+		UI.setTitle("Menu Gerant - Creer un rapport");
+		UI.add(new Label("Quel type de rapport voulez-vous creer?"));
+		UI.add(member);
+		UI.add(supplier);
+		UI.add(supervisor);
+		UI.add(back);
+		UI.setSize(255, 190);
+		UI.setVisible(true);
+	}
+
+	/*
+	 * Will change the current GUI to the Member's Reports GUI. Supervisor will
+	 * be able to create specific reports or go back.
+	 *
+	 * @param UI current UI, to be modified by method.
+	 */
+	private void memberReportUI(UserInterface UI) {
+		UI.getContentPane().removeAll();
+		JButton report = new JButton("Generer un rapport");
+		JButton back = new JButton("Retour");
+		JTextField num = new JTextField(20);
+		JTextField from = new JTextField(10);
+		JTextField to = new JTextField(10);
+
+		report.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				SimpleDateFormat parser = new SimpleDateFormat("yyyy-mm-dd");
+				try {
+					new ReportCreator().memberReport(Integer.parseInt(num.getText()), parser.parse(from.getText()),
+							parser.parse(to.getText()));
+					Date dateReport = new Date();
+					SimpleDateFormat formater = new SimpleDateFormat("dd-MM-yy");
+					String nameReportFile = ReportCreator.MEMBER_REPORT_PATH
+							+ (new UserDBManager()).find(Integer.parseInt(num.getText())).getName() + "_"
+							+ formater.format(dateReport) + ".txt";
+					FileReader fr = new FileReader(nameReportFile);
+					BufferedReader br = new BufferedReader(fr);
+					String content = "", line;
+					while ((line = br.readLine()) != null)
+						content += line + "\n";
+					JOptionPane.showMessageDialog(new JPanel(), content, "Rapport de " + getUser().getName(),
+							JOptionPane.OK_OPTION);
+					br.close();
+					fr.close();
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			}
+
+		});
+
+		back.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				reportsUI(UI);
+			}
+
+		});
+
+		UI.setTitle("Menu Gerant - Creer un rapport de membre");
+		UI.add(new Label("Numéro du membre:"));
+		UI.add(num);
+		UI.add(new Label("Entrez la plage que vous voulez couvrir (yyyy-mm-dd):"));
+		UI.add(from);
+		UI.add(to);
+		UI.add(back);
+		UI.add(report);
+		UI.setSize(340, 190);
+		UI.setVisible(true);
+	}
+
+	/**
+	 * Will change the current GUI to the Supplier's Reports GUI. Supervisor
+	 * will be able to create Supplier's reports or go back.
+	 *
+	 * @param UI current UI, to be modified by method.
+	 */
+	private void supplierReportUI(UserInterface UI) {
+		UI.getContentPane().removeAll();
+		JButton report = new JButton("Generer un rapport");
+		JButton back = new JButton("Retour");
+		JTextField num = new JTextField(20);
+		JTextField from = new JTextField(10);
+		JTextField to = new JTextField(10);
+
+		report.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				SimpleDateFormat parser = new SimpleDateFormat("yyyy-mm-dd");
+				try {
+					new ReportCreator().supplierReport(Integer.parseInt(num.getText()), parser.parse(from.getText()),
+							parser.parse(to.getText()));
+					Date dateReport = new Date();
+					SimpleDateFormat formater = new SimpleDateFormat("dd-MM-yy");
+					String nameReportFile = ReportCreator.SUPPLIER_REPORT_PATH
+							+ (new UserDBManager()).find(Integer.parseInt(num.getText())).getName() + "_"
+							+ formater.format(dateReport) + ".txt";
+					FileReader fr = new FileReader(nameReportFile);
+					BufferedReader br = new BufferedReader(fr);
+					String content = "", line;
+					while ((line = br.readLine()) != null)
+						content += line + "\n";
+					JOptionPane.showMessageDialog(new JPanel(), content, "Rapport de " + getUser().getName(),
+							JOptionPane.OK_OPTION);
+					br.close();
+					fr.close();
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			}
+
+		});
+
+		back.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				reportsUI(UI);
+			}
+
+		});
+
+		UI.setTitle("Menu Gerant - Creer un rapport de fournisseur");
+		UI.add(new Label("Numero du fournisseur:"));
+		UI.add(num);
+		UI.add(new Label("Entrez la plage que vous voulez couvrir (yyyy-mm-dd):"));
+		UI.add(from);
+		UI.add(to);
+		UI.add(back);
+		UI.add(report);
+		UI.setSize(340, 190);
+		UI.setVisible(true);
+	}
+
+	/**
+	 * Will change the current GUI to the CRUD Services GUI. Supervisor will be
+	 * able to create, modify and delete services or go back.
+	 *
+	 * @param UI
+	 *            current UI, to be modified by method.
+	 */
+	private void modifyServiceUI(UserInterface UI) {
+		UI.getContentPane().removeAll();
+		JTextField num = new JTextField(6);
+		JTextField name = new JTextField(21);
+		JTextArea descr = new JTextArea(4, 21);
+		JButton val = new JButton("Valider");
+		JButton del = new JButton("Supprimer");
+		JButton back = new JButton("Retour");
+
+		num.addKeyListener(new KeyListener() {
+
+			@Override
+			public void keyTyped(KeyEvent e) { }
+
+			@Override
+			public void keyPressed(KeyEvent arg0) {
+			}
+
+			@Override
+			public void keyReleased(KeyEvent e) {
+				if (num.getText().equals(""))
+					return;
+				Service service = new ServiceDBManager().find(Integer.parseInt(num.getText()));
+				name.setText(service.getName());
+				descr.setText(service.getDescription());
+			}
+
+		});
+
+		val.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				modifyService(Integer.parseInt(num.getText()), name.getText(), descr.getText());
+			}
+
+		});
+
+		del.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				new ServiceDBManager().delete(Integer.parseInt(num.getText()));
+			}
+
+		});
+
+		back.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				getUI(UI);
+			}
+
+		});
+
+		UI.setTitle("Menu Gérant - Modifier un service");
+		UI.add(num);
+		UI.add(name);
+		UI.add(descr);
+		UI.add(del);
+		UI.add(val);
+		UI.add(back);
+		UI.setSize(270, 230);
+		UI.setVisible(true);
+	}
+	/*
+	 * Will change the current GUI to the Members' GUI. Supervisor will be able
+	 * to update Members' personal information and status or delete them.
+	 *
+	 * @param UI current UI, to be modified by method.
+	 */
+	private void memberUI(UserInterface UI) {
+		UI.getContentPane().removeAll();
+		JTextField num = new JTextField(6);
+		JTextField name = new JTextField(21);
+		JTextField pass = new JTextField(21);
+		JTextField streetNum = new JTextField(6);
+		JTextField street = new JTextField(14);
+		JTextField city = new JTextField(10);
+		JTextField prov = new JTextField(10);
+		JTextField zip = new JTextField(7);
+		JComboBox<String> status = new JComboBox<String>(new String[] { "Valide", "En retard", "Suspendu" });
+		JButton val = new JButton("Valider");
+		JButton del = new JButton("Supprimer");
+		JButton back = new JButton("Retour");
+
+		num.addKeyListener(new KeyListener() {
+
+			@Override
+			public void keyTyped(KeyEvent e) { }
+
+			@Override
+			public void keyPressed(KeyEvent arg0) {
+			}
+
+			@Override
+			public void keyReleased(KeyEvent e) {
+				if (num.getText().equals(""))
+					return;
+				User user = new UserDBManager().find(Integer.parseInt(num.getText()));
+				if (user != null && user.getClass().getName().equals("Member")) {
+					name.setText(user.getName());
+					streetNum.setText(((Member) user).getAddress().getStreetNumber());
+					street.setText(((Member) user).getAddress().getStreetName());
+					city.setText(((Member) user).getAddress().getCity());
+					prov.setText(((Member) user).getAddress().getProvince());
+					zip.setText(((Member) user).getAddress().getZipCode());
+					switch (((Member) user).getStatus()) {
+					case Member.STATUS_VALID:
+						status.setSelectedItem("Valide");
+						break;
+					case Member.STATUS_SUSPENDED:
+						status.setSelectedItem("Suspendu");
+						break;
+					case Member.STATUS_LATEPAYMENT:
+						status.setSelectedItem("En retard");
+						break;
+					default:
+						status.setSelectedItem("Valide");
+						break;
+
+					}
+				}
+			}
+
+		});
+
+		val.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				int stat = 0;
+				Address address = new Address(streetNum.getText(), street.getText(), city.getText(), prov.getText(), zip.getText());
+
+				switch ((String) status.getSelectedItem()) {
+				case "Valide":
+					stat = Member.STATUS_VALID;
+					break;
+				case "En retard":
+					stat = Member.STATUS_LATEPAYMENT;
+					break;
+				case "Suspendu":
+					stat = Member.STATUS_SUSPENDED;
+					break;
+
+				}
+
+				modifyMember(Integer.parseInt(num.getText()), name.getText(), pass.getText(), address, stat);
+			}
+
+		});
+
+		del.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				int userID = Integer.parseInt(num.getText());
+				if (new UserDBManager().find(userID).getClass().getName().equals("Member"))
+					new UserDBManager().delete(userID);
+			}
+
+		});
+
+		back.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				usersUI(UI);
+			}
+
+		});
+
+		UI.setTitle("Menu Gerant - Modifier un membre");
+		UI.add(num);
+		UI.add(name);
+		UI.add(pass);
+		UI.add(streetNum);
+		UI.add(street);
+		UI.add(city);
+		UI.add(prov);
+		UI.add(zip);
+		UI.add(status);
+		UI.add(del);
+		UI.add(val);
+		UI.add(back);
+		UI.setSize(270, 250);
+		UI.setVisible(true);
+	}
+	/*
+	 * Will change the current GUI to the Suppliers' GUI. Supervisor will be able
+	 * to update Suppliers' personal information or delete them.
+	 *
+	 * @param UI current UI, to be modified by method.
+	 */
+	private void supplierUI(UserInterface UI) {
+		UI.getContentPane().removeAll();
+		JTextField num = new JTextField(6);
+		JTextField name = new JTextField(21);
+		JTextField pass = new JTextField(21);
+		JTextField streetNum = new JTextField(6);
+		JTextField street = new JTextField(14);
+		JTextField city = new JTextField(10);
+		JTextField prov = new JTextField(10);
+		JTextField zip = new JTextField(21);
+		JButton val = new JButton("Valider");
+		JButton del = new JButton("Supprimer");
+		JButton back = new JButton("Retour");
+
+		num.addKeyListener(new KeyListener() {
+
+			@Override
+			public void keyTyped(KeyEvent e) { }
+
+			@Override
+			public void keyPressed(KeyEvent arg0) {
+			}
+
+			@Override
+			public void keyReleased(KeyEvent e) {
+				if (num.getText().equals(""))
+					return;
+				User user = new UserDBManager().find(Integer.parseInt(num.getText()));
+				if (user != null && user.getClass().getName().equals("Supplier")) {
+					name.setText(user.getName());
+					streetNum.setText(((Supplier) user).getAddress().getStreetNumber());
+					street.setText(((Supplier) user).getAddress().getStreetName());
+					city.setText(((Supplier) user).getAddress().getCity());
+					prov.setText(((Supplier) user).getAddress().getProvince());
+					zip.setText(((Supplier) user).getAddress().getZipCode());
+				}
+			}
+
+		});
+
+		val.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				Address address = new Address(streetNum.getText(), street.getText(), city.getText(), prov.getText(), zip.getText());
+
+				modifySupplier(Integer.parseInt(num.getText()), name.getText(), pass.getText(), address);
+			}
+
+		});
+
+		del.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				int userID = Integer.parseInt(num.getText());
+				if (new UserDBManager().find(userID).getClass().getName().equals("Supplier"))
+					new UserDBManager().delete(userID);
+			}
+
+		});
+
+		back.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				usersUI(UI);
+			}
+
+		});
+
+		UI.setTitle("Menu Gerant - Modifier un fournisseur");
+		UI.add(num);
+		UI.add(name);
+		UI.add(pass);
+		UI.add(streetNum);
+		UI.add(street);
+		UI.add(city);
+		UI.add(prov);
+		UI.add(zip);
+		UI.add(del);
+		UI.add(val);
+		UI.add(back);
+		UI.setSize(270, 250);
+		UI.setVisible(true);
+	}
+	/*
+	 * Will change the current GUI to the Supervisors' GUI. Supervisor will be able
+	 * to update Supervisors' personal information and delete them.
+	 *
+	 * @param UI current UI, to be modified by method.
+	 */
+	private void superUI(UserInterface UI) {
+		UI.getContentPane().removeAll();
+		JTextField num = new JTextField(6);
+		JTextField name = new JTextField(21);
+		JTextField pass = new JTextField(21);
+		JButton val = new JButton("Valider");
+		JButton del = new JButton("Supprimer");
+		JButton back = new JButton("Retour");
+
+		num.addKeyListener(new KeyListener() {
+
+			@Override
+			public void keyTyped(KeyEvent e) { }
+
+			@Override
+			public void keyPressed(KeyEvent arg0) {
+			}
+
+			@Override
+			public void keyReleased(KeyEvent e) {
+				if (num.getText().equals(""))
+					return;
+				User user = new UserDBManager().find(Integer.parseInt(num.getText()));
+				if (user != null && user.getClass().getName().equals("Supervisor")) {
+					name.setText(user.getName());
+				}
+			}
+
+		});
+
+		val.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				modifySuper(Integer.parseInt(num.getText()), name.getText(), pass.getText());
+			}
+
+		});
+
+		del.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				int userID = Integer.parseInt(num.getText());
+				if (new UserDBManager().find(userID).getClass().getName().equals("Supplier"))
+					new UserDBManager().delete(userID);
+			}
+
+		});
+
+		back.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				usersUI(UI);
+			}
+
+		});
+
+		UI.setTitle("Menu Gérant - Modifier un gérant");
+		UI.add(num);
+		UI.add(name);
+		UI.add(pass);
+		UI.add(del);
+		UI.add(val);
+		UI.add(back);
+		UI.setSize(270, 200);
+		UI.setVisible(true);
+	}
+}

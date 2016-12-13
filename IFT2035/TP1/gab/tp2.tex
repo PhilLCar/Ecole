@@ -1,0 +1,76 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[french]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{tcolorbox}
+\usepackage[margin=2cm]{geometry}
+\usepackage{array}
+\usepackage{hyperref}
+\usepackage{tikz}
+\usepackage{listings}
+\usepackage{eurosym}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{cancel}
+\usepackage{xcolor}
+\usepackage{booktabs}
+\usetikzlibrary{automata, arrows}
+
+\title{IFT2035 A2016 - Travail pratique #2}
+\author{Philippe Caron}
+\date{\today}
+
+\renewcommand{\thesubsubsection}{\alph{subsubsection})}
+\renewcommand{\thefootnote}{\fnsymbol{footnote}}
+\newcommand\NP{{\normalfont{\textbf{NP}}}}
+\newcommand\PP{{\normalfont{\textbf{P}}}}
+\newcommand\col[1]{\textit{#1-COL}}
+\newcommand\SC{\textit{SAT-C}}
+\newcommand\bk[1]{\langle #1 \rangle}
+\newcommand\cli[1]{\textit{#1-CLIQUE}}
+
+\lstset{frame=tb,
+  language=C,
+  aboveskip=3mm,
+  belowskip=3mm,
+  showstringspaces=false,
+  columns=flexible,
+  basicstyle={\small\ttfamily},
+  numbers=none,
+  numberstyle=\tiny\color{pink},
+  keywordstyle=\color{purple},
+  commentstyle=\color{brown},
+  stringstyle=\color{brown},
+  breaklines=true,
+  breakatwhitespace=true,
+  tabsize=3
+}
+\begin{document}
+\section{Problèmes de programmation}
+\subsection{Analyse syntaxique et traitement}
+Dans cette version de la calculatrice, l'analyse syntaxique et le traitement sont effectués en une seule étape. Le langage postfixe se prête très bien à ce fonctionnement étant donné que les valeurs analysées sont placées sur un stack. Ceci permet à l'analyseur syntaxique d'effectuer l'opération directement sur le stack plutôt que d'attendre que l'analyse soit terminée. De plus, le langage Scheme se prête énormément bien à l'implémentation d'une calculatrice à précision infinie puisqu'il supporte lui-même une précision infinie. Ainsi on peut tout simplement convertir les nombre lu en nombres Scheme et utiliser les fonctions natives d'addition, soustraction et multiplication (ce qui était impossible en C). L'implémentation des listes en Scheme rend également l'implémentation du stack très simple. Une expression typique est traitée comme suit par \texttt{parse}:
+\begin{itemize}
+\item La fonction lit des caractères correspondant à des chiffres qu'elle garde dans une variable
+\item Lorsqu'un espace est rencontré, elle converti la liste de chiffre en un nombre Scheme (en passant par un string)
+\item La fonction crée un autre nombre de la même manière
+\item La fonction lit un caractère correspondant à un opérateur
+\item La fonction modifie le stack en fonction de cet opérateur en utilisant les fonction native de Scheme
+\item Dans le cas ou une variable est assignée, une nouvelle entrée est créée ou modifiée dans le dictionnaire (sans effet de bord).
+\end{itemize}
+
+\subsection{Calcul de l'expression}
+Le calcul d'un expression est fait au fur et à mesure de son analyse. Lorsqu'un opérateur est lu, le programme passe dans un case qui applique la fonction Scheme correspondante aux deux derniers éléments du stack, puis remet dans le stack le résultat.
+
+\subsection{Affectation des variables}
+L'affectation des variables se fait en propageant un dictionnaire qui est modifié sans effet de bord lorsque le symbole «#\\=» est lu. C'est pourquoi une opération erronée annulera un ajout ou une modification de variable effectuée dans une section précédente du code, même si il n'y avait pas de faute à ce moment.
+
+\subsection{Affichage des résultats et des erreurs}
+Les résultats et les erreurs sont affichées par une fonction fournie dans la donnée du TP qui requière une liste de caractère. La fonction \texttt{traiter} fourni donc une liste de caractère à celle-ci. Les nombres sont automatiquement convertis en listes de caractères tandis que les erreurs sont transmises sous forme de symboles. Quand le programme trouve une erreur il cesse immédiatement l'exécution et retourne le code d'erreur correspondant.
+
+\subsection{Traitement des erreurs}
+Si le programme détermine que l'exécution ne s'est pas produite comme il le faut, il retournera un symbole correspondant à l'erreur en cause, la fonction traiter déduira qu'il y a eu une erreur et retournera le dictionnaire original plutôt que le nouveau. Le programme pourra alors évaluer la valeur du symbole pour obtenir le code d'erreur.
+
+
+
+\end{document}

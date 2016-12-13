@@ -1,0 +1,67 @@
+import java.math.BigInteger;
+import java.security.MessageDigest;
+
+public abstract class User {
+
+	private int userID;
+	private String hash;
+	private String name;
+
+	public int getUserID() {
+		return this.userID;
+	}
+
+	/**
+	 * 
+	 * @param userID
+	 */
+	public void setUserID(int userID) {
+		this.userID = userID;
+	}
+
+	public String getHash() {
+		return this.hash;
+	}
+
+	/**
+	 * 
+	 * @param pass
+	 */
+	public void setHash(String hash) {
+		this.hash = hash;
+	}
+
+	public String getName() {
+		return this.name;
+	}
+
+	/**
+	 * 
+	 * @param name
+	 */
+	public void setName(String name) {
+		this.name = name;
+	}
+	
+	public static String MD5(String plaintext) {
+		String hashtext = null;
+		try 
+        {
+            MessageDigest m = MessageDigest.getInstance("MD5");
+            m.reset();
+            m.update(plaintext.getBytes());
+            byte[] digest = m.digest();
+            BigInteger bigInt = new BigInteger(1, digest);
+            hashtext = bigInt.toString(16);
+            while(hashtext.length() < 32 ){
+              hashtext = "0" + hashtext;   
+            }
+        } catch (Exception e) 
+        {
+              e.printStackTrace(System.out);
+        }
+		return hashtext;
+	}
+	
+	public abstract String toString();
+}

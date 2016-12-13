@@ -1,0 +1,190 @@
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Locale;
+
+/**
+ * The Class EFT, representing Electronic Fund Transfer informations for the
+ * banks and accounting to assure payment to the suppliers. <p>
+ * Each eft represents an ammount due to a supplier in a given time frame.
+ * 
+ * @author Gevrai Jodoin-Tremblay
+ */
+public class EFT {
+
+	/** The eft ID, should be unique. */
+	private int eftID;
+	
+	/** The supplier ID for this eft. */
+	private int supplierID;
+	
+	/** The ammount due to the supplier by ChocAn. */
+	private double ammountDue;
+	
+	/** The start of this eft's time frame. */
+	private LocalDateTime fromDate;
+	
+	/** The end of this eft's time frame. */
+	private LocalDateTime toDate;
+	
+	/**
+	 * Instantiates a new eft.
+	 *
+	 * @param eftID the eft ID
+	 * @param supplierID the supplier ID
+	 * @param ammountDue the ammount due
+	 * @param fromDate the from date
+	 * @param toDate the to date
+	 */
+	public EFT(int eftID, int supplierID, double ammountDue, String fromDate, String toDate) {
+		this.eftID = eftID;
+		this.supplierID = supplierID;
+		this.ammountDue = ammountDue;
+		this.fromDate = LocalDateTime.parse(fromDate);
+		this.toDate = LocalDateTime.parse(toDate);
+	}
+
+	/**
+	 * Instantiates a new eft, without specifying an ID, which will thus be
+	 * created and unique to this eft.
+	 *
+	 * @param supplierID the supplier ID
+	 * @param ammountDue the ammount due
+	 * @param fromDate the from date
+	 * @param toDate the to date
+	 */
+	public EFT(int supplierID, double ammountDue, LocalDateTime fromDate, LocalDateTime toDate) {
+		this.eftID = new EftDBManager().getUniqueID();
+		this.supplierID = supplierID;
+		this.ammountDue = ammountDue;
+		this.fromDate = fromDate;
+		this.toDate = toDate;
+	}
+	
+	/**
+	 * Instantiates a new eft from a string formatted correctly, normally
+	 * coming from a line of the DataBase directly.<p>
+	 * Time strings are in ISO format <p>
+	 * Format (tab separated): <code>eftID supplierID ammountDue fromDate
+	 * toDate</code>
+	 *
+	 * @param entry the eft string from the DB
+	 */
+	public EFT(String entry) {
+		String[] splittedEntry = entry.split("\t", 5);
+		this.eftID = Integer.parseInt(splittedEntry[0]);
+		this.supplierID = Integer.parseInt(splittedEntry[1]);
+		this.ammountDue = Double.parseDouble(splittedEntry[2]);
+		this.fromDate = LocalDateTime.parse(splittedEntry[3], DateTimeFormatter.ISO_LOCAL_DATE_TIME);
+		this.toDate = LocalDateTime.parse(splittedEntry[4], DateTimeFormatter.ISO_LOCAL_DATE_TIME);
+	}
+	
+	/** 
+	 * Formats the informations of a EFT into a string ready for storage
+	 * in the DataBase<p>
+	 * Time strings are in ISO format <p>
+	 * Format (tab separated): <code>eftID supplierID ammountDue fromDate
+	 * toDate</code>
+	 * 
+	 * @return String correctly formatted of the eft, ready to dump in the
+	 * DataBase.
+	 */
+	@Override
+	public String toString() {
+		return "" + eftID + "\t"
+				+ supplierID + "\t"
+				+ String.format(Locale.US, "%.2f", ammountDue) + "\t"
+				+ fromDate.toString() + "\t"
+				+ toDate.toString();
+	}
+
+	/**
+	 * Gets the eft ID.
+	 *
+	 * @return the eft ID
+	 */
+	public int getEftID() {
+		return eftID;
+	}
+
+	/**
+	 * Sets the eft ID.
+	 *
+	 * @param eftID the new eft ID
+	 */
+	public void setEftID(int eftID) {
+		this.eftID = eftID;
+	}
+
+	/**
+	 * Gets the supplier ID.
+	 *
+	 * @return the supplier ID
+	 */
+	public int getSupplierID() {
+		return supplierID;
+	}
+
+	/**
+	 * Sets the supplier ID.
+	 *
+	 * @param supplierID the new supplier ID
+	 */
+	public void setSupplierID(int supplierID) {
+		this.supplierID = supplierID;
+	}
+
+	/**
+	 * Gets the ammount due.
+	 *
+	 * @return the ammount due
+	 */
+	public double getAmmountDue() {
+		return ammountDue;
+	}
+
+	/**
+	 * Sets the ammount due.
+	 *
+	 * @param ammountDue the new ammount due
+	 */
+	public void setAmmountDue(double ammountDue) {
+		this.ammountDue = ammountDue;
+	}
+
+	/**
+	 * Gets the from date.
+	 *
+	 * @return the from date
+	 */
+	public LocalDateTime getFromDate() {
+		return fromDate;
+	}
+
+	/**
+	 * Sets the from date.
+	 *
+	 * @param fromDate the new from date
+	 */
+	public void setFromDate(LocalDateTime fromDate) {
+		this.fromDate = fromDate;
+	}
+
+	/**
+	 * Gets the to date.
+	 *
+	 * @return the to date
+	 */
+	public LocalDateTime getToDate() {
+		return toDate;
+	}
+
+	/**
+	 * Sets the to date.
+	 *
+	 * @param toDate the new to date
+	 */
+	public void setToDate(LocalDateTime toDate) {
+		this.toDate = toDate;
+	}
+
+}

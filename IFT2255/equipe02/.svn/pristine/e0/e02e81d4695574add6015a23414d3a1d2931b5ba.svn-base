@@ -1,0 +1,18 @@
+import java.awt.Component;
+import java.util.ArrayList;
+
+public abstract class Session {
+
+	private User user;
+
+	/**
+	 * 
+	 * @param userID
+	 * @param hash
+	 */
+	public Session(User user) {
+		this.user = user;
+	}
+	
+	public abstract ArrayList<Component> getUI();
+}

@@ -1,0 +1,53 @@
+<project name="LogicielChocAn" basedir="." default="compileAndRun">
+
+    <property name="jar.name" value="SimulationServeurChocAn.jar"/>
+    <property name="main.class" value="ServerApplication"/>
+    <property name="source.dir" location="Sources"/>
+    <property name="class.dir" location="classes"/>
+    <property name="doc.dir" location="Documentation/javadoc"/>
+    <property name="database.dir" location="Sources/Data"/>
+    <property name="app.dir" location="Application"/>
+
+    <target name="clean">
+        <delete dir="${class.dir}"/>
+        <delete dir="${doc.dir}"/>
+        <delete dir="${app.dir}"/>
+    </target>
+
+    <target name="build">
+        <mkdir dir="${class.dir}"/>
+        <javac srcdir="${source.dir}" destdir="${class.dir}"/>
+    </target>
+
+    <target name="jar" depends="build">
+        <mkdir dir="${app.dir}"/>
+        <mkdir dir="${app.dir}/Database"/>
+        <jar destfile="${app.dir}/${jar.name}">
+            <fileset dir="${class.dir}" includes="**/*.class"/>
+            <manifest>
+                <attribute name="Main-Class" value="${main.class}"/>
+            </manifest>
+        </jar>
+    </target>
+
+    <target name="run">
+        <java jar="${app.dir}/${jar.name}"
+            fork="true"
+            dir="${app.dir}"
+            failonerror="true"
+            maxmemory="128m"/>
+    </target>
+
+    <target name="doc">
+        <mkdir dir="${class.dir}"/>
+        <javadoc  destdir="${doc.dir}">
+            <fileset dir="${source.dir}"/>
+        </javadoc>
+    </target>
+
+    <target name="compileAndRun" depends="jar,run"/>
+    <target name="cleanrun" depends="clean,jar,run"/>
+
+
+    <target name="release" depends="jar,run,doc"/>
+</project>

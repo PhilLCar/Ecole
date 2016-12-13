@@ -1,0 +1,265 @@
+import java.util.Date;
+import javax.swing.JButton;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+
+import java.awt.Label;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+
+// TODO javadoc for SupervisorSession
+public class SupervisorSession extends Session {
+
+	/**
+	 *
+	 * @param userID
+	 */
+	public void printReport() {
+		// TODO - implement SupervisorSession.printSynthesisReport
+		ReportCreator rp = new ReportCreator();
+		rp.allReports(new Date(), new Date());
+	}
+
+	public void modifyUser() {
+		// TODO - implement SupervisorSession.modifyUser
+		throw new UnsupportedOperationException();
+	}
+
+	public void modifyService() {
+		// TODO - implement SupervisorSession.modifyService
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 *
+	 * @param userID
+	 * @param hash
+	 */
+	public SupervisorSession(Supervisor supervisor) {
+		super(supervisor);
+	}
+
+	@Override
+	public void getUI(UserInterface UI) {
+		// Procédure comptable
+		// Rapports
+		// Utilisateurs
+		// Services
+		JButton users = new JButton("Utilisateurs");
+		users.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				usersUI(UI);
+			}
+			
+		});
+		JButton services = new JButton("Services");
+		services.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+		});
+		JButton reports = new JButton("Rapports");
+		reports.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				reportsUI(UI);
+			}
+			
+		});
+		JButton quit = new JButton("Quitter");
+		Session thisSession = this;
+		quit.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				UI.disconnect(thisSession);
+			}
+
+		});
+		
+		UI.getContentPane().removeAll();
+		UI.setTitle("Menu Gérant");
+		UI.add(new Label("Choisissez parmis l'une des options suivantes"));
+		UI.add(users);
+		UI.add(services);
+		UI.add(reports);
+		UI.add(quit);
+		UI.setSize(330, 130);
+		UI.setVisible(true);
+	}
+	
+	private void usersUI(UserInterface UI) {
+		UI.getContentPane().removeAll();
+		JButton member = new JButton("Membre");
+		JButton supplier = new JButton("Fournisseur");
+		JButton supervisor = new JButton("Gérant");
+		JButton back = new JButton("Retour");
+		
+		member.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+		});
+		
+		supplier.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+		});
+		
+		supervisor.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+			}
+			
+		});
+		
+		back.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				getUI(UI);
+			}
+			
+		});
+		
+		UI.setTitle("Menu Gérant - Modifier un utilisateur");
+		UI.add(new Label("Quel type d'utilisateur voulez-vous modifier"));
+		UI.add(member);
+		UI.add(supplier);
+		UI.add(supervisor);
+		UI.add(back);
+		UI.setSize(320, 130);
+		UI.setVisible(true);
+	}
+	
+	private void reportsUI(UserInterface UI) {
+		UI.getContentPane().removeAll();
+		JButton member = new JButton("Rapport de membre");
+		JButton supplier = new JButton("Rapport de fournisseur");
+		JButton supervisor = new JButton("Rapport de synthèse");
+		JButton back = new JButton("Retour");
+		
+		member.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				memberReportUI(UI);
+			}
+			
+		});
+		
+		supplier.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+		});
+		
+		supervisor.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+			}
+			
+		});
+		
+		back.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				getUI(UI);
+			}
+			
+		});
+		
+		UI.setTitle("Menu Gérant - Créer un rapport");
+		UI.add(new Label("Quel type de rapport voulez-vous créer?"));
+		UI.add(member);
+		UI.add(supplier);
+		UI.add(supervisor);
+		UI.add(back);
+		UI.setSize(255, 190);
+		UI.setVisible(true);
+	}
+	
+	private void memberReportUI(UserInterface UI) {
+		UI.getContentPane().removeAll();
+		JButton report = new JButton("Générer un rapport");
+		JButton back = new JButton("Retour");
+		JTextField num = new JTextField(20);
+		JTextField from = new JTextField(10);
+		JTextField to = new JTextField(10);
+		
+		report.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				SimpleDateFormat parser=new SimpleDateFormat("yyyy-mm-dd");
+				try {
+					new ReportCreator().memberReport(Integer.parseInt(num.getText()), parser.parse(from.getText()), parser.parse(to.getText()));
+					Date dateReport = new Date();
+					SimpleDateFormat formater = new SimpleDateFormat("dd-MM-yy");
+					String nameReportFile = ReportCreator.MEMBER_REPORT_PATH + (new UserDBManager()).find(Integer.parseInt(num.getText())).getName() 
+							+ "_" + formater.format(dateReport) + ".txt";
+					FileReader fr = new FileReader(nameReportFile);
+					BufferedReader br = new BufferedReader(fr);
+					String content = "", line;
+					while ((line = br.readLine()) != null) content += line + "\n";
+					JOptionPane.showMessageDialog(new JPanel(), content, "Rapport de " + getUser().getName(), JOptionPane.OK_OPTION);
+					br.close();
+					fr.close();
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			}
+			
+		});
+		
+		back.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				reportsUI(UI);
+			}
+			
+		});
+		
+		UI.setTitle("Menu Gérant - Créer un rapport de membre");
+		UI.add(new Label("Numéro du membre:"));
+		UI.add(num);
+		UI.add(new Label("Entrez la plage que vous voulez couvrir (yyyy-mm-dd):"));
+		UI.add(from);
+		UI.add(to);
+		UI.add(back);
+		UI.add(report);
+		UI.setSize(340, 190);
+		UI.setVisible(true);
+	}
+
+}

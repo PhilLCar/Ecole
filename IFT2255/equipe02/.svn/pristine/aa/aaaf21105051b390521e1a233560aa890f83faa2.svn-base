@@ -1,0 +1,325 @@
+html {
+    position: relative;
+    min-height: 100%;
+    background-color: white;
+
+}
+
+body {
+  padding: 0px;
+  margin: 0 0 100px;
+  font: "Lucida Grande", Helvetica, Arial, sans-serif;
+  width:100%;
+  height:auto;
+
+}
+
+nav a {
+  color: white;
+  text-decoration:none;
+}
+
+nav, footer, .sidebar {
+    background-color:transparent;;
+    color:white;
+    text-align:center;
+    position:relative;
+    width:100%;
+    margin:auto;
+    margin-top:0;
+
+}
+
+
+#brand {
+    padding:0;
+    margin:0;
+}
+
+#brand:hover {
+    opacity:1;
+    padding:0;
+    margin:0;
+    background-color:black;
+}
+
+
+
+
+
+nav > ul, footer, .sidebar > ul, .nav > ul {
+    list-style-type:none;
+
+}
+
+nav > ul > li,#log, #log .btn {
+    display:inline;
+
+
+}
+
+
+#log .btn {
+    color:white;
+    background-color:black;
+    border:none;
+}
+
+.log {
+    position:absolute;
+    text-align:right;
+    display:inline;
+    margin-left:10%;
+}
+
+main {
+    padding-top:10px;
+    margin:auto;
+    text-align:justify;
+    width:90%;
+    font-size:120%;
+}
+
+#contact a, main a {
+    color:grey;
+}
+
+
+main >  div > h2 {
+    padding-bottom:10px;
+}
+
+
+footer {
+    text-align:center;
+    width:100%;
+    position:absolute;
+    margin-top:30%;
+    margin-bottom:0;
+    overflow:hidden;
+
+}
+
+ footer >a:hover {
+     text-decoration:underline;
+}
+
+footer li {
+    list-style-type:none;
+
+}
+
+
+.event {
+   position: relative;
+   background-image:url(/images/popcorn.jpg);
+   width: 100%; /* for IE 6 */
+   margin:10px;
+
+}
+
+.event > h2 {
+   position: relative;
+   width: 90%;
+   color: white;
+   font: bold 24px/45px Helvetica, Sans-Serif;
+   letter-spacing: -1px;
+   background: rgb(0, 0, 0); /* fallback color */
+   background: rgba(0, 0, 0, 0.7);
+   padding: 10px;
+   margin:auto;
+
+
+}
+
+.event > p {
+   position: relative;
+   width: 90%;
+   color: white;
+   letter-spacing: -1px;
+   background: rgb(0, 0, 0); /* fallback color */
+   background: rgba(0, 0, 0, 0.7);
+   padding: 10px;
+   margin:auto;
+   display:none;
+
+
+}
+
+p:target {
+    display:block;
+}
+
+.op, .datestamp, .reply {
+    display:inline;
+    padding:5%;
+    font-size:70%;
+    text-align:left;
+}
+
+.op{
+    padding-left:0;
+}
+
+.post {
+    margin-left:4%;
+    padding:2px;
+    padding-top:1%;
+}
+
+.post-content {
+    padding:0;
+    margin:-1%;
+}
+
+.calendrier{
+    float:left;
+    width:75%;
+}
+
+.annonces{
+    float:right;
+    width:20%;
+}
+
+.sub {
+    display:none;
+}
+
+.sub:target {
+    display:block;
+}
+
+#sub-list li {
+    display:inline;
+    padding:5%;
+}
+h1,h2,h3 {text-align:center;
+    color:black;
+}
+
+#acc {
+    font-weight:bold;
+}
+
+main {
+
+    width:70%;
+    margin:auto;
+    font-size:120%;
+}
+
+.red{background-color:red;}
+.blue{background-color:blue;}
+.green{background-color:forestgreen;}
+.yellow{background-color:#FFE600;}
+.red,.blue,.green,.yellow{opacity:0.99;}
+
+.cat {
+ display:inline-block;
+ width:45%;
+ margin-right: 2%;
+ margin-left: 2%;
+ vertical-align: top;
+}
+
+
+
+textarea {
+    width: 400px;
+    height: 150px;
+}
+
+
+ul {
+    padding: 0;
+    margin: 0;
+}
+
+
+
+li:hover ul {
+    display: block;
+}
+
+
+nav > ul>li>a, footer>a, #log, .nav, nav>ul>li>ul>li>a {
+    color:white;
+    text-decoration:none;
+    font-style:none;
+    padding-right:8%;
+    padding-left:8%;
+    padding-top:25px;
+    padding-bottom:25px;
+    font-weight:bolder;
+    position:relative;
+    display:inline-block;
+    width:auto;
+
+
+}
+
+nav ul ul {
+  margin-top:8%;
+}
+
+nav > ul>li>a:hover, nav>ul>li>ul>li>a:hover{
+    color:black;
+    text-decoration:none;
+    opacity:0.95;
+    background-color:white;
+    height:100%;
+
+}
+
+.hidden {
+  display:none;
+}
+
+.hidden:target {
+   display:inline-block;
+}
+
+input {
+  margin:1%;
+
+}
+
+form {
+  width:50%;
+  margin:auto;
+}
+
+nav a {
+  background-color: darkred;
+  margin:0;
+}
+
+nav li {
+  margin:0;
+}
+
+.nav {
+  background-color:white;
+  padding:0;
+  margin:0;
+  position: fixed;
+  left:0;
+  width:12%;
+  overflow: auto;
+  margin-top:50px;
+}
+
+.nav > ul, .nav>ul>li {
+  margin:0;
+  padding:0;
+}
+
+.nav > ul > li > a {
+display:block;
+margin:0;
+}
+
+@-ms-viewport{
+  width: device-width;
+}

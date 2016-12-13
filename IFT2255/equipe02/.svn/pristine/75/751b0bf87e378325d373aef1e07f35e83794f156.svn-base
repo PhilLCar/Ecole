@@ -1,0 +1,57 @@
+import java.util.Date;
+
+public class ReportCreator {
+
+	/**
+	 * 
+	 * @param userID
+	 * @param fromDate
+	 * @param toDate
+	 */
+	public void memberReport(int userID, Date fromDate, Date toDate) {
+		// TODO - implement Reports.memberReport
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * 
+	 * @param userID
+	 * @param fromDate
+	 * @param toDate
+	 */
+	public void supplierReport(int userID, Date fromDate, Date toDate) {
+		// TODO - implement Reports.supplierReport
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * 
+	 * @param fromDate
+	 * @param toDate
+	 */
+	public void claimsReport(Date fromDate, Date toDate) {
+		// TODO - implement Reports.claimsReport
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * 
+	 * @param fromDate
+	 * @param toDate
+	 */
+	public void EFTReport(Date fromDate, Date toDate) {
+		// TODO - implement Reports.EFTReport
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * 
+	 * @param fromDate
+	 * @param toDate
+	 */
+	public void allReports(Date fromDate, Date toDate) {
+		// TODO - implement Reports.allReports
+		throw new UnsupportedOperationException();
+	}
+
+}

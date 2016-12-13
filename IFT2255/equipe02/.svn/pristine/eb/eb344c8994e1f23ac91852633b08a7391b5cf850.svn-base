@@ -1,0 +1,67 @@
+public class Member extends User {
+
+	private Address address;
+	private int status;
+	
+	public Member(int userID, String hash, String name, Address address, int status) {
+		setUserID(userID);
+		setHash(hash);
+		setName(name);
+		this.address = address;
+		this.status = status;
+	}
+	
+	public Member(String member) {
+		String[] memInfo = member.split("\t", 9);
+		setUserID(Integer.parseInt(memInfo[0]));
+		setHash(memInfo[1]);
+		setName(memInfo[2]);
+		this.address = new Address(
+					memInfo[3],
+					memInfo[4],
+					memInfo[5],
+					memInfo[6],
+					memInfo[7]);
+		this.status = Integer.parseInt(memInfo[8]);
+	}
+
+	public Address getAddress() {
+		return this.address;
+	}
+
+	/**
+	 * 
+	 * @param address
+	 */
+	public void setAddress(Address address) {
+		this.address = address;
+	}
+
+	public int getStatus() {
+		return this.status;
+	}
+
+	/**
+	 * 
+	 * @param status
+	 */
+	public void setStatus(int status) {
+		this.status = status;
+	}
+
+	@Override
+	public String toString() {
+		String ret = "Member\t" + 
+					getUserID() + "\t" + 
+					getHash() + "\t" +
+					getName() + "\t" +
+					address.getStreetNumber() + "\t" +
+					address.getStreetName() + "\t" +
+					address.getCity() + "\t" +
+					address.getProvince() + "\t" +
+					address.getZipCode() + "\t" +
+					status;
+		return ret;
+	}
+
+}

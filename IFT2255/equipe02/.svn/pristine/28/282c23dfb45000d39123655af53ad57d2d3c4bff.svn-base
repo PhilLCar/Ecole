@@ -1,0 +1,32 @@
+import javax.swing.JFrame;
+
+public class UserInterface extends JFrame {
+
+	private boolean loggedin;
+	private int userID;
+	private String hash;
+
+	public void displayInterface() {
+		
+	}
+
+	/**
+	 * 
+	 * @param userID
+	 * @param userPassword
+	 */
+	private void login(int userID, String userPassword) {
+		// TODO - implement UserInterface.login
+		throw new UnsupportedOperationException();
+	}
+
+	private void disconnect() {
+		// TODO - implement UserInterface.disconnect
+		throw new UnsupportedOperationException();
+	}
+
+	public UserInterface() {
+		setVisible(true);
+	}
+
+}

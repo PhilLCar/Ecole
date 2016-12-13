@@ -1,0 +1,18 @@
+public abstract class Session {
+
+	private int userID;
+	private string hash;
+
+	public abstract void getUI();
+
+	/**
+	 * 
+	 * @param userID
+	 * @param hash
+	 */
+	public Session(int userID, string hash) {
+		// TODO - implement Session.Session
+		throw new UnsupportedOperationException();
+	}
+
+}

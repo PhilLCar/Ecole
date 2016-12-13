@@ -1,0 +1,32 @@
+public class UserInterface {
+
+	private boolean loggedin;
+	private int userID;
+	private string hash;
+
+	public void displayInterface() {
+		// TODO - implement UserInterface.displayInterface
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * 
+	 * @param userID
+	 * @param userPassword
+	 */
+	private void login(int userID, string userPassword) {
+		// TODO - implement UserInterface.login
+		throw new UnsupportedOperationException();
+	}
+
+	private void disconnect() {
+		// TODO - implement UserInterface.disconnect
+		throw new UnsupportedOperationException();
+	}
+
+	public UserInterface() {
+		// TODO - implement UserInterface.UserInterface
+		throw new UnsupportedOperationException();
+	}
+
+}

@@ -1,0 +1,82 @@
+import java.util.ArrayList;
+
+/**
+ * DataBaseManager<T> is the abstract base class for all managers accessing the
+ * DataBase. They need to implement a basic set of function accessing their own
+ * part of the DataBase.
+ * <p>
+ * Classes implementing this should get the ArrayList<T> corresponding to the
+ * correct type from the DataBase.
+ *
+ * @author Philippe Caron
+ * @author Gevrai Jodoin-Tremblay
+ *
+ * @param <T> Implementation is specific to a type of object
+ * @see DataBase
+ */
+public interface DataBaseManager<T> {
+
+
+	/**
+	 * Gives an unused ID from a specific type of element in the DataBase,
+	 * mainly used for primary key.
+	 *
+	 * @return unused ID for a type of element
+	 */
+	public abstract int getUniqueID();
+
+	/**
+	 * Looks through the specific DataBase to find an object with the specified
+	 * ID, returning it if found, or <code>null</code> if not.
+	 *
+	 * @param id ID of the object <code>T</code> needed.
+	 * @return The object <code>T</code> with the correct id, <code>null</code>
+	 * if not found.
+	 */
+	public abstract T find(int id);
+
+	/**
+	 * Looks through the DataBase if a specific object exists or not, returning
+	 * <code>true</code> if it does, <code>false</code> if it doesn't
+	 *
+	 * @param key the object to seek existence in the DB
+	 * @return <code>true</code> if the object exists, <code>false</code> otherwise
+	 */
+	public abstract boolean exists(T key);
+
+	/**
+	 * Adds an object to the DataBase <p>
+	 * Looks if an object with the same ID already exists in the DB, in which
+	 * case doesn't add it and returns <code>false</code>.
+	 *
+	 * @param elem the object to add to the DB
+	 * @return <code>true</code> if the object was added, <code>false</code> otherwise
+	 */
+	public abstract boolean add(T elem);
+
+	/**
+	 * Deletes an objects from the DataBase, if it exists.
+	 *
+	 * @param elem the object to delete from the DB
+	 * @return <code>true</code> if the object was deleted, <code>false</code> otherwise
+	 */
+	public abstract boolean delete(T elem);
+
+	/**
+	 * Removes an object from the DataBase based on its ID, and returns it. If
+	 * none was found, simply returns <code>null</code>.
+	 *
+	 * @param id Id of the object to delete from the DB
+	 * @return The object deleted from the DB, <code>null</code> if none was found.
+	 */
+	public abstract T delete(int id);
+
+	/**
+	 * Filters through all objects in the DataBase, returning a list of objects
+	 * which have a string containing the keyword 'search', case insensitive.
+	 *
+	 * @param search the keyword to find
+	 * @return <code>ArrayList</code> of objects containing the keyword.
+	 */
+	public abstract ArrayList<T> filter(String search);
+}

@@ -1,0 +1,17 @@
+Synthesis Report
+	from 04-12-16 to 04-12-16
+
+Le Centre sportif
+300000
+Number of consultations : 	2
+Amount : 	 0.00$
+____________________________________
+L'autre centre sportif
+4
+Number of consultations : 	1
+Amount : 	 0.00$
+____________________________________
+____________________________________
+Number of active suppliers : 	0
+Number of consultations : 	0
+Final amount : 	0.0$

@@ -1,0 +1,53 @@
+import java.util.List;
+
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+
+public class SupplierSession extends Session {
+
+	public List<Service> fetchRepository() {
+		// TODO - implement SupplierSession.fetchRepository
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * 
+	 * @param userID
+	 */
+	public String verifyMemberStatus(int userID) {
+		// TODO - implement SupplierSession.verifyMemberStatus
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * 
+	 * @param memID
+	 * @param servID
+	 * @param comment
+	 */
+	public void submitClaim(int memID, int servID, String comment) {
+		// TODO - implement SupplierSession.submitClaim
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * 
+	 * @param userID
+	 * @param hash
+	 */
+	public SupplierSession(Supplier supplier) {
+		super(supplier);
+	}
+	
+	@Override
+	public JPanel getUI() {
+		JPanel ret = new JPanel();
+		ret.add(new JLabel("Enter amount"));
+		ret.add(new JTextField(20));
+		ret.add(new JButton("Pay"));
+		return ret;
+	}
+
+}

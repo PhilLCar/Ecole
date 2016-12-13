@@ -1,0 +1,62 @@
+import java.util.*;
+
+public class SessionManager {
+
+	private static ArrayList<Session> activeSessions;
+	private static UserDBManager userDB = new UserDBManager();
+	
+	public SessionManager() {
+		activeSessions = new ArrayList<Session>();
+	}
+
+	public static Session authenticate(int userID, String pass) {
+		User auth = userDB.find(userID);
+		Session session;
+		if (auth == null) return null;
+		if (User.MD5(pass) == auth.getHash())
+			switch(auth.getClass().getName()){
+			case "Member":
+				session = new MemberSession((Member)auth);
+				activeSessions.add(session);
+				return session;
+			case "Supplier":
+				session = new SupplierSession((Supplier)auth);
+				activeSessions.add(session);
+				return session;
+			case "Supervisor":
+				session = new SupervisorSession((Supervisor)auth);
+				activeSessions.add(session);
+				return session;
+			}
+		return null;
+	}
+
+	/**
+	 * 
+	 * @param userID
+	 * @param hash
+	 */
+	public void getSessionFromID(int userID, String hash) {
+		// TODO - implement SessionManager.getSessionFromID
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * 
+	 * @param userID
+	 */
+	private void createSession(int userID) {
+		// TODO - implement SessionManager.createSession
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * 
+	 * @param userID
+	 */
+	private void deleteSession(int userID) {
+		// TODO - implement SessionManager.deleteSession
+		throw new UnsupportedOperationException();
+	}
+
+}

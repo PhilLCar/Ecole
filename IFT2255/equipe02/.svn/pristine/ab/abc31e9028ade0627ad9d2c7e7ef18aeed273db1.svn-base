@@ -1,0 +1,38 @@
+public class ReceivableAccountsJob {
+
+	private string receivableAccountFileName;
+	private Date NextJobTimestamp;
+	private Timer timer;
+
+	public void run() {
+		// TODO - implement ReveivableAccountsJob.run
+		throw new UnsupportedOperationException();
+	}
+
+	public Date getNextJobTimestamp() {
+		// TODO - implement ReveivableAccountsJob.getNextJobTimestamp
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * 
+	 * @param NextJobTimestamp
+	 */
+	public void setNextJobTimestamp(Date NextJobTimestamp) {
+		// TODO - implement ReveivableAccountsJob.setNextJobTimestamp
+		throw new UnsupportedOperationException();
+	}
+
+	public string getReceivableAccountFileName() {
+		return this.receivableAccountFileName;
+	}
+
+	/**
+	 * 
+	 * @param receivableAccountFileName
+	 */
+	public void setReceivableAccountFileName(string receivableAccountFileName) {
+		this.receivableAccountFileName = receivableAccountFileName;
+	}
+
+}

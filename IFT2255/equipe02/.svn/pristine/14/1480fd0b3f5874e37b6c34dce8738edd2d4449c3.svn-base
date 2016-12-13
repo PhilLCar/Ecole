@@ -1,0 +1,22 @@
+public class MemberSession extends Session {
+
+	/**
+	 * 
+	 * @param amount
+	 */
+	public void pay(float amount) {
+		// TODO - implement MemberSession.pay
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * 
+	 * @param userID
+	 * @param hash
+	 */
+	public MemberSession(int userID, string hash) {
+		// TODO - implement MemberSession.MemberSession
+		throw new UnsupportedOperationException();
+	}
+
+}

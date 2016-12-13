@@ -1,0 +1,62 @@
+import java.util.Calendar;
+import java.util.Date;
+import java.util.Timer;
+import java.util.TimerTask;
+
+/**
+ * The Class ReceivableAccountsJob, implementing a timer scheduling everyday at
+ * 21:00 the job to check the member status file sent by ACME everyday, and
+ * detailing the change in status of any member. It updates the database with
+ * the new statuses and sets itself for the next day at the same time.
+ * The timer runs the job in a separated thread so there is no bookkeeping to
+ * do other than keep a reference to the instance created.<p>
+ * See <a href="http://archive.oreilly.com/pub/a/java/archive/quartz.html"> Job
+ * Scheduling in Java - O'Reilly </a> for the source inspiration of this class.
+ * 
+ * @author Gevrai Jodoin-Tremblay
+ */
+public class ReceivableAccountsJob extends TimerTask {
+
+	/** The file location/name where ACME sends account informations. */
+	private String memberStatusFile;
+	
+	/** The time at which the next job will be run */
+	private Calendar nextJobTime;
+	
+	/** The timer scheduling the job. */
+	private Timer timer;
+
+    /**
+     * Instantiates a new receivable accounts job doing everything automatically.
+     *
+     * @param memberStatusFile the location/name of the member status file
+     */
+    public ReceivableAccountsJob(String memberStatusFile){
+    	this.memberStatusFile = memberStatusFile;
+        // Construct next date to run task from current date, pushing it to 21:00
+		nextJobTime = Calendar.getInstance();
+		nextJobTime.set(Calendar.HOUR_OF_DAY, 21);
+		nextJobTime.set(Calendar.MINUTE, 0);
+		nextJobTime.set(Calendar.SECOND, 0);
+		nextJobTime.set(Calendar.MILLISECOND, 0);
+		// In case this sets the timestamp before the current time, push it next day
+		if (nextJobTime.before(Calendar.getInstance())){
+			nextJobTime.add(Calendar.DATE, 1);
+		}
+		//Delay before first execution
+		long delay = nextJobTime.getTimeInMillis() - new Date().getTime();
+		//Schedule task every day at 21:00
+		timer = new Timer();
+		timer.scheduleAtFixedRate(this, delay, 7*24*60*60*1000);
+    }
+
+	/**
+	 * Runs the method when the timer tells it to, which is at 'nextJobTime'
+	 */
+    @Override
+	public void run() {
+		System.out.println("ReceivableAccountsJob started: updating member statuses");
+		nextJobTime.add(Calendar.DATE, 1);
+		// TODO ReceivableAccountsJob.run do something?
+	}
+}

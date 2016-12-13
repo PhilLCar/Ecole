@@ -1,0 +1,45 @@
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+
+public class SupervisorSession extends Session {
+
+	/**
+	 * 
+	 * @param userID
+	 */
+	public void printReport() {
+		// TODO - implement SupervisorSession.printSynthesisReport
+		throw new UnsupportedOperationException();
+	}
+
+	public void modifyUser() {
+		// TODO - implement SupervisorSession.modifyUser
+		throw new UnsupportedOperationException();
+	}
+
+	public void modifyService() {
+		// TODO - implement SupervisorSession.modifyService
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * 
+	 * @param userID
+	 * @param hash
+	 */
+	public SupervisorSession(Supervisor supervisor) {
+		super(supervisor);
+	}
+	
+	@Override
+	public JPanel getUI() {
+		JPanel ret = new JPanel();
+		ret.add(new JLabel("Enter amount"));
+		ret.add(new JTextField(20));
+		ret.add(new JButton("Pay"));
+		return ret;
+	}
+
+}

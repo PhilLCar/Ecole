@@ -1,0 +1,446 @@
+#! /usr/bin/env gsi -:dR
+
+;;;Philippe Caron
+;;;Gabriel Lemyre
+
+;;; Fichier : tp2.scm
+
+;;; Ce programme est une version incomplete du TP2.  Vous devez uniquement
+;;; changer et ajouter du code dans la première section.
+
+;;;----------------------------------------------------------------------------
+
+;;; Vous devez modifier cette section.  La fonction "traiter" doit
+;;; être définie, et vous pouvez ajouter des définitions de fonction
+;;; afin de bien décomposer le traitement à faire en petites
+;;; fonctions.  Il faut vous limiter au sous-ensemble *fonctionnel* de
+;;; Scheme dans votre codage (donc n'utilisez pas set!, set-car!,
+;;; begin, etc).
+
+ ;;;Verify if the input is an integer
+  (define isNumber?
+    (lambda (in)
+      (integer? (string->number in))
+    )
+  )
+
+;;;Verify if the input is a variable
+(define isVariable?
+  (lambda (in)
+    (if
+      (> (string-length in) 1)
+      #f
+      (char-alphabetic? (string-ref in 0))
+    )
+  )
+)
+
+;;;Verify if the input is a binary operator
+(define isBinaryOperator?
+  (lambda (in)
+    (if
+      (or
+        (equal? in "+")
+        (equal? in "-")
+        (equal? in "*")
+      )
+      #t
+      #f
+    )
+  )
+)
+
+;;;Verify if the input is an assignation
+(define isAssignation?
+  (lambda (in)
+    (if
+      (= (string-length in) 2)
+      (if
+        (and
+          (equal? (string-ref in 0) #\=)
+          (isVariable? (make-string 1 (string-ref in 1)))
+        )
+        #t
+        #f
+      )
+      #f
+    )
+  )
+)
+
+;;;Verify if the input is in the dictionnary
+(define isInDictionnary?
+  (lambda (in dict n)
+    (if
+      (< n (length dict))
+      (if
+        (equal? in (list-ref (list-ref dict n) 0))
+        #t
+        (isInDictionnary? in dict (+ n 1))
+      )
+      #f
+    )
+  )
+)
+
+;;;Verify if the input is a variable that has been set
+(define isVariableInUse?
+  (lambda (in dict)
+    (if
+      (isVariable? in)
+      (if 
+        (> (length dict) 0)
+        (isInDictionnary? in dict 0)
+        #f
+      )
+      #f
+    )
+  )
+)
+
+;;;Returns the variable's value
+(define getVariable
+  (lambda (in dict n)
+    (if
+      (< n (length dict))
+      (if
+        (equal? in (list-ref (list-ref dict n) 0))
+        (list-ref (list-ref dict n) 1)
+        (getVariable in dict (+ n 1));;;Recursive
+      )
+      #f
+    )
+  )
+)
+
+;;;Deletes the value from the list
+(define remove
+  (lambda (element expr)
+    (if
+      (> (length expr) 0)
+      (if
+        (equal? element (car expr)) 
+        (cdr expr)
+        (cons (car expr) (remove element (cdr expr)))
+      )
+    )
+  )
+)
+
+;;;Verify if the user's input is of an accepted format
+(define formatAutomata
+  (lambda (expr dict n state)
+    (if
+      (< n (length expr))
+      (cond
+        [(= state 0)
+          (if
+            (or
+              (isVariableInUse? (list-ref expr n) dict)
+              (isNumber? (list-ref expr n))
+            )
+            (formatAutomata expr dict (+ n 1) 1) ;;;Recursive
+            #f
+          )
+        ]
+        [(= state 1)
+          (if
+            (or
+              (isVariableInUse? (list-ref expr n) dict)
+              (isNumber? (list-ref expr n))
+            )
+              (formatAutomata expr dict (+ n 1) 2) ;;;Recursive
+            (if
+              (isAssignation? (list-ref expr n))
+              (if
+                (isVariableInUse? (make-string 1 (string-ref (list-ref expr n) 1)) dict)
+                  (formatAutomata expr dict (+ n 1) 3)
+                  (formatAutomata expr (append dict (list (list (make-string 1 (string-ref (list-ref expr n) 1)) "p"))) (+ n 1) 3);;;Recursive
+              )
+              #f
+            )
+          )
+        ]
+        [(= state 2)
+          (if
+            (isBinaryOperator? (list-ref expr n))
+            (formatAutomata expr dict (+ n 1) 1);;;Recursive
+            #f
+          )
+        ]
+        [(= state 3)
+          (if
+            (or
+              (isVariableInUse? (list-ref expr n) dict)
+              (isNumber? (list-ref expr n))
+            )
+            (formatAutomata expr dict (+ n 1) 2);;;Recursive
+            #f
+          )
+        ]
+      )
+      (if
+        (or
+          (= state 1)
+          (= state 3)
+        )
+        #t
+        #f
+      )
+    )
+  )
+)
+
+;;;Addition operation
+(define add
+  (lambda (expr dict)
+    (nextOperation
+      (append
+        (list 
+          (number->string 
+            (+ 
+              (if
+                (isVariable? (list-ref expr 0))
+                (string->number (getVariable (list-ref expr 0) dict 0))
+                (string->number 
+                  (list-ref expr 0)
+                )
+              )
+              (if
+                (isVariable? (list-ref expr 1))
+                (string->number (getVariable (list-ref expr 1) dict 0))
+                (string->number 
+                  (list-ref expr 1)
+                )
+              )
+            )
+          )
+        )
+        (list-tail expr 3)
+      )
+    dict
+    )
+  )
+)
+
+;;;Subtraction operation
+(define sub
+  (lambda (expr dict)
+    (nextOperation
+      (append
+        (list 
+          (number->string 
+            (- 
+              (if
+                (isVariable? (list-ref expr 0))
+                (string->number (getVariable (list-ref expr 0) dict 0))
+                (string->number 
+                  (list-ref expr 0)
+                )
+              )
+              (if
+                (isVariable? (list-ref expr 1))
+                (string->number (getVariable (list-ref expr 1) dict 0))
+                (string->number 
+                  (list-ref expr 1)
+                )
+              )
+            )
+          )
+        )
+        (list-tail expr 3)
+      )
+    dict
+    )
+  )
+)
+
+;;;Multiplication operation
+(define mul
+  (lambda (expr dict)
+    (nextOperation
+      (append
+        (list 
+          (number->string 
+            (* 
+              (if
+                (isVariable? (list-ref expr 0))
+                (string->number (getVariable (list-ref expr 0) dict 0))
+                (string->number 
+                  (list-ref expr 0)
+                )
+              )
+              (if
+                (isVariable? (list-ref expr 1))
+                (string->number (getVariable (list-ref expr 1) dict 0))
+                (string->number 
+                  (list-ref expr 1)
+                )
+              )
+            )
+          )
+        )
+        (list-tail expr 3)
+      )
+    dict
+    )
+  )
+)
+
+;;;Assign a value to a variable in the dictionnary
+(define assign
+  (lambda (expr dict)
+    (nextOperation 
+      (append
+        (list (list-ref expr 0))
+        (list-tail expr 2)
+      )
+      (append
+        (if;;;;;;;;;;;;;;;;
+          (isVariableInUse? (make-string 1 (string-ref (list-ref expr 1) 1)) dict);;;;;;;;;;;;;
+          (remove 
+            (list 
+              (make-string 1 
+                (string-ref 
+                  (list-ref expr 1) 
+                1)
+              )
+              (getVariable 
+                (make-string 1 
+                  (string-ref 
+                    (list-ref expr 1)
+                  1)
+                )
+              dict
+              0
+              )
+            )
+            dict
+          )
+          (list (list (make-string 1 (string-ref (list-ref expr 1) 1)) (list-ref expr 0)));;;;;;;;;;;;
+        );;;;;;;;;;;;;;;;;;;;;;
+        (list (list (make-string 1 (string-ref (list-ref expr 1) 1)) (list-ref expr 0)))
+      )
+    )
+  )
+)
+
+;;;Définie la prochaine opération a effectuer
+(define nextOperation
+  (lambda (expr dict)
+    (cond
+      [(equal? (length expr) 1)
+        (if 
+          (isVariable? (list-ref expr 0))
+          (getVariable (list-ref expr 0) dict 0)
+          expr
+        )
+      ]
+      [(isAssignation? (list-ref expr 1))
+       (assign expr
+               dict
+        )
+      ]
+      [(equal? (list-ref expr 2) "+")
+       (add expr dict)
+      ]
+      [(equal? (list-ref expr 2) "-")
+       (sub expr dict)
+      ]
+      [(equal? (list-ref expr 2) "*")
+       (mul expr dict)
+      ]
+    )
+  )
+)
+
+;;;Return a list of strings without spaces
+(define string-split
+  (lambda (expr)
+    (createStringList expr (list) 0 0)
+  )
+)
+
+;;;Create strings for string-split
+(define createStringList
+  (lambda (expr lst s n)
+    (if (< n (string-length expr))
+      (if
+        (equal? (string-ref expr n) #\space)
+        (createStringList
+          expr 
+          (append
+            lst
+            (list (substring expr s n))
+          )
+          (+ n 1)
+          (+ n 1)
+        )
+        (createStringList expr lst s (+ n 1))
+      )
+    (append lst (list (substring expr s n)))
+    )
+  )
+)
+
+;;; La fonction traiter reçoit en paramètre une liste de caractères
+;;; contenant la requête lue et le dictionnaire des variables sous
+;;; forme d'une liste d'association.  La fonction retourne
+;;; une paire contenant la liste de caractères qui sera imprimée comme
+;;; résultat de l'expression entrée et le nouveau dictionnaire.  Vos
+;;; fonctions ne doivent pas faire d'affichage car c'est la fonction
+;;; "repl" qui se charge de cela.
+(define traiter
+  (lambda (expr dict)
+    (cons 
+      (append 
+        (string->list "*** le programme est ")
+        '(#\newline)
+        (if
+          (> (length expr) 0)
+          (if
+            (formatAutomata (string-split (list->string expr)) dict 0 0)
+            (if 
+              (equal? (length dict) 0)
+              (string->list (list-ref (nextOperation (string-split (list->string expr)) (list (list "@" "p"))) 0))
+              (string->list (list-ref (nextOperation (string-split (list->string expr)) dict) 0))
+            )
+            (string->list "*** le format de l'opération est incorrect.")
+          )
+          (list)
+        )
+        (string->list "*** la requete lue est: ")
+        expr
+        (string->list "\n*** nombre de caractères: ")
+        (string->list (number->string (length expr)))
+        '(#\newline)
+      )
+      dict
+    )    
+  )
+)
+
+;;;----------------------------------------------------------------------------
+
+;;; Ne pas modifier cette section.
+
+(define repl
+  (lambda (dict)
+    (print "# ")
+    (let ((ligne (read-line)))
+      (if (string? ligne)
+          (let ((r (traiter-ligne ligne dict)))
+            (for-each write-char (car r))
+            (repl (cdr r)))))))
+
+(define traiter-ligne
+  (lambda (ligne dict)
+    (traiter (string->list ligne) dict)))
+
+(define main
+  (lambda ()
+    (repl '()))) ;; dictionnaire initial est vide
+    
+;;;----------------------------------------------------------------------------
+
+(main)

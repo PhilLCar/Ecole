@@ -1,0 +1,32 @@
+public class SupervisorSession extends Session {
+
+	/**
+	 * 
+	 * @param userID
+	 */
+	public void printReport() {
+		// TODO - implement SupervisorSession.printSynthesisReport
+		throw new UnsupportedOperationException();
+	}
+
+	public void modifyUser() {
+		// TODO - implement SupervisorSession.modifyUser
+		throw new UnsupportedOperationException();
+	}
+
+	public void modifyService() {
+		// TODO - implement SupervisorSession.modifyService
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * 
+	 * @param userID
+	 * @param hash
+	 */
+	public SupervisorSession(int userID, string hash) {
+		// TODO - implement SupervisorSession.SupervisorSession
+		throw new UnsupportedOperationException();
+	}
+
+}

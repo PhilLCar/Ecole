@@ -1,0 +1,25 @@
+\documentclass[a4paper,12pt,titlepage]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{listings}
+\setlength{\parindent}{0pt}
+\author{Équipes 2 et 9}
+\title{Manuel d'utilisateur - Application ChocAn}
+\begin{document}
+
+\maketitle
+
+\section{Fonctionnement général}
+\subsection{Connexion}
+Lorsque l'application est lancée, l'utilisateur est invité à entrer son numéro d'utilisateur et son mot de passe. Une fois l'authentification validée, l'utilisateur est amené à l'interface correspondant à son type (membre, fournisseur ou gérant). Ces interfaces seront décrites plus en détail dans les sections correspondantes. C'est à partir de celles-ci qu'il pourrait effectuer ses opérations courantes.
+\subsection{Membres}
+Le membre ne peut qu'acquitter ses frais. Pour payer ses frais, il suffit d'indiquer le montant à transférer et de confirmer la transaction. Un message viendra confirmer le succès de l'opération. 
+\subsection{Fournisseurs}
+Les fournisseurs peuvent vérifier le statut d'un membre, facturer un service à ChocAn, consulter le répertoire des services et consulter leurs rapports de services facturés.
+Pour vérifier le statut d'un membre, il sélectionner "Vérifier un membre". Cela donne accès à la saisie du numéro de membre. Une fois le numéro saisi, il faut sélectionner "Vérifier un membre" et un message affichera le statut du membre.
+Pour facturer un service, il faut sélectionner "Facturer un service de santé" dans le menu principal. Il faut ensuite vérifier le numéro de membre. Ensuite, il faut saisir la date du service, le code de service et les commentaires potentiels. Ensuite, sélectionner "Soumettre" pour facturer à ChocAn. Un message de confirmation s'affichera.
+\subsection{Gérant}
+Les gérants peuvent accéder à tous les types de rapports, ainsi que créer, modifier ou supprimer des utilisateurs et des services.
+Pour les utilisateurs, le gérant peut modifier les types Membre, Fournisseur et Gérant.
+Dans la section rapport, le gérant peut demander un rapport pour membre ou un fournisseur spécifique, de même que le rapport de synthèse.
+
+\end{document}

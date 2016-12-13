@@ -1,0 +1,21 @@
+public class EftDBManager {
+
+	/**
+	 * 
+	 * @param eft
+	 */
+	public void add(EFT eft) {
+		// TODO - implement EftDBManager.add
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * 
+	 * @param eft
+	 */
+	public void delete(EFT eft) {
+		// TODO - implement EftDBManager.delete
+		throw new UnsupportedOperationException();
+	}
+
+}

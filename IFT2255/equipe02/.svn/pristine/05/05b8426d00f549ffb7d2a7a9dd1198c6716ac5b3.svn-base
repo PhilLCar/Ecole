@@ -1,0 +1,50 @@
+public class Supplier extends User {
+
+	private Address address;
+	
+	public Supplier(int userID, String hash, String name, Address address) {
+		setUserID(userID);
+		setHash(hash);
+		setName(name);
+		this.address = address;
+	}
+	
+	public Supplier(String member) {
+		String[] memInfo = member.split("\t", 8);
+		setUserID(Integer.parseInt(memInfo[0]));
+		setHash(memInfo[1]);
+		setName(memInfo[2]);
+		this.address = new Address(
+					memInfo[3],
+					memInfo[4],
+					memInfo[5],
+					memInfo[6],
+					memInfo[7]);
+	}
+
+	public Address getAddress() {
+		return this.address;
+	}
+
+	/**
+	 * 
+	 * @param address
+	 */
+	public void setAddress(Address address) {
+		this.address = address;
+	}
+
+	@Override
+	public String toString() {
+		String ret = "Supplier\t" + 
+					getUserID() + "\t" + 
+					getHash() + "\t" +
+					getName() + "\t" +
+					address.getStreetNumber() + "\t" +
+					address.getStreetName() + "\t" +
+					address.getCity() + "\t" +
+					address.getProvince() + "\t" +
+					address.getZipCode() + "\t";
+		return ret;
+	}
+}

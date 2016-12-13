@@ -1,0 +1,18 @@
+import java.util.ArrayList;
+
+public interface DataBaseManager<T> {
+	
+	public abstract T find(int id);
+	
+	public abstract boolean exists(T key);
+	
+	public abstract boolean add(T elem);
+	
+	public abstract boolean delete(T elem);
+	
+	public abstract T delete(int id);
+	
+	public abstract ArrayList<T> select(int id);
+	
+	public abstract ArrayList<T> select(String search);
+}

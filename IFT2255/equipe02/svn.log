@@ -1,0 +1,1498 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<log>
+<logentry
+   revision="1091">
+<author>pcaron</author>
+<date>2016-11-07T03:49:23.660056Z</date>
+<paths>
+<path
+   action="M"
+   kind="file">/equipe02/DM2/ChocAn.vpp</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM2/ChocAn.vux</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM2/projects/classe_participantes_beta.vpp</path>
+</paths>
+<msg>merge final</msg>
+</logentry>
+<logentry
+   revision="1089">
+<author>gevrai</author>
+<date>2016-11-07T03:47:51.804222Z</date>
+<paths>
+<path
+   kind="file"
+   action="M">/equipe02/DM2/rapport.htm</path>
+</paths>
+<msg>Sauvegarde rapport</msg>
+</logentry>
+<logentry
+   revision="1083">
+<author>gevrai</author>
+<date>2016-11-07T03:30:51.090393Z</date>
+<paths>
+<path
+   kind="file"
+   action="M">/equipe02/DM2/ChocAn.vpp</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM2/rapport.htm</path>
+</paths>
+<msg>Modifications ChocAn.vpp, surtout sequences sauf rapports</msg>
+</logentry>
+<logentry
+   revision="1081">
+<author>pcaron</author>
+<date>2016-11-07T03:27:36.179679Z</date>
+<paths>
+<path
+   kind="file"
+   action="M">/equipe02/DM2/projects/classe_participantes_beta.vpp</path>
+</paths>
+<msg>changements à beta</msg>
+</logentry>
+<logentry
+   revision="1058">
+<author>pcaron</author>
+<date>2016-11-07T02:21:43.183072Z</date>
+<paths>
+<path
+   action="M"
+   kind="file">/equipe02/DM2/ChocAn.vpp</path>
+</paths>
+<msg>merge</msg>
+</logentry>
+<logentry
+   revision="1056">
+<author>gevrai</author>
+<date>2016-11-07T02:10:26.258795Z</date>
+<paths>
+<path
+   kind="file"
+   action="M">/equipe02/DM2/ChocAn.vpp</path>
+</paths>
+<msg>changements diagrammes de sequences</msg>
+</logentry>
+<logentry
+   revision="1055">
+<author>pcaron</author>
+<date>2016-11-07T02:04:22.018320Z</date>
+<paths>
+<path
+   action="M"
+   kind="file">/equipe02/DM2/projects/classe_participantes_beta.vpp</path>
+</paths>
+<msg>authentification ajouté a beta</msg>
+</logentry>
+<logentry
+   revision="1052">
+<author>pcaron</author>
+<date>2016-11-07T01:51:31.551651Z</date>
+<paths>
+<path
+   action="M"
+   kind="file">/equipe02/DM2/projects/classe_participantes_beta.vpp</path>
+</paths>
+<msg>diagramme de classe changé dans beta</msg>
+</logentry>
+<logentry
+   revision="1044">
+<author>pcaron</author>
+<date>2016-11-07T01:07:55.235115Z</date>
+<paths>
+<path
+   kind="file"
+   action="M">/equipe02/DM2/projects/classe_participantes_beta.vpp</path>
+</paths>
+<msg>diagramme de classe légèrement modifié</msg>
+</logentry>
+<logentry
+   revision="1043">
+<author>pcaron</author>
+<date>2016-11-07T01:06:27.675966Z</date>
+<paths>
+<path
+   kind="file"
+   action="M">/equipe02/DM2/projects/classe_participantes_beta.vpp</path>
+</paths>
+<msg>avancement du diagramme de classes</msg>
+</logentry>
+<logentry
+   revision="1032">
+<author>pcaron</author>
+<date>2016-11-07T00:21:09.523521Z</date>
+<paths>
+<path
+   action="M"
+   kind="file">/equipe02/DM2/projects/classe_participantes_beta.vpp</path>
+</paths>
+<msg>update de beta¸</msg>
+</logentry>
+<logentry
+   revision="1029">
+<author>gevrai</author>
+<date>2016-11-07T00:17:29.258860Z</date>
+<paths>
+<path
+   kind="dir"
+   action="A">/equipe02/DM2/images</path>
+<path
+   kind="file"
+   action="A">/equipe02/DM2/images/Accès_répertoire_fournisseurs.png</path>
+<path
+   action="A"
+   kind="file">/equipe02/DM2/images/Main_act.png</path>
+<path
+   action="A"
+   kind="file">/equipe02/DM2/images/Maintenir_service.png</path>
+<path
+   kind="file"
+   action="A">/equipe02/DM2/images/Maintenir_service_act.png</path>
+<path
+   kind="file"
+   action="A">/equipe02/DM2/images/Maintenir_utilisateur.png</path>
+<path
+   action="A"
+   kind="file">/equipe02/DM2/images/Paiement_membre.png</path>
+<path
+   action="A"
+   kind="file">/equipe02/DM2/images/Procédure_comptable_principale.png</path>
+<path
+   action="A"
+   kind="file">/equipe02/DM2/images/Produire Rapport_act.png</path>
+<path
+   action="A"
+   kind="file">/equipe02/DM2/images/Produire_rapport_TEF.png</path>
+<path
+   action="A"
+   kind="file">/equipe02/DM2/images/Produire_rapport_comptes_payables.png</path>
+<path
+   action="A"
+   kind="file">/equipe02/DM2/images/Produire_rapport_fournisseur.png</path>
+<path
+   action="A"
+   kind="file">/equipe02/DM2/images/Produire_rapport_membre.png</path>
+<path
+   kind="file"
+   action="A">/equipe02/DM2/images/Soumettre_réclamation.png</path>
+<path
+   kind="file"
+   action="A">/equipe02/DM2/images/Vérifier_client.png</path>
+<path
+   kind="file"
+   action="A">/equipe02/DM2/images/cas_utilisation.png</path>
+<path
+   action="A"
+   kind="file">/equipe02/DM2/images/classes.png</path>
+<path
+   action="A"
+   kind="file">/equipe02/DM2/images/classes_participantes.png</path>
+</paths>
+<msg>images des diagrammes pour le rapport</msg>
+</logentry>
+<logentry
+   revision="952">
+<author>gevrai</author>
+<date>2016-11-06T07:11:03.425821Z</date>
+<paths>
+<path
+   action="M"
+   kind="file">/equipe02/DM2/ChocAn.vpp</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM2/projects/classe_participantes_beta.vpp</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM2/projects/produireRapport_activity.vpp</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM2/rapport.htm</path>
+</paths>
+<msg>Rapatriement des diagrammes dans fichier ChocAn.vpp et remplissage majeur du rapport</msg>
+</logentry>
+<logentry
+   revision="846">
+<author>gevrai</author>
+<date>2016-11-05T03:37:55.463848Z</date>
+<paths>
+<path
+   action="M"
+   kind="file">/equipe02/DM2/projects/main_activity.vpp</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM2/projects/maintenirClient_activity.vpp</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM2/projects/maintenirService_activity.vpp</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM2/projects/produireRapport_activity.vpp</path>
+</paths>
+<msg>Update de tous les diagrammes d'activites</msg>
+</logentry>
+<logentry
+   revision="818">
+<author>pcaron</author>
+<date>2016-11-04T20:10:28.758319Z</date>
+<paths>
+<path
+   action="M"
+   kind="file">/equipe02/DM2/projects/classe_participantes_beta.vpp</path>
+</paths>
+<msg>changements au diagram de classes</msg>
+</logentry>
+<logentry
+   revision="816">
+<author>pcaron</author>
+<date>2016-11-04T19:51:49.165225Z</date>
+<paths>
+<path
+   action="M"
+   kind="file">/equipe02/DM2/projects/classe_participantes_beta.vpp</path>
+</paths>
+<msg>ajout de diagrammes de seq</msg>
+</logentry>
+<logentry
+   revision="808">
+<author>pcaron</author>
+<date>2016-11-04T18:40:25.838836Z</date>
+<paths>
+<path
+   action="M"
+   kind="file">/equipe02/DM2/projects/classe_participantes_beta.vpp</path>
+</paths>
+<msg>début des diagrames de séquence</msg>
+</logentry>
+<logentry
+   revision="784">
+<author>pcaron</author>
+<date>2016-11-04T14:21:13.121249Z</date>
+<paths>
+<path
+   action="A"
+   kind="file">/equipe02/DM2/projects/classe_participantes_beta.vpp</path>
+</paths>
+<msg>Modifications suggérées apportées au fichier "beta"</msg>
+</logentry>
+<logentry
+   revision="746">
+<author>gevrai</author>
+<date>2016-11-03T20:23:14.684060Z</date>
+<paths>
+<path
+   kind="file"
+   action="M">/equipe02/DM2/projects/main_activity.vpp</path>
+</paths>
+<msg>Update de main_activity.vpp</msg>
+</logentry>
+<logentry
+   revision="728">
+<author>pcaron</author>
+<date>2016-11-03T18:14:37.975902Z</date>
+<paths>
+<path
+   action="M"
+   kind="file">/equipe02/DM2/projects/classes_participantes.vpp</path>
+</paths>
+<msg>modifications des fichiers
+</msg>
+</logentry>
+<logentry
+   revision="709">
+<author>pcaron</author>
+<date>2016-11-03T11:09:09.623784Z</date>
+<paths>
+<path
+   kind="file"
+   action="M">/equipe02/DM2/ChocAn.vpp</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM2/projects/classes_participantes.vpp</path>
+<path
+   kind="dir"
+   copyfrom-path="/equipe02/stats"
+   copyfrom-rev="499"
+   action="A">/equipe02/stats</path>
+<path
+   kind="file"
+   copyfrom-path="/equipe02/stats/2016-09.html"
+   copyfrom-rev="505"
+   action="R">/equipe02/stats/2016-09.html</path>
+<path
+   copyfrom-path="/equipe02/stats/activity.png"
+   copyfrom-rev="505"
+   action="R"
+   kind="file">/equipe02/stats/activity.png</path>
+<path
+   kind="file"
+   copyfrom-path="/equipe02/stats/activity_day.png"
+   copyfrom-rev="505"
+   action="R">/equipe02/stats/activity_day.png</path>
+<path
+   copyfrom-path="/equipe02/stats/activity_day_gevrai.png"
+   copyfrom-rev="505"
+   action="R"
+   kind="file">/equipe02/stats/activity_day_gevrai.png</path>
+<path
+   action="R"
+   kind="file"
+   copyfrom-path="/equipe02/stats/activity_day_pcaron.png"
+   copyfrom-rev="505">/equipe02/stats/activity_day_pcaron.png</path>
+<path
+   action="R"
+   kind="file"
+   copyfrom-path="/equipe02/stats/activity_time.png"
+   copyfrom-rev="505">/equipe02/stats/activity_time.png</path>
+<path
+   action="R"
+   kind="file"
+   copyfrom-path="/equipe02/stats/activity_time_gevrai.png"
+   copyfrom-rev="505">/equipe02/stats/activity_time_gevrai.png</path>
+<path
+   action="R"
+   kind="file"
+   copyfrom-path="/equipe02/stats/activity_time_pcaron.png"
+   copyfrom-rev="505">/equipe02/stats/activity_time_pcaron.png</path>
+<path
+   kind="file"
+   copyfrom-path="/equipe02/stats/cloud.html"
+   copyfrom-rev="505"
+   action="R">/equipe02/stats/cloud.html</path>
+<path
+   kind="file"
+   copyfrom-path="/equipe02/stats/commitlog.html"
+   copyfrom-rev="505"
+   action="R">/equipe02/stats/commitlog.html</path>
+<path
+   action="R"
+   kind="file"
+   copyfrom-path="/equipe02/stats/commitscatterauthors.png"
+   copyfrom-rev="505">/equipe02/stats/commitscatterauthors.png</path>
+<path
+   kind="file"
+   copyfrom-path="/equipe02/stats/developers.html"
+   copyfrom-rev="505"
+   action="R">/equipe02/stats/developers.html</path>
+<path
+   kind="file"
+   copyfrom-path="/equipe02/stats/dir.html"
+   copyfrom-rev="505"
+   action="R">/equipe02/stats/dir.html</path>
+<path
+   kind="file"
+   copyfrom-path="/equipe02/stats/dir_DM1.html"
+   copyfrom-rev="505"
+   action="R">/equipe02/stats/dir_DM1.html</path>
+<path
+   kind="file"
+   copyfrom-path="/equipe02/stats/dir_sizes.html"
+   copyfrom-rev="505"
+   action="R">/equipe02/stats/dir_sizes.html</path>
+<path
+   copyfrom-path="/equipe02/stats/directories_loc_timeline.png"
+   copyfrom-rev="505"
+   action="R"
+   kind="file">/equipe02/stats/directories_loc_timeline.png</path>
+<path
+   copyfrom-path="/equipe02/stats/directory_sizes.png"
+   copyfrom-rev="505"
+   action="R"
+   kind="file">/equipe02/stats/directory_sizes.png</path>
+<path
+   kind="file"
+   copyfrom-path="/equipe02/stats/directory_sizes_gevrai.png"
+   copyfrom-rev="505"
+   action="R">/equipe02/stats/directory_sizes_gevrai.png</path>
+<path
+   copyfrom-path="/equipe02/stats/directory_sizes_pcaron.png"
+   copyfrom-rev="505"
+   action="R"
+   kind="file">/equipe02/stats/directory_sizes_pcaron.png</path>
+<path
+   action="R"
+   kind="file"
+   copyfrom-path="/equipe02/stats/file_count.png"
+   copyfrom-rev="505">/equipe02/stats/file_count.png</path>
+<path
+   action="R"
+   kind="file"
+   copyfrom-path="/equipe02/stats/file_size.png"
+   copyfrom-rev="505">/equipe02/stats/file_size.png</path>
+<path
+   action="R"
+   kind="file"
+   copyfrom-path="/equipe02/stats/file_sizes.html"
+   copyfrom-rev="505">/equipe02/stats/file_sizes.html</path>
+<path
+   action="R"
+   kind="file"
+   copyfrom-path="/equipe02/stats/index.html"
+   copyfrom-rev="505">/equipe02/stats/index.html</path>
+<path
+   kind="file"
+   copyfrom-path="/equipe02/stats/loc.html"
+   copyfrom-rev="505"
+   action="R">/equipe02/stats/loc.html</path>
+<path
+   kind="file"
+   copyfrom-path="/equipe02/stats/loc.png"
+   copyfrom-rev="505"
+   action="R">/equipe02/stats/loc.png</path>
+<path
+   action="R"
+   kind="file"
+   copyfrom-path="/equipe02/stats/loc_module_DM1.png"
+   copyfrom-rev="505">/equipe02/stats/loc_module_DM1.png</path>
+<path
+   action="R"
+   kind="file"
+   copyfrom-path="/equipe02/stats/loc_per_author.png"
+   copyfrom-rev="505">/equipe02/stats/loc_per_author.png</path>
+<path
+   action="R"
+   kind="file"
+   copyfrom-path="/equipe02/stats/loc_small.png"
+   copyfrom-rev="505">/equipe02/stats/loc_small.png</path>
+<path
+   action="R"
+   kind="file"
+   copyfrom-path="/equipe02/stats/locandchurn.png"
+   copyfrom-rev="505">/equipe02/stats/locandchurn.png</path>
+<path
+   kind="file"
+   copyfrom-path="/equipe02/stats/logfile.log"
+   copyfrom-rev="505"
+   action="R">/equipe02/stats/logfile.log</path>
+<path
+   kind="file"
+   copyfrom-path="/equipe02/stats/repomap-data.txt"
+   copyfrom-rev="505"
+   action="R">/equipe02/stats/repomap-data.txt</path>
+<path
+   action="R"
+   kind="file"
+   copyfrom-path="/equipe02/stats/repomap.html"
+   copyfrom-rev="505">/equipe02/stats/repomap.html</path>
+<path
+   kind="file"
+   copyfrom-path="/equipe02/stats/user_gevrai.html"
+   copyfrom-rev="505"
+   action="R">/equipe02/stats/user_gevrai.html</path>
+<path
+   kind="file"
+   copyfrom-path="/equipe02/stats/user_pcaron.html"
+   copyfrom-rev="505"
+   action="R">/equipe02/stats/user_pcaron.html</path>
+</paths>
+<msg>avancement des classes</msg>
+</logentry>
+<logentry
+   revision="694">
+<author>gevrai</author>
+<date>2016-11-03T00:10:56.926342Z</date>
+<paths>
+<path
+   action="M"
+   kind="file">/equipe02/DM2/projects/classes_participantes.vpp</path>
+</paths>
+<msg>Améliorations au diagramme de classes participantes</msg>
+</logentry>
+<logentry
+   revision="688">
+<author>gevrai</author>
+<date>2016-11-02T23:14:53.148569Z</date>
+<paths>
+<path
+   kind="file"
+   action="M">/equipe02/DM2/projects/classes_participantes.vpp</path>
+</paths>
+<msg>Remplissage du diagramme de classes participantes</msg>
+</logentry>
+<logentry
+   revision="686">
+<author>pcaron</author>
+<date>2016-11-02T22:58:59.624947Z</date>
+<paths>
+<path
+   kind="file"
+   action="M">/equipe02/DM2/projects/cas_utilisations.vpp</path>
+</paths>
+<msg>modif cas utilisation</msg>
+</logentry>
+<logentry
+   revision="677">
+<author>gevrai</author>
+<date>2016-11-02T20:53:14.368565Z</date>
+<paths>
+<path
+   action="A"
+   kind="file">/equipe02/DM2/projects/classes_participantes.vpp</path>
+</paths>
+<msg>Ajout du diagramme de classes participantes</msg>
+</logentry>
+<logentry
+   revision="676">
+<author>pcaron</author>
+<date>2016-11-02T20:51:02.654429Z</date>
+<paths>
+<path
+   kind="file"
+   action="A">/equipe02/DM2/projects/maintenirService_activity.vpp</path>
+</paths>
+<msg>Ajout du fichier maintenirService.vpp</msg>
+</logentry>
+<logentry
+   revision="675">
+<author>pcaron</author>
+<date>2016-11-02T20:48:10.927383Z</date>
+<paths>
+<path
+   kind="file"
+   action="M">/equipe02/DM2/projects/maintenirClient_activity.vpp</path>
+</paths>
+<msg>modification faites au fichier</msg>
+</logentry>
+<logentry
+   revision="669">
+<author>gevrai</author>
+<date>2016-11-02T20:17:00.056204Z</date>
+<paths>
+<path
+   action="A"
+   kind="dir">/equipe02/DM2/projects</path>
+<path
+   action="A"
+   kind="file">/equipe02/DM2/projects/cas_utilisations.vpp</path>
+<path
+   kind="file"
+   action="A">/equipe02/DM2/projects/main_activity.vpp</path>
+<path
+   kind="file"
+   action="A">/equipe02/DM2/projects/maintenirClient_activity.vpp</path>
+<path
+   kind="file"
+   action="A">/equipe02/DM2/projects/produireRapport_activity.vpp</path>
+</paths>
+<msg>Separation des diagrammes en differents projets pour collaboration avec svn</msg>
+</logentry>
+<logentry
+   revision="666">
+<author>gevrai</author>
+<date>2016-11-02T19:40:23.121083Z</date>
+<paths>
+<path
+   kind="file"
+   action="M">/equipe02/DM2/ChocAn.vpp</path>
+</paths>
+<msg>Test merge .vpp entre les diagrammes 2</msg>
+</logentry>
+<logentry
+   revision="665">
+<author>pcaron</author>
+<date>2016-11-02T19:37:14.761955Z</date>
+<paths>
+<path
+   kind="file"
+   action="M">/equipe02/DM2/ChocAn.vpp</path>
+</paths>
+<msg>test de merge</msg>
+</logentry>
+<logentry
+   revision="664">
+<author>gevrai</author>
+<date>2016-11-02T19:36:14.922688Z</date>
+<paths>
+<path
+   action="M"
+   kind="file">/equipe02/DM2/ChocAn.vpp</path>
+</paths>
+<msg>Test merge .vpp entre les diagrammes</msg>
+</logentry>
+<logentry
+   revision="661">
+<author>gevrai</author>
+<date>2016-11-02T18:46:36.632279Z</date>
+<paths>
+<path
+   kind="file"
+   action="M">/equipe02/DM2/ChocAn.vpp</path>
+</paths>
+<msg>Remplissage diagramme d'activite, mais rien n'est bien</msg>
+</logentry>
+<logentry
+   revision="606">
+<author>gevrai</author>
+<date>2016-11-01T03:32:44.429297Z</date>
+<paths>
+<path
+   kind="file"
+   action="A">/equipe02/DM2/ChocAn.vpp</path>
+<path
+   kind="file"
+   action="A">/equipe02/DM2/ChocAn.vux</path>
+</paths>
+<msg>Fichier vpp porte maintenant un nom digne! Ebauche du diagramme d'activite.</msg>
+</logentry>
+<logentry
+   revision="588">
+<author>gevrai</author>
+<date>2016-10-31T15:14:37.870066Z</date>
+<paths>
+<path
+   kind="file"
+   action="M">/equipe02/DM2/rapport.htm</path>
+</paths>
+<msg>Premiere ebauche de la partie 'description du systeme'</msg>
+</logentry>
+<logentry
+   revision="586">
+<author>gevrai</author>
+<date>2016-10-31T14:10:07.508035Z</date>
+<paths>
+<path
+   action="A"
+   kind="dir">/equipe02/DM2</path>
+<path
+   action="A"
+   kind="file">/equipe02/DM2/rapport.htm</path>
+</paths>
+<msg>Creation du dossier DM2 et mise-en-page du rapport</msg>
+</logentry>
+<logentry
+   revision="525">
+<author>gevrai</author>
+<date>2016-10-12T00:11:32.941922Z</date>
+<paths>
+<path
+   kind="dir"
+   action="D">/equipe02/stats</path>
+</paths>
+<msg>Deleted unecessary stats folder</msg>
+</logentry>
+<logentry
+   revision="524">
+<author>gevrai</author>
+<date>2016-10-12T00:09:29.267751Z</date>
+<paths>
+<path
+   action="M"
+   kind="file">/equipe02/DM1/rapport.htm</path>
+</paths>
+<msg>Last minute changes before zipping and sending</msg>
+</logentry>
+<logentry
+   revision="512">
+<author>gevrai</author>
+<date>2016-10-11T22:33:40.009336Z</date>
+<paths>
+<path
+   action="M"
+   kind="file">/equipe02/DM1/rapport.htm</path>
+</paths>
+<msg>modif des risques et besoins non-fonctionnels</msg>
+</logentry>
+<logentry
+   revision="505">
+<author>pcaron</author>
+<date>2016-10-11T21:50:41.570061Z</date>
+<paths>
+<path
+   action="M"
+   kind="file">/equipe02/README.txt</path>
+<path
+   action="M"
+   kind="file">/equipe02/stats/2016-09.html</path>
+<path
+   kind="file"
+   action="M">/equipe02/stats/activity.png</path>
+<path
+   kind="file"
+   action="M">/equipe02/stats/activity_day.png</path>
+<path
+   kind="file"
+   action="M">/equipe02/stats/activity_day_gevrai.png</path>
+<path
+   kind="file"
+   action="M">/equipe02/stats/activity_day_pcaron.png</path>
+<path
+   action="M"
+   kind="file">/equipe02/stats/activity_time.png</path>
+<path
+   action="M"
+   kind="file">/equipe02/stats/activity_time_gevrai.png</path>
+<path
+   action="M"
+   kind="file">/equipe02/stats/activity_time_pcaron.png</path>
+<path
+   action="M"
+   kind="file">/equipe02/stats/cloud.html</path>
+<path
+   kind="file"
+   action="M">/equipe02/stats/commitlog.html</path>
+<path
+   kind="file"
+   action="M">/equipe02/stats/commitscatterauthors.png</path>
+<path
+   kind="file"
+   action="M">/equipe02/stats/developers.html</path>
+<path
+   kind="file"
+   action="M">/equipe02/stats/dir.html</path>
+<path
+   action="M"
+   kind="file">/equipe02/stats/dir_DM1.html</path>
+<path
+   action="M"
+   kind="file">/equipe02/stats/dir_sizes.html</path>
+<path
+   action="M"
+   kind="file">/equipe02/stats/directories_loc_timeline.png</path>
+<path
+   action="M"
+   kind="file">/equipe02/stats/directory_sizes.png</path>
+<path
+   kind="file"
+   action="M">/equipe02/stats/directory_sizes_gevrai.png</path>
+<path
+   action="M"
+   kind="file">/equipe02/stats/directory_sizes_pcaron.png</path>
+<path
+   kind="file"
+   action="M">/equipe02/stats/file_count.png</path>
+<path
+   kind="file"
+   action="M">/equipe02/stats/file_size.png</path>
+<path
+   action="M"
+   kind="file">/equipe02/stats/file_sizes.html</path>
+<path
+   kind="file"
+   action="M">/equipe02/stats/index.html</path>
+<path
+   action="M"
+   kind="file">/equipe02/stats/loc.html</path>
+<path
+   action="M"
+   kind="file">/equipe02/stats/loc.png</path>
+<path
+   kind="file"
+   action="M">/equipe02/stats/loc_module_DM1.png</path>
+<path
+   kind="file"
+   action="M">/equipe02/stats/loc_per_author.png</path>
+<path
+   kind="file"
+   action="M">/equipe02/stats/loc_small.png</path>
+<path
+   kind="file"
+   action="M">/equipe02/stats/locandchurn.png</path>
+<path
+   action="M"
+   kind="file">/equipe02/stats/logfile.log</path>
+<path
+   kind="file"
+   action="M">/equipe02/stats/repomap-data.txt</path>
+<path
+   action="M"
+   kind="file">/equipe02/stats/repomap.html</path>
+<path
+   action="M"
+   kind="file">/equipe02/stats/user_gevrai.html</path>
+<path
+   kind="file"
+   action="M">/equipe02/stats/user_pcaron.html</path>
+</paths>
+<msg>modification du readme
+</msg>
+</logentry>
+<logentry
+   revision="504">
+<author>pcaron</author>
+<date>2016-10-11T21:45:22.292300Z</date>
+<paths>
+<path
+   action="M"
+   kind="file">/equipe02/DM1/rapport.htm</path>
+</paths>
+<msg>lien vers statsvn</msg>
+</logentry>
+<logentry
+   revision="500">
+<author>pcaron</author>
+<date>2016-10-11T21:42:02.444925Z</date>
+<paths>
+<path
+   action="M"
+   kind="file">/equipe02/DM1/cas_utilisation.vpp</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM1/rapport.htm</path>
+</paths>
+<msg>statistiques dans le rapport</msg>
+</logentry>
+<logentry
+   revision="499">
+<author>gevrai</author>
+<date>2016-10-11T21:37:22.662910Z</date>
+<paths>
+<path
+   action="M"
+   kind="file">/equipe02/DM1/rapport.htm</path>
+</paths>
+<msg>risques potentiels de rapport.htm</msg>
+</logentry>
+<logentry
+   revision="493">
+<author>pcaron</author>
+<date>2016-10-11T20:59:29.487439Z</date>
+<paths>
+<path
+   action="M"
+   kind="file">/equipe02/DM1/rapport.htm</path>
+</paths>
+<msg>udpate info personnelles</msg>
+</logentry>
+<logentry
+   revision="489">
+<author>pcaron</author>
+<date>2016-10-11T20:51:56.579949Z</date>
+<paths>
+<path
+   action="M"
+   kind="file">/equipe02/DM1/rapport.htm</path>
+</paths>
+<msg>minor update</msg>
+</logentry>
+<logentry
+   revision="450">
+<author>pcaron</author>
+<date>2016-10-11T17:05:28.606130Z</date>
+<paths>
+<path
+   kind="dir"
+   action="A">/equipe02/stats</path>
+<path
+   action="A"
+   kind="file">/equipe02/stats/2016-09.html</path>
+<path
+   kind="file"
+   action="A">/equipe02/stats/activity.png</path>
+<path
+   action="A"
+   kind="file">/equipe02/stats/activity_day.png</path>
+<path
+   action="A"
+   kind="file">/equipe02/stats/activity_day_gevrai.png</path>
+<path
+   action="A"
+   kind="file">/equipe02/stats/activity_day_pcaron.png</path>
+<path
+   action="A"
+   kind="file">/equipe02/stats/activity_time.png</path>
+<path
+   kind="file"
+   action="A">/equipe02/stats/activity_time_gevrai.png</path>
+<path
+   action="A"
+   kind="file">/equipe02/stats/activity_time_pcaron.png</path>
+<path
+   kind="file"
+   action="A">/equipe02/stats/bug.png</path>
+<path
+   kind="file"
+   action="A">/equipe02/stats/churn.html</path>
+<path
+   kind="file"
+   action="A">/equipe02/stats/cloud.html</path>
+<path
+   kind="file"
+   action="A">/equipe02/stats/commitlog.html</path>
+<path
+   action="A"
+   kind="file">/equipe02/stats/commitscatterauthors.png</path>
+<path
+   action="A"
+   kind="file">/equipe02/stats/developers.html</path>
+<path
+   kind="file"
+   action="A">/equipe02/stats/dir.html</path>
+<path
+   action="A"
+   kind="file">/equipe02/stats/dir_DM1.html</path>
+<path
+   action="A"
+   kind="file">/equipe02/stats/dir_sizes.html</path>
+<path
+   action="A"
+   kind="file">/equipe02/stats/directories_loc_timeline.png</path>
+<path
+   action="A"
+   kind="file">/equipe02/stats/directory_sizes.png</path>
+<path
+   kind="file"
+   action="A">/equipe02/stats/directory_sizes_gevrai.png</path>
+<path
+   kind="file"
+   action="A">/equipe02/stats/directory_sizes_pcaron.png</path>
+<path
+   action="A"
+   kind="file">/equipe02/stats/file-deleted.png</path>
+<path
+   kind="file"
+   action="A">/equipe02/stats/file.png</path>
+<path
+   kind="file"
+   action="A">/equipe02/stats/file_count.png</path>
+<path
+   kind="file"
+   action="A">/equipe02/stats/file_size.png</path>
+<path
+   kind="file"
+   action="A">/equipe02/stats/file_sizes.html</path>
+<path
+   action="A"
+   kind="file">/equipe02/stats/folder-deleted.png</path>
+<path
+   kind="file"
+   action="A">/equipe02/stats/folder.png</path>
+<path
+   action="A"
+   kind="file">/equipe02/stats/index.html</path>
+<path
+   action="A"
+   kind="file">/equipe02/stats/jtreemap-1.1.0.jar</path>
+<path
+   action="A"
+   kind="file">/equipe02/stats/loc.html</path>
+<path
+   action="A"
+   kind="file">/equipe02/stats/loc.png</path>
+<path
+   kind="file"
+   action="A">/equipe02/stats/loc_module.png</path>
+<path
+   kind="file"
+   action="A">/equipe02/stats/loc_module_DM1.png</path>
+<path
+   action="A"
+   kind="file">/equipe02/stats/loc_per_author.png</path>
+<path
+   kind="file"
+   action="A">/equipe02/stats/loc_small.png</path>
+<path
+   kind="file"
+   action="A">/equipe02/stats/locandchurn.png</path>
+<path
+   kind="file"
+   action="A">/equipe02/stats/logfile.log</path>
+<path
+   kind="file"
+   action="A">/equipe02/stats/objectlab-statcvs.css</path>
+<path
+   action="A"
+   kind="file">/equipe02/stats/repomap-data.txt</path>
+<path
+   action="A"
+   kind="file">/equipe02/stats/repomap.html</path>
+<path
+   kind="file"
+   action="A">/equipe02/stats/tt-twitter-micro3.png</path>
+<path
+   action="A"
+   kind="file">/equipe02/stats/tweet-this.png</path>
+<path
+   action="A"
+   kind="file">/equipe02/stats/user_gevrai.html</path>
+<path
+   action="A"
+   kind="file">/equipe02/stats/user_pcaron.html</path>
+</paths>
+<msg>ajout des statistiques</msg>
+</logentry>
+<logentry
+   revision="449">
+<author>pcaron</author>
+<date>2016-10-11T17:03:15.121839Z</date>
+<paths>
+<path
+   action="M"
+   kind="file">/equipe02/DM1/rapport.htm</path>
+</paths>
+<msg>Modification un peu des risques</msg>
+</logentry>
+<logentry
+   revision="446">
+<author>pcaron</author>
+<date>2016-10-11T16:57:51.964633Z</date>
+<paths>
+<path
+   kind="file"
+   action="M">/equipe02/DM1/rapport.htm</path>
+</paths>
+<msg>Modification de besoins non-fonctionnels</msg>
+</logentry>
+<logentry
+   revision="437">
+<author>pcaron</author>
+<date>2016-10-11T16:30:08.303052Z</date>
+<paths>
+<path
+   kind="dir"
+   action="M">/equipe02/DM1</path>
+</paths>
+<msg>actualisation</msg>
+</logentry>
+<logentry
+   revision="417">
+<author>gevrai</author>
+<date>2016-10-11T03:02:33.593150Z</date>
+<paths>
+<path
+   action="M"
+   kind="file">/equipe02/DM1/cas_utilisation.vpp</path>
+</paths>
+<msg>smallfix</msg>
+</logentry>
+<logentry
+   revision="410">
+<author>gevrai</author>
+<date>2016-10-11T02:17:25.955578Z</date>
+<paths>
+<path
+   action="A"
+   kind="file">/equipe02/DM1/cas_utilisation_UML.png</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM1/rapport.htm</path>
+</paths>
+<msg>Ajout d'une image png du diagramme UML des CUs et modifications du rapport pour afficher celle-ci</msg>
+</logentry>
+<logentry
+   revision="409">
+<author>gevrai</author>
+<date>2016-10-11T01:16:43.838218Z</date>
+<paths>
+<path
+   action="M"
+   kind="file">/equipe02/DM1/cas_utilisation.vpp</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM1/rapport.htm</path>
+</paths>
+<msg>Mise en page du diagramme UML pour le rapport</msg>
+</logentry>
+<logentry
+   revision="401">
+<author>gevrai</author>
+<date>2016-10-10T21:21:24.683208Z</date>
+<paths>
+<path
+   kind="file"
+   action="A">/equipe02/DM1/rapport.htm</path>
+</paths>
+<msg>Création et mise en page de rapport.htm</msg>
+</logentry>
+<logentry
+   revision="269">
+<author>gevrai</author>
+<date>2016-10-07T17:02:55.602321Z</date>
+<paths>
+<path
+   action="D"
+   kind="file">/equipe02/DM1/ChocAn.pdf</path>
+<path
+   action="D"
+   kind="file">/equipe02/DM1/cas_utilisation.vux</path>
+</paths>
+<msg>cleanup</msg>
+</logentry>
+<logentry
+   revision="268">
+<author>gevrai</author>
+<date>2016-10-07T17:01:49.396848Z</date>
+<paths>
+<path
+   action="M"
+   kind="file">/equipe02/DM1/cas_utilisation.html</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM1/cas_utilisation.vux</path>
+</paths>
+<msg>cas_utilisation.html
+- Modif de modif membre
+- Modif de mise a jour des enregistrements d'adhesion
+- Ajout de creer enregistrements TEF
+
+</msg>
+</logentry>
+<logentry
+   revision="266">
+<author>pcaron</author>
+<date>2016-10-07T16:56:45.411554Z</date>
+<paths>
+<path
+   action="M"
+   kind="file">/equipe02/DM1/cas_utilisation.vpp</path>
+</paths>
+<msg>modifications au fichier vpp</msg>
+</logentry>
+<logentry
+   revision="263">
+<author>pcaron</author>
+<date>2016-10-07T15:48:59.137245Z</date>
+<paths>
+<path
+   kind="file"
+   action="D">/equipe02/DM1/data.zip</path>
+<path
+   kind="file"
+   action="D">/equipe02/DM1/project.xml</path>
+</paths>
+<msg>cleanup</msg>
+</logentry>
+<logentry
+   revision="237">
+<author>pcaron</author>
+<date>2016-10-06T15:22:14.650278Z</date>
+<paths>
+<path
+   kind="file"
+   action="A">/equipe02/DM1/ChocAn.pdf</path>
+<path
+   kind="file"
+   action="M">/equipe02/DM1/cas_utilisation.vpp</path>
+<path
+   kind="file"
+   action="A">/equipe02/DM1/data.zip</path>
+<path
+   action="A"
+   kind="file">/equipe02/DM1/project.xml</path>
+</paths>
+<msg>Downgrade du fichier vpp vers 13.1, devrait fonctionner maintenant</msg>
+</logentry>
+<logentry
+   revision="225">
+<author>gevrai</author>
+<date>2016-10-05T19:29:33.231469Z</date>
+<paths>
+<path
+   action="D"
+   kind="file">/equipe02/DM1/cas_utilisation.vpp~1</path>
+<path
+   kind="file"
+   action="D">/equipe02/DM1/glossaire.txt</path>
+</paths>
+<msg>Menage de fichiers inutiles</msg>
+</logentry>
+<logentry
+   revision="224">
+<author>gevrai</author>
+<date>2016-10-05T19:24:02.409558Z</date>
+<paths>
+<path
+   kind="file"
+   action="M">/equipe02/DM1/cas_utilisation.html</path>
+</paths>
+<msg>update cas_utilisation.html
+- Acceder repertoire des fournisseurs maintenant plus verbose
+- Typos et legeres modif ailleur
+</msg>
+</logentry>
+<logentry
+   revision="215">
+<author>gevrai</author>
+<date>2016-10-05T00:14:09.090735Z</date>
+<paths>
+<path
+   kind="file"
+   action="M">/equipe02/DM1/cas_utilisation.html</path>
+</paths>
+<msg>cas_utilisation.html Verification du numéro de membre
+- Ajout d'un paramètre de sécurité simple nécessitant une carte d'identité de la part du membre
+- Le message "Valide" affiche maintenant le nom du membre
+</msg>
+</logentry>
+<logentry
+   revision="213">
+<author>gevrai</author>
+<date>2016-10-04T23:55:39.502672Z</date>
+<paths>
+<path
+   kind="file"
+   action="M">/equipe02/DM1/cas_utilisation.html</path>
+</paths>
+<msg>update cas_utilisation.html
+- Cas d'utilisations séparés pour chaque rapports (membre, fournisseur, synthèse et TEF) pour mieux réfléter l'organisation du diagramme UML des CU
+- Modif et correction de typos sur certains CUs
+- Mise en page consistante
+
+</msg>
+</logentry>
+<logentry
+   revision="192">
+<author>gevrai</author>
+<date>2016-10-04T19:29:32.074901Z</date>
+<paths>
+<path
+   kind="file"
+   action="M">/equipe02/DM1/cas_utilisation.html</path>
+</paths>
+<msg>charset fixed to UTF-8</msg>
+</logentry>
+<logentry
+   revision="186">
+<author>pcaron</author>
+<date>2016-10-04T10:28:20.207350Z</date>
+<paths>
+<path
+   kind="file"
+   action="M">/equipe02/DM1/cas_utilisation.html</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM1/cas_utilisation.vpp</path>
+</paths>
+<msg>ajouts de cas d'utilisations et quelques changements</msg>
+</logentry>
+<logentry
+   revision="185">
+<author>pcaron</author>
+<date>2016-10-04T09:26:09.088911Z</date>
+<paths>
+<path
+   kind="file"
+   action="M">/equipe02/DM1/glossaire.html</path>
+</paths>
+<msg>cleanup du glossaire</msg>
+</logentry>
+<logentry
+   revision="184">
+<author>pcaron</author>
+<date>2016-10-04T08:53:25.312662Z</date>
+<paths>
+<path
+   action="M"
+   kind="file">/equipe02/DM1/cas_utilisation.vpp</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM1/cas_utilisation.vux</path>
+<path
+   action="A"
+   kind="file"
+   copyfrom-path="/equipe02/DM1/glossaire.txt"
+   copyfrom-rev="119">/equipe02/DM1/glossaire.txt</path>
+</paths>
+<msg>réglage des problèmes de lignes toutes croches</msg>
+</logentry>
+<logentry
+   revision="182">
+<author>gevrai</author>
+<date>2016-10-04T03:26:03.945954Z</date>
+<paths>
+<path
+   action="M"
+   kind="file">/equipe02/DM1/cas_utilisation.html</path>
+</paths>
+<msg>Ajout de 2 CUs dans cas_utilisation.html
+</msg>
+</logentry>
+<logentry
+   revision="145">
+<author>gevrai</author>
+<date>2016-09-30T17:26:36.840940Z</date>
+<paths>
+<path
+   action="M"
+   kind="file">/equipe02/DM1/cas_utilisation.html</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM1/cas_utilisation.vpp</path>
+</paths>
+<msg>Update minime des CU</msg>
+</logentry>
+<logentry
+   revision="144">
+<author>gevrai</author>
+<date>2016-09-30T17:02:01.714822Z</date>
+<paths>
+<path
+   kind="file"
+   action="M">/equipe02/DM1/cas_utilisation.html</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM1/cas_utilisation.vpp</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM1/glossaire.html</path>
+</paths>
+<msg>Mise en page et écriture du premier cas d'utilisation
+-Vérification du numéro de membre
+Légers changements dans le diagramme des CU
+
+</msg>
+</logentry>
+<logentry
+   revision="137">
+<author>gevrai</author>
+<date>2016-09-29T20:29:54.954351Z</date>
+<paths>
+<path
+   action="A"
+   kind="file">/equipe02/DM1/cas_utilisation.html</path>
+<path
+   action="A"
+   kind="file">/equipe02/DM1/cas_utilisation.vpp</path>
+<path
+   kind="file"
+   action="A">/equipe02/DM1/cas_utilisation.vpp~1</path>
+<path
+   action="A"
+   kind="file">/equipe02/DM1/cas_utilisation.vux</path>
+<path
+   kind="file"
+   action="D">/equipe02/DM1/glossaire.txt</path>
+</paths>
+<msg>Creation du diagramme UML des cas d'utilisations.
+Deletion de glossaire.txt maintenant obsolete.
+
+</msg>
+</logentry>
+<logentry
+   revision="127">
+<author>gevrai</author>
+<date>2016-09-28T01:53:28.612464Z</date>
+<paths>
+<path
+   action="M"
+   kind="file">/equipe02/DM1/glossaire.html</path>
+</paths>
+<msg>Edition de glossaire.html
+- Terme maintenant ordonnes alphabetiquements
+- Addition et modification de certaines definitions
+</msg>
+</logentry>
+<logentry
+   revision="126">
+<author>gevrai</author>
+<date>2016-09-28T01:35:42.415243Z</date>
+<paths>
+<path
+   action="A"
+   kind="file">/equipe02/DM1/glossaire.html</path>
+<path
+   action="M"
+   kind="file">/equipe02/DM1/glossaire.txt</path>
+</paths>
+<msg>Creation de glossaire.html</msg>
+</logentry>
+<logentry
+   revision="119">
+<author>gevrai</author>
+<date>2016-09-27T21:17:30.499096Z</date>
+<paths>
+<path
+   action="M"
+   kind="file">/equipe02/DM1/glossaire.txt</path>
+</paths>
+<msg>merge resolved test</msg>
+</logentry>
+<logentry
+   revision="118">
+<author>pcaron</author>
+<date>2016-09-27T21:14:33.640089Z</date>
+<paths>
+<path
+   kind="file"
+   action="M">/equipe02/DM1/glossaire.txt</path>
+</paths>
+<msg>test de collision (l'autre)</msg>
+</logentry>
+<logentry
+   revision="115">
+<author>pcaron</author>
+<date>2016-09-27T21:13:10.822598Z</date>
+<paths>
+<path
+   action="A"
+   kind="file">/equipe02/DM1/glossaire.txt</path>
+</paths>
+<msg>glossaire</msg>
+</logentry>
+<logentry
+   revision="113">
+<author>pcaron</author>
+<date>2016-09-27T21:10:22.157175Z</date>
+<paths>
+<path
+   action="A"
+   kind="dir">/equipe02/DM1</path>
+</paths>
+<msg>BOUH</msg>
+</logentry>
+<logentry
+   revision="83">
+<author>pcaron</author>
+<date>2016-09-26T18:11:17.712519Z</date>
+<paths>
+<path
+   kind="file"
+   action="M">/equipe02/README.txt</path>
+</paths>
+<msg>Test commit</msg>
+</logentry>
+<logentry
+   revision="38">
+<author>gevrai</author>
+<date>2016-09-20T21:58:50.720273Z</date>
+<paths>
+<path
+   action="M"
+   kind="file">/equipe02/README.txt</path>
+</paths>
+<msg>Premier vrai commit, update README.txt</msg>
+</logentry>
+<logentry
+   revision="29">
+<author>gevrai</author>
+<date>2016-09-20T21:54:28.640049Z</date>
+<paths>
+<path
+   kind="file"
+   action="M">/equipe02/README.txt</path>
+</paths>
+<msg>Autre test de commit</msg>
+</logentry>
+<logentry
+   revision="14">
+<author>gevrai</author>
+<date>2016-09-20T21:37:16.520588Z</date>
+<paths>
+<path
+   action="M"
+   kind="file">/equipe02/README.txt</path>
+</paths>
+<msg>Second commit (README.txt modifications)</msg>
+</logentry>
+<logentry
+   revision="13">
+<author>gevrai</author>
+<date>2016-09-20T21:35:47.213985Z</date>
+<paths>
+<path
+   action="A"
+   kind="file">/equipe02/README.txt</path>
+</paths>
+<msg>First commit</msg>
+</logentry>
+<logentry
+   revision="1">
+<author>syriani</author>
+<date>2016-09-20T17:34:58.550413Z</date>
+<paths>
+<path
+   action="A"
+   kind="dir">/equipe02</path>
+</paths>
+</logentry>
+</log>

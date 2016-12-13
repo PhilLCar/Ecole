@@ -1,0 +1,251 @@
+import java.util.ArrayList;
+import java.util.Date;
+
+import static java.nio.file.StandardOpenOption.*;
+
+import java.nio.file.*;
+import java.text.SimpleDateFormat;
+import java.time.ZoneId;
+import java.io.*;
+
+/**
+ * The Class ReportCreator, which is used to create all types of reports
+ *  for all types of ChocAn's users.
+ * Create path if directories do not exist
+ * Create files if don't exist
+ *@author Antoine Zimmmermann
+ */
+public class ReportCreator {
+	//public static final String SUPPLIER_REPORT_PATH = "./bin/reportsDirectory/supplierReport/";
+	//public static final String MEMBER_REPORT_PATH = "./bin/reportsDirectory/memberReport/";
+	//public static final String SYNTHESIS_REPORT_PATH = "./bin/reportsDirectory/synthesisReport/";
+	public static final String SUPPLIER_REPORT_PATH = "Reports/";
+	public static final String MEMBER_REPORT_PATH = "Reports/";
+	public static final String SYNTHESIS_REPORT_PATH = "Reports/";
+	private ArrayList<Claim> claims;
+	private ArrayList<User> users;
+	private ArrayList<EFT> eft;
+	private ArrayList<Service> services;
+	private ClaimDBManager cdbm ;
+	private UserDBManager udbm;
+	private ServiceDBManager sdbm;
+	SimpleDateFormat formatter;
+
+
+	/**
+	 * Instantiates a new ReportCreator which is used to make new reports for Members, Suppliers and Managers
+	 */
+	public ReportCreator(){
+		formatter = new SimpleDateFormat("dd-MM-yy");
+		this.claims = DataBase.getDataBase().getClaims();
+		this.users = DataBase.getDataBase().getUsers();
+		this.eft = DataBase.getDataBase().getDataEFT();
+		this.services = DataBase.getDataBase().getServices();
+		cdbm = new ClaimDBManager();
+		udbm = new UserDBManager();
+		sdbm = new ServiceDBManager();
+	}
+
+	/**
+	* Prints a member's report for a given period of time.
+	*
+	* @param userID userID of the member we want the report for
+	* @param fromDate beginning of time period the report covers
+	* @param toDate end of time period the report covers
+	*/
+	public void memberReport(int userID, Date fromDate, Date toDate) {
+
+		String reportText = "";
+		Date serviceDate;
+		//Start info User
+		if (udbm != null){
+			if(udbm.find(userID) == null)
+				System.out.println("USER NOT FOUND");
+			else
+				System.out.println("USER FOUND");
+			reportText += udbm.find(userID).getName().toString() + "\n" ;
+			reportText += "Numero de membre: " + udbm.find(userID).getUserID() + "\n" ;
+			reportText +=((Member)udbm.find(userID)).getAddress().getStreetNumber() + " ";
+			reportText +=((Member)udbm.find(userID)).getAddress().getStreetName() + "\n" ;
+			reportText +=((Member)udbm.find(userID)).getAddress().getCity() + "\n" ;
+			reportText +=((Member)udbm.find(userID)).getAddress().getProvince() + "\n" ;
+			reportText +=((Member)udbm.find(userID)).getAddress().getZipCode() + "\n";
+			//end info User
+			//Beginning list services
+			reportText += "Services recus:" + "\n";
+
+			for (Claim c : cdbm.findClaimsForSupplierID(userID)){
+				serviceDate = Date.from(c.getServiceDate().atStartOfDay().atZone(ZoneId.systemDefault()).toInstant());
+				if( serviceDate.before(toDate) && serviceDate.after(fromDate)){
+					System.out.println(c.getMemID() + " recoit de " +c.getSupID());
+					reportText += c.getServiceDate().toString() + "\n" +
+							udbm.find(c.getSupID()).getName() + "\n" +
+							sdbm.find(c.getServID()).getName()+ "\n\n";
+				}
+			}
+			//nom fichier
+			Date dateReport = new Date();
+			SimpleDateFormat formater = null;
+			formater = new SimpleDateFormat("dd-MM-yy");
+			String nameReportFile = ""+ MEMBER_REPORT_PATH + udbm.find(userID).getName()+ "_" + formater.format(dateReport) + ".txt" ;
+
+			fileCreator(MEMBER_REPORT_PATH,nameReportFile, reportText);
+		}
+	}
+
+	/**
+	 * Prints a supplier's report for a given period of time
+	 *
+	 * @param userID userID of the supplier we want the report for
+	 * @param fromDate beginning of time period the report covers
+	 * @param toDate end of time period the report covers
+	 */
+	public void supplierReport(int userID, Date fromDate, Date toDate) {
+
+		String reportText = "";
+		String dateString;
+		Date serviceDate;
+		//Start info User
+		reportText += udbm.find(userID).getName().toString() + "\n" +
+			 "Numero de fournisseur: " + udbm.find(userID).getUserID() + "\n" +
+			((Supplier)udbm.find(userID)).getAddress().getStreetNumber() + " " +
+			((Supplier)udbm.find(userID)).getAddress().getStreetName() + "\n" +
+			((Supplier)udbm.find(userID)).getAddress().getCity() + "\n" +
+			((Supplier)udbm.find(userID)).getAddress().getProvince() + "\n" +
+			((Supplier)udbm.find(userID)).getAddress().getZipCode() + "\n";
+		//end info User
+		//Beginning list services
+		reportText += "Services fournis :" + "\n";
+		for (Claim c : cdbm.findClaimsForSupplierID(userID)){
+
+			serviceDate = Date.from(c.getServiceDate().atStartOfDay().atZone(ZoneId.systemDefault()).toInstant());
+			if(serviceDate.before(toDate) && serviceDate.after(fromDate)){
+
+
+				reportText += c.getServiceDate().toString() + "\n" +
+					c.getTransactionTime() + "\n" +			////PAS CERTAIN POUR QUE CETTE INFO SOIT LA BONNE
+					udbm.find(c.getMemID()).getName() + "\n" +
+					c.getMemID() + "\n" +
+					c.getServID()+ "\n" +
+					String.format("% .2f",  c.getPrice()) + "$\n" ;
+			}
+		}
+		Date dateReport = new Date();
+		formatter = new SimpleDateFormat("dd-MM-yy");
+		String nameSupplierFile = "" + SUPPLIER_REPORT_PATH + udbm.find(userID).getName()+ "_" + formatter.format(dateReport) + ".txt" ;
+		//fin nom fichier
+		//creation fichier
+
+		fileCreator(SUPPLIER_REPORT_PATH,nameSupplierFile, reportText);
+		//fin creation fichier
+		//throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * Creates/replaces a file at inside a precise directory and fills it with
+	 * specified text
+	 *
+	 * @param directoryName directory where we should create/replace the file
+	 * @param fileName name of the file we want to create/replace
+	 * @param text text to print to the file
+	 */
+	public void fileCreator(String directoryName, String fileName, String text){
+		try {
+			File directory = new File(directoryName);
+			File[] oldFiles = directory.listFiles();
+			for (File f : oldFiles) {
+				if (f.getName().equals(fileName)){
+					f.delete();
+				}
+			}
+			directory.mkdirs();
+			File report = new File(fileName);
+			report.createNewFile();
+
+            PrintWriter writer = new PrintWriter(fileName);
+            writer.print(text);
+            writer.close();
+        } catch (IOException e) {
+            e.printStackTrace(System.err);
+        }
+	}
+
+	/**
+	 * Prints synthesisReport for Managers of ChocAn
+	 *
+	 * @param fromDate beginning of time period the report covers
+	 * @param toDate end of time period the report covers
+	 */
+	public void synthesisReport(Date fromDate, Date toDate) {
+		String reportText = "Synthesis Report\n\tfrom "+formatter.format(fromDate)+" to "+formatter.format(toDate)+"\n\n";
+		Date serviceDate;
+		double finalAmount = 0;
+		double amountPerSupplier;
+		int numberOfActiveSuppliers = 0;
+		int finalNumberOfConsultations = 0;
+		ArrayList<Claim> supplierClaimsList = new ArrayList<Claim>();
+		for (User u : users){
+			if (u instanceof Supplier){
+				amountPerSupplier = 0;
+				supplierClaimsList = cdbm.findClaimsForSupplierID(u.getUserID());
+				if (supplierClaimsList.size() > 0){
+					for (Claim c : supplierClaimsList) {
+						serviceDate = Date.from(c.getServiceDate().atStartOfDay().atZone(ZoneId.systemDefault()).toInstant());
+						if(serviceDate.before(toDate) && serviceDate.after(fromDate)){
+							numberOfActiveSuppliers++;
+							finalNumberOfConsultations ++;
+							amountPerSupplier += c.getPrice();
+						}
+					}
+					finalAmount += amountPerSupplier;
+					reportText += u.getName() + "\n" + u.getUserID() + "\n" +
+							"Number of consultations : \t" + supplierClaimsList.size() + "\n" +
+							"Amount : \t" + String.format("% .2f",  amountPerSupplier) + "$\n____________________________________\n";
+				}
+			}
+		}
+		reportText += "____________________________________\n" +
+				"Number of active suppliers : \t" + numberOfActiveSuppliers + "\n" +
+				"Number of consultations : \t" + finalNumberOfConsultations + "\n" +
+				"Final amount : \t" + finalAmount +"$";
+		String nameReportFile = SYNTHESIS_REPORT_PATH + "synthesisReport.txt";
+		fileCreator(SYNTHESIS_REPORT_PATH, nameReportFile, reportText);
+
+		//throw new UnsupportedOperationException();
+	}
+
+//	/**
+//	 *
+//	 * @param fromDate
+//	 * @param toDate
+//	 */
+//	public void EFTReport(Date fromDate, Date toDate) {
+//
+//		//fournisseur et montant correspondant
+//		throw new UnsupportedOperationException();
+//	}
+
+	/**
+	 * Prints all types of reports for a given time period.
+
+	 * @param fromDate furthest date for which to look up reports
+	 * @param toDate closest date for which to look up reports
+	 */
+	public void allReports(Date fromDate, Date toDate) {
+		for (User u : users ) {
+			if (u instanceof Member) {
+				System.out.println("Member = "+u.getName().toString());
+				this.memberReport(u.getUserID(), fromDate, toDate);
+			}
+			else if (u instanceof Supplier) {
+				System.out.println("Supplier = "+u.getName().toString());
+				this.supplierReport(u.getUserID(), fromDate, toDate);
+			}
+		}
+		this.synthesisReport(fromDate, toDate);
+		//System.out.println("Reports have been sent");
+//		this.EFTReport(fromDate, toDate);
+
+	}
+
+}

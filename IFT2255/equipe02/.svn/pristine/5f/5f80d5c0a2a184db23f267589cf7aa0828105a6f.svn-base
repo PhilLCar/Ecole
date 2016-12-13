@@ -1,0 +1,41 @@
+import java.awt.Component;
+import java.util.ArrayList;
+
+public class SupervisorSession extends Session {
+
+	/**
+	 * 
+	 * @param userID
+	 */
+	public void printReport() {
+		// TODO - implement SupervisorSession.printSynthesisReport
+		throw new UnsupportedOperationException();
+	}
+
+	public void modifyUser() {
+		// TODO - implement SupervisorSession.modifyUser
+		throw new UnsupportedOperationException();
+	}
+
+	public void modifyService() {
+		// TODO - implement SupervisorSession.modifyService
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * 
+	 * @param userID
+	 * @param hash
+	 */
+	public SupervisorSession(Supervisor supervisor) {
+		super(supervisor);
+	}
+
+	@Override
+	public ArrayList<Component> getUI() {
+		return null;
+		// TODO Auto-generated method stub
+		
+	}
+
+}

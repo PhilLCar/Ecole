@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Devoir 3 - Génie logiciel</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="public/stylesheets/style.css" media="screen">
+</head>
+
+<body>
+    <nav class="nav">
+        <ul>
+            <li>
+                <a href="#exigences">Exigences</a>
+            </li>
+            <li>
+                <a href="#analyse">Analyse</a>
+            </li>
+            <li>
+                <a href="#conception">Conception</a>
+            </li>
+            <li>
+                <a href="#implementation">Implémentation</a>
+            </li>
+            <li>
+                <a href="#test">Test</a>
+            </li>
+            <li>
+                <a href="#svn">Statistiques SVN</a>
+            </li>
+        </ul>
+
+    </nav>
+
+    <main>
+
+        <h1 style="text-align: center;">
+        IFT 2255 - Devoir 2 - Analyse et conception</h1>
+        <h2>
+        Information générale</h2>
+        <p>
+            <span style="font-weight: bold;">Nom: </span>Félix Bélanger-Robillard
+            <br />
+            <span style="font-weight: bold;">Matricule: </span>3159
+            <br />
+            <span style="font-weight: bold;">Courriel: </span>felix.belanger-robillard@umontreal.ca
+            <br />
+            <span style="font-weight: bold;">temps mis: </span>14 heures
+        </p>
+        <p>
+            <span style="font-weight: bold;">Nom: </span>Antoine Zimmermann
+            <br />
+            <span style="font-weight: bold;">Matricule: </span>1429
+            <br />
+            <span style="font-weight: bold;">Courriel: </span>antoine.zimmermann@umontreal.ca
+            <br />
+            <span style="font-weight: bold;">temps mis: </span>16 heures
+        </p>
+
+        <p>
+            <b>Nom: </b> Gevrai Jodoin-Tremblay <br />
+            <b>Matricule: </b>9650 <br />
+            <b>Courriel: </b> gevrai.jodoin-tremblay@umontreal.ca <br />
+            <b>Temps mis: </b> ~12 heures
+        </p>
+
+        <p>
+            <b>Nom: </b> Philippe Caron <br />
+            <b>Matricule: </b>9846<br />
+            <b>Courriel: </b>philippe.caron.4@umontreal.ca <br />
+            <b>Temps mis:</b> ~12 heures
+        </p>
+        <h2>
+        Distribution des tâches</h2>
+        <p>
+            <span style="font-weight: bold;">Soumetteur: Félix</span>
+        </p>
+        <table cellpadding="7px">
+            <thead>
+                <tr>
+                    <th class="first_col">
+                        Tâche
+                    </th>
+                    <th>
+                        Antoine
+                    </th>
+                    <th>
+                        Félix
+                    </th>
+                    <th>
+                        Gevrai
+                    </th>
+                    <th>
+                        Philippe
+                    </th>
+
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="first_col">
+                        Diagrammes
+                    </td>
+                    <td>
+                        De séquence et analyse dynamique (50%)
+                    </td>
+                    <td>
+                        Objet et classe (50%)
+                    </td>
+                </tr>
+                <tr>
+                    <td class="first_col">
+                        Description et capture SVN
+                    </td>
+                    <td>
+                        Premier jet (70%)
+                    </td>
+                    <td>
+                        Révision (30%)
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="tasks">
+            <h2>
+        Hypothèses</h2>
+
+
+            </p>
+        </div>
+        <div class="tasks" id="resume"></div>
+        <h2>
+        Résumé</h2>
+
+        <p> </p>
+
+        <div class="tasks" id="exigences">
+            <h2>
+      <a href="">Exigences</a>
+    </h2>
+        </div>
+
+        <div class="tasks" id="analyse">
+            <h2>
+          <a href="">Analyse</a>
+        </h2>
+        </div>
+
+        <div class="tasks" id="conception">
+            <h2>
+                  <a href="">Conception</a>
+                </h2>
+        </div>
+
+        <div class="tasks" id="implementation">
+            <h2>
+                          <a href="">Implémentation</a>
+                        </h2>
+        </div>
+
+        <div class="tasks" id="test">
+            <h2>
+                                  <a href="">Test</a>
+                                </h2>
+        </div>
+        <div id="svn" class="tasks">
+
+            <h2>
+        Statistiques SVN</h2>
+            <p>
+                <img src="public/image/percentOfAuthorship_devoir2.png" alt="Commits SVN" />
+                <img src="public/image/statistics_devoir2.png" alt="Statistiques SVN" />
+
+
+            </p>
+        </div>
+
+    </main>
+
+</body>
+
+</html>

@@ -1,0 +1,21 @@
+import javax.swing.JPanel;
+
+public abstract class Session {
+
+	private User user;
+
+	/**
+	 * 
+	 * @param userID
+	 * @param hash
+	 */
+	public Session(User user) {
+		this.user = user;
+	}
+	
+	public User getUser() {
+		return this.user;
+	}
+	
+	public abstract JPanel getUI();
+}

@@ -1,0 +1,369 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[french]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{tcolorbox}
+\usepackage[margin=2cm]{geometry}
+\usepackage{array}
+\usepackage{hyperref}
+\usepackage{tikz}
+\usepackage{listings}
+\usepackage{eurosym}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{cancel}
+\usepackage{xcolor}
+\usepackage{booktabs}
+\usetikzlibrary{automata, arrows}
+
+\title{IFT2105 A2016 - Devoir 2}
+\author{Philippe Caron}
+\date{\today}
+
+\renewcommand{\thesubsubsection}{\alph{subsubsection})}
+\renewcommand{\thefootnote}{\fnsymbol{footnote}}
+\newcommand\NP{{\normalfont{\textbf{NP}}}}
+\newcommand\PP{{\normalfont{\textbf{P}}}}
+\newcommand\col[1]{\textit{#1-COL}}
+\newcommand\SC{\textit{SAT-C}}
+\newcommand\bk[1]{\langle #1 \rangle}
+\newcommand\cli[1]{\textit{#1-CLIQUE}}
+
+\lstset{frame=tb,
+  language=C,
+  aboveskip=3mm,
+  belowskip=3mm,
+  showstringspaces=false,
+  columns=flexible,
+  basicstyle={\small\ttfamily},
+  numbers=none,
+  numberstyle=\tiny\color{pink},
+  keywordstyle=\color{purple},
+  commentstyle=\color{brown},
+  stringstyle=\color{brown},
+  breaklines=true,
+  breakatwhitespace=true,
+  tabsize=3
+}
+\begin{document}
+\section{Question 1}
+On sait que \col{3} est \NP-complet. Afin de prouver que \col{5} l'est aussi, nous allons prouver que \col{3} peut être réduit à \col{5} en un temps polynomial, donc que $\col{3} \leq_\PP \col{5}$.
+
+\subsection{Transformation}
+Afin de transformer un graphe dans \col{3} en graphe dans \col{5} équivalent, on ajoute tout simplement deux nouveaux sommets connectés ensemble et à tous les sommets du graphe original. Il est évident que l'un des sommets ajoutés prendra une couleur des 5 disponibles, l'autre en prendra une seconde, et il restera 3 couleurs pour colorier le graphe originial. Par exemple :
+
+\begin{center}
+  \tcbset{nobeforeafter,center title}
+  \tcbox[colback=white, title=$\bk{G}$]{
+    \begin{tikzpicture}[-,>=stealth',shorten >=1pt,auto,node distance=3cm,semithick]
+      \tikzstyle{every state}=[scale = 0.6]
+
+      \node[state, fill=blue,           draw=none, text=white]         (A)                    {1};
+      \node[state, fill=green,          draw=none, text=black]         (B) [right of=A]       {2};
+      \node[state, fill=red,            draw=none, text=white]         (C) [below of=A]       {3};
+      \node[state, fill=blue,           draw=none, text=white]         (D) [right of=C]       {1};
+
+      \path (A) edge (B)
+      edge (C)
+      (B) edge (C)
+      edge (D)
+      (C) edge (D);
+    \end{tikzpicture}
+  }
+  \hspace{3cm}
+  \tcbox[colback=white, title=$f(\bk{G}) \text{=} \bk{G'}$]{
+    \begin{tikzpicture}[-,>=stealth',shorten >=1pt,auto,node distance=3cm,semithick]
+      \tikzstyle{every state}=[scale = 0.6]
+
+      \node[state, fill=blue,           draw=none, text=white]         (A)                    {1};
+      \node[state, fill=green,          draw=none, text=black]         (B) [right of=A]       {2};
+      \node[state, fill=cyan,           draw=none, text=black]         (E) [below right of=B] {4};
+      \node[state, fill=magenta,        draw=none, text=white]         (F) [below left of=A]  {5};
+      \node[state, fill=red,            draw=none, text=white]         (C) [below right of=F] {3};
+      \node[state, fill=blue,           draw=none, text=white]         (D) [below left of=E]  {1};
+
+      \path (A) edge (B)
+      edge (C)
+      (B) edge (C)
+      edge (D)
+      (C) edge (D)
+      (E) edge (A)
+      edge (B)
+      edge (C)
+      edge (D)
+      edge (F)
+      (F) edge (A)
+      edge (B)
+      edge (C)
+      edge (D);
+    \end{tikzpicture}
+  }
+\end{center}
+
+Cette transformation se fait de toute évidence en temps polynomial; si ajouter une arrête se fait en temps constant et il y a $n$ sommets, alors ajouter les 2 nouveaus sommets prend un temps $2n$.
+
+\subsection{Fonction de réduction}
+Soit la fonction $f$ telle que définie en 1.1 avec les propriétés suivantes:
+\begin{align*}
+  &f: \Sigma^* \rightarrow \Sigma^* \\
+  &f(\bk{G}) = \bk{G'}
+\end{align*}
+
+On veut prouver que $$\bk{G} \in \col{3} \Leftrightarrow f(\bk{G}) = \bk{G'} \in \col{5}$$
+
+\subsubsection{\normalfont $\bk{G} \in \col{3} \Rightarrow f(\bk{G}) = \bk{G'} \in \col{5}$}
+Il est facile de se convaincre de cette implication; si un graphe est 3-coloriable et qu'on lui ajoute 2 sommets, alors il est forcément (sans même regarder plus loin) 5-coloriable.
+
+\subsubsection{\normalfont $\bk{G} \in \col{3} \Leftarrow f(\bk{G}) = \bk{G'} \in \col{5}$}
+De manière générale, si un sommet $s$ est connecté à tous les autres d'un graphe $\bk{G} \in \col{k}$, alors il «réserve» une couleur. Le problème devient équivalent à calculer $\bk{G \text{ sans le sommet } s} \in \col{\text{(k-1)}}$. Ici deux sommets répondent à ce critère, donc cette implication est correcte.
+
+\begin{proof}[Preuve de la question 1]
+  Puisque:
+  $$\bk{G} \in \col{3} \Leftrightarrow f(\bk{G}) = \bk{G'} \in \col{5}$$
+  avec $f$ en temps polynomial, et que $\col{3} \in \text{\NP-complet}$
+  alors:
+  $$\col{3} \leq_\PP \col{5}$$
+  et $\col{5} \in \text{\NP-complet}$
+\end{proof}
+
+\pagebreak
+
+\section{Question 2}
+$$L = \{\bk{C_1, C_2} \text{  | les circuit $C_1$ et $C_2$ calculent une fonction différente} \}$$
+\footnote{En assumant que $C_1$ et $C_2$ sont des circuits booléens} On sait que le langage \SC{} est \NP-complet. Ce langage comprends les circuits booléens satisfaisable. Afin de démontrer que $L \in \text{\NP-complet}$, on veut prouver que $\SC \leq_\PP L$.
+
+Pour commencer, nous commencerons par prouver que pour que $C_1$ et $C_2$ ne calculent pas la même fonction, il suffit de trouver une affectation des variable $c$, appliquée sur $C_1$ et $C_2$ indépendament, telle que le résultat de $C_1$ n'égale pas celui de $C_2$.
+
+\subsection{Transformation}
+Afin de réduire les deux circuit à un seul circuit $C_X$, on cherche à être sûr que les deux réponses sont différentes, ce qui revient à obtenir le ou exclusif des deux réponse, donc:
+\begin{align*}
+  C_X &= C_1 \oplus C_2\\
+  &= C_1 \wedge \neg C_2
+\end{align*}
+
+La transformation qu'on veut effectuer ici est la transformation inverse. Intuitivement, on choisira un des circuits $C$ comme étant satisfaisable ($C \in \SC$). Ceci nous conduira à prendre comme circuit opposé un circuit toujours faux.
+
+\subsection{Fonction de réduction}
+À partir ce la, on peut explorer une définition de $f$. Soit $C_f$ un circuit qui retourne toujours faux, on défini $f$ comme suit:
+$$f(\bk{C})=\bk{C, C_f}$$
+
+\subsubsection{\normalfont $\bk{C} \in \SC \Rightarrow f(\bk{C})=\bk{C,C_f} \in L$}
+Si $C$ est satisfaisable, alors $C$ peut retourner vrai. Donc $C$ ne calcule pas la même chose que $C_f$ et $\bk{C, C_f} \in L$.
+
+\subsubsection{\normalfont $\bk{C} \in \SC \Leftarrow f(\bk{C})=\bk{C,C_f} \in L$}
+Si $C$ ne calcule par la même chose que $C_f$, cela signifie que $C$ peut ne pas être faux, donc peut-être vrai, donc satisfaisable.
+
+\begin{proof}[Preuve de la question 2]
+  Puisque:
+  $$\bk{C} \in \SC \Leftrightarrow f(\bk{C})=\bk{C,C_f} \in L$$
+
+  qu'il est trivial de constater que $f$ est exécutable en temps polynomial,
+
+  et que $\SC \in$ \NP-complet alors:
+  
+  $$\SC \leq_\PP L$$
+  
+  et donc $L$ est \NP-complet.
+\end{proof}
+
+\pagebreak
+
+\section{Question 3}
+Soit \cli{k} la réponse à l'existence d'un sous-graphe complet de taille $k$ d'un graphe $G$. On stipule que trouver cette réponse peut-être fait en temps polynomial, autrement dit que:
+$$\forall k \in \mathbb{N}, \cli{k}=\{\bk{G}\text{ | il existe un sous-graphe complet de $G$ de taille $k$}\}\in \PP$$
+
+\subsection{Marche à suivre}
+Afin de prouver qu'il est possible de définir \cli{k} en temps polynomial, nous allons définir un méthode permettant de trouver l'ensemble recherché.
+\subsubsection{Trim-1}
+Nous savons que tous les sommets des cliques de \cli{k} sont liés à au moins $k$ sommets. Le but est donc de parcourir chaque sommet et retirer tous ceux qui ont moins de $k - 1$ liens. Après un parcour, il risque d'y avoir des changements, et peut-être que certains sommets qui étaient liés à plus de ou exactement $(k - 1)$ sommets ne le sont plus. L'étape est donc relancée. Cette étape va divisier le graphe en aucun, un ou plusieurs amas. Si il n'y a aucun amas, on sait que $\cli{k}=\emptyset$. Cet étape nécessite de parcourir $n$ sommets un maximum de $n$ fois (en en enlevant 1 à chaque tour dans le pire cas), donc $\in O(n^2)$ et est polynomiale.
+\subsubsection{Trim-2+}
+On cherche le sommet avec le nombre minimum de lien. Une fois trouvé, on choisi une clique émanant de ce sommet (on ajoute des sommets au sommet d'origine progressivement, en s'assurant qu'ils sont tous connectés). On ajoute la clique à la solution p. Au pire le nombre de combinaison sera de l'ordre de $\frac{n(n+1)}{2}$ ce qui est un polynôme. On sait qu'un polynôme de polynôme est aussi un polynôme, cette étape est donc elle aussi polynomiale.
+\subsubsection{Remarques}
+On peut passer directement de Trim-1 à Trim-2+, le but de
+
+\pagebreak
+
+\section{Question 4}
+Soit
+$$ L= \{\bk{M} \text{ | $M$ est une MT telle que $L(M)$ est hors contexte}\} $$
+
+Montrons que $A_MT
+
+\pagebreak
+
+\section{Annexe}
+En se trompant sur la question 1, voici la preuve de $\col{5} \leq_\PP \col{3}$.
+
+\subsection{Fonction de réduction}
+L'idée est d'examiner un graphe 3-coloriable, il faut donc une façon de transformer le graphe 5-coloriable, en graphe 3-coloriable. On assume ici que chaque sommet est encodé par une structure contenant sa couleur et les autres sommets auquel il est lié. Soit la couleur d'un sommet $s$ donnée par $s_c$, la transformation se fait de manière systématique et consiste à séparer le graphe en deux sous-graphes $O$ et $N$, où $O$ est le graphe original.
+
+\vspace{1cm}
+\begin{tcolorbox}
+  \begin{enumerate}
+  \item Choisir 3 couleurs au hazard, appelons cet ensemble $C$
+  \item Parcourir le graphe, pour tout sommet $s$: (Forme $N$)
+    \begin{itemize}
+    \item Si $s_c \in C$
+      \begin{enumerate}
+      \item Ajouter $s$ à $N$
+      \item $s_c \leftarrow N_c$
+      \end{enumerate}
+    \end{itemize}
+  \item Parcourir le graphe, pour tout sommet $s$ (Forme $O$)
+    \begin{enumerate}
+    \item Parcourir les sommets adjacents à $s$, pour tout sommet $s'$:
+      \begin{itemize}
+      \item Si $s_c = N_c$ et si $s'_c = N_c$, alors fusionner $s$ et $s'$
+      \end{itemize}
+    \end{enumerate}
+  \end{enumerate}
+\end{tcolorbox}
+\vspace{1cm}
+
+L'opération de fusion consiste à ajouter tous les liens de $s'$ à $s$ et de faire pointer tous les liens vers $s'$ sur $s$. Pour un graphe complet de $n$ sommets, l'opération de réduction a donc été effectuée en temps environ $n + n^2 = n(n+1)$. Ce qui est un polynôme, la réduction est donc polynomiale.
+
+\subsection{Équivalence}
+Nous voulons maintenant prouver que, soit un graphe $G$:
+$$G \in \col{5} \Leftrightarrow O \in \col{3} \text{  et  } N \in \col{3}$$
+
+\subsubsection{\normalfont $G \in \col{5} \Rightarrow O \in \col{3} \text{  et  } N \in \col{3}$}
+Commençons par le plus facile. Évidemment, si $G$ est 5-coloriable, alors le graphe $O$ où 3 de ses couleurs ont étés remplacées par une nouvelle couleur $N_c$, et où les arrête $N_c-N_c$ n'existent pas (car fusionnées) est 3-coloriable. Cela revient à constater qu'il est impossible qu'en fusionnant deux sommets de couleurs $N_c$ on engendre un mauvais coloriage:
+
+\begin{center}
+  %\textbf
+  \begin{tikzpicture}[-,>=stealth',shorten >=1pt,auto,node distance=2.8cm,semithick]
+    %\tikzstyle{every state}=[fill=red,draw=none,text=white]
+
+    \node[state, fill=red,   draw=none, text=white]         (A)                    {1};
+    \node[state, fill=green, draw=none, text=black]         (B) [right of=A]       {2};
+    \node[state, fill=blue,  draw=none, text=white]         (C) [below of=A]       {$N_c$};
+    \node[state, fill=blue,  draw=none, text=white]         (D) [below of=B]       {$N_c$};
+
+    \path (A) edge (B)
+    edge (C)
+    edge (D)
+    (B) edge (C)
+    edge (D)
+    (C) edge (D);
+  \end{tikzpicture}
+  \hspace{2cm}
+  \raisebox{42pt}{\Huge $\rightarrow$}
+  \hspace{2cm}
+  \begin{tikzpicture}[-,>=stealth',shorten >=1pt,auto,node distance=2.8cm,semithick]
+    %\tikzstyle{every state}=[fill=red,draw=none,text=white]
+
+    \node[state, fill=red,   draw=none, text=white]         (A)                    {1};
+    \node[state, fill=blue,  draw=none, text=white]         (C) [below right of=A] {$N_c$};
+    \node[state, fill=green, draw=none, text=black]         (B) [above right of=C] {2};
+
+    \path (A) edge (C)
+    (A) edge (B)
+    (C) edge (B);
+  \end{tikzpicture}
+\end{center}
+
+Encore plus trivialement, il est facile de réaliser que le graphe $N$ obtenu suite à l'extraction des $N_c$ est 3-coloriable, sinon cela signifirait que 2 n\oe{}uds adjacents du graphe $N$ sont de la même couleur ce qui signifie que 2 n\oe{}uds adjacents du graphe $G$ sont de la même couleur, ce qui signifie que $G$ n'est pas 5-coloriable, $G$ est 5-coloriable par hypothèse, donc $N$ est 3-coloriable.
+
+\subsubsection{\normalfont $G \in \col{5} \Leftarrow O \in \col{3} \text{  et  } N \in \col{3}$}
+Puisque $O$ et $N$ n'on aucune couleur en commun, on sait que $G \notin \col{5} \Rightarrow O \notin \col{3} \text{  ou  } N \notin \col{3}$. Autrement dit, si $G$ n'est pas 5-coloriable, on sait que «la faute» pourra être détectée soit dans $O$, ou soit dans $N$ (ou les deux), mais il est impossible qu'elle soit ni dans l'un ni dans l'autre. Ceci implique qu'il est impossible que $G$ ne soit pas 5-coloriable et que $O$ et $N$ soient tous les deux 3-coloriables. Nous savons donc que l'équivalence est parfaite.
+
+\subsection{Conclusion}
+\begin{proof}[Preuve de l'annexe]
+  Soit la fonction $f$ expliquée en .1 formellement définie comme suit:
+  \begin{align*}
+    &f: \Sigma^* \rightarrow \Sigma^* \\
+    &f(\bk{G}) = \{\bk{O}, \bk{N}\}
+  \end{align*}
+
+  On peut dire, étant donné l'équivalence expliquée en 1.2 que:
+  $$\bk{G} \in \col{5} \Leftrightarrow f(\bk{G}) = \{\bk{O}, \bk{N}\} \subset \col{3}$$
+
+  Ce qui nous permet de conclure que $\col{5} \leq_\PP \col{3}$
+\end{proof}
+
+\subsection{Exemple}
+\begin{center}
+  \tcbset{nobeforeafter,center title}
+  \tcbox[colback=white, title=$G \in \col{5}$ ?]{
+    \begin{tikzpicture}[-,>=stealth',shorten >=1pt,auto,node distance=3cm,semithick]
+      \tikzstyle{every state}=[scale = 1]
+
+      \node[state, fill=red,            draw=none, text=white]         (A)                    {3};
+      \node[state, fill=green,          draw=none, text=black]         (B) [right of=A]       {1};
+      \node[state, fill=yellow,         draw=none, text=black]         (C) [right of=B]       {5};
+      \node[state, fill=red,            draw=none, text=white]         (D) [right of=C]       {3};
+      \node[state, fill=black!50!green, draw=none, text=white]         (E) [above right of=A] {2};
+      \node[state, fill=purple,         draw=none, text=white]         (F) [above right of=C] {4};
+      \node[state, fill=red,            draw=none, text=white]         (G) [above right of=E] {3};
+      \node[state, fill=green,          draw=none, text=black]         (H) [right of=G]       {1};
+
+      \path (A) edge (B)
+      edge (E)
+      edge (H)
+      (B) edge (C)
+      edge (E)
+      edge (F)
+      edge (G)
+      (C) edge (D)
+      edge (E)
+      edge (F)
+      edge (G)
+      edge (H)
+      (D) edge (F)
+      (E) edge (F)
+      edge (G)
+      edge (H)
+      (F) edge (G)
+      edge (H)
+      (G) edge (H);
+    \end{tikzpicture}
+  }
+  \raisebox{75pt}{\Huge =}
+
+  \vspace{1cm}
+
+  \tcbox[colback=white, title=$O \in \col{3}$]{
+    \begin{tikzpicture}[-,>=stealth',shorten >=1pt,auto,node distance=3cm,semithick]
+      \tikzstyle{every state}=[scale = 0.6]
+
+      \node[state, fill=blue,           draw=none, text=white]         (A)                    {$N_c$};
+      \node[state, fill=green,          draw=none, text=black]         (B) [right of=A]       {1};
+      \node[state, fill=black!50!green, draw=none, text=white]         (C) [above right of=A] {2};
+      \node[state, fill=blue,           draw=none, text=white]         (D) [right of=C]       {$N_c$};
+      \node[state, fill=green,          draw=none, text=black]         (E) [above right of=D] {1};
+
+      \path (A) edge (B)
+      edge (C)
+      edge (E)
+      (B) edge (C)
+      edge (D)
+      (C) edge (D)
+      edge (E)
+      (D) edge (E);
+    \end{tikzpicture}
+  }
+  \raisebox{50pt}{\Huge +}
+  \tcbox[colback=white, title=$N \in \col{3}$]{
+    \begin{tikzpicture}[-,>=stealth',shorten >=1pt,auto,node distance=3cm,semithick]
+      \tikzstyle{every state}=[scale = 0.6]
+
+      \node[state, fill=red,            draw=none, text=white]         (A)                    {3};
+      \node[scale=0.6]                                                 (V) [right of=A]       {};
+      \node[state, fill=yellow,         draw=none, text=black]         (B) [right of=V]       {5};
+      \node[state, fill=red,            draw=none, text=white]         (C) [right of=B]       {3};
+      \node[state, fill=purple,         draw=none, text=white]         (D) [above right of=B] {4};
+      \node[scale=0.6]                                                 (W) [above right of=A] {};
+      \node[state, fill=red,            draw=none, text=white]         (E) [above right of=W] {3};
+
+      \path (B) edge (C)
+      edge (D)
+      edge (E)
+      (C) edge (D)
+      (D) edge (E);
+    \end{tikzpicture}
+  }
+\end{center}
+
+Comme on peut le voir, $O$ et $N$ sont dans \col{3} ce qui signifie que $G$ est 5-coloriable. On remarque que le graphe $N$ est en fait composé de deux parties, chaque partie correspond à un n\oe{}uds $N_c$ qui a survécu à la fusion.
+\end{document}

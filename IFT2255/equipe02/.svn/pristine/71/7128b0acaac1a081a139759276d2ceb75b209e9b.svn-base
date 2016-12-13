@@ -1,0 +1,271 @@
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.ArrayList;
+
+/**
+ * The Class DataBase, which is a representation of a DataBase using files. It
+ * is not guaranteed persistent, since no safeguard has been implemented in
+ * case of system failure. This is mainly just a Data holder for the DBManager
+ * interface to work with something.<p>
+ * This class creates only one instance and makes it accessible everywhere in
+ * the system. Again, this is an oversimplification of a DB only usable in a
+ * local developing environment.
+ * 
+ * @author Philippe Caron
+ * @author Gevrai Jodoin-Tremblay
+ * @see DataBaseManager
+ */
+public class DataBase {
+	
+	private final static DataBase singleton = new DataBase();
+
+
+	/** Filename for the users database in the file system */
+	private final static String FILENAME_USERS = "Database/Users.db";
+	/** Filename for the claims database in the file system */
+	private final static String FILENAME_CLAIMS = "Database/Claims.db";
+	/** Filename for the eft database in the file system */
+	private final static String FILENAME_EFT = "Database/EFT.db";
+	/** Filename for the services database in the file system */
+	private final static String FILENAME_SERVICES = "Database/Services.db";
+	
+	/** ArrayList used to represent the users database to the system */
+	private ArrayList<User> users;
+	/** ArrayList used to represent the claims database to the system */
+	private ArrayList<Claim> claims;
+	/** ArrayList used to represent the eft database to the system */
+	private ArrayList<EFT> dataEFT;
+	/** ArrayList used to represent the services database to the system */
+	private ArrayList<Service> services;
+	
+	private DataBase() {
+		this.users = new ArrayList<User>();
+		this.claims = new ArrayList<Claim>();
+		this.dataEFT = new ArrayList<EFT>();
+		this.services = new ArrayList<Service>();
+	}
+	
+	/**
+	 * Creates data base entries for testing purposes, deleting old data in the
+	 * DataBase as well.
+	 *
+	 * @param dumpToFiles do we dump the newly created entries to files directly or not?
+	 */
+	public void createDataBaseEntries(boolean dumpToFiles) {
+		this.users = new ArrayList<User>();
+		this.claims = new ArrayList<Claim>();
+		this.dataEFT = new ArrayList<EFT>();
+		this.services = new ArrayList<Service>();
+		
+		// MDP: "pomme"
+		users.add(new Supervisor(100000, "b468a378f511e9e84a225f313c315f07", "Robert Plante"));
+		// MDP: "patate"
+		users.add(new Member(200000 ,"945e9f0b4e381b13aa70b94b89a28709", "Jacques Tremblay",
+				new Address("5921","Saint-Laurent", "Montreal", "Quebec", "H4A 3C9"), 0));
+		// MDP: "carotte"
+		users.add(new Supplier(300000,	"b473e4ec409f4f288a77f256c74aa52e","Le Centre sportif", 
+				new Address("2313","Sainte-Catherine","Montreal","Quebec","H3C 2C8")));
+
+		services.add(new Service(678901,"Massage","Le client recoit un massage de 30 minutes"));
+
+		claims.add(new Claim(1,	"2015-02-01T23:02:21", "2015-02-01",103882,109392,678901, 34.99,"Le client est agité"));
+
+		dataEFT.add(new EFT(12345,1234,89.99,"2015-03-02T22:09:02","2015-03-03T22:09:02"));
+
+		services.add(new Service(000101,"Zootherapie: Chat", "Le client achete un chat"));
+
+		if (dumpToFiles){
+			this.dump();			
+		}
+	}
+	
+	/**
+	 * Gets this data base instance
+	 *
+	 * @return the data base instance
+	 */
+	public static DataBase getDataBase() {
+		return singleton;
+	}
+
+	/**
+	 * Gets the users.
+	 *
+	 * @return the user database, as a list
+	 */
+	public ArrayList<User> getUsers() {
+		return users;
+	}
+
+	/**
+	 * Gets the claims.
+	 *
+	 * @return the claims database, as a list
+	 */
+	public ArrayList<Claim> getClaims() {
+		return claims;
+	}
+
+	/**
+	 * Gets the data EFT.
+	 *
+	 * @return the data EFT database, as a list
+	 */
+	public ArrayList<EFT> getDataEFT() {
+		return dataEFT;
+	}
+
+	/**
+	 * Gets the services.
+	 *
+	 * @return the services database, as a list
+	 */
+	public ArrayList<Service> getServices() {
+		return services;
+	}
+
+	private void populateUsers() {
+		try {
+			FileReader fr = new FileReader(FILENAME_USERS);
+			BufferedReader br = new BufferedReader(fr);
+			String r;
+			String[] line;
+			while ((r = br.readLine()) != null) {
+				line = r.split("\t", 2);
+				switch(line[0]){
+				case "Member":
+					users.add(new Member(line[1]));
+					break;
+				case "Supplier":
+					users.add(new Supplier(line[1]));
+					break;
+				case "Supervisor":
+					users.add(new Supervisor(line[1]));
+					break;
+				default:
+					throw new Exception("Database is corrupt.");
+				}
+			}
+			br.close();
+		} catch (Exception e) {
+			e.printStackTrace(System.err);
+		}
+	}
+
+    private void dumpUsers(){
+        // TODO make this safer! Right now we lose the whole DB if this fails.
+        try {
+            PrintWriter writer = new PrintWriter(FILENAME_USERS, "UTF-8");
+            for (User u : users) {
+                writer.println(u.toString());
+            }
+            writer.close();
+        } catch (IOException e) {
+            e.printStackTrace(System.err);
+        }
+    }
+
+	private void populateClaims() {
+		try {
+			FileReader fr = new FileReader(FILENAME_CLAIMS);
+			BufferedReader br = new BufferedReader(fr);
+			String line;
+			while ((line = br.readLine()) != null)
+				claims.add(new Claim(line));
+			br.close();
+		} catch (Exception e) {
+			e.printStackTrace(System.err);
+		}
+	}
+
+    private void dumpClaims(){
+        // TODO make this safer! Right now we lose the whole DB if this fails.
+        try {
+            PrintWriter writer = new PrintWriter(FILENAME_CLAIMS, "UTF-8");
+            for (Claim c : claims) {
+                writer.println(c.toString());
+            }
+            writer.close();
+        } catch (IOException e) {
+            e.printStackTrace(System.err);
+        }
+    }
+
+	private void populateEFT() {
+		try {
+			FileReader fr = new FileReader(FILENAME_EFT);
+			BufferedReader br = new BufferedReader(fr);
+			String line;
+			while ((line = br.readLine()) != null)
+				dataEFT.add(new EFT(line));
+			br.close();
+		} catch (Exception e) {
+			e.printStackTrace(System.err);
+		}
+	}
+
+    private void dumpEFT(){
+        // TODO make this safer! Right now we lose the whole DB if this fails.
+        try {
+            PrintWriter writer = new PrintWriter(FILENAME_EFT, "UTF-8");
+            for (EFT e : dataEFT) {
+                writer.println(e.toString());
+            }
+            writer.close();
+        } catch (IOException e) {
+            e.printStackTrace(System.err);
+        }
+    }
+
+	private void populateServices() {
+		try {
+			FileReader fr = new FileReader(FILENAME_SERVICES);
+			BufferedReader br = new BufferedReader(fr);
+			String line;
+			while ((line = br.readLine()) != null)
+				services.add(new Service(line));
+			br.close();
+		} catch (Exception e) {
+			e.printStackTrace(System.err);
+		}
+	}
+	
+	private void dumpServices(){
+        // TODO make this safer! Right now we lose the whole DB if this fails.
+        try {
+            PrintWriter writer = new PrintWriter(FILENAME_SERVICES, "UTF-8");
+            for (Service s : services) {
+                writer.println(s.toString());
+            }
+            writer.close();
+        } catch (IOException e) {
+            e.printStackTrace(System.err);
+        }
+    }
+
+	/**
+	 * Populate this instance of the database with all the data from the
+	 * respective '.db' files. If these don't exist yet, you should use the
+	 * {{@link #createDataBaseEntries(boolean)} method instead.
+	 */
+	public void populate() {
+		populateUsers();
+		populateClaims();
+		populateEFT();
+		populateServices();
+	}
+
+	/**
+	 * Dump all the data contained in this instance into their respective '.db'
+	 * files, simulating a persistent DataBase.
+	 */
+	public void dump() {
+        dumpUsers();
+        dumpClaims();
+        dumpEFT();
+        dumpServices();
+	}
+
+}

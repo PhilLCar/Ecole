@@ -1,0 +1,13 @@
+public class EFT {
+
+	private String data;
+	
+	public EFT(String data) {
+		this.data = data;
+	}
+	
+	@Override
+	public String toString() {
+		return data;
+	}
+}

@@ -1,0 +1,85 @@
+public class Address {
+
+	private String streetNumber;
+	private String streetName;
+	private String city;
+	private String province;
+	private String zipCode;
+
+	public String getStreetNumber() {
+		return this.streetNumber;
+	}
+
+	/**
+	 * 
+	 * @param streetNumber
+	 */
+	public void setStreetNumber(String streetNumber) {
+		this.streetNumber = streetNumber;
+	}
+
+	public String getStreetName() {
+		return this.streetName;
+	}
+
+	/**
+	 * 
+	 * @param streetName
+	 */
+	public void setStreetName(String streetName) {
+		this.streetName = streetName;
+	}
+
+	public String getCity() {
+		return this.city;
+	}
+
+	/**
+	 * 
+	 * @param city
+	 */
+	public void setCity(String city) {
+		this.city = city;
+	}
+
+	public String getProvince() {
+		return this.province;
+	}
+
+	/**
+	 * 
+	 * @param province
+	 */
+	public void setProvince(String province) {
+		this.province = province;
+	}
+
+	public String getZipCode() {
+		return this.zipCode;
+	}
+
+	/**
+	 * 
+	 * @param zipCode
+	 */
+	public void setZipCode(String zipCode) {
+
+	}
+
+	/**
+	 * 
+	 * @param streetNumber
+	 * @param streetName
+	 * @param city
+	 * @param province
+	 * @param zipCode
+	 */
+	public Address(String streetNumber, String streetName, String city, String province, String zipCode) {
+		this.streetNumber = streetNumber;
+		this.streetName = streetName;
+		this.city = city;
+		this.province = province;
+		this.zipCode = zipCode;
+	}
+
+}

@@ -1,0 +1,29 @@
+public class ServerApplication {
+
+	private final static SessionManager sessionManager = new SessionManager();
+	private final static DataBase database = DataBase.getDataBase();
+
+	public static void newConnection() {
+		new UserInterface();
+	}
+
+	/**
+	 * 
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		database.populate();
+		do {
+			try {
+			System.out.println("(1) Simuler une nouvelle connection\n(2) Quitter");
+			if (System.in.read() == '1') {
+				new UserInterface();
+			}
+			else if (System.in.read() == '2') break;
+			} catch (Exception e) {
+				e.printStackTrace(System.err);
+			}
+		} while(true);
+	}
+
+}

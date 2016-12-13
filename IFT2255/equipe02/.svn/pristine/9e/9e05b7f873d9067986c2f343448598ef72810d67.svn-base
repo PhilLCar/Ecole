@@ -1,0 +1,88 @@
+import java.util.Date;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+// TODO javadoc for SupervisorSession
+public class SupervisorSession extends Session {
+
+	/**
+	 *
+	 * @param userID
+	 */
+	public void printReport() {
+		// TODO - implement SupervisorSession.printSynthesisReport
+		ReportCreator rp = new ReportCreator();
+		rp.allReports(new Date(), new Date());
+	}
+
+	public void modifyUser() {
+		// TODO - implement SupervisorSession.modifyUser
+		throw new UnsupportedOperationException();
+	}
+
+	public void modifyService() {
+		// TODO - implement SupervisorSession.modifyService
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 *
+	 * @param userID
+	 * @param hash
+	 */
+	public SupervisorSession(Supervisor supervisor) {
+		super(supervisor);
+	}
+
+	@Override
+	public JPanel getUI() {
+		// Procédure comptable
+		// Rapports
+		// Utilisateurs
+		// Services
+		JPanel ret = new JPanel();
+		JButton repbutton = new JButton("Rapports");
+
+		repbutton.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+			}
+
+		});
+		JButton membersbutton = new JButton("Membres");
+
+		membersbutton.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				ret.add(new JButton("Ajouter un membre"));
+				ret.getRootPane().add(new JButton("Ajouter un membre"));
+				ret.getRootPane().validate();
+				ret.getRootPane().repaint();
+			}
+
+		});
+		JButton servicesbutton = new JButton("Services");
+
+		servicesbutton.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+
+			}
+
+		});
+		ret.add(repbutton);
+		ret.add(membersbutton);
+		ret.add(servicesbutton);
+
+		return ret;
+	}
+
+}

@@ -1,0 +1,1155 @@
+<?xml version="1.0"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>StatSVN - November 2016 Commit Log</title>
+ <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"/>
+    <meta name="Generator" content="StatSVN 0.7.0"/>
+<link rel="stylesheet" href="objectlab-statcvs.css" type="text/css"/>
+<script type="text/javascript" charset="utf-8" src="http://bit.ly/javascript-api.js?version=latest&#38;login=statsvn&#38;apiKey=R_2c362b417d0517c27876cbaca1bb68cc"></script>
+<script type="text/javascript" charset="utf-8">
+   // wait until page is loaded to call API
+   var redir_url;
+   var short_url;
+   BitlyCB.myShortenCallback = function(data) {
+      // this is how to get a result of shortening a single url
+      var result;
+      short_url=null;
+      for (var r in data.results) {
+         result = data.results[r];
+         result['longUrl'] = r;
+         short_url = result['shortUrl'];
+         break;
+      }
+      if (short_url==null) // bit.ly failed
+      document.location=redir_url;
+      else
+      redirToTwitter();
+   };
+   function shortenTweet(url) {
+      if (short_url == null || redir_url!=url) {
+      redir_url = url;
+      BitlyClient.shorten(document.location, 'BitlyCB.myShortenCallback');
+      }
+      else
+      redirToTwitter();
+      return false;
+   }
+   function redirToTwitter() { 
+      // replace {0} which is visible as %7B0} in the link
+      document.location = redir_url.replace('%7B0}', short_url);
+   }
+</script>
+  </head>
+
+<body>
+
+<h1>November 2016 Commit Log</h1>
+<div id="parentlink">&#171; <a href="index.html">Development Statistics for /equipe02</a></div>
+
+<div id="nav" class="section">
+<h2>Commit Logs</h2>
+<ul>
+    <li><a href="commitlog.html">December 2016</a></li>
+    <li><span class="here">November 2016</span></li>
+</ul>
+</div><dl class="attributes">
+    <dt>Number of Commits:</dt>
+    <dd>43</dd>
+    <dt>Number of Active Developers:</dt>
+    <dd>4</dd>
+</dl>
+<dl class="commitlist">
+  <dt><a name="43"></a>
+    <a href="user_gevrai.html" class="author">gevrai</a>
+    <span class="date">2016-11-30 21:59</span>
+    <a class="permalink" title="Permalink to this commit" href="#43">#43</a>
+    <span class="revisionNumberOuter">Rev.: <span class="revisionNumberInner">1438</span></span>
+  </dt>
+  <dd>
+    <p class="comment">
+Added recreateDB button to bootstart the database with some fake data
+    </p>
+    <p class="commitdetails"><strong>43</strong> lines of code changed in <span class="files">3 files</span>:</p>
+    <ul class="commitdetails">
+      <li>
+        <strong>DM3/Sources</strong>:
+        ServerApplication.java&#160;<span class="change">(+40&#160;-6)</span>
+      </li>
+      <li>
+        <strong>DM3/Sources/Data</strong>:
+        EFT.db&#160;<span class="change">(+1&#160;-1)</span>,
+        Services.db&#160;<span class="change">(+2&#160;-2)</span>
+      </li>
+    </ul>
+  </dd>
+
+  <dt><a name="42"></a>
+    <a href="user_f.brobillard.html" class="author">f.brobillard</a>
+    <span class="date">2016-11-30 21:23</span>
+    <a class="permalink" title="Permalink to this commit" href="#42">#42</a>
+    <span class="revisionNumberOuter">Rev.: <span class="revisionNumberInner">1435</span></span>
+  </dt>
+  <dd>
+    <p class="comment">
+Traduction des interfaces de login et de superviseur. Ajout de commentaires pour la doc au niveau de ServerApplication
+    </p>
+    <p class="commitdetails"><strong>104</strong> lines of code changed in <span class="files">5 files</span>:</p>
+    <ul class="commitdetails">
+      <li>
+        <strong>DM3/Sources</strong>:
+        Claim.java&#160;<span class="change">(+20&#160;-20)</span>,
+        ReportCreator.java&#160;<span class="change">(+22&#160;-22)</span>,
+        ServerApplication.java&#160;<span class="change">(+14&#160;-2)</span>,
+        SupervisorSession.java&#160;<span class="change">(+40&#160;-3)</span>,
+        UserInterface.java&#160;<span class="change">(+8&#160;-7)</span>
+      </li>
+    </ul>
+  </dd>
+
+  <dt><a name="41"></a>
+    <a href="user_gevrai.html" class="author">gevrai</a>
+    <span class="date">2016-11-30 20:30</span>
+    <a class="permalink" title="Permalink to this commit" href="#41">#41</a>
+    <span class="revisionNumberOuter">Rev.: <span class="revisionNumberInner">1429</span></span>
+  </dt>
+  <dd>
+    <p class="comment">
+Added javadoc html files
+    </p>
+    <p class="commitdetails"><strong>18108</strong> lines of code changed in <span class="files">77 files</span>:</p>
+    <ul class="commitdetails">
+      <li>
+        <strong>DM3/Documentation/javadoc</strong>:
+        Address.html&#160;<span class="new">(new&#160;483)</span>,
+        Claim.html&#160;<span class="new">(new&#160;779)</span>,
+        ClaimDBManager.html&#160;<span class="new">(new&#160;527)</span>,
+        DataBase.html&#160;<span class="new">(new&#160;393)</span>,
+        DataBaseManager.html&#160;<span class="new">(new&#160;397)</span>,
+        EFT.html&#160;<span class="new">(new&#160;566)</span>,
+        EftDBManager.html&#160;<span class="new">(new&#160;506)</span>,
+        MainAccountingJob.html&#160;<span class="new">(new&#160;294)</span>,
+        Member.html&#160;<span class="new">(new&#160;426)</span>,
+        MemberSession.html&#160;<span class="new">(new&#160;312)</span>,
+        ReceivableAccountsJob.html&#160;<span class="new">(new&#160;328)</span>,
+        ReportCreator.html&#160;<span class="new">(new&#160;365)</span>,
+        ServerApplication.html&#160;<span class="new">(new&#160;285)</span>,
+        Service.html&#160;<span class="new">(new&#160;469)</span>,
+        ServiceDBManager.html&#160;<span class="new">(new&#160;455)</span>,
+        Session.html&#160;<span class="new">(new&#160;313)</span>,
+        SessionManager.html&#160;<span class="new">(new&#160;290)</span>,
+        Supervisor.html&#160;<span class="new">(new&#160;336)</span>,
+        SupervisorSession.html&#160;<span class="new">(new&#160;338)</span>,
+        Supplier.html&#160;<span class="new">(new&#160;381)</span>,
+        SupplierSession.html&#160;<span class="new">(new&#160;348)</span>,
+        User.html&#160;<span class="new">(new&#160;445)</span>,
+        UserDBManager.html&#160;<span class="new">(new&#160;455)</span>,
+        UserInterface.html&#160;<span class="new">(new&#160;408)</span>,
+        allclasses-frame.html&#160;<span class="new">(new&#160;42)</span>,
+        allclasses-noframe.html&#160;<span class="new">(new&#160;42)</span>,
+        constant-values.html&#160;<span class="new">(new&#160;122)</span>,
+        deprecated-list.html&#160;<span class="new">(new&#160;122)</span>,
+        help-doc.html&#160;<span class="new">(new&#160;223)</span>,
+        index.html&#160;<span class="new">(new&#160;72)</span>,
+        overview-tree.html&#160;<span class="new">(new&#160;183)</span>,
+        package-frame.html&#160;<span class="new">(new&#160;46)</span>,
+        package-list&#160;<span class="new">(new&#160;1)</span>,
+        package-summary.html&#160;<span class="new">(new&#160;276)</span>,
+        package-tree.html&#160;<span class="new">(new&#160;183)</span>,
+        package-use.html&#160;<span class="new">(new&#160;141)</span>,
+        script.js&#160;<span class="new">(new&#160;30)</span>,
+        serialized-form.html&#160;<span class="new">(new&#160;154)</span>,
+        stylesheet.css&#160;<span class="new">(new&#160;574)</span>
+      </li>
+      <li>
+        <strong>DM3/Documentation/javadoc/class-use</strong>:
+        Address.html&#160;<span class="new">(new&#160;201)</span>,
+        Claim.html&#160;<span class="new">(new&#160;210)</span>,
+        ClaimDBManager.html&#160;<span class="new">(new&#160;122)</span>,
+        DataBase.html&#160;<span class="new">(new&#160;149)</span>,
+        DataBaseManager.html&#160;<span class="new">(new&#160;175)</span>,
+        EFT.html&#160;<span class="new">(new&#160;205)</span>,
+        EftDBManager.html&#160;<span class="new">(new&#160;122)</span>,
+        MainAccountingJob.html&#160;<span class="new">(new&#160;122)</span>,
+        Member.html&#160;<span class="new">(new&#160;145)</span>,
+        MemberSession.html&#160;<span class="new">(new&#160;122)</span>,
+        ReceivableAccountsJob.html&#160;<span class="new">(new&#160;122)</span>,
+        ReportCreator.html&#160;<span class="new">(new&#160;122)</span>,
+        ServerApplication.html&#160;<span class="new">(new&#160;122)</span>,
+        Service.html&#160;<span class="new">(new&#160;195)</span>,
+        ServiceDBManager.html&#160;<span class="new">(new&#160;122)</span>,
+        Session.html&#160;<span class="new">(new&#160;169)</span>,
+        SessionManager.html&#160;<span class="new">(new&#160;122)</span>,
+        Supervisor.html&#160;<span class="new">(new&#160;145)</span>,
+        SupervisorSession.html&#160;<span class="new">(new&#160;122)</span>,
+        Supplier.html&#160;<span class="new">(new&#160;145)</span>,
+        SupplierSession.html&#160;<span class="new">(new&#160;122)</span>,
+        User.html&#160;<span class="new">(new&#160;238)</span>,
+        UserDBManager.html&#160;<span class="new">(new&#160;122)</span>,
+        UserInterface.html&#160;<span class="new">(new&#160;122)</span>
+      </li>
+      <li>
+        <strong>DM3/Documentation/javadoc/index-files</strong>:
+        index-1.html&#160;<span class="new">(new&#160;152)</span>,
+        index-10.html&#160;<span class="new">(new&#160;137)</span>,
+        index-11.html&#160;<span class="new">(new&#160;325)</span>,
+        index-12.html&#160;<span class="new">(new&#160;169)</span>,
+        index-13.html&#160;<span class="new">(new&#160;142)</span>,
+        index-14.html&#160;<span class="new">(new&#160;127)</span>,
+        index-2.html&#160;<span class="new">(new&#160;169)</span>,
+        index-3.html&#160;<span class="new">(new&#160;165)</span>,
+        index-4.html&#160;<span class="new">(new&#160;165)</span>,
+        index-5.html&#160;<span class="new">(new&#160;176)</span>,
+        index-6.html&#160;<span class="new">(new&#160;288)</span>,
+        index-7.html&#160;<span class="new">(new&#160;159)</span>,
+        index-8.html&#160;<span class="new">(new&#160;127)</span>,
+        index-9.html&#160;<span class="new">(new&#160;134)</span>
+      </li>
+    </ul>
+  </dd>
+
+  <dt><a name="40"></a>
+    <a href="user_gevrai.html" class="author">gevrai</a>
+    <span class="date">2016-11-30 19:54</span>
+    <a class="permalink" title="Permalink to this commit" href="#40">#40</a>
+    <span class="revisionNumberOuter">Rev.: <span class="revisionNumberInner">1427</span></span>
+  </dt>
+  <dd>
+    <p class="comment">
+javadoc for User, Member, Supervisor, Supplier, UserDBManager and added TODOs to not forget other javadoc
+    </p>
+    <p class="commitdetails"><strong>172</strong> lines of code changed in <span class="files">11 files</span>:</p>
+    <ul class="commitdetails">
+      <li>
+        <strong>DM3/Sources</strong>:
+        Member.java&#160;<span class="change">(+3&#160;-3)</span>,
+        ReportCreator.java&#160;<span class="change">(+3&#160;-3)</span>,
+        Session.java&#160;<span class="change">(+21&#160;-3)</span>,
+        SessionManager.java&#160;<span class="change">(+1)</span>,
+        Supervisor.java&#160;<span class="change">(+31&#160;-2)</span>,
+        SupervisorSession.java&#160;<span class="change">(+1&#160;-1)</span>,
+        Supplier.java&#160;<span class="change">(+50&#160;-11)</span>,
+        SupplierSession.java&#160;<span class="change">(+1)</span>,
+        User.java&#160;<span class="change">(+52&#160;-6)</span>,
+        UserDBManager.java&#160;<span class="change">(+8&#160;-1)</span>,
+        UserInterface.java&#160;<span class="change">(+1)</span>
+      </li>
+    </ul>
+  </dd>
+
+  <dt><a name="39"></a>
+    <a href="user_gevrai.html" class="author">gevrai</a>
+    <span class="date">2016-11-30 18:59</span>
+    <a class="permalink" title="Permalink to this commit" href="#39">#39</a>
+    <span class="revisionNumberOuter">Rev.: <span class="revisionNumberInner">1418</span></span>
+  </dt>
+  <dd>
+    <p class="comment">
+Added javadoc for Service and ServiceDBManager, as well as TODOs in some classes
+    </p>
+    <p class="commitdetails"><strong>87</strong> lines of code changed in <span class="files">7 files</span>:</p>
+    <ul class="commitdetails">
+      <li>
+        <strong>DM3/Sources</strong>:
+        Claim.java&#160;<span class="change">(+1&#160;-1)</span>,
+        MainAccountingJob.java&#160;<span class="change">(+1)</span>,
+        ReceivableAccountsJob.java&#160;<span class="change">(+1)</span>,
+        ReportCreator.java&#160;<span class="change">(+1)</span>,
+        ServerApplication.java&#160;<span class="change">(+1)</span>,
+        Service.java&#160;<span class="change">(+74&#160;-14)</span>,
+        ServiceDBManager.java&#160;<span class="change">(+8&#160;-4)</span>
+      </li>
+    </ul>
+  </dd>
+
+  <dt><a name="38"></a>
+    <a href="user_gevrai.html" class="author">gevrai</a>
+    <span class="date">2016-11-30 18:39</span>
+    <a class="permalink" title="Permalink to this commit" href="#38">#38</a>
+    <span class="revisionNumberOuter">Rev.: <span class="revisionNumberInner">1415</span></span>
+  </dt>
+  <dd>
+    <p class="comment">
+Javadoc for Adress, Claim, Member, EFT, DataBase, DataBaseManager, ClaimDBManager, EftDBManager mostly done
+    </p>
+    <p class="commitdetails"><strong>625</strong> lines of code changed in <span class="files">9 files</span>:</p>
+    <ul class="commitdetails">
+      <li>
+        <strong>DM3/Sources</strong>:
+        Address.java&#160;<span class="change">(+74&#160;-26)</span>,
+        Claim.java&#160;<span class="change">(+188&#160;-38)</span>,
+        ClaimDBManager.java&#160;<span class="change">(+32&#160;-3)</span>,
+        DataBase.java&#160;<span class="change">(+66&#160;-3)</span>,
+        DataBaseManager.java&#160;<span class="change">(+64)</span>,
+        EFT.java&#160;<span class="change">(+111&#160;-7)</span>,
+        EftDBManager.java&#160;<span class="change">(+23)</span>,
+        Member.java&#160;<span class="change">(+66&#160;-22)</span>
+      </li>
+      <li>
+        <strong>DM3/Sources/Data</strong>:
+        Claims.db&#160;<span class="change">(+1&#160;-1)</span>
+      </li>
+    </ul>
+  </dd>
+
+  <dt><a name="37"></a>
+    <a href="user_azimmermann.html" class="author">azimmermann</a>
+    <span class="date">2016-11-30 17:13</span>
+    <a class="permalink" title="Permalink to this commit" href="#37">#37</a>
+    <span class="revisionNumberOuter">Rev.: <span class="revisionNumberInner">1406</span></span>
+  </dt>
+  <dd>
+    <p class="comment">
+
+    </p>
+    <p class="commitdetails"><strong>47</strong> lines of code changed in <span class="files">4 files</span>:</p>
+    <ul class="commitdetails">
+      <li>
+        <strong>DM3/Sources</strong>:
+        DataBase.java&#160;<span class="change">(+5&#160;-5)</span>,
+        ReportCreator.java&#160;<span class="change">(+37&#160;-31)</span>,
+        ServerApplication.java&#160;<span class="change">(+4&#160;-4)</span>,
+        UserDBManager.java&#160;<span class="change">(+1)</span>
+      </li>
+    </ul>
+  </dd>
+
+  <dt><a name="36"></a>
+    <a href="user_gevrai.html" class="author">gevrai</a>
+    <span class="date">2016-11-30 03:13</span>
+    <a class="permalink" title="Permalink to this commit" href="#36">#36</a>
+    <span class="revisionNumberOuter">Rev.: <span class="revisionNumberInner">1385</span></span>
+  </dt>
+  <dd>
+    <p class="comment">
+Minor fix on EFT ammountDue formatting in database
+    </p>
+    <p class="commitdetails"><strong>3</strong> lines of code changed in <span class="files">2 files</span>:</p>
+    <ul class="commitdetails">
+      <li>
+        <strong>DM3/Sources</strong>:
+        EFT.java&#160;<span class="change">(+2&#160;-1)</span>
+      </li>
+      <li>
+        <strong>DM3/Sources/Data</strong>:
+        EFT.db&#160;<span class="change">(+1&#160;-1)</span>
+      </li>
+    </ul>
+  </dd>
+
+  <dt><a name="35"></a>
+    <a href="user_gevrai.html" class="author">gevrai</a>
+    <span class="date">2016-11-30 02:29</span>
+    <a class="permalink" title="Permalink to this commit" href="#35">#35</a>
+    <span class="revisionNumberOuter">Rev.: <span class="revisionNumberInner">1384</span></span>
+  </dt>
+  <dd>
+    <p class="comment">
+Minor change in case someone created its own DB
+    </p>
+    <p class="commitdetails"><strong>2</strong> lines of code changed in <span class="files">1 file</span>:</p>
+    <ul class="commitdetails">
+      <li>
+        <strong>DM3/Sources</strong>:
+        ServerApplication.java&#160;<span class="change">(+2&#160;-2)</span>
+      </li>
+    </ul>
+  </dd>
+
+  <dt><a name="34"></a>
+    <a href="user_gevrai.html" class="author">gevrai</a>
+    <span class="date">2016-11-30 02:22</span>
+    <a class="permalink" title="Permalink to this commit" href="#34">#34</a>
+    <span class="revisionNumberOuter">Rev.: <span class="revisionNumberInner">1383</span></span>
+  </dt>
+  <dd>
+    <p class="comment">
+Fixed DataBase.createDataBaseEntries object creation method
+    </p>
+    <p class="commitdetails"><strong>28</strong> lines of code changed in <span class="files">5 files</span>:</p>
+    <ul class="commitdetails">
+      <li>
+        <strong>DM3/Sources</strong>:
+        DataBase.java&#160;<span class="change">(+15&#160;-7)</span>,
+        EFT.java&#160;<span class="change">(+9&#160;-2)</span>
+      </li>
+      <li>
+        <strong>DM3/Sources/Data</strong>:
+        Claims.db&#160;<span class="change">(+1&#160;-1)</span>,
+        EFT.db&#160;<span class="change">(+1&#160;-1)</span>,
+        Services.db&#160;<span class="change">(+2&#160;-2)</span>
+      </li>
+    </ul>
+  </dd>
+
+  <dt><a name="33"></a>
+    <a href="user_gevrai.html" class="author">gevrai</a>
+    <span class="date">2016-11-30 01:55</span>
+    <a class="permalink" title="Permalink to this commit" href="#33">#33</a>
+    <span class="revisionNumberOuter">Rev.: <span class="revisionNumberInner">1382</span></span>
+  </dt>
+  <dd>
+    <p class="comment">
+Implemented 'safe' database creation and dump database on quitting
+    </p>
+    <p class="commitdetails"><strong>29</strong> lines of code changed in <span class="files">5 files</span>:</p>
+    <ul class="commitdetails">
+      <li>
+        <strong>DM3/Sources</strong>:
+        DataBase.java&#160;<span class="change">(+20&#160;-1)</span>,
+        ServerApplication.java&#160;<span class="change">(+5&#160;-4)</span>
+      </li>
+      <li>
+        <strong>DM3/Sources/Data</strong>:
+        Claims.db&#160;<span class="change">(+1&#160;-1)</span>,
+        EFT.db&#160;<span class="change">(+1&#160;-1)</span>,
+        Services.db&#160;<span class="change">(+2&#160;-1)</span>
+      </li>
+    </ul>
+  </dd>
+
+  <dt><a name="32"></a>
+    <a href="user_gevrai.html" class="author">gevrai</a>
+    <span class="date">2016-11-30 00:56</span>
+    <a class="permalink" title="Permalink to this commit" href="#32">#32</a>
+    <span class="revisionNumberOuter">Rev.: <span class="revisionNumberInner">1381</span></span>
+  </dt>
+  <dd>
+    <p class="comment">
+Implemented EFT and EftDBManager
+    </p>
+    <p class="commitdetails"><strong>143</strong> lines of code changed in <span class="files">2 files</span>:</p>
+    <ul class="commitdetails">
+      <li>
+        <strong>DM3/Sources</strong>:
+        EFT.java&#160;<span class="change">(+69&#160;-4)</span>,
+        EftDBManager.java&#160;<span class="change">(+74&#160;-14)</span>
+      </li>
+    </ul>
+  </dd>
+
+  <dt><a name="31"></a>
+    <a href="user_azimmermann.html" class="author">azimmermann</a>
+    <span class="date">2016-11-30 00:34</span>
+    <a class="permalink" title="Permalink to this commit" href="#31">#31</a>
+    <span class="revisionNumberOuter">Rev.: <span class="revisionNumberInner">1380</span></span>
+  </dt>
+  <dd>
+    <p class="comment">
+
+    </p>
+    <p class="commitdetails"><strong>88</strong> lines of code changed in <span class="files">3 files</span>:</p>
+    <ul class="commitdetails">
+      <li>
+        <strong>DM3/Sources</strong>:
+        ClaimDBManager.java&#160;<span class="change">(+12)</span>,
+        ReportCreator.java&#160;<span class="change">(+72&#160;-39)</span>,
+        ServerApplication.java&#160;<span class="change">(+4&#160;-3)</span>
+      </li>
+    </ul>
+  </dd>
+
+  <dt><a name="30"></a>
+    <a href="user_azimmermann.html" class="author">azimmermann</a>
+    <span class="date">2016-11-29 18:42</span>
+    <a class="permalink" title="Permalink to this commit" href="#30">#30</a>
+    <span class="revisionNumberOuter">Rev.: <span class="revisionNumberInner">1363</span></span>
+  </dt>
+  <dd>
+    <p class="comment">
+
+    </p>
+    <p class="commitdetails"><strong>65</strong> lines of code changed in <span class="files">4 files</span>:</p>
+    <ul class="commitdetails">
+      <li>
+        <strong>DM3/Sources</strong>:
+        Claim.java&#160;<span class="change">(+8&#160;-2)</span>,
+        ClaimDBManager.java&#160;<span class="change">(+1&#160;-1)</span>,
+        ReportCreator.java&#160;<span class="change">(+56&#160;-29)</span>,
+        SupervisorSession.java&#160;<span class="change">(-1)</span>
+      </li>
+    </ul>
+  </dd>
+
+  <dt><a name="29"></a>
+    <a href="user_f.brobillard.html" class="author">f.brobillard</a>
+    <span class="date">2016-11-29 17:32</span>
+    <a class="permalink" title="Permalink to this commit" href="#29">#29</a>
+    <span class="revisionNumberOuter">Rev.: <span class="revisionNumberInner">1352</span></span>
+  </dt>
+  <dd>
+    <p class="comment">
+Test d'authentification mis à true pour la période de test
+    </p>
+    <p class="commitdetails"><strong>16</strong> lines of code changed in <span class="files">4 files</span>:</p>
+    <ul class="commitdetails">
+      <li>
+        <strong>DM3/Sources</strong>:
+        ServerApplication.java&#160;<span class="change">(+2&#160;-2)</span>,
+        SessionManager.java&#160;<span class="change">(+7&#160;-6)</span>,
+        SupervisorSession.java&#160;<span class="change">(+5&#160;-5)</span>
+      </li>
+      <li>
+        <strong>DM3/Sources/Data</strong>:
+        Users.db&#160;<span class="change">(+2&#160;-1)</span>
+      </li>
+    </ul>
+  </dd>
+
+  <dt><a name="28"></a>
+    <a href="user_f.brobillard.html" class="author">f.brobillard</a>
+    <span class="date">2016-11-29 16:51</span>
+    <a class="permalink" title="Permalink to this commit" href="#28">#28</a>
+    <span class="revisionNumberOuter">Rev.: <span class="revisionNumberInner">1348</span></span>
+  </dt>
+  <dd>
+    <p class="comment">
+classe test junit, les commentaires sont les commandes à entrer pour la compilation et l'exécution pour un environnement linux
+    </p>
+    <p class="commitdetails"><strong>11</strong> lines of code changed in <span class="files">1 file</span>:</p>
+    <ul class="commitdetails">
+      <li>
+        <strong>DM3/Tests</strong>:
+        ChocAnTests.java&#160;<span class="new">(new&#160;11)</span>
+      </li>
+    </ul>
+  </dd>
+
+  <dt><a name="27"></a>
+    <a href="user_f.brobillard.html" class="author">f.brobillard</a>
+    <span class="date">2016-11-29 16:11</span>
+    <a class="permalink" title="Permalink to this commit" href="#27">#27</a>
+    <span class="revisionNumberOuter">Rev.: <span class="revisionNumberInner">1344</span></span>
+  </dt>
+  <dd>
+    <p class="comment">
+Ajout de sections pour les exigences des barêmes d'évaluation du DM3
+    </p>
+    <p class="commitdetails"><strong>7</strong> lines of code changed in <span class="files">1 file</span>:</p>
+    <ul class="commitdetails">
+      <li>
+        <strong>DM3</strong>:
+        rapport.html&#160;<span class="change">(+7)</span>
+      </li>
+    </ul>
+  </dd>
+
+  <dt><a name="26"></a>
+    <a href="user_f.brobillard.html" class="author">f.brobillard</a>
+    <span class="date">2016-11-29 16:08</span>
+    <a class="permalink" title="Permalink to this commit" href="#26">#26</a>
+    <span class="revisionNumberOuter">Rev.: <span class="revisionNumberInner">1343</span></span>
+  </dt>
+  <dd>
+    <p class="comment">
+Division de ce qui a déjà été fait en workflows dans le rapport. Les artéfacts devront tout de même être mis à jour.
+    </p>
+    <p class="commitdetails"><strong>355</strong> lines of code changed in <span class="files">25 files</span>:</p>
+    <ul class="commitdetails">
+      <li>
+        <strong>DM3</strong>:
+        rapport.html&#160;<span class="change">(+351&#160;-1)</span>
+      </li>
+      <li>
+        <strong>DM3/images</strong>:
+        Accès_répertoire_fournisseurs.png&#160;<span class="new">(new)</span>,
+        Authentification.png&#160;<span class="new">(new)</span>,
+        Main_act.png&#160;<span class="new">(new)</span>,
+        Maintenir_Client.png&#160;<span class="new">(new)</span>,
+        Maintenir_Client_act.png&#160;<span class="new">(new)</span>,
+        Maintenir_Service.png&#160;<span class="new">(new)</span>,
+        Maintenir_Service_act.png&#160;<span class="new">(new)</span>,
+        Maintenir_service.png&#160;<span class="new">(new)</span>,
+        Maintenir_service_act.png&#160;<span class="new">(new)</span>,
+        Maintenir_utilisateur.png&#160;<span class="new">(new)</span>,
+        Paiement_membre.png&#160;<span class="new">(new)</span>,
+        Procédure_comptable_principale.png&#160;<span class="new">(new)</span>,
+        Produire Rapport_act.png&#160;<span class="new">(new)</span>,
+        Produire_rapport_TEF.png&#160;<span class="new">(new)</span>,
+        Produire_rapport_comptes_payables.png&#160;<span class="new">(new)</span>,
+        Produire_rapport_fournisseur.png&#160;<span class="new">(new)</span>,
+        Produire_rapport_membre.png&#160;<span class="new">(new)</span>,
+        Soumettre_réclamation.png&#160;<span class="new">(new)</span>,
+        Vérifier_client.png&#160;<span class="new">(new)</span>,
+        cas_utilisation.png&#160;<span class="new">(new)</span>,
+        classes.png&#160;<span class="new">(new)</span>,
+        classes_participantes.png&#160;<span class="new">(new)</span>,
+        loc_per_author.png&#160;<span class="new">(new)</span>
+      </li>
+      <li>
+        <strong>DM3/public/stylesheets</strong>:
+        style.css&#160;<span class="change">(+4&#160;-2)</span>
+      </li>
+    </ul>
+  </dd>
+
+  <dt><a name="25"></a>
+    <a href="user_gevrai.html" class="author">gevrai</a>
+    <span class="date">2016-11-29 12:06</span>
+    <a class="permalink" title="Permalink to this commit" href="#25">#25</a>
+    <span class="revisionNumberOuter">Rev.: <span class="revisionNumberInner">1329</span></span>
+  </dt>
+  <dd>
+    <p class="comment">
+Refactor method to ClaimDBManager.findClaimsForUserID
+    </p>
+    <p class="commitdetails"><strong>4</strong> lines of code changed in <span class="files">2 files</span>:</p>
+    <ul class="commitdetails">
+      <li>
+        <strong>DM3/Sources</strong>:
+        ClaimDBManager.java&#160;<span class="change">(+2&#160;-2)</span>,
+        ReportCreator.java&#160;<span class="change">(+2&#160;-2)</span>
+      </li>
+    </ul>
+  </dd>
+
+  <dt><a name="24"></a>
+    <a href="user_gevrai.html" class="author">gevrai</a>
+    <span class="date">2016-11-29 11:58</span>
+    <a class="permalink" title="Permalink to this commit" href="#24">#24</a>
+    <span class="revisionNumberOuter">Rev.: <span class="revisionNumberInner">1328</span></span>
+  </dt>
+  <dd>
+    <p class="comment">
+ClaimDBManager.findClaimsForUsers added
+    </p>
+    <p class="commitdetails"><strong>12</strong> lines of code changed in <span class="files">1 file</span>:</p>
+    <ul class="commitdetails">
+      <li>
+        <strong>DM3/Sources</strong>:
+        ClaimDBManager.java&#160;<span class="change">(+12&#160;-1)</span>
+      </li>
+    </ul>
+  </dd>
+
+  <dt><a name="23"></a>
+    <a href="user_f.brobillard.html" class="author">f.brobillard</a>
+    <span class="date">2016-11-29 11:42</span>
+    <a class="permalink" title="Permalink to this commit" href="#23">#23</a>
+    <span class="revisionNumberOuter">Rev.: <span class="revisionNumberInner">1327</span></span>
+  </dt>
+  <dd>
+    <p class="comment">
+Debugging au niveau du flow de création de session
+    </p>
+    <p class="commitdetails"><strong>2</strong> lines of code changed in <span class="files">1 file</span>:</p>
+    <ul class="commitdetails">
+      <li>
+        <strong>DM3/Sources</strong>:
+        ReportCreator.java&#160;<span class="change">(+2&#160;-2)</span>
+      </li>
+    </ul>
+  </dd>
+
+  <dt><a name="22"></a>
+    <a href="user_f.brobillard.html" class="author">f.brobillard</a>
+    <span class="date">2016-11-29 11:03</span>
+    <a class="permalink" title="Permalink to this commit" href="#22">#22</a>
+    <span class="revisionNumberOuter">Rev.: <span class="revisionNumberInner">1324</span></span>
+  </dt>
+  <dd>
+    <p class="comment">
+Corrections minimales sur l'utilisation de certaines méthodes
+    </p>
+    <p class="commitdetails"><strong>5</strong> lines of code changed in <span class="files">2 files</span>:</p>
+    <ul class="commitdetails">
+      <li>
+        <strong>DM3/Sources</strong>:
+        ServerApplication.java&#160;<span class="change">(+4&#160;-4)</span>,
+        SupervisorSession.java&#160;<span class="change">(+1&#160;-1)</span>
+      </li>
+    </ul>
+  </dd>
+
+  <dt><a name="21"></a>
+    <a href="user_azimmermann.html" class="author">azimmermann</a>
+    <span class="date">2016-11-29 02:47</span>
+    <a class="permalink" title="Permalink to this commit" href="#21">#21</a>
+    <span class="revisionNumberOuter">Rev.: <span class="revisionNumberInner">1320</span></span>
+  </dt>
+  <dd>
+    <p class="comment">
+
+    </p>
+    <p class="commitdetails"><strong>21</strong> lines of code changed in <span class="files">1 file</span>:</p>
+    <ul class="commitdetails">
+      <li>
+        <strong>DM3/Sources</strong>:
+        ReportCreator.java&#160;<span class="change">(+21&#160;-13)</span>
+      </li>
+    </ul>
+  </dd>
+
+  <dt><a name="20"></a>
+    <a href="user_gevrai.html" class="author">gevrai</a>
+    <span class="date">2016-11-28 21:45</span>
+    <a class="permalink" title="Permalink to this commit" href="#20">#20</a>
+    <span class="revisionNumberOuter">Rev.: <span class="revisionNumberInner">1314</span></span>
+  </dt>
+  <dd>
+    <p class="comment">
+Fixed import on DataBase.java
+    </p>
+    <p class="commitdetails"><strong>14</strong> lines of code changed in <span class="files">1 file</span>:</p>
+    <ul class="commitdetails">
+      <li>
+        <strong>DM3/Sources</strong>:
+        DataBase.java&#160;<span class="change">(+14)</span>
+      </li>
+    </ul>
+  </dd>
+
+  <dt><a name="19"></a>
+    <a href="user_gevrai.html" class="author">gevrai</a>
+    <span class="date">2016-11-28 21:30</span>
+    <a class="permalink" title="Permalink to this commit" href="#19">#19</a>
+    <span class="revisionNumberOuter">Rev.: <span class="revisionNumberInner">1311</span></span>
+  </dt>
+  <dd>
+    <p class="comment">
+First database.dump draft, not functionning properly yet
+    </p>
+    <p class="commitdetails"><strong>45</strong> lines of code changed in <span class="files">1 file</span>:</p>
+    <ul class="commitdetails">
+      <li>
+        <strong>DM3/Sources</strong>:
+        DataBase.java&#160;<span class="change">(+45&#160;-4)</span>
+      </li>
+    </ul>
+  </dd>
+
+  <dt><a name="18"></a>
+    <a href="user_gevrai.html" class="author">gevrai</a>
+    <span class="date">2016-11-28 19:37</span>
+    <a class="permalink" title="Permalink to this commit" href="#18">#18</a>
+    <span class="revisionNumberOuter">Rev.: <span class="revisionNumberInner">1310</span></span>
+  </dt>
+  <dd>
+    <p class="comment">
+Added function ClaimDBManager.findClaimsBySupplierID
+    </p>
+    <p class="commitdetails"><strong>9</strong> lines of code changed in <span class="files">1 file</span>:</p>
+    <ul class="commitdetails">
+      <li>
+        <strong>DM3/Sources</strong>:
+        ClaimDBManager.java&#160;<span class="change">(+9)</span>
+      </li>
+    </ul>
+  </dd>
+
+  <dt><a name="17"></a>
+    <a href="user_azimmermann.html" class="author">azimmermann</a>
+    <span class="date">2016-11-28 19:13</span>
+    <a class="permalink" title="Permalink to this commit" href="#17">#17</a>
+    <span class="revisionNumberOuter">Rev.: <span class="revisionNumberInner">1308</span></span>
+  </dt>
+  <dd>
+    <p class="comment">
+Ajout de getAddress dans Member<br />
+Modifications de ReportCreator : Fait pour le rapportMembre
+    </p>
+    <p class="commitdetails"><strong>106</strong> lines of code changed in <span class="files">5 files</span>:</p>
+    <ul class="commitdetails">
+      <li>
+        <strong>DM3/Documentation</strong>:
+        ChocAn.vpp&#160;<span class="change">(changed)</span>
+      </li>
+      <li>
+        <strong>DM3/Sources</strong>:
+        Member.java&#160;<span class="change">(+3&#160;-1)</span>,
+        ReportCreator.java&#160;<span class="change">(+93&#160;-2)</span>,
+        ServerApplication.java&#160;<span class="change">(+6)</span>,
+        SupervisorSession.java&#160;<span class="change">(+4)</span>
+      </li>
+    </ul>
+  </dd>
+
+  <dt><a name="16"></a>
+    <a href="user_gevrai.html" class="author">gevrai</a>
+    <span class="date">2016-11-28 18:58</span>
+    <a class="permalink" title="Permalink to this commit" href="#16">#16</a>
+    <span class="revisionNumberOuter">Rev.: <span class="revisionNumberInner">1307</span></span>
+  </dt>
+  <dd>
+    <p class="comment">
+First draft of all DBManagers done.
+    </p>
+    <p class="commitdetails"><strong>186</strong> lines of code changed in <span class="files">6 files</span>:</p>
+    <ul class="commitdetails">
+      <li>
+        <strong>DM3/Sources</strong>:
+        Claim.java&#160;<span class="change">(+36&#160;-10)</span>,
+        ClaimDBManager.java&#160;<span class="change">(+59&#160;-22)</span>,
+        DataBaseManager.java&#160;<span class="change">(+3&#160;-3)</span>,
+        ServiceDBManager.java&#160;<span class="change">(+57&#160;-33)</span>,
+        UserDBManager.java&#160;<span class="change">(+30&#160;-14)</span>
+      </li>
+      <li>
+        <strong>DM3/Sources/Data</strong>:
+        Claims.db&#160;<span class="change">(+1&#160;-1)</span>
+      </li>
+    </ul>
+  </dd>
+
+  <dt><a name="15"></a>
+    <a href="user_pcaron.html" class="author">pcaron</a>
+    <span class="date">2016-11-28 10:11</span>
+    <a class="permalink" title="Permalink to this commit" href="#15">#15</a>
+    <span class="revisionNumberOuter">Rev.: <span class="revisionNumberInner">1303</span></span>
+  </dt>
+  <dd>
+    <p class="comment">
+changement du fonctionnement pour permettre les connexions multiples
+    </p>
+    <p class="commitdetails"><strong>66</strong> lines of code changed in <span class="files">6 files</span>:</p>
+    <ul class="commitdetails">
+      <li>
+        <strong>DM3/Sources</strong>:
+        MemberSession.java&#160;<span class="change">(+5&#160;-7)</span>,
+        ServerApplication.java&#160;<span class="change">(+29&#160;-9)</span>,
+        Session.java&#160;<span class="change">(+6&#160;-3)</span>,
+        SupervisorSession.java&#160;<span class="change">(+11&#160;-7)</span>,
+        SupplierSession.java&#160;<span class="change">(+12&#160;-7)</span>,
+        UserInterface.java&#160;<span class="change">(+3&#160;-6)</span>
+      </li>
+    </ul>
+  </dd>
+
+  <dt><a name="14"></a>
+    <a href="user_pcaron.html" class="author">pcaron</a>
+    <span class="date">2016-11-27 07:08</span>
+    <a class="permalink" title="Permalink to this commit" href="#14">#14</a>
+    <span class="revisionNumberOuter">Rev.: <span class="revisionNumberInner">1281</span></span>
+  </dt>
+  <dd>
+    <p class="comment">
+Ajout du login membre
+    </p>
+    <p class="commitdetails"><strong>39</strong> lines of code changed in <span class="files">8 files</span>:</p>
+    <ul class="commitdetails">
+      <li>
+        <strong>DM3/Sources</strong>:
+        MemberSession.java&#160;<span class="change">(+13&#160;-3)</span>,
+        ServerApplication.java&#160;<span class="change">(+1)</span>,
+        Session.java&#160;<span class="change">(+5&#160;-3)</span>,
+        SessionManager.java&#160;<span class="change">(+1&#160;-1)</span>,
+        SupervisorSession.java&#160;<span class="change">(+5&#160;-1)</span>,
+        SupplierSession.java&#160;<span class="change">(+4&#160;-1)</span>,
+        UserInterface.java&#160;<span class="change">(+9&#160;-2)</span>
+      </li>
+      <li>
+        <strong>DM3/Sources/Data</strong>:
+        Users.db&#160;<span class="change">(+1&#160;-1)</span>
+      </li>
+    </ul>
+  </dd>
+
+  <dt><a name="13"></a>
+    <a href="user_pcaron.html" class="author">pcaron</a>
+    <span class="date">2016-11-27 06:08</span>
+    <a class="permalink" title="Permalink to this commit" href="#13">#13</a>
+    <span class="revisionNumberOuter">Rev.: <span class="revisionNumberInner">1280</span></span>
+  </dt>
+  <dd>
+    <p class="comment">
+Modifications à UserInterface
+    </p>
+    <p class="commitdetails"><strong>50</strong> lines of code changed in <span class="files">4 files</span>:</p>
+    <ul class="commitdetails">
+      <li>
+        <strong>DM3/Sources</strong>:
+        DataBase.java&#160;<span class="change">(+4&#160;-4)</span>,
+        ServerApplication.java&#160;<span class="change">(+2&#160;-2)</span>,
+        SessionManager.java&#160;<span class="change">(+1&#160;-1)</span>,
+        UserInterface.java&#160;<span class="change">(+43&#160;-3)</span>
+      </li>
+    </ul>
+  </dd>
+
+  <dt><a name="12"></a>
+    <a href="user_pcaron.html" class="author">pcaron</a>
+    <span class="date">2016-11-27 05:36</span>
+    <a class="permalink" title="Permalink to this commit" href="#12">#12</a>
+    <span class="revisionNumberOuter">Rev.: <span class="revisionNumberInner">1279</span></span>
+  </dt>
+  <dd>
+    <p class="comment">
+Changement mineur au dernier commit
+    </p>
+    <p class="commitdetails"><strong>2</strong> lines of code changed in <span class="files">1 file</span>:</p>
+    <ul class="commitdetails">
+      <li>
+        <strong>DM3/Sources</strong>:
+        SessionManager.java&#160;<span class="change">(+2&#160;-2)</span>
+      </li>
+    </ul>
+  </dd>
+
+  <dt><a name="11"></a>
+    <a href="user_pcaron.html" class="author">pcaron</a>
+    <span class="date">2016-11-27 05:26</span>
+    <a class="permalink" title="Permalink to this commit" href="#11">#11</a>
+    <span class="revisionNumberOuter">Rev.: <span class="revisionNumberInner">1278</span></span>
+  </dt>
+  <dd>
+    <p class="comment">
+Début du codage
+    </p>
+    <p class="commitdetails"><strong>495</strong> lines of code changed in <span class="files">26 files</span>:</p>
+    <ul class="commitdetails">
+      <li>
+        <strong>DM3/Sources</strong>:
+        Address.java&#160;<span class="change">(+22&#160;-19)</span>,
+        Claim.java&#160;<span class="change">(+48&#160;-20)</span>,
+        DataBase.java&#160;<span class="change">(+107&#160;-20)</span>,
+        DataBaseManager.java&#160;<span class="new">(new&#160;18)</span>,
+        EFT.java&#160;<span class="change">(+10&#160;-2)</span>,
+        MainAccountingJob.java&#160;<span class="change">(+3)</span>,
+        Member.java&#160;<span class="change">(+41&#160;-6)</span>,
+        MemberSession.java&#160;<span class="change">(+8&#160;-3)</span>,
+        ReceivableAccountsJob.java&#160;<span class="change">(+6&#160;-3)</span>,
+        ReportCreator.java&#160;<span class="change">(+2)</span>,
+        ServerApplication.java&#160;<span class="change">(+17&#160;-8)</span>,
+        Service.java&#160;<span class="change">(+22&#160;-9)</span>,
+        ServiceDBManager.java&#160;<span class="change">(+3&#160;-1)</span>,
+        Session.java&#160;<span class="change">(+3&#160;-5)</span>,
+        SessionManager.java&#160;<span class="change">(+27&#160;-10)</span>,
+        Supervisor.java&#160;<span class="change">(+22)</span>,
+        SupervisorSession.java&#160;<span class="change">(+8&#160;-3)</span>,
+        Supplier.java&#160;<span class="change">(+33)</span>,
+        SupplierSession.java&#160;<span class="change">(+12&#160;-5)</span>,
+        User.java&#160;<span class="change">(+32&#160;-8)</span>,
+        UserDBManager.java&#160;<span class="change">(+38&#160;-36)</span>,
+        UserInterface.java&#160;<span class="change">(+7&#160;-7)</span>
+      </li>
+      <li>
+        <strong>DM3/Sources/Data</strong>:
+        Claims.db&#160;<span class="new">(new&#160;1)</span>,
+        EFT.db&#160;<span class="new">(new&#160;1)</span>,
+        Services.db&#160;<span class="new">(new&#160;1)</span>,
+        Users.db&#160;<span class="new">(new&#160;3)</span>
+      </li>
+    </ul>
+  </dd>
+
+  <dt><a name="10"></a>
+    <a href="user_gevrai.html" class="author">gevrai</a>
+    <span class="date">2016-11-25 19:51</span>
+    <a class="permalink" title="Permalink to this commit" href="#10">#10</a>
+    <span class="revisionNumberOuter">Rev.: <span class="revisionNumberInner">1270</span></span>
+  </dt>
+  <dd>
+    <p class="comment">
+Basic codebase imported from class diagram into 'Sources' directory
+    </p>
+    <p class="commitdetails"><strong>835</strong> lines of code changed in <span class="files">23 files</span>:</p>
+    <ul class="commitdetails">
+      <li>
+        <strong>DM3/Sources</strong>:
+        Address.java&#160;<span class="new">(new&#160;82)</span>,
+        Claim.java&#160;<span class="new">(new&#160;100)</span>,
+        ClaimDBManager.java&#160;<span class="new">(new&#160;30)</span>,
+        DataBase.java&#160;<span class="new">(new&#160;38)</span>,
+        EFT.java&#160;<span class="new">(new&#160;5)</span>,
+        EftDBManager.java&#160;<span class="new">(new&#160;21)</span>,
+        MainAccountingJob.java&#160;<span class="new">(new&#160;19)</span>,
+        Member.java&#160;<span class="new">(new&#160;32)</span>,
+        MemberSession.java&#160;<span class="new">(new&#160;22)</span>,
+        ReceivableAccountsJob.java&#160;<span class="new">(new&#160;38)</span>,
+        ReportCreator.java&#160;<span class="new">(new&#160;55)</span>,
+        ServerApplication.java&#160;<span class="new">(new&#160;20)</span>,
+        Service.java&#160;<span class="new">(new&#160;54)</span>,
+        ServiceDBManager.java&#160;<span class="new">(new&#160;44)</span>,
+        Session.java&#160;<span class="new">(new&#160;18)</span>,
+        SessionManager.java&#160;<span class="new">(new&#160;45)</span>,
+        Supervisor.java&#160;<span class="new">(new&#160;2)</span>,
+        SupervisorSession.java&#160;<span class="new">(new&#160;32)</span>,
+        Supplier.java&#160;<span class="new">(new&#160;17)</span>,
+        SupplierSession.java&#160;<span class="new">(new&#160;38)</span>,
+        User.java&#160;<span class="new">(new&#160;43)</span>,
+        UserDBManager.java&#160;<span class="new">(new&#160;48)</span>,
+        UserInterface.java&#160;<span class="new">(new&#160;32)</span>
+      </li>
+    </ul>
+  </dd>
+
+  <dt><a name="9"></a>
+    <a href="user_gevrai.html" class="author">gevrai</a>
+    <span class="date">2016-11-25 19:49</span>
+    <a class="permalink" title="Permalink to this commit" href="#9">#9</a>
+    <span class="revisionNumberOuter">Rev.: <span class="revisionNumberInner">1269</span></span>
+  </dt>
+  <dd>
+    <p class="comment">
+Last (?) modifications on class diagram before code exportation v3
+    </p>
+    <p class="commitdetails"><strong>0</strong> lines of code changed in <span class="files">1 file</span>:</p>
+    <ul class="commitdetails">
+      <li>
+        <strong>DM3/Documentation</strong>:
+        ChocAn.vpp&#160;<span class="change">(changed)</span>
+      </li>
+    </ul>
+  </dd>
+
+  <dt><a name="8"></a>
+    <a href="user_gevrai.html" class="author">gevrai</a>
+    <span class="date">2016-11-25 19:43</span>
+    <a class="permalink" title="Permalink to this commit" href="#8">#8</a>
+    <span class="revisionNumberOuter">Rev.: <span class="revisionNumberInner">1268</span></span>
+  </dt>
+  <dd>
+    <p class="comment">
+Last (?) modifications on class diagram before code exportation v2
+    </p>
+    <p class="commitdetails"><strong>0</strong> lines of code changed in <span class="files">1 file</span>:</p>
+    <ul class="commitdetails">
+      <li>
+        <strong>DM3/Documentation</strong>:
+        ChocAn.vpp&#160;<span class="change">(changed)</span>
+      </li>
+    </ul>
+  </dd>
+
+  <dt><a name="7"></a>
+    <a href="user_gevrai.html" class="author">gevrai</a>
+    <span class="date">2016-11-25 19:41</span>
+    <a class="permalink" title="Permalink to this commit" href="#7">#7</a>
+    <span class="revisionNumberOuter">Rev.: <span class="revisionNumberInner">1267</span></span>
+  </dt>
+  <dd>
+    <p class="comment">
+Last (?) modifications on class diagram before code exportation
+    </p>
+    <p class="commitdetails"><strong>0</strong> lines of code changed in <span class="files">1 file</span>:</p>
+    <ul class="commitdetails">
+      <li>
+        <strong>DM3/Documentation</strong>:
+        ChocAn.vpp&#160;<span class="change">(changed)</span>
+      </li>
+    </ul>
+  </dd>
+
+  <dt><a name="6"></a>
+    <a href="user_gevrai.html" class="author">gevrai</a>
+    <span class="date">2016-11-25 16:33</span>
+    <a class="permalink" title="Permalink to this commit" href="#6">#6</a>
+    <span class="revisionNumberOuter">Rev.: <span class="revisionNumberInner">1264</span></span>
+  </dt>
+  <dd>
+    <p class="comment">
+Save class diagram
+    </p>
+    <p class="commitdetails"><strong>0</strong> lines of code changed in <span class="files">1 file</span>:</p>
+    <ul class="commitdetails">
+      <li>
+        <strong>DM3/Documentation</strong>:
+        ChocAn.vpp&#160;<span class="change">(changed)</span>
+      </li>
+    </ul>
+  </dd>
+
+  <dt><a name="5"></a>
+    <a href="user_gevrai.html" class="author">gevrai</a>
+    <span class="date">2016-11-25 15:27</span>
+    <a class="permalink" title="Permalink to this commit" href="#5">#5</a>
+    <span class="revisionNumberOuter">Rev.: <span class="revisionNumberInner">1262</span></span>
+  </dt>
+  <dd>
+    <p class="comment">
+Modifications apportees pendant meetup
+    </p>
+    <p class="commitdetails"><strong>0</strong> lines of code changed in <span class="files">1 file</span>:</p>
+    <ul class="commitdetails">
+      <li>
+        <strong>DM3/Documentation</strong>:
+        ChocAn.vpp&#160;<span class="change">(changed)</span>
+      </li>
+    </ul>
+  </dd>
+
+  <dt><a name="4"></a>
+    <a href="user_gevrai.html" class="author">gevrai</a>
+    <span class="date">2016-11-24 23:05</span>
+    <a class="permalink" title="Permalink to this commit" href="#4">#4</a>
+    <span class="revisionNumberOuter">Rev.: <span class="revisionNumberInner">1241</span></span>
+  </dt>
+  <dd>
+    <p class="comment">
+Minor changes to class diagram
+    </p>
+    <p class="commitdetails"><strong>0</strong> lines of code changed in <span class="files">1 file</span>:</p>
+    <ul class="commitdetails">
+      <li>
+        <strong>DM3/Documentation</strong>:
+        ChocAn.vpp&#160;<span class="change">(changed)</span>
+      </li>
+    </ul>
+  </dd>
+
+  <dt><a name="3"></a>
+    <a href="user_gevrai.html" class="author">gevrai</a>
+    <span class="date">2016-11-24 16:25</span>
+    <a class="permalink" title="Permalink to this commit" href="#3">#3</a>
+    <span class="revisionNumberOuter">Rev.: <span class="revisionNumberInner">1237</span></span>
+  </dt>
+  <dd>
+    <p class="comment">
+Modifications au diagramme de classe: Communication avec interface utilisateur non-implantée
+    </p>
+    <p class="commitdetails"><strong>0</strong> lines of code changed in <span class="files">1 file</span>:</p>
+    <ul class="commitdetails">
+      <li>
+        <strong>DM3/Documentation</strong>:
+        ChocAn.vpp&#160;<span class="change">(changed)</span>
+      </li>
+    </ul>
+  </dd>
+
+  <dt><a name="2"></a>
+    <a href="user_gevrai.html" class="author">gevrai</a>
+    <span class="date">2016-11-23 19:42</span>
+    <a class="permalink" title="Permalink to this commit" href="#2">#2</a>
+    <span class="revisionNumberOuter">Rev.: <span class="revisionNumberInner">1220</span></span>
+  </dt>
+  <dd>
+    <p class="comment">
+Modifications (non terminees) au digramme de classes avant export en fichier .java
+    </p>
+    <p class="commitdetails"><strong>0</strong> lines of code changed in <span class="files">1 file</span>:</p>
+    <ul class="commitdetails">
+      <li>
+        <strong>DM3/Documentation</strong>:
+        ChocAn.vpp&#160;<span class="new">(new)</span>
+      </li>
+    </ul>
+  </dd>
+
+  <dt><a name="1"></a>
+    <a href="user_f.brobillard.html" class="author">f.brobillard</a>
+    <span class="date">2016-11-22 17:20</span>
+    <a class="permalink" title="Permalink to this commit" href="#1">#1</a>
+    <span class="revisionNumberOuter">Rev.: <span class="revisionNumberInner">1199</span></span>
+  </dt>
+  <dd>
+    <p class="comment">
+Directory pour DM3
+    </p>
+    <p class="commitdetails"><strong>508</strong> lines of code changed in <span class="files">2 files</span>:</p>
+    <ul class="commitdetails">
+      <li>
+        <strong>DM3</strong>:
+        rapport.html&#160;<span class="new">(new&#160;183)</span>
+      </li>
+      <li>
+        <strong>DM3/public/stylesheets</strong>:
+        style.css&#160;<span class="new">(new&#160;325)</span>
+      </li>
+    </ul>
+  </dd>
+
+</dl>
+
+<div id="generatedby">Generated by <a href="http://www.statsvn.org">StatSVN</a> 0.7.0</div>
+</body>
+</html>

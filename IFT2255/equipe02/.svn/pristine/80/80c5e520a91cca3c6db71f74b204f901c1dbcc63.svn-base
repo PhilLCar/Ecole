@@ -1,0 +1,16 @@
+public abstract class Session {
+
+	private User user;
+
+	public abstract void getUI();
+
+	/**
+	 * 
+	 * @param userID
+	 * @param hash
+	 */
+	public Session(User user) {
+		this.user = user;
+	}
+
+}

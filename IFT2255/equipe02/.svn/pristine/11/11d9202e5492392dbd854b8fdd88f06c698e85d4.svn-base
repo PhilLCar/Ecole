@@ -1,0 +1,50 @@
+import java.util.ArrayList;
+
+public class UserDBManager implements DataBaseManager<User> {
+
+	private static final ArrayList<User> users = DataBase.getDataBase().getUsers();
+
+	@Override
+	public User find(int id) {
+		for (int i = 0; i < users.size(); i++)
+			if (users.get(i).getUserID() == id)
+				return users.get(i);
+		return null;
+	}
+
+	@Override
+	public boolean exists(User key) {
+		return users.contains(key);
+	}
+
+	@Override
+	public boolean add(User elem) {
+		return users.add(elem);
+	}
+
+	@Override
+	public boolean delete(User elem) {
+		return users.remove(elem);
+	}
+
+	@Override
+	public User delete(int id) {
+		for (int i = 0; i < users.size(); i++)
+			if (users.get(i).getUserID() == id)
+				return users.remove(i);
+		return null;
+	}
+
+	@Override
+	public ArrayList<User> select(int id) {
+		return null;
+	}
+
+	@Override
+	public ArrayList<User> select(String search) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	
+}

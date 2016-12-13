@@ -1,0 +1,100 @@
+public class Claim {
+
+	private Date transactionTime;
+	private Date serviceDate;
+	private int supID;
+	private int memID;
+	private int servID;
+	private string comment;
+
+	/**
+	 * 
+	 * @param transactionTime
+	 * @param serviceDate
+	 * @param supID
+	 * @param memID
+	 * @param servID
+	 * @param comment
+	 */
+	public Claim(Date transactionTime, Date serviceDate, int supID, int memID, int servID, string comment) {
+		// TODO - implement Claim.Claim
+		throw new UnsupportedOperationException();
+	}
+
+	public string getTransactionTime() {
+		// TODO - implement Claim.getTransactionTime
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * 
+	 * @param transactionTime
+	 */
+	public void setTransactionTime(string transactionTime) {
+		// TODO - implement Claim.setTransactionTime
+		throw new UnsupportedOperationException();
+	}
+
+	public string getServiceDate() {
+		// TODO - implement Claim.getServiceDate
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * 
+	 * @param serviceDate
+	 */
+	public void setServiceDate(string serviceDate) {
+		// TODO - implement Claim.setServiceDate
+		throw new UnsupportedOperationException();
+	}
+
+	public int getSupID() {
+		return this.supID;
+	}
+
+	/**
+	 * 
+	 * @param supID
+	 */
+	public void setSupID(int supID) {
+		this.supID = supID;
+	}
+
+	public int getMemID() {
+		return this.memID;
+	}
+
+	/**
+	 * 
+	 * @param memID
+	 */
+	public void setMemID(int memID) {
+		this.memID = memID;
+	}
+
+	public int getServID() {
+		return this.servID;
+	}
+
+	/**
+	 * 
+	 * @param servID
+	 */
+	public void setServID(int servID) {
+		this.servID = servID;
+	}
+
+	public string getComment() {
+		return this.comment;
+	}
+
+	/**
+	 * 
+	 * @param comment
+	 */
+	public void setComment(string comment) {
+		this.comment = comment;
+	}
+
+}

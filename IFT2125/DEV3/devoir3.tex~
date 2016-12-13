@@ -1,0 +1,321 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[french]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{tcolorbox}
+\usepackage[margin=2cm]{geometry}
+\usepackage{array}
+\usepackage{hyperref}
+\usepackage{tikz}
+\usepackage{listings}
+\usepackage{eurosym}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{cancel}
+\usepackage{siunitx}
+\usepackage{textcomp}
+
+\title{\vspace{7cm}IFT2125 automne 2016 - Devoir 2} %trouver long trait d'union
+\author{Philippe Caron}
+\date{\today}
+
+%\setcounter{section}{0}
+\renewcommand{\thesubsubsection}{(\alph{subsubsection})}
+\renewcommand{\thefootnote}{\fnsymbol{footnote}}
+\newenvironment{pseudo}{\begin{tcolorbox}[left skip = 2cm, right skip = 2cm]\itshape}{\end{tcolorbox}}
+\newcommand{\key}[1]{{\bf #1}}
+\newcommand{\name}[1]{{\scshape #1}}
+\newcommand\tab[1][0.5cm]{\hspace*{#1}}
+
+\lstset{frame=tb,
+  language=Python,
+  aboveskip=3mm,
+  belowskip=3mm,
+  showstringspaces=false,
+  columns=flexible,
+  basicstyle={\small\ttfamily},
+  numbers=left,
+  numberstyle=\tiny\color{gray},
+  keywordstyle=\color{purple},
+  commentstyle=\color{blue},
+  stringstyle=\color{brown},
+  breaklines=true,
+  breakatwhitespace=true,
+  tabsize=3
+}
+
+\begin{document}
+\maketitle
+
+\pagebreak
+
+\section{Récurrence}
+Soit la récurrence suivante:
+$$
+t_n =
+\begin{cases}
+  3 & \text{si } n = 0 \text{,}\\
+  3 & \text{si } n = 1 \text{,}\\
+  17 & \text{si } n = 2 \text{,}\\
+  at_{n-1} + bt_{n-2} + ct_{n-3} + (d + en)2^n & \text{si } n > 2 \text{,}
+\end{cases}
+$$
+dont la solution est:
+\begin{equation}
+  t_n = (2n - 3)5^n + (6 - 2n^2)2^n
+\end{equation}
+On cherche $a, b, c, d, e$.
+
+Tout d'abord, en examinant la solution de la récurrence en (1), on peut d'emblée affirmer que les zéros du polynôme associé sont 2 et 5, et qu'ils sont de multiplicité 3 et 2 respectivement. Ce qui nous donne un polynôme de la forme suivante:
+\begin{equation}
+  (r-2)^3(r-5)^2
+\end{equation}
+
+Ceci nous donne suffisamment d'information pour trouver les coefficiant du polynôme de gauche lorsqu'on isole les termes qui ne dépendent pas d'un $t_n$ précédent\footnote{Sachant que l'annihilateur d'un terme de la forme $k^xP(y)$ est $(E-x)^{y+1}$}:
+\begin{align*}
+  t_n &= at_{n-1} + bt_{n-2} + ct_{n-3} + (d + en)2^n\\
+  t_n - at_{n-1} - bt_{n-2} - ct_{n-3} &= (d + en)2^n\\
+  \Rightarrow (r^3 - ar^2 - br - c) \cdot (r-2)^2
+  &\stackrel{(2)}{=} (r-2)^3(r-5)^2\\
+  r^3 - ar^2 - br - c &= (r-2)(r-5)^2\\
+  r^3 - ar^2 - br - c &= r^3 - 12r^2 + 45r -50\\
+  \Rightarrow a &= 12\\
+  b &= -45\\
+  c &= 50
+\end{align*}
+
+Ensuite il nous suffit de résoudre un simple système 2 équations 2 inconnues en utilisants les prochaines valeurs de $t_n$ calculées grâce à l'équation (1).
+\begin{equation}
+  \begin{aligned}
+    t_3=279 &= at_{n-1} + bt_{n-2} + ct_{n-3} + (d + en)2^n\\
+    &= 12 \cdot 17 - 45 \cdot 3 + 50 \cdot 3 + 8d + 24e\\
+    60 &= 8d + 24e\\
+    15 &= 2d + 6e
+  \end{aligned}
+\end{equation}
+\begin{equation}
+  \begin{aligned}
+    t_4=2709 &= at_{n-1} + bt_{n-2} + ct_{n-3} + (d + en)2^n\\
+    &= 12 \cdot 279 - 45 \cdot 17 + 50 \cdot 3 + 16d + 64e\\
+    -24 &= 16d + 64e\\
+    -3 &= 2d + 8e
+  \end{aligned}
+\end{equation}
+
+La solution au système formé des équations (3) et (4) est la suivante:
+\begin{align*}
+  \Rightarrow d = \frac{69}{2}\\
+  e = -9
+\end{align*}
+
+Ce qui termine la recherche des coefficients.
+
+\pagebreak
+
+\section{Dénominations}
+
+Soit les dénominations $1 = d_0, d_1, ...,d_k$ où $5d_{i-1} \leq d_i$. Il faut prouver que la procédure vorace trouvera toujours un résultat optimal.
+
+Prenons un montant $m$, le cas dangereux est celui où il existe un multiple de petites dénominations (appelons la $d_p$) plus petit que le nombre de $d_{p-1}$ qu'il faudra pour combler l'espace entre $m$ et $d_{p+1}$ et ou $d_p$ et $d_{p+1}$ sont premiers entre eux.
+
+\paragraph{Construisons une monaie hypotéthique autour de ce cas.}
+
+Commençons avec une pièce de 1\$ ($d_{p+1}=100$). Nous cherchons le plus gros $d_p$ possible, donc:
+$$\max d_p\text{ | }5d_p \leq d_{p+1} \Rightarrow d_p = 20$$
+or 20 divise 100. La plus petite pièce qui respecte les condition est donc celle de 19\textcent. Choisissons maintenant $d_{p-1}$. Afin de maximiser les chances d'échec, nous prendrons la pièce de 1\textcent.
+
+Soit la dénomination suivante:
+$$d_0 = 1$$
+$$d_1 = 19$$
+$$d_2 = 100$$
+
+Vérifions que la dénomination ci-haute respecte les conditions initiales:
+
+\begin{align*}
+  5 \cdot d_2 = 5 \leq d_1 = 19\\
+  5 \cdot d_1 = 95 \leq d_2 = 100
+\end{align*}
+
+\paragraph{Échec de l'algorithme vorace.}
+
+Si l'on soummet $1.14\$$ à l'algorithme vorace, celui-ci retournera $1 \times 1\$ + 14 \times 1$\textcent, pour un total de 15 pièces. Or la solution optimale aurait été de remettre 6 pièces de 19\textcent (considérablement moins).
+
+La preuve est donc faite qu'un système de dénominations qui respecte la condition initiale ne peut pas nécessairement être traité par un algorithme vorace.
+
+\pagebreak
+
+\section{Code de Huffman}
+Pour encoder la chaîne suivante :\texttt{lepessimismeoooooooodeoooooooodonald}, on fait un tableau des fréquence des lettres:
+
+\begin{center}
+  \begin{tabular}{c|c}
+    lettre & fréquence \\
+    \hline \hline
+    o & 17 \\
+    e & 4 \\
+    s & 3 \\
+    d & 3 \\
+    l & 2 \\
+    i & 2 \\
+    m & 2 \\
+    p & 1 \\
+    n & 1 \\
+    a & 1
+  \end{tabular}
+\end{center}
+
+À partir de ce tabeau on se crée un arbre:
+\vspace{2cm}
+
+\begin{tikzpicture}[
+    scale = 1.5, transform shape, thick,
+    every node/.style = {draw, circle, minimum size = 8mm},
+    grow = down,
+    level 1/.style = {sibling distance = 5cm},
+    level 2/.style = {sibling distance = 6.5cm},
+    level 3/.style = {sibling distance = 3.5cm},
+    level 4/.style = {sibling distance = 1.8cm},
+    level 5/.style = {sibling distance = 1.5cm},
+    level 6/.style = {sibling distance = 1cm},
+    level distance = 1.25cm
+  ]
+
+  \node (Start) {36}
+  child { node (A) {17} }
+  child {
+    node (B) {19}
+    child {
+      node (C) {8}
+      child { node (D) {4} }
+      child {
+        node (E) {4}
+        child { node (F) {2} }
+        child { node (G) {2} }
+      }
+    }
+    child {
+      node (H) {11}
+      child {
+        node (I) {5}
+        child { node (J) {2} }
+        child {
+          node (K) {3}
+          child { node (L) {1} }
+          child {
+            node (M) {2}
+            child { node (N) {1} }
+            child { node (O) {1} }
+          }
+        }
+      }
+      child {
+        node (P) {6}
+        child { node (Q) {3} }
+        child { node (R) {3} }
+      }
+    }
+  };
+  
+  \begin{scope}[nodes = {draw = none}]
+\textbf{
+    \node at (A) [below = 2mm] {O};
+    \node at (D) [below = 2mm] {E};
+    \node at (F) [below = 2mm] {M};
+    \node at (G) [below = 2mm] {I};
+    \node at (J) [below = 2mm] {L};
+    \node at (L) [below = 2mm] {P};
+    \node at (N) [below = 2mm] {N};
+    \node at (O) [below = 2mm] {A};
+    \node at (Q) [below = 2mm] {S};
+    \node at (R) [below = 2mm] {D};
+    }
+    \path (Start) -- (A) node [near start, left]  {0};
+    \path (Start) -- (B) node [near start, right] {1};
+    \path (B)     -- (C) node [near start, left]  {0};
+    \path (C)     -- (D) node [near start, left]  {0};
+    \path (C)     -- (E) node [near start, right] {1};
+    \path (E)     -- (F) node [near start, left]  {0};
+    \path (E)     -- (G) node [near start, right] {1};
+    \path (B)     -- (H) node [near start, right] {1};
+    \path (H)     -- (I) node [near start, left]  {0};
+    \path (I)     -- (J) node [near start, left]  {0};
+    \path (I)     -- (K) node [near start, right] {1};
+    \path (K)     -- (L) node [near start, left]  {0};
+    \path (K)     -- (M) node [near start, right] {1};
+    \path (M)     -- (N) node [near start, left]  {0};
+    \path (M)     -- (O) node [near start, right] {1};
+    \path (H)     -- (P) node [near start, right] {1};
+    \path (P)     -- (Q) node [near start, left]  {0};
+    \path (P)     -- (R) node [near start, right] {1};
+  \end{scope}
+\end{tikzpicture}
+
+\pagebreak
+
+Avec quoi on peut faire une table qui fait correspondre chaque lettre à son encodage de Huffman:
+\begin{center}
+  \begin{tabular}{c|l|c}
+    lettre & code  & longueur\\
+    \hline \hline
+    o & 0      & 1\\
+    e & 100    & 3\\
+    s & 1110   & 4\\
+    d & 1111   & 4\\
+    l & 1100   & 4\\
+    i & 1011   & 4\\
+    m & 1010   & 4\\
+    p & 11010  & 5\\
+    n & 110110 & 6\\
+    a & 110111 & 6
+  \end{tabular}
+\end{center}
+La longueur de Huffman du mot est donc:
+$$ 17 \times 1 + 4 \times 3 + 3 \times 4 + 3 \times 4 + 2 \times 4 + 2 \times 4 + 2 \times 4 + 5 + 6 + 6 = 94$$
+La suite la plus courte est évidemment la suite qui maximise le nombre de «o», comme par exemple la suite \texttt{anpmildseooooooooooooooooooooooooooo} (de longueur 67).
+
+\pagebreak
+
+\section{Algorithme}
+\subsubsection{}
+Le couple $(\{1, 2, ..., n\}, \{S \subseteq {1, 2, ..., n} : \sum\limits_{i \in S} \omega_i \leq \omega_0\})$ n'est pas un matroïde, car l'ensemble $I$ ne respecte pas la propriété de l'échange.
+
+Imaginons l'ensemble $A=\{i, x, y\} \subset \{1, 2, ..., n\} : \omega_x + \omega_y = \omega_i$, et l'ensemble $B=\{i, u, v, w\} \subset \{1, 2, ..., n\} : \omega_u + \omega_v + \omega_w = \omega_i$. Par définition, $A$ et $B$ sont éléments de $I$.
+
+\paragraph{Preuve} Selon le principe de l'échange, $[A \in I$ et $B \in I$ et $|A| < |B|] \Rightarrow (\exists a \in B \backslash A)[X \cup \{a\} \in I]$. Autrement dit, puisque $A$ est plus court que $B$, il y a un élément $a$ de $B$ qui peut être ajouté à $A$ de sorte que $A \cup \{a\} \in I$. Or c'est impossible puisque tout ajout non nul à $A$ ferait augmenter le poids au dessus de $\omega_i$. Ce qui signifie que l'échange n'est pas toujours possible et donc qu'on ne parle pas ici d'une matroïde.
+\paragraph{Exemple} $A=\{15, 7, 8\}$ et $B=\{15, 3, 4, 8\}$, peut importe l'élément de $B$ choisi, $A \notin I$.
+\subsubsection{}
+De \key{(a)} on peut déduire qu'il existe parfois plusieurs façons différentes d'arriver au même poids, et donc que la méthode vorace risque de ne pas être optimale dans tous les cas.
+\subsubsection{}
+Voici les valeurs obtenues par l'algorithme:
+\begin{center}
+\begin{tabular}{|c|c|}
+  tuple & Maximum de $\sum\limits_{i=1}^nx_i\omega_i$ trouvé sur cet exemplaire \\
+  \hline \texttt{p1} & $\stackrel{\hspace{9cm}}{14}$\\
+  \texttt{p2} & 132\\
+  \texttt{p3} & 158\\
+  \texttt{p4} & 1496\\
+  \texttt{p5} & 1799\\\hline
+\end{tabular}
+\end{center}
+\subsubsection{}
+Voici le code en python (commentaires enlevés):
+\begin{lstlisting}
+    def swapsort(t):
+        l = list(t)
+        for x in range(0, len(l) - 1):
+            for y in range(1, len(l) - x):
+                if l[y - 1] > l[y]:
+                    l[y - 1], l[y] = l[y], l[y - 1]
+        return tuple(l)
+
+    def Subsetsum(p):
+        w0 = p[0]
+        wi = 0;
+        p = swapsort(p[1:])
+        p = p[::-1]
+        for x in range(len(p)):
+            while(w0 > wi + p[x]):
+                wi += p[x]
+        return wi
+\end{lstlisting}
+\end{document}

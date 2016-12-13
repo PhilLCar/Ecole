@@ -1,0 +1,38 @@
+public class SupplierSession extends Session {
+
+	public List<Service> fetchRepository() {
+		// TODO - implement SupplierSession.fetchRepository
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * 
+	 * @param userID
+	 */
+	public string verifyMemberStatus(int userID) {
+		// TODO - implement SupplierSession.verifyMemberStatus
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * 
+	 * @param memID
+	 * @param servID
+	 * @param comment
+	 */
+	public void submitClaim(int memID, int servID, string comment) {
+		// TODO - implement SupplierSession.submitClaim
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * 
+	 * @param userID
+	 * @param hash
+	 */
+	public SupplierSession(int userID, string hash) {
+		// TODO - implement SupplierSession.SupplierSession
+		throw new UnsupportedOperationException();
+	}
+
+}
