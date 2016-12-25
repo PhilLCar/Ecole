@@ -21,6 +21,14 @@
 \author{Philippe Caron}
 \date{\today}
 
+\renewcommand{\thesection}{}
+\renewcommand{\thesubsection}{\arabic{section}.\arabic{subsection}}
+\makeatletter
+\def\@seccntformat#1{\csname #1ignore\expandafter\endcsname\csname the#1\endcsname\quad}
+\let\sectionignore\@gobbletwo
+\let\latex@numberline\numberline
+\def\numberline#1{\if\relax#1\relax\else\latex@numberline{#1}\fi}
+\makeatother
 \renewcommand{\thesubsubsection}{\alph{subsubsection})}
 \renewcommand{\thefootnote}{\fnsymbol{footnote}}
 \newcommand\NP{{\normalfont{\textbf{NP}}}}
@@ -29,6 +37,7 @@
 \newcommand\SC{\textit{SAT-C}}
 \newcommand\bk[1]{\langle #1 \rangle}
 \newcommand\cli[1]{\textit{#1-CLIQUE}}
+\newcommand\tab{\hspace{2cm}}
 
 \lstset{frame=tb,
   language=C,
@@ -47,6 +56,28 @@
   tabsize=3
 }
 \begin{document}
+\begin{titlepage}
+  \centering
+	{\scshape\LARGE Université de Montréal \par}
+	\vspace{7cm}
+	{\scshape\Large IFT2105-A2016\par}
+	\vspace{1cm}
+	{\huge\bfseries Devoir \#2\par}
+	\vspace{1cm}
+	       {\Large\itshape Philippe CARON}
+	\vfill
+	Travail remis à l'intention de\par
+	Alain TAPP
+        \vspace{2cm}
+
+	\vfill
+	{\large \today\par}
+\end{titlepage}
+
+\tableofcontents
+
+\pagebreak
+
 \section{Question 1}
 On sait que \col{3} est \NP-complet. Afin de prouver que \col{5} l'est aussi, nous allons prouver que \col{3} peut être réduit à \col{5} en un temps polynomial, donc que $\col{3} \leq_\PP \col{5}$.
 
@@ -174,21 +205,158 @@ Soit \cli{k} la réponse à l'existence d'un sous-graphe complet de taille $k$ d
 $$\forall k \in \mathbb{N}, \cli{k}=\{\bk{G}\text{ | il existe un sous-graphe complet de $G$ de taille $k$}\}\in \PP$$
 
 \subsection{Marche à suivre}
-Afin de prouver qu'il est possible de définir \cli{k} en temps polynomial, nous allons définir un méthode permettant de trouver l'ensemble recherché.
-\subsubsection{Trim-1}
-Nous savons que tous les sommets des cliques de \cli{k} sont liés à au moins $k$ sommets. Le but est donc de parcourir chaque sommet et retirer tous ceux qui ont moins de $k - 1$ liens. Après un parcour, il risque d'y avoir des changements, et peut-être que certains sommets qui étaient liés à plus de ou exactement $(k - 1)$ sommets ne le sont plus. L'étape est donc relancée. Cette étape va divisier le graphe en aucun, un ou plusieurs amas. Si il n'y a aucun amas, on sait que $\cli{k}=\emptyset$. Cet étape nécessite de parcourir $n$ sommets un maximum de $n$ fois (en en enlevant 1 à chaque tour dans le pire cas), donc $\in O(n^2)$ et est polynomiale.
-\subsubsection{Trim-2+}
-On cherche le sommet avec le nombre minimum de lien. Une fois trouvé, on choisi une clique émanant de ce sommet (on ajoute des sommets au sommet d'origine progressivement, en s'assurant qu'ils sont tous connectés). On ajoute la clique à la solution p. Au pire le nombre de combinaison sera de l'ordre de $\frac{n(n+1)}{2}$ ce qui est un polynôme. On sait qu'un polynôme de polynôme est aussi un polynôme, cette étape est donc elle aussi polynomiale.
-\subsubsection{Remarques}
-On peut passer directement de Trim-1 à Trim-2+, le but de
+Pour se faire on examine tous les ensembles de $k$ sommets du graphe. En choisissant un sommet au hasard, puis un des sommets restant, puis encore et ainsi de suite jusqu'à obtenir un ensemble de $k$ sommet. Une fois l'ensemble obtenu, on peut facilement tester en temps linéaire $O(k)$ si cet ensemble est une clique ou non. Ceci nous donne que pour un graphe de $n$ sommets, le nombre d'ensemble à examiner correspond à trouver une permutation de la clique. (Même si cet algorithme n'est pas aussi efficace qu'avec une combinaison, il est beaucoup plus facile à implémenter). On trouve ainsi $t(n,k)$, soit la complexité temporelle de \cli{k} donnée par la formule suivante:
+$$ t(n, k) = \frac{n!}{(n-k)!} \cdot k= n \cdot (n - 1) \cdot (n - 2) \cdot ... \cdot (n - k + 2) \cdot (n - k + 1) \cdot k$$
+
+\subsection{Conclusion}
+\begin{proof}[Preuve de la question 3]
+  On remarque que les termes à droite de l'équation sont tous des polynômes de degré 1, et qu'ils sont au nombre de $k$, on peut donc dire que
+
+$$ t(n, k) = P_k \in O(n^k) $$
+
+  où $P_k$ est un polynôme de degré $k$.
+  
+  Puisque $t(n,k) \in O(n^k)$, on peut dire que pour tout $k$ fixe, \cli{k} est possible à trouver en temps polynomial et donc que $$\cli{k} \in \PP$$.
+\end{proof}
 
 \pagebreak
 
 \section{Question 4}
+\subsection{Par réduction}
 Soit
 $$ L= \{\bk{M} \text{ | $M$ est une MT telle que $L(M)$ est hors contexte}\} $$
 
-Montrons que $A_MT
+Montrons que $A_{MT} \leq L$.
+
+Soit la fonction calculable
+$$f : \Sigma^* \rightarrow \Sigma^*$$
+
+telle que
+
+\begin{itemize}
+\item si $y$ n'est pas de la forme $\bk{M, \omega}$, alors $f(y)=\epsilon$;
+\item si $y=\bk{M, \omega}$, alors $f(y)=\bk{M'}$ où $M'$ est la MT suivante:
+
+  \hspace{2cm}
+  \begin{minipage}{12cm}
+    \texttt{
+      \\
+      Prendre un mot $x$ en entrée;\\
+      simuler $M$ sur $\omega$;\\
+      si $M$ accepte $\omega$ alors\\
+      \tab{} si $x$ est de la forme $uv^ixy^iz$, alors accepter, sinon rejeter.
+      }
+  \end{minipage}
+\end{itemize}
+
+On a:
+\begin{align*}
+  \bk{M, \omega} \in A_{MT} &\Rightarrow M \text{ accepte } \omega\\
+  &\Rightarrow L(M') = \{uv^ixy^iz | n \geq 0\} \subset GHC\\
+  &\Rightarrow \bk{M'} \in L\\
+  &\Rightarrow f(\bk{M, \omega}) \in L
+\end{align*}
+
+\begin{align*}
+  \bk{M, \omega} \notin A_{MT} &\Rightarrow M \text{ rejette ou boucle sur } \omega\\
+  &\Rightarrow L(M') = \emptyset\\
+  &\Rightarrow \bk{M'} \notin L\\
+  &\Rightarrow f(\bk{M, \omega}) \notin L
+\end{align*}
+
+Donc $L$ est indécidable
+\subsection{Par Rice}
+\begin{itemize}
+\item il existe une MT $M^*$ telle que $\bk{M^*} \in L$
+\item il existe une MT $M^\dag$ telle que $\bk{M^\dag} \notin L$
+\end{itemize}
+
+\vspace{1cm}
+
+Soit $M^*$ la MT qui engendre $L^*=\{uv^nxy^nz | n \in \mathbb{N}\}$
+
+et $M^\dag$ la MT qui engendre $L^\dag=\{u^nv^nx^ny^nz^n | n \in \mathbb{N}\}$
+
+On voit tout de suite que ces deux machine respectent le théorème et donc que $L$ est indécidable.
+
+\pagebreak
+
+\section{Question 5}
+\subsection{Par réduction}
+Soit
+$$ L= \{\bk{M} \text{ | $M$ est une MT telle que $|L(M)|$ est paire}\} $$
+
+Montrons que $A_{MT} \leq L$.
+
+Soit la fonction calculable
+$$f : \Sigma^* \rightarrow \Sigma^*$$
+
+telle que
+
+\begin{itemize}
+\item si $y$ n'est pas de la forme $\bk{M, \omega}$, alors $f(y)=\epsilon$;
+\item si $y=\bk{M, \omega}$, alors $f(y)=\bk{M'}$ où $M'$ est la MT suivante:
+
+  \hspace{2cm}
+  \begin{minipage}{12cm}
+    \texttt{
+      \\
+      Prendre un mot $x$ en entrée;\\
+      si $x=0$ accepter;\\
+      simuler $M$ sur $\omega$;\\
+      si $M$ accepte $\omega$ alors\\
+      \tab{} si $x = 1$, alors accepter, sinon rejeter.
+      }
+  \end{minipage}
+\end{itemize}
+
+On a:
+\begin{align*}
+  \bk{M, \omega} \in A_{MT} &\Rightarrow M \text{ accepte } \omega\\
+  &\Rightarrow |L(M')| = 2 \in\\
+  &\Rightarrow \bk{M'} \in L\\
+  &\Rightarrow f(\bk{M, \omega}) \in L
+\end{align*}
+
+\begin{align*}
+  \bk{M, \omega} \notin A_{MT} &\Rightarrow M \text{ rejette ou boucle sur } \omega\\
+  &\Rightarrow |L(M')| = 1\\
+  &\Rightarrow \bk{M'} \notin L\\
+  &\Rightarrow f(\bk{M, \omega}) \notin L
+\end{align*}
+
+Donc $L$ est indécidable
+\subsection{Par Rice}
+\begin{itemize}
+\item il existe une MT $M^*$ telle que $\bk{M^*} \in L$
+\item il existe une MT $M^\dag$ telle que $\bk{M^\dag} \notin L$
+\end{itemize}
+
+\vspace{1cm}
+
+Soit $M^*$ la MT qui engendre $L^*=\{a, b\}$
+
+et $M^\dag$ la MT qui engendre $L^\dag=\{a\}$
+
+On voit tout de suite que ces deux machine respectent le théorème et donc que $L$ est indécidable.
+
+\pagebreak
+
+\section{Question 6}
+\subsection{Énumérateur $\Leftarrow$ Reconnaissable}
+Si un langage est reconnaissable, alors il a tous ses éléments calculables par une machine de Turing. Il est donc possible pour une machine de calculer chacun des mots et de les imprimer successivement. Pour se faire, une MT peu boucler sur plusieurs «paliers». À chaque palier de $k$ étape, la MT teste tous les mots possibles plus petits que $k$. Si la MT s'arrête à la $k$-ième étape, alors l'énumérateur imprime le mot, sinon, il continue avec le prochain mot. Quand tous les mots du palier sont testés, la MT augmente la valeur de $k$ et recommence. Ainsi en commençant avec $k=0$, on imprime chaque mot dans le langage en ordre d'étapes requises pour le reconnaître. Il est important de procéder ainsi car, si on ne borne pas chaque étape par $k$, la MT peut tomber dans une boucle infinie. On prouve par l'existence de l'énumérateur qu'un langage reconnaissable implique celui-là (l'énumérateur en question).
+\subsection{Énumérateur $\Rightarrow$ Reconnaissable}
+On sait que pour être reconnaissable, un langage doit pouvoir avoir chacun de ses éléments calculé par une machine de Turing (sans rejet, ou boucle infinie). L'énumérateur fait en fait le calcul sur chacun des mots potentiels afin de savoir si ceux-ci font partie du langage, vu qu'il imprime les mots, cela signifie qu'il les accepte et donc qu'il n'y a pas rejet ou boucle infinie; il reconnaît donc langage.
+\subsection{Conclusion}
+En effet, on peut conclure qu’un langage est reconnaissable si et seulement si il existe un énumérateur capablede de l'énumérer.
+
+\section{Question 7}
+\subsection{Énumérateur lexicographique $\Leftarrow$ Décidable}
+Contrairement aux langages reconnaissables les langages décidables se terminent toujours dans l'exécution. Ceci permet d'employer une technique différente pour les générer. Contrairement à la question 6 où l'on procédait par palier, l'énumérateur lexicographique procède justement par ordre lexicographique. Nous pouvons nous permettre de faire ainsi sans crainte car nous savons que tous les mots refusés ne seront pas acceptés. En parcourant l'ordre lexicographique, si un mot est accepté il est imprimé, et l'impression résultante est en ordre lexicographique. On prouve l'implication par l'existence du numérateur.
+\subsection{Énumérateur lexicographique $\Rightarrow$ Décidable}
+Pour qu'un langage soit décidable, il faut que chacun de ses mots puissent être acceptés, et chacun des mots de son complément refusé (autrement dit, pas de boucle infinie). Pour que les mots soient placés en ordre lexicographique, il faut forcément être certain qu'il n'y a aucun autre mot entre les deux qui est accepté, il faut donc calculer tous les mots entre et s'assurer qu'ils sont refusés et cette tâche n'est possible que si le langage est décidable. Nous savons d'on qu'un énumérateur lexicographique implique que le langage est décidable.
+\subsection{Conclusion}
+En effet, on peut conclure qu’un langage est décidable si et seulement si il existe un énumérateur lexicographique de l'énumérer.
 
 \pagebreak
 
@@ -270,7 +438,7 @@ Puisque $O$ et $N$ n'on aucune couleur en commun, on sait que $G \notin \col{5} 
 
 \subsection{Conclusion}
 \begin{proof}[Preuve de l'annexe]
-  Soit la fonction $f$ expliquée en .1 formellement définie comme suit:
+  Soit la fonction $f$ expliquée en 8.1 formellement définie comme suit:
   \begin{align*}
     &f: \Sigma^* \rightarrow \Sigma^* \\
     &f(\bk{G}) = \{\bk{O}, \bk{N}\}
