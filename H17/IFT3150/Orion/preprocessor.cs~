@@ -1,0 +1,70 @@
+using System;
+using System.IO;
+using System.Collections.Generic;
+
+namespace Orion {
+    class Program {
+	public string[] reserved = {
+	    "abstract", "as", "base", "bool", "break", "byte", "case", "catch", "char",
+	    "checked", "class", "const", "continue", "decimal", "default", "delegate",
+	    "do", "double", "else", "enum", "event", "explicit", "extern", "false",
+	    "finally", "fixed", "float", "for", "foreach", "goto", "if", "implicit",
+	    "in", "int", "interface", "internal", "is", "lock", "long", "namespace",
+	    "new", "null", "object", "operator", "out", "override", "params",
+	    "private", "protected", "public", "readonly", "ref", "return", "sbyte",
+	    "sealed", "short", "sizeof", "stackalloc", "static", "string", "struct",
+	    "switch", "this", "throw", "true", "try", "typeof", "uint", "ulong",
+	    "unchecked", "unsafe", "ushort", "using", "virtual", "void", "volatile",
+	    "while" };
+	public string[] operators = {
+	    ".", "++", "--", "+", "-", "!", "~", "*", "/", "%", "<<", ">>", "<", ">",
+	    "<=", ">=", "==", "!=", "&", "^", "|", "&&", "||", "?", ":", "=", "*=",
+	    "/=", "%=", "+=", "-=", "<<=", ">>=", "&=", "^=", "|="};
+	public string[] delimitors = { "{", "}", "[", "]", "(", ")", ",", ";" };
+
+	public static void Main(string[] args) {
+	    String text;
+	    using (StreamReader sr = new StreamReader(args[0])) {
+		text = sr.ReadToEnd();
+	    }
+	    using (StreamWriter sw = new StreamWriter(args[0].Replace(".cs", ".pp"))) {
+		sw.Write(text);
+	    }
+	    int a = 1, b = 1;
+	    Console.WriteLine(a=b=2>2---a*4>>2?2:3);
+	}
+
+	/* PRIORITÉ DES OPÉRATION
+	   Primary        : x.y f(x) a[x] x++ x-- new typeof checked unchecked
+	   Unary          : + - ! ~ ++x --x (T)x
+	   Multiplicative : * / %
+	   Additive       : + -
+	   Shift          : << >>
+	   Relational     : < > <= >= is as
+	   Equality       : == !=
+	   Logical -
+	      AND         : &
+	      XOR         : ^
+	      OR          : |
+	   Conditional -
+	      AND         : &&
+	      OR          : ||
+	      COND        : a ? b : c                          ***(r-assoc)
+	   Assignment     : = *= /= %= += -= <<= >>= &= ^= |=  ***(r-assoc)
+	   */
+
+	//test expr: a=b=test.a>2+3*4>>2?2:3;
+
+	public static List<String> format(string expression) {
+	    String tmp = "";
+	    for (int i = 0; i < expression.Length; i++) {
+			tmp += expression[i];
+			if (Array.IndexOf(reserved, tmp) != -1)
+	    }
+	}
+
+	public static string parenthesize(string expression) {
+	    
+	}
+    }
+}

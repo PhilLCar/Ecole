@@ -1,0 +1,94 @@
+using System;
+using System.IO;
+using System.Collections.Generic;
+
+namespace Orion {
+    class Program {
+	public static string[] reserved = {
+	    "abstract", "as", "base", "bool", "break", "byte", "case", "catch", "char",
+	    "checked", "class", "const", "continue", "decimal", "default", "delegate",
+	    "do", "double", "else", "enum", "event", "explicit", "extern", "false",
+	    "finally", "fixed", "float", "for", "foreach", "goto", "if", "implicit",
+	    "in", "int", "interface", "internal", "is", "lock", "long", "namespace",
+	    "new", "null", "object", "operator", "out", "override", "params",
+	    "private", "protected", "public", "readonly", "ref", "return", "sbyte",
+	    "sealed", "short", "sizeof", "stackalloc", "static", "string", "struct",
+	    "switch", "this", "throw", "true", "try", "typeof", "uint", "ulong",
+	    "unchecked", "unsafe", "ushort", "using", "virtual", "void", "volatile",
+	    "while" };
+	public static string[] operators = {
+	    ".", "++", "--", "+", "-", "!", "~", "*", "/", "%", "<<", ">>", "<", ">",
+	    "<=", ">=", "==", "!=", "&", "^", "|", "&&", "||", "?", ":", "=", "*=",
+	    "/=", "%=", "+=", "-=", "<<=", ">>=", "&=", "^=", "|="};
+	public static string[] delimiters = { "{", "}", "[", "]", "(", ")", ",", ";" };
+
+	public static void Main(string[] args) {
+	    foreach (string s in format("a=b=2>2---a*4>>2?2:3")) {
+		Console.WriteLine(s);
+	    }
+	}
+
+	/* PRIORITÉ DES OPÉRATION
+	   Primary        : x.y f(x) a[x] x++ x-- new typeof checked unchecked
+	   Unary          : + - ! ~ ++x --x (T)x
+	   Multiplicative : * / %
+	   Additive       : + -
+	   Shift          : << >>
+	   Relational     : < > <= >= is as
+	   Equality       : == !=
+	   Logical -
+	      AND         : &
+	      XOR         : ^
+	      OR          : |
+	   Conditional -
+	      AND         : &&
+	      OR          : ||
+	      COND        : a ? b : c                          ***(r-assoc)
+	   Assignment     : = *= /= %= += -= <<= >>= &= ^= |=  ***(r-assoc)
+	   */
+
+	//test expr: a=b=test.a>2+3*4>>2?2:3;
+
+	public static List<String> format(string expression) {
+	    List<String> ret = new List<String>();
+	    String tmp = "";
+	    for (int i = 0; i < expression.Length; i++) {
+		if (expression[i] == ' ') {
+		    if (tmp != "") ret.Add(tmp);
+		    continue;
+		}
+		if (Array.IndexOf(operators, expression[i].ToString()) > 0) {
+		    if (tmp != "") ret.Add(tmp);
+		    tmp = "";
+		    tmp += expression[i];
+		    if (i < expression.Length - 1 &&
+			Array.IndexOf(operators, tmp + expression[i + 1]) != -1) {
+			tmp += expression[++i];
+			if (i < expression.Length - 1 &&
+			    Array.IndexOf(operators, tmp + expression[i + 1]) != -1)
+			    tmp += expression[++i];
+		    }
+		    ret.Add(tmp);
+		    tmp = "";
+		} else {
+		    tmp += expression[i];
+		    if (Array.IndexOf(reserved, tmp) > 0) {
+			ret.Add(tmp);
+			tmp = "";
+		    }
+		    else if (Array.IndexOf(delimiters, tmp) > 0) {
+			ret.Add(tmp);
+			tmp = "";
+		    }
+		}
+	    }
+	    ret.Add(tmp);
+	    return ret;
+	}
+
+	public static string parenthesize(List<String> expression) {
+	    
+	    return "";
+	}
+    }
+}
