@@ -1,0 +1,49 @@
+SOUS-ENSEMBLE DE C#
+ÉTAPE 1 : PRÉPROCESSEUR (1 semaine)
+Terminer un préprocesseur pour parenthéser le code
+.cs -> .cs
+ex:
+namespace Test {
+	class Program {
+		public static void Main(string[] args) {
+			Console.WriteLine(2+3-12*4/2<<2+1);
+		}
+	}
+}
+devient
+namespace Test {
+	class Program {
+		public static void Main(string[] args) {
+			(Console.WriteLine)((((2+3)-((12*4)/(2<<2)))+1));
+		}
+	}
+}
+ÉTAPE 2 : COMPILATEUR IR (1 semaine)
+.cs -> .ics
+namespace	Test
+param		1
+void
+static
+public
+def		Main
+int		2
+int		3
+add
+int		12
+int		4
+mul
+int		2
+int		2
+sal
+div
+int		1
+add
+call		Console.WriteLine
+endclass
+endnamespace
+call		Main
+
+ÉTAPE 3 : COMPILATEUR (5 semaines)
+.ics -> .s
+
+ÉTAPE 4 : ASSEMBLEUR (Bonus)

@@ -1,0 +1,23 @@
+function rmComments(str)
+   local nstr, i, op, cl, s = "", 0
+   repeat
+      i = i + 1
+      s = str:sub(i, i + 1)
+      if s == "--" then
+	 i = i + 2
+	 if str:sub(i, i) == "[" then
+	    repeat
+	       i = i + 1
+	       s = str:sub(i, i)
+	       if s == "=" then
+		  op = op + 1
+	       else
+		  break
+	       end
+	    until (str:sub(i, i) == "[")
+	    repeat
+	       if s == "[" then
+		  repeat
+		     i = i + 1
+		  until (str:sub(i, i) == "]")
+		  
